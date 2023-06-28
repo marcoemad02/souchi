@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
+import 'package:souchi/views/widgets/category_icon.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,7 +12,20 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.grey[60],
       appBar: CustomAppBar(),
       body:Column(
-
+        children: [
+          Image.asset('assets/image/homeimage.jpg'),
+          const SizedBox(height: 10,),
+          Row(
+            children: const [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text('CATEGORY',style: TextStyle(fontSize:30,color: Color(0xffFF7517),fontFamily: 'Poppins'),),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20,),
+          const category(),
+        ],
       ),
     );
   }

@@ -12,7 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         backgroundColor: const Color(0xffF2F2F2),
         automaticallyImplyLeading: false,
-        elevation:0,
+        elevation:10,
         title: Row(
           children: [
             const Padding(
