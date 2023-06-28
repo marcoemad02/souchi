@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:souchi/const.dart';
 
 class category extends StatelessWidget {
   const category({super.key});
