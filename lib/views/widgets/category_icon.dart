@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:souchi/const.dart';
 
-class category extends StatelessWidget {
-  const category({super.key});
+class Category extends StatelessWidget {
+  const Category({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +11,18 @@ class category extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Column(
-          children: const [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/image/raw.jpg'),
+          children: [
+            GestureDetector(
+              onTap: () {
+                print('to rAw category');
+              },
+              child: const CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/image/raw.jpg'),
+              ),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'RAW',
               style: TextStyle(
                 color: Color(0xffFF7517),
@@ -29,13 +34,18 @@ class category extends StatelessWidget {
           ],
         ),
         Column(
-          children: const [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/image/fried.jpg'),
+          children:  [
+            GestureDetector(
+              onTap: () {
+                print('to Fried Category');
+              },
+              child:const  CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/image/fried.jpg'),
+              ),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'FRIED',
               style: TextStyle(
                 color: Color(0xffFF7517),
@@ -47,13 +57,18 @@ class category extends StatelessWidget {
           ],
         ),
         Column(
-          children: const [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/image/sauces.jpg'),
+          children:  [
+            GestureDetector(
+              onTap: () {
+                print('to sauces Category');
+              },
+              child:const  CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/image/sauces.jpg'),
+              ),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'SAUCES',
               style: TextStyle(
                 color: Color(0xffFF7517),
