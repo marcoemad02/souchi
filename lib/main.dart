@@ -17,11 +17,14 @@ class souchi extends StatelessWidget {
     return GetMaterialApp(
       //routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-
-       home:HomePage(),
+       initialRoute:'/',
+       //home:SplashView(),
+      getPages: [
+        GetPage(name: '/', page: () => const SplashView(),),
+        GetPage(name: '/Home', page: () => const HomePage(),),
+      ],
       theme: ThemeData.light().copyWith(
-          scaffoldBackgroundColor:
-          const Color(0xffF6F1F1)), //background for all screens
+          scaffoldBackgroundColor: const Color(0xffF6F1F1)), //background for all screens
     );
   }
 }

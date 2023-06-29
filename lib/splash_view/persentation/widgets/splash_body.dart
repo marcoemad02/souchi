@@ -1,6 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../views/pages/home_page.dart';
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({Key? key}) : super(key: key);
@@ -33,7 +37,9 @@ class _SplashViewbodyState extends State<SplashViewbody>
         //Get.to(()=>const homePage(),                           ((((هرجع اعدلها تاني بعدين))))
         //transition: Transition.leftToRight,
         //duration: kTranstionDuration);
-        GoRouter.of(context).push('/homePage');
+       // GoRouter.of(context).push('/homePage');
+        Get.toNamed('/Home');
+
       },
     );
   }
