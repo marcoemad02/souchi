@@ -16,7 +16,7 @@ class souchi extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       //home: SplashView(),
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor:
           const Color(0xffF6F1F1)), //background for all screens
     );
