@@ -15,13 +15,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         elevation:10,
         title: Row(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: CircleAvatar(
+             Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child:  CircleAvatar(
                 backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.list,
-                  color: Colors.orange,
+                child: IconButton(
+                  onPressed: () {
+              print('to list page');
+                  },
+                  icon: Icon(
+                    Icons.list,
+                    color: Colors.orange,
+                  ),
                 ),
               ),
             ),const SizedBox(width: 20,),
@@ -36,22 +41,32 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: Row(
-                children: const [
+                children:  [
                   Padding(
-                    padding: EdgeInsets.only(right: 10.0),
+                    padding:const EdgeInsets.only(right: 10.0),
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: Icon(
-                        Icons.shopping_cart_outlined,
-                        color: Colors.black,
+                      child:  IconButton(
+                        onPressed: () {
+                          print('to cart page');
+                        },
+                        icon:const  Icon(
+                          Icons.shopping_cart_outlined,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
                   CircleAvatar(
                     backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.person,
-                      color: Colors.black,
+                    child: IconButton(
+                      icon:const  Icon(
+                        Icons.person,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        print('to profile page');
+                      },
                     ),
                   ),
                 ],

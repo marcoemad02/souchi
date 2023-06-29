@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:souchi/splash_view/persentation/splash_view.dart';
+import 'package:souchi/views/pages/home_page.dart';
 import 'core/app_routes.dart';
 
 void main() {
@@ -11,11 +14,11 @@ class souchi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter.router,
+    return GetMaterialApp(
+      //routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
 
-      //home: SplashView(),
+       home:HomePage(),
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor:
           const Color(0xffF6F1F1)), //background for all screens
