@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:souchi/views/widgets/app_bar.dart';
+import 'package:souchi/views/widgets/product_list.dart';
 
 class FriedCategoryPage extends StatelessWidget {
   const FriedCategoryPage({Key? key}) : super(key: key);
@@ -6,9 +8,9 @@ class FriedCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fried Category Page'),
-      ),
+      backgroundColor: Colors.grey[60],
+      appBar: CustomAppBar(),
+      body: ShopProductList(),
     );
   }
 }
