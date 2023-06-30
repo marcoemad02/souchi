@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../views/pages/home_page.dart';
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({Key? key}) : super(key: key);
@@ -24,7 +23,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
-    ); // AnimationController
+    );
     slidingAnimation =
         Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero)
             .animate(animationController);
