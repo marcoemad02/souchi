@@ -4,8 +4,10 @@ import 'package:souchi/styles.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/second_appBar.dart';
 
-class RawPage extends StatelessWidget {
-  const RawPage({super.key});
+import '../../widgets/shop_product_list.dart';
+
+class RawCategoryPage extends StatelessWidget {
+  const RawCategoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +26,11 @@ class RawPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+            Expanded(child: ShopProductList()),
 
           ],
-          
+
         ),
 
       ),

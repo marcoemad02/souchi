@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
-import 'package:souchi/views/pages/elements/RAW_page.dart';
+import 'package:souchi/views/pages/elements/raw_category_page.dart';
 
 class Category extends StatelessWidget {
   const Category({super.key});
@@ -17,7 +17,7 @@ class Category extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-               Get.to(RawPage());
+               Get.to(RawCategoryPage());
               },
               child: const CircleAvatar(
                 radius: 50,
