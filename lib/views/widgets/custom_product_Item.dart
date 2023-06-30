@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../const.dart';
 
 class CustomProdctItem extends StatelessWidget {
-  CustomProdctItem({Key? key, required this.isActive}) : super(key: key);
+   CustomProdctItem({Key? key, this.isActive=true}) : super(key: key);
   final bool isActive;
   @override
   Widget build(BuildContext context) {
