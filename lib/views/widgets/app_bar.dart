@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   onPressed: () {
               print('to list page');
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.list,
                     color: Colors.orange,
                   ),
