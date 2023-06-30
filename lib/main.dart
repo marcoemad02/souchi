@@ -17,7 +17,7 @@ class souchi extends StatelessWidget {
     return GetMaterialApp(
       //routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-       initialRoute:'/',
+      initialRoute:'/',
        //home:SplashView(),
       getPages: appRoutes,
       theme: ThemeData.light().copyWith(

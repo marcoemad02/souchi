@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:souchi/styles.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/category_icon.dart';
 import 'package:souchi/views/widgets/popular_list.dart';
@@ -25,13 +26,10 @@ class HomePage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         'CATEGORY',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Color(0xffFF7517),
-                          fontFamily: 'Poppins',
+                        style: Styles.textStyle30orange
                         ),
                       ),
-                    ),
+
                   ],
                 ),
                 const SizedBox(height: 20),

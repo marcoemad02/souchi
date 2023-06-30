@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
 
 class Category extends StatelessWidget {
@@ -14,10 +12,9 @@ class Category extends StatelessWidget {
       children: [
         Column(
           children: [
-            // Raw
             GestureDetector(
               onTap: () {
-               Get.toNamed('RawCategoryPage');
+                print('to rAw category');
               },
               child: const CircleAvatar(
                 radius: 50,
@@ -40,7 +37,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-               Get.toNamed('FriedCategoryPage');
+                print('to Fried Category');
               },
               child:const  CircleAvatar(
                 radius: 50,
@@ -63,7 +60,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-                Get.toNamed('SaucesCategoryPage');
+                print('to sauces Category');
               },
               child:const  CircleAvatar(
                 radius: 50,
