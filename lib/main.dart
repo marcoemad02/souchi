@@ -19,10 +19,7 @@ class souchi extends StatelessWidget {
       debugShowCheckedModeBanner: false,
        initialRoute:'/',
        //home:SplashView(),
-      getPages: [
-        GetPage(name: '/', page: () => const SplashView(),),
-        GetPage(name: '/Home', page: () => const HomePage(),),
-      ],
+      getPages: appRoutes,
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: const Color(0xffF6F1F1)), //background for all screens
     );

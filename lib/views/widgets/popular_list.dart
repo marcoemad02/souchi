@@ -19,7 +19,7 @@ class BestSellerListViewItem extends StatelessWidget {
         const Text('Smoked Salmon',style: TextStyle(fontSize:28,fontFamily: kfontPop,color: Colors.black),),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal:50),
-          child: Text('This sushi recipe from Allrecipes is the simplest  to make ',style: TextStyle(fontSize:18,fontFamily: kfontPop,color: Colors.black),),
+          child: Text('This sushi recipe from All recipes is the simplest  to make ',style: TextStyle(fontSize:18,fontFamily: kfontPop,color: Colors.black),),
         ),
         SizedBox(height: 20,),
         ElevatedButton(
