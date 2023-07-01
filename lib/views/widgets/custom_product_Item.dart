@@ -77,18 +77,39 @@ class CustomProdctItem extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  FilledButton(
-                      style: ButtonStyle(
-                          shape: MaterialStatePropertyAll(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                        backgroundColor: const MaterialStatePropertyAll(Colors.orange),
 
+
+
+                  OutlinedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(const Color(0xffF2F2F2)),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                       ),
-                      onPressed: () {
-                        print('mina');
-                      },
-                      child:const  Text('ADD TO CART',style: TextStyle(fontFamily: kfontPop,color: Colors.black),))
+                      side: MaterialStateProperty.all(
+                        const BorderSide(
+                          color: Colors.orange,
+                          width: 2.0,
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      print('mina');
+                    },
+                    child: const Text(
+                      'ADD TO CART',
+                      style: TextStyle(
+                        fontFamily: kfontPop,
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+
+
+
+
                 ],
               ),
             ),
@@ -99,7 +120,7 @@ class CustomProdctItem extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(20),
                     color: Colors.white),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -164,17 +185,31 @@ class CustomProdctItem extends StatelessWidget {
                     ),
                     // Catr Button
                     OutlinedButton(
-                        onPressed: null,
-                        child:const  Text(
-                          'ADD TO CART',
-                          style: TextStyle(fontFamily: kfontPop),
-                        ))
+                      onPressed: null,
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        side: MaterialStateProperty.all<BorderSide>(
+                          BorderSide(
+                            color: Colors.grey,
+                            width: 2.0,
+                          ),
+                        ),
+                      ),
+                      child: const Text(
+                        'ADD TO CART',
+                        style: TextStyle(fontFamily: kfontPop),
+                      ),
+                    )
                   ],
                 ),
               ),
               Container(
-                height: 35,
-                width: 75,
+                height:28,
+                width: 78,
                 decoration: const BoxDecoration(
                   color: kPrimaryColor,
                   borderRadius:
