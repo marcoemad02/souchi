@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
+import 'package:souchi/views/pages/elements/fried_category_page.dart';
 import 'package:souchi/views/pages/elements/raw_category_page.dart';
+import 'package:souchi/views/pages/elements/sauces_category_page.dart';
 
 class Category extends StatelessWidget {
   const Category({super.key});
@@ -40,7 +42,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-                print('to Fried Category');
+                Get.to(FriedCategoryPage());
               },
               child:const  CircleAvatar(
                 radius: 50,
@@ -63,7 +65,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-                print('to sauces Category');
+               Get.to(SaucesCategoryPage());
               },
               child:const  CircleAvatar(
                 radius: 50,
