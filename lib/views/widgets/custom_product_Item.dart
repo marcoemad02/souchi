@@ -215,7 +215,7 @@ class CustomProdctItem extends StatelessWidget {
                   borderRadius:
                       BorderRadius.only(bottomRight: Radius.circular(8)),
                 ),
-                child: const Text(' Sold Out',
+                child: const Text('Sold Out ',
                     style: TextStyle(
                       fontFamily: kfontPop,
                     ),
