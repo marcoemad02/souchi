@@ -211,12 +211,13 @@ class CustomProdctItem extends StatelessWidget {
                 height:28,
                 width: 78,
                 decoration: const BoxDecoration(
-                  color: kPrimaryColor,
+                  color:Color(0xffEEEEEE),
                   borderRadius:
                       BorderRadius.only(bottomRight: Radius.circular(8)),
                 ),
                 child: const Text('Sold Out ',
                     style: TextStyle(
+                      color: Color(0xff27374D),
                       fontFamily: kfontPop,
                     ),
                     textAlign: TextAlign.center),
