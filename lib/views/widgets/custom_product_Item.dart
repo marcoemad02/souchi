@@ -13,7 +13,7 @@ class CustomProdctItem extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.white),
+                  borderRadius: BorderRadius.circular(20), color: Colors.white),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
