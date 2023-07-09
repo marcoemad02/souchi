@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:souchi/styles.dart';
@@ -5,6 +7,9 @@ import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/category_icon.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 import 'package:souchi/views/widgets/popular_list.dart';
+
+import '../../enums.dart';
+import '../widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key});
@@ -14,6 +19,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[60],
       appBar: CustomAppBar(),
+
+
+
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -39,12 +47,14 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 const Category(),
                 const SizedBox(height: 20),
-               BesteSellerList(),
+                const BesteSellerList(),
               ],
             ),
           ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+
     );
   }
 }
