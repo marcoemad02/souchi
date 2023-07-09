@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
@@ -54,20 +55,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         onPressed: () {
                           print('to cart page');
                         },
-                        icon:const  Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.black,
+                        icon: SvgPicture.asset("assets/icons/Location point.svg",color: Colors.orange,),
+
                         ),
                       ),
                     ),
-                  ),
+
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     child: IconButton(
-                      icon:const  Icon(
-                        Icons.person,
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("assets/icons/User Icon.svg",color: Colors.orange,),
+
+
                       onPressed: () {
                         Get.to(ProfileScreen());
                       },
