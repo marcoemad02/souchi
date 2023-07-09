@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:souchi/views/pages/ProfilePage/components/name_widget.dart';
+import 'package:souchi/views/widgets/location_widget.dart';
 
 import 'profile_menu.dart';
 import 'profile_pic.dart';
@@ -10,8 +12,11 @@ class Body extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
+          NameWidget(),
+          SizedBox(height: 15,),
           ProfilePic(),
-          SizedBox(height: 20),
+          SizedBox(height:15),
+          LocationWidget(),
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",

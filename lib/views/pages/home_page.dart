@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:souchi/styles.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/category_icon.dart';
+import 'package:souchi/views/widgets/location_widget.dart';
 import 'package:souchi/views/widgets/popular_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,6 +19,9 @@ class HomePage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: [
+                SizedBox(height: 10,),
+                LocationWidget(),
+                SizedBox(height: 10,),
                 Image.asset('assets/image/homeimage.jpg'),
                 const SizedBox(height: 10),
                 Row(
