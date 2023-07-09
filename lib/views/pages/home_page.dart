@@ -19,13 +19,13 @@ class HomePage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                SizedBox(height: 10,),
-                LocationWidget(),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
+                const LocationWidget(),
+                const SizedBox(height: 10,),
                 Image.asset('assets/image/homeimage.jpg'),
                 const SizedBox(height: 10),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 const Category(),
                 const SizedBox(height: 20),
-               BesteSellerList(),
+               const BesteSellerList(),
               ],
             ),
           ),

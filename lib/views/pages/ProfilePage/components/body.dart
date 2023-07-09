@@ -9,14 +9,14 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          NameWidget(),
-          SizedBox(height: 15,),
-          ProfilePic(),
-          SizedBox(height:15),
-          LocationWidget(),
+          const NameWidget(),
+          const SizedBox(height: 15,),
+          const ProfilePic(),
+          const SizedBox(height:15),
+          const LocationWidget(),
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
