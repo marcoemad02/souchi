@@ -8,8 +8,8 @@ class LocationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: const [
+        const Row(
+          children: [
             SizedBox(width: 32,),
             Text('BIKE LOCATION ',style: TextStyle(fontSize: 14),),
           ],
@@ -17,16 +17,16 @@ class LocationWidget extends StatelessWidget {
         Row(
 
           children: [
-            SizedBox(width: 15,),
+            const SizedBox(width: 15,),
             IconButton(
-              color: Color(0xffFF7517),
+              color: const Color(0xffFF7517),
                 iconSize: 32,
                 onPressed:(){},
                 icon: const Icon(
                     Icons.location_on_outlined
                 )
             ),
-            Text('HOSARY',style: TextStyle(fontSize: 22),)
+            const Text('HOSARY',style: TextStyle(fontSize: 22),)
           ],
         ),
       ],
