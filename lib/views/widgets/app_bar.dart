@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
+
+import '../pages/ProfilePage/profile_screen.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -65,7 +69,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        print('to profile page');
+                        Get.to(ProfileScreen());
                       },
                     ),
                   ),
