@@ -15,6 +15,7 @@ class LocationWidget extends StatelessWidget {
           ],
         ),
         Row(
+
           children: [
             SizedBox(width: 15,),
             IconButton(
