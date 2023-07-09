@@ -48,7 +48,7 @@ class CustomBottomNavBar extends StatelessWidget {
 
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
+                icon: SvgPicture.asset("assets/icons/Cart Icon.svg"),
                 onPressed: () {},
               ),
               IconButton(
