@@ -6,6 +6,9 @@ import 'package:souchi/views/widgets/category_icon.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 import 'package:souchi/views/widgets/popular_list.dart';
 
+import '../../enums.dart';
+import '../widgets/NavBar.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key});
 
@@ -45,6 +48,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
     );
   }
 }

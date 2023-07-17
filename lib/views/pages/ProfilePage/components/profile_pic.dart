@@ -24,7 +24,7 @@ class ProfilePic extends StatelessWidget {
                 width: 3.0,
               ),
             ),
-            child: CircleAvatar(
+            child: const CircleAvatar(
               backgroundImage: AssetImage("assets/image/IMG_4048h.png"),
             ),
           ),
@@ -40,10 +40,10 @@ class ProfilePic extends StatelessWidget {
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
-                    side: BorderSide(color: Colors.white),
+                    side: const BorderSide(color: Colors.white),
                   ),
                   primary: Colors.white,
-                  backgroundColor: Color(0xFFF5F6F9),
+                  backgroundColor: const Color(0xFFF5F6F9),
                 ),
                 onPressed: () {},
                 child: SvgPicture.asset("assets/icons/Camera Icon.svg"),

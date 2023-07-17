@@ -19,7 +19,7 @@ class Category extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-               Get.to(RawCategoryPage());
+               Get.to(const RawCategoryPage());
               },
               child: const CircleAvatar(
                 radius: 50,
@@ -42,7 +42,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-                Get.to(FriedCategoryPage());
+                Get.to(const FriedCategoryPage());
               },
               child:const  CircleAvatar(
                 radius: 50,
@@ -65,7 +65,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-               Get.to(SaucesCategoryPage());
+               Get.to(const SaucesCategoryPage());
               },
               child:const  CircleAvatar(
                 radius: 50,
