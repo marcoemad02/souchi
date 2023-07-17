@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/styles.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/category_icon.dart';
@@ -10,21 +14,26 @@ import '../../enums.dart';
 import '../widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key});
+   HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId});
+  var controllerr = Get.put(ProductController());
+  final Stream<QuerySnapshot> productStream;
+  final String branchName1;
+  final int branchId;
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[60],
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(branchId: branchId,branchName: branchName1,streamBranch: productStream),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Column(
               children: [
-                SizedBox(height: 10,),
-                LocationWidget(),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
+                LocationWidget(branchName: branchName1),
+                const SizedBox(height: 10,),
                 Image.asset('assets/image/homeimage.jpg'),
                 const SizedBox(height: 10),
                 Row(
@@ -40,15 +49,15 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const Category(),
+                 Category(productStream:  productStream,branchId: branchId,branchName1: branchName1),
                 const SizedBox(height: 20),
-               BesteSellerList(),
+                 BesteSellerList(),
               ],
             ),
           ),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home,branchId: branchId,branchName: branchName1,streamBranch:  FirebaseFirestore.instance.collection('activee').snapshots(),),
     );
   }
 }

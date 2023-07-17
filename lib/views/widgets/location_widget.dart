@@ -2,16 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LocationWidget extends StatelessWidget {
-  const LocationWidget({super.key});
-
+  LocationWidget({super.key, required this.branchName});
+  final String branchName;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
          Row(
           children: [
-            SizedBox(width: 32,),
-            Text('BIKE LOCATION ',style: TextStyle(fontSize: 14),),
+            const SizedBox(width: 32,),
+            Text('BIKE LOCATION ',style: const TextStyle(fontSize: 14),),
           ],
         ),
         Row(
@@ -26,7 +26,7 @@ class LocationWidget extends StatelessWidget {
                     Icons.location_on_outlined
                 )
             ),
-            const Text('HOSARY',style: TextStyle(fontSize: 22),)
+            Text(branchName,style: const TextStyle(fontSize: 22),)
           ],
         ),
       ],

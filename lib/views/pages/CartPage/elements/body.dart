@@ -76,11 +76,11 @@ class Body extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Text(' PRICE : ',style: TextStyle(color: Colors.black45,fontFamily: 'Poppins',fontSize: 18),),
-                              SizedBox(width: 5,),
+                              const Text(' PRICE : ',style: TextStyle(color: Colors.black45,fontFamily: 'Poppins',fontSize: 18),),
+                              const SizedBox(width: 5,),
                               Text(
                                 prices[index].toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black45,
                                   fontSize: 18,
                                   fontFamily: 'Poppins',
@@ -88,18 +88,20 @@ class Body extends StatelessWidget {
                               ),
                             ],
                           ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Container(
+
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20),),
                             child:Row(
+
                               children: [
-                                SizedBox(width: 6,),
-                                Icon(Icons.minimize_outlined),
+                                const SizedBox(width: 6,),
+                                const Icon(Icons.remove,),
                                 Text('  2  ', style: TextStyle(fontSize: 18),),
-                                Icon(Icons.add_outlined),
-                                SizedBox(width: 6,),
+                                const Icon(Icons.add_outlined),
+                                const SizedBox(width: 6,),
                               ],
                             )
 

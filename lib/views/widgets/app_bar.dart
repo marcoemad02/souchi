@@ -1,16 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
 
+
 import '../pages/ProfilePage/profile_screen.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+
   @override
   Size get preferredSize => const Size.fromHeight(kAppBarHight);
-
+  final Stream<QuerySnapshot> streamBranch;
+  final String branchName;
+  final int branchId;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -53,7 +59,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       backgroundColor: Colors.white,
                       child:  IconButton(
                         onPressed: () {
-                          print('to cart page');
+
                         },
                         icon: SvgPicture.asset("assets/icons/Location point.svg",color: Colors.orange,),
 
@@ -68,7 +74,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 
                       onPressed: () {
-                        Get.to(ProfileScreen());
+                        Get.to(ProfileScreen(streamBranch: streamBranch,branchId: branchId,branchName: branchName,));
                       },
                     ),
                   ),

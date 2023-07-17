@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 import 'package:souchi/views/pages/CartPage/cart_view.dart';
 import 'package:souchi/views/pages/ProfilePage/profile_screen.dart';
 import 'package:souchi/views/pages/home_page.dart';
@@ -10,28 +12,31 @@ import '../../enums.dart';
 
 
 class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({
+   CustomBottomNavBar({
     Key? key,
-    required this.selectedMenu,
+    required this.selectedMenu, required this.streamBranch, required this.branchName, required this.branchId,
   }) : super(key: key);
 
   final MenuState selectedMenu;
+  final Stream<QuerySnapshot> streamBranch;
+  final String branchName;
+  final int branchId;
 
   @override
   Widget build(BuildContext context) {
     final Color inActiveIconColor = Color(0xFFB6B6B6);
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 14),
+      padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
             offset: Offset(0, -15),
             blurRadius: 20,
-            color: Color(0xFFDADADA).withOpacity(0.15),
+            color: const Color(0xFFDADADA).withOpacity(0.15),
           ),
         ],
-        borderRadius: BorderRadius.only(
+        borderRadius:const  BorderRadius.only(
           topLeft: Radius.circular(40),
           topRight: Radius.circular(40),
         ),
@@ -48,7 +53,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () { Get.to(HomePage());}
+                onPressed: () { Get.to( Get.to(()=>HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,)));}
 
               ),
               IconButton(
@@ -58,7 +63,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                 ),
 
-                onPressed: () {Get.to(CartScreen());},
+                onPressed: () {Get.to(()=>CartScreen(branchName: branchName,branchId: branchId,streamBranch: streamBranch,));},
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Location point.svg",
@@ -69,7 +74,10 @@ class CustomBottomNavBar extends StatelessWidget {
                 color: MenuState.location == selectedMenu
                     ? kPrimaryColor
                     : inActiveIconColor,
-                onPressed: () {},
+                onPressed: ()
+                {
+                  Get.to(()=>BranchScreen());
+                },
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -78,7 +86,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: (){Get.to(ProfileScreen());}
+                onPressed: (){Get.to(ProfileScreen(streamBranch: streamBranch,branchName: branchName,branchId: branchId,));}
               ),
             ],
           )),

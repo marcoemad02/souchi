@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -7,9 +8,13 @@ import '../pages/ProfilePage/profile_screen.dart';
 
 
 class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const SecondAppBar({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+
   @override
   Size get preferredSize => const Size.fromHeight(kAppBarHight);
-
+  final Stream<QuerySnapshot> streamBranch;
+  final String branchName;
+  final int branchId;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -69,7 +74,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        Get.to(ProfileScreen());
+                        Get.to(ProfileScreen(streamBranch: streamBranch,branchName: branchName,branchId: branchId,));
                       },
                     ),
                   ),

@@ -8,13 +8,13 @@ import '../splash_view/persentation/splash_view.dart';
 import '../views/pages/elements/raw_category_page.dart';
 import '../views/pages/home_page.dart';
 
-final List<GetPage> appRoutes=[
-  GetPage(name: '/', page: () => const SplashView(),),
-  GetPage(name: '/Home', page: () => const HomePage(),),
-  GetPage(name: '/RawCategoryPage', page: () =>  RawCategoryPage(),),
-  GetPage(name: '/FriedCategoryPage', page: () =>  FriedCategoryPage(),),
-  GetPage(name: '/SaucesCategoryPage', page: () =>  SaucesCategoryPage(),)
-];
+// final List<GetPage> appRoutes=[
+//   GetPage(name: '/', page: () => const SplashView(),),
+//   GetPage(name: '/Home', page: () => HomePage(branchId: ),),
+//   GetPage(name: '/RawCategoryPage', page: () =>  RawCategoryPage(),),
+//   GetPage(name: '/FriedCategoryPage', page: () =>  FriedCategoryPage(),),
+//   GetPage(name: '/SaucesCategoryPage', page: () =>  SaucesCategoryPage(),)
+// ];
 
 
 

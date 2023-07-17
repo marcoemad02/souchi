@@ -1,10 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:souchi/core/view_model/product_Controller.dart';
 
 import '../../const.dart';
 
 class CustomProdctItem extends StatelessWidget {
-   CustomProdctItem({Key? key, this.isActive=true}) : super(key: key);
-  final bool isActive;
+   CustomProdctItem({Key? key, this.isActive=true, required this.productObj, required this.idb, this.id}) : super(key: key);
+   final bool isActive;
+   final QueryDocumentSnapshot productObj;
+   final id;
+   var pcontroller= Get.put(ProductController());
+   final int idb;
   @override
   Widget build(BuildContext context) {
     return isActive
@@ -32,7 +40,7 @@ class CustomProdctItem extends StatelessWidget {
                   ),
                   //Product Name
                   Text(
-                    'Raw Salmon with lemon and pepperdjasnldakkndljn smakdasknj',
+                    productObj.get('productname'),
                     style: const TextStyle(fontSize: 18, fontFamily: kfontPop),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -41,7 +49,7 @@ class CustomProdctItem extends StatelessWidget {
                     height: 8,
                   ),
                   // PRICE Egp
-                  Text('200 L.E',
+                  Text(productObj.get('price')+'L.E',
                       style:
                           const TextStyle(fontFamily: kfontPop, fontSize: 16)),
                   const SizedBox(
@@ -138,7 +146,7 @@ class CustomProdctItem extends StatelessWidget {
                     ),
                     //Product Name
                     Text(
-                      'Raw Salmon with lemon and pepperdjasnldakkndljn smakdasknj',
+                      productObj.get('productname'),
                       style:
                           const TextStyle(fontSize: 18, fontFamily: kfontPop),
                       overflow: TextOverflow.ellipsis,
@@ -148,7 +156,7 @@ class CustomProdctItem extends StatelessWidget {
                       height: 8,
                     ),
                     // PRICE Egp
-                    Text('200 L.E',
+                    Text(productObj.get('price')+'L.E',
                         style: const TextStyle(
                             fontFamily: kfontPop, fontSize: 16)),
                     const SizedBox(
@@ -209,7 +217,7 @@ class CustomProdctItem extends StatelessWidget {
                 height:28,
                 width: 78,
                 decoration: const BoxDecoration(
-                  color:Color(0xffEEEEEE),
+                  color:kPrimaryColor,//Color(0xffEEEEEE)
                   borderRadius:
                       BorderRadius.only(bottomRight: Radius.circular(8)),
                 ),
