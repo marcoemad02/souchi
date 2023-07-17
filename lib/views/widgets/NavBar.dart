@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:souchi/views/pages/CartPage/cart_view.dart';
+import 'package:souchi/views/pages/ProfilePage/profile_screen.dart';
+import 'package:souchi/views/pages/home_page.dart';
 import '../../const.dart';
 import '../../enums.dart';
 
@@ -44,15 +48,27 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () {}
+                onPressed: () { Get.to(HomePage());}
 
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Cart Icon.svg"),
-                onPressed: () {},
+                icon: SvgPicture.asset("assets/icons/Cart Icon.svg",
+                  color: MenuState.cart == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+
+                onPressed: () {Get.to(CartScreen());},
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Location point.svg"),
+                icon: SvgPicture.asset("assets/icons/Location point.svg",
+                  color: MenuState.location == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                color: MenuState.location == selectedMenu
+                    ? kPrimaryColor
+                    : inActiveIconColor,
                 onPressed: () {},
               ),
               IconButton(
@@ -62,7 +78,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: (){}
+                onPressed: (){Get.to(ProfileScreen());}
               ),
             ],
           )),
