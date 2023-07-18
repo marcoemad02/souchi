@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 import 'package:souchi/views/pages/CartPage/cart_view.dart';
 import 'package:souchi/views/pages/ProfilePage/profile_screen.dart';
@@ -21,17 +22,18 @@ class CustomBottomNavBar extends StatelessWidget {
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
+  var controller=Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
-    final Color inActiveIconColor = Color(0xFFB6B6B6);
+    const Color inActiveIconColor =Color(0xFFB6B6B6);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, -15),
+            offset: const Offset(0, -15),
             blurRadius: 20,
             color: const Color(0xFFDADADA).withOpacity(0.15),
           ),
@@ -53,7 +55,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () { Get.to( Get.to(()=>HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,)));}
+                onPressed: () {  Get.to(()=>HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,));}
 
               ),
               IconButton(
@@ -75,8 +77,8 @@ class CustomBottomNavBar extends StatelessWidget {
                     ? kPrimaryColor
                     : inActiveIconColor,
                 onPressed: ()
-                {
-                  Get.to(()=>BranchScreen());
+                { controller.validatorclear(branchId);
+                   Get.to(()=>const BranchScreen());
                 },
               ),
               IconButton(
@@ -86,7 +88,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: (){Get.to(ProfileScreen(streamBranch: streamBranch,branchName: branchName,branchId: branchId,));}
+                onPressed: (){Get.to(()=>ProfileScreen(streamBranch: streamBranch,branchName: branchName,branchId: branchId,));}
               ),
             ],
           )),

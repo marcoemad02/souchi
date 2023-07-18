@@ -11,7 +11,7 @@ import 'package:souchi/views/pages/elements/sauces_category_page.dart';
 
 class Category extends StatelessWidget {
    Category({super.key, required this.productStream, required this.branchName1, required this.branchId});
-  var controllerr = Get.put(ProductController());
+  var controllerr = Get.put(ProductController(),);
   final Stream<QuerySnapshot> productStream;
   final String branchName1;
   final int branchId;
@@ -25,7 +25,7 @@ class Category extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-               Get.to( RawCategoryPage(streamBranch: productStream,branchId: branchId, branchName: branchName1,));
+               Get.to(()=> RawCategoryPage(streamBranch: productStream,branchId: branchId, branchName: branchName1,));
               },
               child: const CircleAvatar(
                 radius: 50,
@@ -48,7 +48,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-                Get.to( FriedCategoryPage(branchName: branchName1,branchId: branchId,streamBranch: productStream,));
+                Get.to( ()=>FriedCategoryPage(branchName: branchName1,branchId: branchId,streamBranch: productStream,));
               },
               child:const  CircleAvatar(
                 radius: 50,
@@ -71,7 +71,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-               Get.to( SaucesCategoryPage(branchName: branchName1,streamBranch: productStream,branchId: branchId,));
+               Get.to( ()=>SaucesCategoryPage(branchName: branchName1,streamBranch: productStream,branchId: branchId,));
               },
               child:const  CircleAvatar(
                 radius: 50,

@@ -8,7 +8,7 @@ import 'package:souchi/views/widgets/second_appBar.dart';
 import '../../widgets/shop_product_list.dart';
 
 class FriedCategoryPage extends StatelessWidget {
-   FriedCategoryPage({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+  const  FriedCategoryPage({super.key, required this.streamBranch, required this.branchName, required this.branchId});
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;

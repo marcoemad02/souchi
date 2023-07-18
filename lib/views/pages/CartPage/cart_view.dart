@@ -9,7 +9,7 @@ import '../../../enums.dart';
 import '../../widgets/NavBar.dart';
 
 class CartScreen extends StatelessWidget {
-  CartScreen({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+const   CartScreen({super.key, required this.streamBranch, required this.branchName, required this.branchId});
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
@@ -17,9 +17,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(streamBranch:streamBranch,branchId: branchId,branchName: branchName, ),
-      body:
-
-      Body() ,
+      body: Body(branchID: branchId, ) ,
       bottomNavigationBar:  CustomBottomNavBar(selectedMenu: MenuState.cart,streamBranch: streamBranch,branchId: branchId,branchName: branchName),
 
     );

@@ -8,7 +8,7 @@ import 'package:souchi/views/pages/home_page.dart';
 import 'core/app_routes.dart';
 import 'firebase_options.dart';
 
-void main() async{
+Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -25,7 +25,7 @@ class souchi extends StatelessWidget {
 
       //routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-      initialRoute:'/',
+
        //home:SplashView(),
       // getPages: appRoutes,
       home: const BranchScreen(),

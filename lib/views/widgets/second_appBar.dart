@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
+import 'package:souchi/views/pages/CartPage/cart_view.dart';
 
 import '../pages/ProfilePage/profile_screen.dart';
 
@@ -57,7 +58,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                       backgroundColor: Colors.white,
                       child:  IconButton(
                         onPressed: () {
-                          print('to cart page');
+                         Get.to(()=>CartScreen(streamBranch: streamBranch, branchName: branchName, branchId: branchId));
                         },
                         icon:const  Icon(
                           Icons.shopping_cart_outlined,
@@ -74,7 +75,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        Get.to(ProfileScreen(streamBranch: streamBranch,branchName: branchName,branchId: branchId,));
+                        Get.to(()=>ProfileScreen(streamBranch: streamBranch,branchName: branchName,branchId: branchId,));
                       },
                     ),
                   ),

@@ -102,7 +102,7 @@ class CustomProdctItem extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      print('mina');
+                            pcontroller.validatorBranch(productObj, idb);
                     },
                     child: const Text(
                       'ADD TO CART',
@@ -191,7 +191,7 @@ class CustomProdctItem extends StatelessWidget {
                     ),
                     // Catr Button
                     OutlinedButton(
-                      onPressed: null,
+                      onPressed:null,
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -199,7 +199,7 @@ class CustomProdctItem extends StatelessWidget {
                           ),
                         ),
                         side: MaterialStateProperty.all<BorderSide>(
-                          BorderSide(
+                          const BorderSide(
                             color: Colors.grey,
                             width: 2.0,
                           ),

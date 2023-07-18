@@ -8,7 +8,7 @@ import '../../widgets/NavBar.dart';
 import 'components/body.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+  const ProfileScreen({super.key, required this.streamBranch, required this.branchName, required this.branchId});
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: const Color(0xffFF7517),
         title: const Text("MY PROFILE ", style: TextStyle(fontFamily: "Poppins",),),
       ),
-      body: Body(branchName: branchName,branchId: branchId,streamBranch: streamBranch),
+      body: Body(branchName: branchName,),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile,branchId: branchId,streamBranch:streamBranch ,branchName: branchName),
     );
   }

@@ -33,7 +33,7 @@ dependencies:
   get: ^4.6.5
   firebase_core: ^2.14.0
   cloud_firestore: ^4.8.2
-  image_picker: ^1.0.0
+
 
   flutter:
     sdk: flutter

@@ -7,7 +7,8 @@ import 'package:get/get_core/src/get_main.dart';
 import '../pages/home_page.dart';
 
 class BranchWidget extends StatelessWidget {
-  const BranchWidget({Key? key, required this.streamBranch, required this.branchName, required this.branchId}) : super(key: key);
+  const BranchWidget({Key? key, required this.streamBranch, required this.branchName, required this.branchId,}) : super(key: key);
+
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
@@ -16,7 +17,8 @@ class BranchWidget extends StatelessWidget {
     return GestureDetector(
 
       onTap: () {
-        Get.to(()=>HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,));
+
+        Get.to(()=> HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,));
       },
       child: Container(
         height: 130,
@@ -25,7 +27,7 @@ class BranchWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             color: Colors.orange
         ),
-        child: Center(child: Text(branchName,style: TextStyle(fontSize: 22),)),
+        child: Center(child: Text(branchName,style: const TextStyle(fontSize: 22),)),
 
 
       ),

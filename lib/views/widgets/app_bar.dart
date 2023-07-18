@@ -74,7 +74,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 
                       onPressed: () {
-                        Get.to(ProfileScreen(streamBranch: streamBranch,branchId: branchId,branchName: branchName,));
+                        Get.to(()=>ProfileScreen(streamBranch: streamBranch,branchId: branchId,branchName: branchName,));
                       },
                     ),
                   ),

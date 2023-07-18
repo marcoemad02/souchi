@@ -8,14 +8,15 @@ import 'profile_pic.dart';
 
 class Body extends StatelessWidget {
   @override
-  final Stream<QuerySnapshot> streamBranch;
-  final String branchName;
-  final int branchId;
 
-  const Body({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+  final String branchName;
+  // final Stream<QuerySnapshot> streamBranch;
+  // final int branchId;
+
+  const Body({super.key, required this.branchName, });
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding:const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
           const NameWidget(),

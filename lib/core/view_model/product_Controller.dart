@@ -79,8 +79,7 @@ class ProductController extends GetxController{
       print('HosaryList${cartItemsHosary}');
       print('MohandList${cartItemsMohandseen}');
 
-    }
-    if(branchIdMohandseen==idbranch){
+    }else{
       print('here Mohandseen');
       addItemToCartMohandseen(productObject);
       print('HosaryList${cartItemsHosary}');
