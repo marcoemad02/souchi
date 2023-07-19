@@ -12,7 +12,7 @@ class CustomCheckoutButton extends StatelessWidget {
         color: Colors.white,
       ),
       child: TextButton(
-        onPressed: () {
+        onPressed: ( ) {
           // Implement your checkout logic here
         },
         child: Row(
