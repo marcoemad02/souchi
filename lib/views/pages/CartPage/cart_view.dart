@@ -5,6 +5,7 @@ import 'package:souchi/views/pages/CartPage/elements/body.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/checkout_buttom.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
+import 'package:souchi/views/widgets/second_appBar.dart';
 
 import '../../../enums.dart';
 import '../../widgets/NavBar.dart';
@@ -17,14 +18,15 @@ const   CartScreen({super.key, required this.streamBranch, required this.branchN
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(streamBranch:streamBranch,branchId: branchId,branchName: branchName, ),
+      appBar: SecondAppBar(streamBranch:streamBranch,branchId: branchId,branchName: branchName, ),
       body: Column(
         children: [
           Expanded(child: Body(branchID: branchId, )),
-
-          CustomCheckoutButton(branchId: branchId,),
+          SizedBox(height: 20,),
+          CustomCheckoutButton(branchId: branchId,),SizedBox(height: 20,),
         ],
       ) ,
+
       bottomNavigationBar:  CustomBottomNavBar(selectedMenu: MenuState.cart,streamBranch: streamBranch,branchId: branchId,branchName: branchName),
     );
   }
