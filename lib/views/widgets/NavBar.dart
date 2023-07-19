@@ -48,16 +48,23 @@ class CustomBottomNavBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg",
-                  color:  MenuState.home == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () {  Get.to(()=>HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,));}
-
-              ),
+              // IconButton(
+              //   icon: SvgPicture.asset(
+              //     "assets/icons/Shop Icon.svg",
+              //     color:  MenuState.home == selectedMenu
+              //         ? kPrimaryColor
+              //         : inActiveIconColor,
+              //   ),
+              //   onPressed: () {
+              //
+              //
+              //     Get.off(()=>HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,));
+              //
+              //
+              //
+              //   }
+              //
+              // ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Cart Icon.svg",
                   color: MenuState.cart == selectedMenu

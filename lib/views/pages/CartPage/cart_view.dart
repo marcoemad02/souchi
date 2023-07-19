@@ -18,7 +18,13 @@ const   CartScreen({super.key, required this.streamBranch, required this.branchN
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(streamBranch:streamBranch,branchId: branchId,branchName: branchName, ),
-      body: Body(branchID: branchId, ) ,
+      body: Column(
+        children: [
+          Expanded(child: Body(branchID: branchId, )),
+
+          CustomCheckoutButton(branchId: branchId,),
+        ],
+      ) ,
       bottomNavigationBar:  CustomBottomNavBar(selectedMenu: MenuState.cart,streamBranch: streamBranch,branchId: branchId,branchName: branchName),
     );
   }
