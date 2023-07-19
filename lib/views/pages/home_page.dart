@@ -57,7 +57,8 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home,branchId: branchId,branchName: branchName1,streamBranch:  FirebaseFirestore.instance.collection('activee').snapshots(),),
+      bottomNavigationBar: CustomBottomNavBar(
+        selectedMenu: MenuState.home,branchId: branchId,branchName: branchName1,streamBranch:  FirebaseFirestore.instance.collection('activee').snapshots(),),
     );
   }
 }

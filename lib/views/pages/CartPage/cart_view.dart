@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:souchi/views/pages/CartPage/elements/body.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
+import 'package:souchi/views/widgets/checkout_buttom.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 
 import '../../../enums.dart';
@@ -19,7 +20,6 @@ const   CartScreen({super.key, required this.streamBranch, required this.branchN
       appBar: CustomAppBar(streamBranch:streamBranch,branchId: branchId,branchName: branchName, ),
       body: Body(branchID: branchId, ) ,
       bottomNavigationBar:  CustomBottomNavBar(selectedMenu: MenuState.cart,streamBranch: streamBranch,branchId: branchId,branchName: branchName),
-
     );
   }
 }

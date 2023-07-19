@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
+import 'package:souchi/views/widgets/checkout_buttom.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 
 class Body extends StatelessWidget {
@@ -115,9 +116,7 @@ class cartItemWidget extends StatelessWidget {
                       const SizedBox(width: 6,),
                     ],
                   )
-
                 ),
-
               ],
             ),
           ),
