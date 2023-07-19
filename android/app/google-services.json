@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "627476252828",
+    "project_id": "suchi-3b304",
+    "storage_bucket": "suchi-3b304.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627476252828:android:0ea4949f369396d90b4559",
+        "android_client_info": {
+          "package_name": "com.example.souchi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627476252828-kpelk25c7e3tb3vl89l8jtqb3f53oaqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk5YCludoGgxzodGFJshR726QGWJM0TPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627476252828-kpelk25c7e3tb3vl89l8jtqb3f53oaqt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "627476252828-25f82p24mqvvbm593bugmu75l72goctg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.souchi"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
