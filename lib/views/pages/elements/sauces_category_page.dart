@@ -5,6 +5,8 @@ import 'package:souchi/styles.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/second_appBar.dart';
 
+import '../../../enums.dart';
+import '../../widgets/NavBar.dart';
 import '../../widgets/shop_product_list.dart';
 
 class SaucesCategoryPage extends StatelessWidget {
@@ -35,7 +37,7 @@ class SaucesCategoryPage extends StatelessWidget {
           ],
 
         ),
-
+        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.cart, streamBranch: streamBranch, branchName:branchName, branchId:branchId,),
       ),
     );
   }
