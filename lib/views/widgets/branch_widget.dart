@@ -8,9 +8,12 @@ import 'package:get/get_core/src/get_main.dart';
 import '../pages/home_page.dart';
 
 class BranchWidget extends StatelessWidget {
-  const BranchWidget({Key? key, required this.streamBranch, required this.branchName, required this.branchId,}) : super(key: key);
-
+  const BranchWidget({Key? key, required this.streamBranch, required this.branchName, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces,}) : super(key: key);
   final Stream<QuerySnapshot> streamBranch;
+
+  final Stream<QuerySnapshot> streamBranchRaw;
+  final Stream<QuerySnapshot> streamBranchFried;
+  final Stream<QuerySnapshot> streamBranchSauces;
   final String branchName;
   final int branchId;
   @override
@@ -19,7 +22,7 @@ class BranchWidget extends StatelessWidget {
 
       onTap: () {
 
-        Get.to(()=> HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,));
+        Get.to(()=> HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,streamBranchFried: streamBranchFried,streamBranchRaw: streamBranchRaw,streamBranchSauces: streamBranchSauces,));
       },
       child:Container(
 

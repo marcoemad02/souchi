@@ -5,9 +5,10 @@ import 'package:souchi/views/widgets/custom_product_Item.dart';
 
 
 
-class ShopProductList extends StatelessWidget {
-  ShopProductList({Key? key, required this.streamBranch, required this.branchName, required this.branchId}) : super(key: key);
+class RawShopProductList extends StatelessWidget {
+  RawShopProductList({Key? key, required this.streamBranch, required this.branchName, required this.branchId}) : super(key: key);
   final Stream<QuerySnapshot> streamBranch;
+
   final String branchName;
   final int branchId;
   @override
@@ -36,7 +37,7 @@ class ShopProductList extends StatelessWidget {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, mainAxisSpacing: 5, mainAxisExtent: 350),
             itemBuilder: (context, index) {
-              return CustomProdctItem(productObj: data.docs[index],id: data.docs[index]['docId'],isActive: data.docs[index]['active'],idb: branchId ,idInt: data.docs[index]['id'],); // not real idb number
+              return CustomProdctItem(productObj: data.docs[index],id: data.docs[index].get('docId'),isActive: data.docs[index].get('active'),idb: branchId ,); // not real idb number
 
             },
 

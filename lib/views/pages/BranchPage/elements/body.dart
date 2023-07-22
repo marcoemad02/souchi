@@ -21,11 +21,18 @@ class Body extends StatelessWidget {
                 child: Column(
                   children: [
                     BranchWidget(
+
                         streamBranch: FirebaseFirestore.instance
                             .collection('HosaryShopItems')
                             .snapshots(),
                         branchName: 'Hosary',
-                        branchId: 1),
+                        branchId: 1,
+                    streamBranchRaw: FirebaseFirestore.instance.collection('HosaryShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                    streamBranchFried: FirebaseFirestore.instance.collection('HosaryShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                    streamBranchSauces: FirebaseFirestore.instance.collection('HosaryShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(),
+
+
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
@@ -34,7 +41,12 @@ class Body extends StatelessWidget {
                             .collection('MohandseenShopItems')
                             .snapshots(),
                         branchName: 'Mohandseen',
-                        branchId: 2),
+                        branchId: 2,
+                      streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                      streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                      streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(),
+
+                    ),
                     const SizedBox(
                       height: 10,
                     ),

@@ -14,11 +14,14 @@ import '../../enums.dart';
 import '../widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
-   HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId});
+   HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces});
   var controllerr = Get.put(ProductController());
   final Stream<QuerySnapshot> productStream;
   final String branchName1;
   final int branchId;
+   final Stream<QuerySnapshot> streamBranchRaw;
+   final Stream<QuerySnapshot> streamBranchFried;
+   final Stream<QuerySnapshot> streamBranchSauces;
 
 
   @override
@@ -49,7 +52,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                 Category(productStream:  productStream,branchId: branchId,branchName1: branchName1),
+                 Category(productStream:  productStream,branchId: branchId,branchName1: branchName1,streamBranchRaw: streamBranchRaw,streamBranchSauces: streamBranchSauces,streamBranchFried: streamBranchFried,),
                 const SizedBox(height: 20),
                  const BesteSellerList(),
               ],

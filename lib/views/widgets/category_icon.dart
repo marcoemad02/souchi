@@ -10,11 +10,14 @@ import 'package:souchi/views/pages/elements/raw_category_page.dart';
 import 'package:souchi/views/pages/elements/sauces_category_page.dart';
 
 class Category extends StatelessWidget {
-   Category({super.key, required this.productStream, required this.branchName1, required this.branchId});
+   Category({super.key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces});
   var controllerr = Get.put(ProductController(),);
   final Stream<QuerySnapshot> productStream;
   final String branchName1;
   final int branchId;
+   final Stream<QuerySnapshot> streamBranchRaw;
+   final Stream<QuerySnapshot> streamBranchFried;
+   final Stream<QuerySnapshot> streamBranchSauces;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class Category extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-               Get.to(()=> RawCategoryPage(streamBranch: productStream,branchId: branchId, branchName: branchName1,));
+               Get.to(()=> RawCategoryPage(streamBranch: productStream,branchId: branchId, branchName: branchName1,streamBranchRaw: streamBranchRaw,));
               },
               child: const CircleAvatar(
                 radius: 50,
@@ -48,7 +51,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-                Get.to( ()=>FriedCategoryPage(branchName: branchName1,branchId: branchId,streamBranch: productStream,));
+                Get.to( ()=>FriedCategoryPage(branchName: branchName1,branchId: branchId,streamBranch: productStream,streamBranchFried: streamBranchFried,));
               },
               child:const  CircleAvatar(
                 radius: 50,
@@ -71,7 +74,7 @@ class Category extends StatelessWidget {
           children:  [
             GestureDetector(
               onTap: () {
-               Get.to( ()=>SaucesCategoryPage(branchName: branchName1,streamBranch: productStream,branchId: branchId,));
+               Get.to( ()=>SaucesCategoryPage(branchName: branchName1,streamBranch: productStream,branchId: branchId,streamBranchSauces: streamBranchSauces,));
               },
               child:const  CircleAvatar(
                 radius: 50,
