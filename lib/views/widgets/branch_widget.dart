@@ -22,9 +22,11 @@ class BranchWidget extends StatelessWidget {
         Get.to(()=> HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,));
       },
       child:Container(
+
         height: 115,
         width: 180,
         decoration: BoxDecoration(
+          color: Colors.white,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: Colors.orange,

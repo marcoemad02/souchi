@@ -30,7 +30,7 @@ class SelectBranch extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 20,
-                        color: Colors.orange,
+                        color: Colors.grey,
                       ),
                     ),
                   ],
@@ -54,7 +54,7 @@ class SelectBranch extends StatelessWidget {
                       Text(
                         'اختار  الفرع',
                         style: TextStyle(
-                          color: Colors.orange,
+                          color: Colors.grey,
                           fontSize: 20,
                           fontFamily: kfontAlex,
                         ),
