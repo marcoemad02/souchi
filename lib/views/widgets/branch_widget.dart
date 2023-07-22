@@ -23,7 +23,7 @@ class BranchWidget extends StatelessWidget {
       },
       child:Container(
         height: 115,
-        width: 180,
+        width: 165,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
@@ -42,7 +42,7 @@ class BranchWidget extends StatelessWidget {
                  color: Colors.orange,
                 ),
               ),
-              SizedBox(width: 6,),
+              const SizedBox(width: 6,),
               Container(
                 child: Text(
                   branchName,

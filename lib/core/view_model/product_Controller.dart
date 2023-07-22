@@ -54,8 +54,12 @@ class ProductController extends GetxController{
     update();
 
   }
-  void removeItemFromCartHos( index){
-    cartItemsHosary.remove(index);
+  void removeItemFromCartHos(  index){
+
+    cartItemsHosary.removeWhere((element) => (element.get('docId')==index));
+    //GetSnackBar(title: 'ITEM ${index.get('productname')} Removed',);
+
+
     update();
   }
 
@@ -72,9 +76,20 @@ class ProductController extends GetxController{
 
 
 
+  ValidatorDeleteItem(index,idb){
+    if(branchIdHosary==idb){
+      removeItemFromCartHos(index);
+      update();
+    }
+    else{
+      removeItemFromCartMohandseen(index);
+      update();
+    }
+  }
+
 
   // Validator Branch productObject
-  validatorBranch(productObject,idbranch){
+  validatorBranch(productObject, idbranch){
     if(branchIdHosary==idbranch){
       print('here Hosary');
       addItemToCartHos(productObject);

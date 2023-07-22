@@ -39,117 +39,117 @@ class Body extends StatelessWidget {
                       height: 10,
                     ),
 
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
-
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
-
-
-                  ],
-                ),
-              ),
-
-
-
-
-              Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: Column(
-                  children: [
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('MohandseenShopItems')
-                            .snapshots(),
-                        branchName: 'Mohandseen',
-                        branchId: 2),
-                    const SizedBox(
-                      height: 10,
-                    ),
-
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
-
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    BranchWidget(
-                        streamBranch: FirebaseFirestore.instance
-                            .collection('HosaryShopItems')
-                            .snapshots(),
-                        branchName: 'Hosary',
-                        branchId: 1),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    // BranchWidget(
+                    //     streamBranch: FirebaseFirestore.instance
+                    //         .collection('HosaryShopItems')
+                    //         .snapshots(),
+                    //     branchName: 'Hosary',
+                    //     branchId: 1),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    //
+                    // BranchWidget(
+                    //     streamBranch: FirebaseFirestore.instance
+                    //         .collection('HosaryShopItems')
+                    //         .snapshots(),
+                    //     branchName: 'Hosary',
+                    //     branchId: 1),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // BranchWidget(
+                    //     streamBranch: FirebaseFirestore.instance
+                    //         .collection('HosaryShopItems')
+                    //         .snapshots(),
+                    //     branchName: 'Hosary',
+                    //     branchId: 1),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // BranchWidget(
+                    //     streamBranch: FirebaseFirestore.instance
+                    //         .collection('HosaryShopItems')
+                    //         .snapshots(),
+                    //     branchName: 'Hosary',
+                    //     branchId: 1),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
 
 
                   ],
                 ),
               ),
+
+
+
+
+              // Padding(
+              //   padding: const EdgeInsets.all(6.0),
+              //   child: Column(
+              //     children: [
+              //       BranchWidget(
+              //           streamBranch: FirebaseFirestore.instance
+              //               .collection('HosaryShopItems')
+              //               .snapshots(),
+              //           branchName: 'Hosary',
+              //           branchId: 1),
+              //       const SizedBox(
+              //         height: 10,
+              //       ),
+              //       BranchWidget(
+              //           streamBranch: FirebaseFirestore.instance
+              //               .collection('MohandseenShopItems')
+              //               .snapshots(),
+              //           branchName: 'Mohandseen',
+              //           branchId: 2),
+              //       const SizedBox(
+              //         height: 10,
+              //       ),
+              //
+              //       BranchWidget(
+              //           streamBranch: FirebaseFirestore.instance
+              //               .collection('HosaryShopItems')
+              //               .snapshots(),
+              //           branchName: 'Hosary',
+              //           branchId: 1),
+              //       const SizedBox(
+              //         height: 10,
+              //       ),
+              //
+              //       BranchWidget(
+              //           streamBranch: FirebaseFirestore.instance
+              //               .collection('HosaryShopItems')
+              //               .snapshots(),
+              //           branchName: 'Hosary',
+              //           branchId: 1),
+              //       const SizedBox(
+              //         height: 10,
+              //       ),
+              //       BranchWidget(
+              //           streamBranch: FirebaseFirestore.instance
+              //               .collection('HosaryShopItems')
+              //               .snapshots(),
+              //           branchName: 'Hosary',
+              //           branchId: 1),
+              //       const SizedBox(
+              //         height: 10,
+              //       ),
+              //       BranchWidget(
+              //           streamBranch: FirebaseFirestore.instance
+              //               .collection('HosaryShopItems')
+              //               .snapshots(),
+              //           branchName: 'Hosary',
+              //           branchId: 1),
+              //       const SizedBox(
+              //         height: 10,
+              //       ),
+              //
+              //
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

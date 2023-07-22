@@ -1,11 +1,10 @@
-import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/views/widgets/checkout_buttom.dart';
-import 'package:souchi/views/widgets/location_widget.dart';
 
 class Body extends StatelessWidget {
 
@@ -26,7 +25,7 @@ class Body extends StatelessWidget {
             builder:(controller) => ListView.builder(
               itemCount: controller.cartItemsHosary.length,
               itemBuilder: (context, index) {
-                return cartItemWidget(cartObj: controller.cartItemsHosary[index],);
+                return cartItemWidget(cartObj: controller.cartItemsHosary[index],branchID: branchID,);
 
               },
             ),
@@ -40,7 +39,7 @@ class Body extends StatelessWidget {
             builder:(controller) => ListView.builder(
               itemCount: controller.cartItemsMohandseen.length,
               itemBuilder: (context, index) {
-                return cartItemWidget(cartObj: controller.cartItemsMohandseen[index]);
+                return cartItemWidget(cartObj: controller.cartItemsMohandseen[index],branchID: branchID,);
 
               },
             ),
@@ -52,14 +51,16 @@ class Body extends StatelessWidget {
 }
 
 class cartItemWidget extends StatelessWidget {
-  const cartItemWidget({
-    super.key, required this.cartObj,
+  cartItemWidget({
+    super.key, required this.cartObj,required this.branchID
   });
   final QueryDocumentSnapshot cartObj;
+   int branchID;
+  var controller=Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140,
+      height: 150,
 
       child: Row(
         children: [
@@ -110,7 +111,9 @@ class cartItemWidget extends StatelessWidget {
 
                     children: [
                       const SizedBox(width: 6,),
-                      const Icon(Icons.remove,),
+                      IconButton(icon: const Icon(Icons.remove,),onPressed: () {
+                         controller.ValidatorDeleteItem(cartObj.id,branchID);
+                      },),
                       Text('  2  ', style: TextStyle(fontSize: 18),),
                       const Icon(Icons.add_outlined),
                       const SizedBox(width: 6,),

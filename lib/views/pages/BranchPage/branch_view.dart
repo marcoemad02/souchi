@@ -12,9 +12,10 @@ class BranchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: Column(
+
         children: [
           SelectBranch(),
-          Expanded(child: Body()),
+          const Expanded(child: Body()),
         ],
       ),
 

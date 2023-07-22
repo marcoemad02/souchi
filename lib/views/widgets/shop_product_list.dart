@@ -36,7 +36,7 @@ class ShopProductList extends StatelessWidget {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, mainAxisSpacing: 5, mainAxisExtent: 350),
             itemBuilder: (context, index) {
-              return CustomProdctItem(productObj: data.docs[index],id: data.docs[index]['docId'],isActive: data.docs[index]['active'],idb: branchId ,); // not real idb number
+              return CustomProdctItem(productObj: data.docs[index],id: data.docs[index]['docId'],isActive: data.docs[index]['active'],idb: branchId ,idInt: data.docs[index]['id'],); // not real idb number
 
             },
 
