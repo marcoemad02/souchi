@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
+import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 
 
 import '../pages/ProfilePage/profile_screen.dart';
@@ -32,15 +33,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 backgroundColor: Colors.white,
                 child: IconButton(
                   onPressed: () {
-              print('to list page');
+                    Get.to(const BranchScreen());
                   },
-                  icon: const Icon(
-                    Icons.list,
-                    color: Colors.orange,
+                  icon: SvgPicture.asset("assets/icons/Location point.svg",color: Colors.orange,),
                   ),
                 ),
               ),
-            ),const SizedBox(width: 20,),
+            const SizedBox(width: 20,),
             Expanded(
               child: SizedBox( height: 40 ,width:40 ,
                 child: Image.asset(
@@ -53,19 +52,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               padding: const EdgeInsets.only(left: 10.0),
               child: Row(
                 children:  [
-                  Padding(
-                    padding:const EdgeInsets.only(right: 10.0),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child:  IconButton(
-                        onPressed: () {
 
-                        },
-                        icon: SvgPicture.asset("assets/icons/Location point.svg",color: Colors.orange,),
-
-                        ),
-                      ),
-                    ),
 
                   CircleAvatar(
                     backgroundColor: Colors.white,
