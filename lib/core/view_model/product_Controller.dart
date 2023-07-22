@@ -1,102 +1,100 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
-class ProductController extends GetxController{
-  // branchesId
-  int branchIdHosary=1;
-  int branchIdMohandseen=1;
+class ProductController extends GetxController {
+  // Branch IDs
+  int branchIdHosary = 1;
+  int branchIdMohandseen = 1;
 
+  // Firestore Collections
+  CollectionReference datacolHosary =
+  FirebaseFirestore.instance.collection('HosaryBranchOrders');
+  CollectionReference datacolMohandseen =
+  FirebaseFirestore.instance.collection('MohandseenBranchOrders');
 
-  //branches Firebase Collerction
-  CollectionReference datacolHosary=FirebaseFirestore.instance.collection('HosaryBranchOrders');
-  CollectionReference datacolMohandseen=FirebaseFirestore.instance.collection('MohandseenBranchOrders');
+  // Cart Items Lists
+  List<QueryDocumentSnapshot> cartItemsHosary = [];
+  List<QueryDocumentSnapshot> cartItemsMohandseen = [];
 
-
-  // branches CartItems List
-  List<QueryDocumentSnapshot> cartItemsHosary=[];
-  List<QueryDocumentSnapshot> cartItemsMohandseen=[];
-
-
-  // branches Send data Functions
-  Future<void> sendDatatoFireHosary(idb) async{
-
+  // Function to send data to Firestore for Hosary branch
+  Future<void> sendDatatoFireHosary(idb) async {
     datacolHosary.add({
-      'order':{
-
-        // 'price':cartItemsHosary[i]['price'],
-        'totalprice' :calculationTotalValidator(idb),
-        'orderlist':loopOnCartHosary(),
-
+      'order': {
+        'totalprice': calculationTotalValidator(idb),
+        'orderlist': loopOnCartHosary(),
       }
     });
-
   }
-  Future<void> sendDatatoFireMohandseen(idb) async{
 
+  // Function to send data to Firestore for Mohandseen branch
+  Future<void> sendDatatoFireMohandseen(idb) async {
     datacolMohandseen.add({
-      'order':{
-
-        // 'price':cartItemsHosary[i]['price'],
-        'totalprice' :calculationTotalValidator(idb),
-        'orderlist':loopOnCartMohandseen(),
-
+      'order': {
+        'totalprice': calculationTotalValidator(idb),
+        'orderlist': loopOnCartMohandseen(),
       }
-
     });
-
   }
 
+  // Hosary branch Function to add a product to the cart
+  void addItemToCartHos(product) {
+    bool productExists = cartItemsHosary.any((item) => item.id == product.id);
 
-
-  // Hosary branch Functions (add and remove)
-  void addItemToCartHos(product){
-    cartItemsHosary.add(product);
-    update();
-
-  }
-  void removeItemFromCartHos(  index){
-
-    cartItemsHosary.removeWhere((element) => (element.get('docId')==index));
-    //GetSnackBar(title: 'ITEM ${index.get('productname')} Removed',);
-
-
-    update();
+    if (!productExists) {
+      cartItemsHosary.add(product);
+      update();
+    } else {
+      // Product already exists in the cart. You can update the quantity or show a message.
+      // For example:
+      // showErrorMessage('Product already in cart.');
+    }
   }
 
-// Mohandseen branch Functions (add and remove)
-  void addItemToCartMohandseen(index){
-    cartItemsMohandseen.add(index);
-    update();
-
-  }
-  void removeItemFromCartMohandseen( index){
-    cartItemsMohandseen.remove(index);
+  // Hosary branch Function to remove a product from the cart
+  void removeItemFromCartHos(index) {
+    cartItemsHosary.removeWhere((element) => element.get('docId') == index);
     update();
   }
 
+  // Mohandseen branch Function to add a product to the cart
+  void addItemToCartMohandseen(product) {
+    bool productExists = cartItemsMohandseen.any((item) => item.id == product.id);
 
+    if (!productExists) {
+      cartItemsMohandseen.add(product);
+      update();
+    } else {
+      // Product already exists in the cart. You can update the quantity or show a message.
+      // For example:
+      // showErrorMessage('Product already in cart.');
+    }
+  }
 
-  ValidatorDeleteItem(index,idb){
-    if(branchIdHosary==idb){
+  // Mohandseen branch Function to remove a product from the cart
+  void removeItemFromCartMohandseen(index) {
+    cartItemsMohandseen.removeWhere((element) => element.get('docId') == index);
+    update();
+  }
+
+  // Function to delete an item from the cart based on branch ID
+  ValidatorDeleteItem(index, idb) {
+    if (branchIdHosary == idb) {
       removeItemFromCartHos(index);
       update();
-    }
-    else{
+    } else {
       removeItemFromCartMohandseen(index);
       update();
     }
   }
 
-
-  // Validator Branch productObject
-  validatorBranch(productObject, idbranch){
-    if(branchIdHosary==idbranch){
+  // Function to add a product to the cart based on branch ID
+  validatorBranch(productObject, idbranch) {
+    if (branchIdHosary == idbranch) {
       print('here Hosary');
       addItemToCartHos(productObject);
       print('HosaryList${cartItemsHosary}');
       print('MohandList${cartItemsMohandseen}');
-
-    }else{
+    } else {
       print('here Mohandseen');
       addItemToCartMohandseen(productObject);
       print('HosaryList${cartItemsHosary}');
@@ -104,88 +102,77 @@ class ProductController extends GetxController{
     }
   }
 
-
-
-  // Validator branch to send data to FireBase
-  validatorCart(int id){
-    if(branchIdHosary==id){
-
+  // Function to send cart data to Firestore based on branch ID
+  validatorCart(int id) {
+    if (branchIdHosary == id) {
       sendDatatoFireHosary(id);
-    }else {
+    } else {
       sendDatatoFireMohandseen(id);
     }
   }
-  //Validator To clear  DataList  Branch
-  validatorclear(idbranch){
+
+  // Function to clear cart data based on branch ID
+  validatorclear(idbranch) {
     if (branchIdHosary == idbranch) {
       cartItemsHosary.clear();
       update();
-
       print('cartItemshosaryCleared');
       print('HosaryList${cartItemsHosary}');
       print('MohandList${cartItemsMohandseen}');
-
     }
-    if(branchIdMohandseen==idbranch){
+    if (branchIdMohandseen == idbranch) {
       cartItemsMohandseen.clear();
       update();
       print('cartItemsMohandseenCleared');
       print('HosaryList${cartItemsHosary}');
       print('MohandList${cartItemsMohandseen}');
-
     }
-
   }
 
-  // calculateTotalPrice Function Validator
-  String calculationTotalValidator(idb){
+  // Function to calculate total price based on branch ID
+  String calculationTotalValidator(idb) {
     String totalprice;
-    if(branchIdHosary==idb){
-      totalprice=calculateTotalHosaryBranch();
-
-
-    } else{
-      totalprice=calculateTotalMohandseenBranch();
+    if (branchIdHosary == idb) {
+      totalprice = calculateTotalHosaryBranch();
+    } else {
+      totalprice = calculateTotalMohandseenBranch();
     }
     return totalprice;
-
   }
 
-
-  // // calculateTotalPrice Function Branches
-  String calculateTotalHosaryBranch(){
-    double totalPrice=0;
-    for( int i=0;i<cartItemsHosary.length; i++){
-      totalPrice+=double.parse(cartItemsHosary[i].get('price'));
-
+  // Function to calculate total price for Hosary branch
+  String calculateTotalHosaryBranch() {
+    double totalPrice = 0;
+    for (int i = 0; i < cartItemsHosary.length; i++) {
+      totalPrice += double.parse(cartItemsHosary[i].get('price'));
     }
     return totalPrice.toStringAsFixed(2);
   }
-  String calculateTotalMohandseenBranch(){
-    double totalPrice=0;
-    for( int i=0;i<cartItemsMohandseen.length; i++){
-      totalPrice+=double.parse(cartItemsMohandseen[i].get('price'));
+
+  // Function to calculate total price for Mohandseen branch
+  String calculateTotalMohandseenBranch() {
+    double totalPrice = 0;
+    for (int i = 0; i < cartItemsMohandseen.length; i++) {
+      totalPrice += double.parse(cartItemsMohandseen[i].get('price'));
     }
     return totalPrice.toStringAsFixed(2);
   }
-  // loopOnCart Function
-  List<dynamic> loopOnCartHosary(){
-       List<dynamic> datalist=[];
-    for(int i=0;i<cartItemsHosary.length;i++)
-      {
-        datalist.add(cartItemsHosary[i]['productname']);
-      }
 
-    return datalist;
+  // Function to loop through the cart items and get product names for Hosary branch
+  List<dynamic> loopOnCartHosary() {
+    List<dynamic> datalist = [];
+    for (int i = 0; i < cartItemsHosary.length; i++) {
+      datalist.add(cartItemsHosary[i]['productname']);
     }
-  List<dynamic> loopOnCartMohandseen(){
-       List<dynamic> datalist=[];
-    for(int i=0;i<cartItemsMohandseen.length;i++)
-      {
-        datalist.add(cartItemsMohandseen[i]['productname']);
-      }
-
     return datalist;
-    }
+  }
 
+  // Function to loop through the cart items and get product names for Mohandseen branch
+  List<dynamic> loopOnCartMohandseen() {
+    List<dynamic> datalist = [];
+    for (int i = 0; i < cartItemsMohandseen.length; i++) {
+      datalist.add(cartItemsMohandseen[i]['productname']);
+    }
+    return datalist;
+  }
 }
