@@ -175,4 +175,22 @@ class ProductController extends GetxController {
     }
     return datalist;
   }
+  int getItemQuantity(String itemId, int branchId) {
+    int quantity = 0;
+    if (branchIdHosary == branchId) {
+      // If the item is in the Hosary branch cart, get its quantity
+      quantity = cartItemsHosary.where((item) => item.id == itemId).length;
+    } else {
+      // If the item is in the Mohandseen branch cart, get its quantity
+      quantity = cartItemsMohandseen.where((item) => item.id == itemId).length;
+    }
+    return quantity;
+  }
+
+
 }
+
+
+
+
+
