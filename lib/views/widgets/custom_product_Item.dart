@@ -156,7 +156,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
 
 
                           });
-                          pcontroller.ValidatorDeleteItem(widget.productObj.get('docId'), widget.idb);
+                          pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
                           GetSnackBar(title: 'ITEM ${widget.productObj.get('productname')} Removed',
                             backgroundColor: Colors.red,);
 

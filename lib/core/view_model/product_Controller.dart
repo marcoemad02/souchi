@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class ProductController extends GetxController {
   // Branch IDs
   int branchIdHosary = 1;
-  int branchIdMohandseen = 1;
+  int branchIdMohandseen = 2;
 
   // Firestore Collections
   CollectionReference datacolHosary =
@@ -58,7 +58,8 @@ class ProductController extends GetxController {
 
   // Mohandseen branch Function to add a product to the cart
   void addItemToCartMohandseen(product) {
-    bool productExists = cartItemsMohandseen.any((item) => item.id == product.id);
+    bool productExists =
+    cartItemsMohandseen.any((item) => item.id == product.id);
 
     if (!productExists) {
       cartItemsMohandseen.add(product);
@@ -72,12 +73,13 @@ class ProductController extends GetxController {
 
   // Mohandseen branch Function to remove a product from the cart
   void removeItemFromCartMohandseen(index) {
-    cartItemsMohandseen.removeWhere((element) => element.get('docId') == index);
+    cartItemsMohandseen
+        .removeWhere((element) => element.get('docId') == index);
     update();
   }
 
   // Function to delete an item from the cart based on branch ID
-  ValidatorDeleteItem(index, idb) {
+  void validatorDeleteItem(index, idb) {
     if (branchIdHosary == idb) {
       removeItemFromCartHos(index);
       update();
@@ -88,7 +90,7 @@ class ProductController extends GetxController {
   }
 
   // Function to add a product to the cart based on branch ID
-  validatorBranch(productObject, idbranch) {
+  void validatorBranch(productObject, idbranch) {
     if (branchIdHosary == idbranch) {
       print('here Hosary');
       addItemToCartHos(productObject);
@@ -103,16 +105,16 @@ class ProductController extends GetxController {
   }
 
   // Function to send cart data to Firestore based on branch ID
-  validatorCart(int id) {
+  Future<void> validatorCart(int id) async {
     if (branchIdHosary == id) {
-      sendDatatoFireHosary(id);
+      await sendDatatoFireHosary(id);
     } else {
-      sendDatatoFireMohandseen(id);
+      await sendDatatoFireMohandseen(id);
     }
   }
 
   // Function to clear cart data based on branch ID
-  validatorclear(idbranch) {
+  void validatorClear(idbranch) {
     if (branchIdHosary == idbranch) {
       cartItemsHosary.clear();
       update();
@@ -175,22 +177,19 @@ class ProductController extends GetxController {
     }
     return datalist;
   }
+
   int getItemQuantity(String itemId, int branchId) {
     int quantity = 0;
     if (branchIdHosary == branchId) {
       // If the item is in the Hosary branch cart, get its quantity
-      quantity = cartItemsHosary.where((item) => item.id == itemId).length;
+      quantity =
+          cartItemsHosary.where((item) => item.get('docId') == itemId).length;
     } else {
       // If the item is in the Mohandseen branch cart, get its quantity
-      quantity = cartItemsMohandseen.where((item) => item.id == itemId).length;
+      quantity = cartItemsMohandseen
+          .where((item) => item.get('docId') == itemId)
+          .length;
     }
     return quantity;
   }
-
-
 }
-
-
-
-
-
