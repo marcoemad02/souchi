@@ -8,13 +8,15 @@ class ProductController extends GetxController {
 
   // Firestore Collections
   CollectionReference datacolHosary =
-  FirebaseFirestore.instance.collection('HosaryBranchOrders');
+  FirebaseFirestore.instance.collection('HosaryOrders');
   CollectionReference datacolMohandseen =
-  FirebaseFirestore.instance.collection('MohandseenBranchOrders');
+  FirebaseFirestore.instance.collection('MohandseenOrders');
 
   // Cart Items Lists
   List<QueryDocumentSnapshot> cartItemsHosary = [];
   List<QueryDocumentSnapshot> cartItemsMohandseen = [];
+  Map<String,dynamic> data={};
+  List<dynamic> data55=[];
 
   // Function to send data to Firestore for Hosary branch
   Future<void> sendDatatoFireHosary(idb) async {
@@ -37,10 +39,17 @@ class ProductController extends GetxController {
   }
 
   // Hosary branch Function to add a product to the cart
-  void addItemToCartHos(product) {
+  void addItemToCartHos(product,Quant) {
     bool productExists = cartItemsHosary.any((item) => item.id == product.id);
 
     if (!productExists) {
+      data55.add([
+        product,Quant
+      ]);
+      data.addAll({
+        'product':product,
+        'Quant' :Quant
+      });
       cartItemsHosary.add(product);
       update();
     } else {
@@ -57,11 +66,18 @@ class ProductController extends GetxController {
   }
 
   // Mohandseen branch Function to add a product to the cart
-  void addItemToCartMohandseen(product) {
+  void addItemToCartMohandseen(product,{Quant}) {
     bool productExists =
     cartItemsMohandseen.any((item) => item.id == product.id);
 
     if (!productExists) {
+      data.addAll({
+        "product" :product,
+        "Quant" : Quant
+      });
+      data55.add([
+        product,Quant
+      ]);
       cartItemsMohandseen.add(product);
       update();
     } else {
@@ -90,15 +106,18 @@ class ProductController extends GetxController {
   }
 
   // Function to add a product to the cart based on branch ID
-  void validatorBranch(productObject, idbranch) {
+  void validatorBranch(productObject, idbranch,Quant) {
     if (branchIdHosary == idbranch) {
       print('here Hosary');
-      addItemToCartHos(productObject);
+      print('Here contrp${Quant}');
+      addItemToCartHos(productObject, Quant);
       print('HosaryList${cartItemsHosary}');
       print('MohandList${cartItemsMohandseen}');
     } else {
       print('here Mohandseen');
-      addItemToCartMohandseen(productObject);
+      print('Here contrp${Quant}');
+
+      addItemToCartMohandseen(productObject,Quant: Quant);
       print('HosaryList${cartItemsHosary}');
       print('MohandList${cartItemsMohandseen}');
     }
@@ -145,8 +164,8 @@ class ProductController extends GetxController {
   // Function to calculate total price for Hosary branch
   String calculateTotalHosaryBranch() {
     double totalPrice = 0;
-    for (int i = 0; i < cartItemsHosary.length; i++) {
-      totalPrice += double.parse(cartItemsHosary[i].get('price'));
+    for (int i = 0; i < data55.length; i++) {
+      totalPrice += (double.parse(data55[i][0]['price'])*data55[i][1]);
     }
     return totalPrice.toStringAsFixed(2);
   }

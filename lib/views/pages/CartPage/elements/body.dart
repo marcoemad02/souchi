@@ -20,10 +20,11 @@ class Body extends StatelessWidget {
           child: GetBuilder<ProductController>(
             init: ProductController(),
             builder: (controller) => ListView.builder(
-              itemCount: controller.cartItemsHosary.length,
+              itemCount: controller.data55.length,
               itemBuilder: (context, index) {
                 return CartItemWidget(
-                  cartObj: controller.cartItemsHosary[index],
+                  Quantity: controller.data55[index][1],
+                   cartObj: controller.data55[index][0],
                   branchID: branchID,
                 );
               },
@@ -56,18 +57,19 @@ class CartItemWidget extends StatelessWidget {
   CartItemWidget({
     Key? key,
     required this.cartObj,
-    required this.branchID,
+    required this.branchID, this.Quantity,
   }) : super(key: key);
 
   final QueryDocumentSnapshot cartObj;
   final int branchID;
+  final dynamic Quantity;
 
   @override
   Widget build(BuildContext context) {
     final ProductController controller = Get.find<ProductController>();
 
     return Container(
-      height: 150,
+      height: 180,
       child: Row(
         children: [
           // Container(
@@ -95,60 +97,65 @@ class CartItemWidget extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    const Text(
-                      ' PRICE : ',
-                      style: TextStyle(
-                        color: Colors.black45,
-                        fontFamily: 'Poppins',
-                        fontSize: 18,
-                      ),
-                    ),
+                    // const Text(
+                    //   ' PRICE : ',
+                    //   style: TextStyle(
+                    //     color: Colors.black45,
+                    //     fontFamily: 'Poppins',
+                    //     fontSize: 18,
+                    //   ),
+                    // ),
                     const SizedBox(width: 5,),
                     Text(
-                      ' Price :${cartObj.get('price')}',
+                      ' PRICE :${cartObj.get('price')}',
                       style: const TextStyle(
                         color: Colors.black45,
                         fontSize: 18,
                         fontFamily: 'Poppins',
                       ),
                     ),
+                    const SizedBox(width: 80,),
+                    Text('Quantity : ${Quantity ?? '45'}',style: TextStyle(fontSize: 24),)
+
                   ],
                 ),
                 const SizedBox(height: 10,),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: () {
-                          if (branchID == 1) {
-                            controller.removeItemFromCartHos(cartObj.get('docId'));
-                          } else {
-                            controller.removeItemFromCartMohandseen(cartObj.get('docId'));
-                          }
-                        },
-                      ),
-                      Text(
-                        '${controller.getItemQuantity(cartObj.get('docId'), branchID)}',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.add_outlined),
-                        onPressed: () {
-                          if (branchID == 1) {
-                            controller.addItemToCartHos(cartObj);
-                          } else {
-                            controller.addItemToCartMohandseen(cartObj);
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+                // Container(
+                //   decoration: BoxDecoration(
+                //     color: Colors.white,
+                //     borderRadius: BorderRadius.circular(20),
+                //   ),
+                //   child: Row(
+                //     children: [
+                //       IconButton(
+                //         icon: const Icon(Icons.remove),
+                //         onPressed: () {
+                //           if (branchID == 1) {
+                //             controller.removeItemFromCartHos(cartObj.get('docId'));
+                //           } else {
+                //             controller.removeItemFromCartMohandseen(cartObj.get('docId'));
+                //           }
+                //         },
+                //       ),
+                //       Text(
+                //         '${controller.getItemQuantity(cartObj.get('docId'), branchID)}',
+                //         style: TextStyle(fontSize: 18),
+                //       ),
+                //       IconButton(
+                //         icon: const Icon(Icons.add_outlined),
+                //         onPressed: () {
+                //           if (branchID == 1) {
+                //             controller.addItemToCartHos(cartObj,Quantity);
+                //           } else {
+                //             controller.addItemToCartMohandseen(cartObj);
+                //           }
+                //         },
+                //       ),
+                //     ],
+                //   ),
+                // ),
+               const SizedBox(width: 20,),
+
               ],
             ),
           ),

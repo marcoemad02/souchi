@@ -23,7 +23,8 @@ const   CartScreen({super.key, required this.streamBranch, required this.branchN
         children: [
           Expanded(child: Body(branchID: branchId, )),
           SizedBox(height: 20,),
-          CustomCheckoutButton(branchId: branchId,),SizedBox(height: 20,),
+          CustomCheckoutButton(branchId: branchId,),
+          SizedBox(height: 20,),
         ],
       ) ,
 
