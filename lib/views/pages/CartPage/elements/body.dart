@@ -20,12 +20,12 @@ class Body extends StatelessWidget {
           child: GetBuilder<ProductController>(
             init: ProductController(),
             builder: (controller) => ListView.builder(
-              itemCount: controller.data55.length,
+              itemCount: controller.CartItemsHosary.length,
               itemBuilder: (context, index) {
                 return Dismissible(
-                  key: Key(controller.data55[index][0].id),
+                  key: Key(controller.CartItemsHosary[index][0].id),
                   onDismissed: (direction) {
-                    controller.removeItemAtIndex55(index,controller.data55[index]);
+                    controller.removeItemAtIndexHosary(index,controller.CartItemsHosary[index]);
                   },
                   background: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -41,8 +41,8 @@ class Body extends StatelessWidget {
                     ),
                   ),
                   child: CartItemWidget(
-                    Quantity: controller.data55[index][1],
-                    cartObj: controller.data55[index][0],
+                    Quantity: controller.CartItemsHosary[index][1],
+                    cartObj: controller.CartItemsHosary[index][0],
                     branchID: branchID,
                   ),
                 );
@@ -57,12 +57,12 @@ class Body extends StatelessWidget {
           child: GetBuilder<ProductController>(
             init: ProductController(),
             builder: (controller) => ListView.builder(
-              itemCount: controller.cartItemsMohandseen.length,
+              itemCount: controller.CartItemsMohandseen.length,
               itemBuilder: (context, index) {
                 return Dismissible(
-                  key: Key(controller.cartItemsMohandseen[index].id),
+                  key: Key(controller.CartItemsMohandseen[index][0].id),
                   onDismissed: (direction) {
-                    controller.removeItemAtIndexMohandseen(index);
+                    controller.removeItemAtIndexMohandseen(index,controller.CartItemsMohandseen[index]);
                   },
                   background: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -78,7 +78,8 @@ class Body extends StatelessWidget {
                     ),
                   ),
                   child: CartItemWidget(
-                    cartObj: controller.cartItemsMohandseen[index],
+                    Quantity: controller.CartItemsMohandseen[index][1],
+                    cartObj: controller.CartItemsMohandseen[index][0],
                     branchID: branchID,
                   ),
                 );

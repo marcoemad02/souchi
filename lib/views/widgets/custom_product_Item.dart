@@ -117,7 +117,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                             pcontroller.validatorBranch(widget.productObj, widget.idb, widget.index);
                             print('Index ${widget.index}');
 
-                            print('Array :${pcontroller.data55}');
+                            print('Array :${pcontroller.CartItemsHosary}');
                             pcontroller.calculationTotalValidator(widget.idb);
                     },
                     child: const Text(

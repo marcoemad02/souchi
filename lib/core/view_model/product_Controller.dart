@@ -15,10 +15,11 @@ class ProductController extends GetxController {
   FirebaseFirestore.instance.collection('MohandseenOrders');
 
   // Cart Items Lists
-  List<QueryDocumentSnapshot> cartItemsHosary = [];
-  List<QueryDocumentSnapshot> cartItemsMohandseen = [];
-  Map<String, dynamic> data = {};
-  List<dynamic> data55 = [];
+  // List<QueryDocumentSnapshot> cartItemsHosary = [];
+  // List<QueryDocumentSnapshot> cartItemsMohandseen = [];
+  //Map<String, dynamic> data = {};
+  List<dynamic> CartItemsHosary = [];
+  List<dynamic> CartItemsMohandseen = [];
 
   // Function to send data to Firestore for Hosary branch
   Future<void> sendDatatoFireHosary(idb) async {
@@ -43,15 +44,15 @@ class ProductController extends GetxController {
   // Hosary branch Function to add a product to the cart
   void addItemToCartHos(product, Quant) {
     bool productExists =
-    cartItemsHosary.any((item) => item.id == product.id);
+    CartItemsHosary.any((item) => item.id == product.id);
 
     if (!productExists) {
-      data55.add([product, Quant]);
+      CartItemsHosary.add([product, Quant]);
       // data.addAll({
       //   'product': product,
       //   'Quant': Quant,
       // });
-      cartItemsHosary.add(product);
+      //cartItemsHosary.add(product);
       update();
     } else {
       // Product already exists in the cart. You can update the quantity or show a message.
@@ -62,19 +63,19 @@ class ProductController extends GetxController {
 
   // Hosary branch Function to remove a product from the cart
   void removeItemFromCartHos(index) {
-    cartItemsHosary.removeWhere((element) => element.get('docId') == index);
+    CartItemsHosary.removeWhere((element) => element.get('docId') == index);
     update();
   }
 
   // Mohandseen branch Function to add a product to the cart
   void addItemToCartMohandseen(product, {Quant}) {
     bool productExists =
-    cartItemsMohandseen.any((item) => item.id == product.id);
+    CartItemsMohandseen.any((item) => item.id == product.id);
 
     if (!productExists) {
 
-      data55.add([product, Quant]);
-      cartItemsMohandseen.add(product);
+      CartItemsMohandseen.add([product, Quant]);
+     // CartItemsMohandseen.add(product);
       update();
     } else {
       // Product already exists in the cart. You can update the quantity or show a message.
@@ -85,7 +86,7 @@ class ProductController extends GetxController {
 
   // Mohandseen branch Function to remove a product from the cart
   void removeItemFromCartMohandseen(index) {
-    cartItemsMohandseen
+    CartItemsMohandseen
         .removeWhere((element) => element.get('docId') == index);
     update();
   }
@@ -107,15 +108,15 @@ class ProductController extends GetxController {
       print('here Hosary');
       print('Here contrp${Quant}');
       addItemToCartHos(productObject, Quant);
-      print('HosaryList${cartItemsHosary}');
-      print('MohandList${cartItemsMohandseen}');
+      print('HosaryList${CartItemsHosary}');
+      print('MohandList${CartItemsMohandseen}');
     } else {
       print('here Mohandseen');
       print('Here contrp${Quant}');
 
       addItemToCartMohandseen(productObject, Quant: Quant);
-      print('HosaryList${cartItemsHosary}');
-      print('MohandList${cartItemsMohandseen}');
+      print('HosaryList${CartItemsHosary}');
+      print('MohandList${CartItemsMohandseen}');
     }
   }
 
@@ -131,19 +132,19 @@ class ProductController extends GetxController {
   // Function to clear cart data based on branch ID
   void validatorClear(idbranch) {
     if (branchIdHosary == idbranch) {
-      cartItemsHosary.clear();
-      data55.clear();
+      CartItemsHosary.clear();
+      //data55.clear();
       update();
       print('cartItemshosaryCleared');
-      print('HosaryList${cartItemsHosary}');
-      print('MohandList${cartItemsMohandseen}');
+      print('HosaryList${CartItemsHosary}');
+      print('MohandList${CartItemsMohandseen}');
     }
     if (branchIdMohandseen == idbranch) {
-      cartItemsMohandseen.clear();
+      CartItemsMohandseen.clear();
       update();
       print('cartItemsMohandseenCleared');
-      print('HosaryList${cartItemsHosary}');
-      print('MohandList${cartItemsMohandseen}');
+      print('HosaryList${CartItemsHosary}');
+      print('MohandList${CartItemsMohandseen}');
     }
   }
 
@@ -153,7 +154,7 @@ class ProductController extends GetxController {
     if (branchIdHosary == idb) {
       totalHosary = calculateTotalHosaryBranch();
     } else {
-      totalprice = calculateTotalMohandseenBranch();
+      totalMohandseen = calculateTotalMohandseenBranch();
     }
     // return totalprice;
   }
@@ -161,28 +162,28 @@ class ProductController extends GetxController {
   // Function to calculate total price for Hosary branch
  double calculateTotalHosaryBranch() {
     double totalPrice = 0;
-    for (int i = 0; i < data55.length; i++) {
-      totalPrice += (double.parse(data55[i][0]['price']) * data55[i][1]);
+    for (int i = 0; i < CartItemsHosary.length; i++) {
+      totalPrice += (double.parse(CartItemsHosary[i][0]['price']) * CartItemsHosary[i][1]);
     }
     return totalPrice;
   }
 
   // Function to calculate total price for Mohandseen branch
-  String calculateTotalMohandseenBranch() {
+  double calculateTotalMohandseenBranch() {
     double totalPrice = 0;
-    for (int i = 0; i < cartItemsMohandseen.length; i++) {
-      totalPrice += double.parse(cartItemsMohandseen[i].get('price'));
+    for (int i = 0; i < CartItemsMohandseen.length; i++) {
+      totalPrice += (double.parse(CartItemsMohandseen[i][0]['price']) * CartItemsMohandseen[i][1]);
     }
-    return totalPrice.toStringAsFixed(2);
+    return totalPrice;
   }
 
   // Function to loop through the cart items and get product names for Hosary branch
   List<dynamic> loopOnCartHosary() {
     List<dynamic> datalist = [];
-    for (int i = 0; i < data55.length; i++) {
+    for (int i = 0; i < CartItemsHosary.length; i++) {
       datalist.add({
-        'ProductName':data55[i][0]['productname'],
-        'Quantity':data55[i][1],
+        'ProductName':CartItemsHosary[i][0]['productname'],
+        'Quantity':CartItemsHosary[i][1],
       });
     }
     return datalist;
@@ -191,8 +192,11 @@ class ProductController extends GetxController {
   // Function to loop through the cart items and get product names for Mohandseen branch
   List<dynamic> loopOnCartMohandseen() {
     List<dynamic> datalist = [];
-    for (int i = 0; i < cartItemsMohandseen.length; i++) {
-      datalist.add(cartItemsMohandseen[i]['productname']);
+    for (int i = 0; i < CartItemsMohandseen.length; i++) {
+      datalist.add({
+        'ProductName':CartItemsMohandseen[i][0]['productname'],
+        'Quantity':CartItemsMohandseen[i][1],
+      });
     }
     return datalist;
   }
@@ -201,25 +205,34 @@ class ProductController extends GetxController {
     int quantity = 0;
     if (branchIdHosary == branchId) {
       // If the item is in the Hosary branch cart, get its quantity
-      quantity = cartItemsHosary.where((item) => item.get('docId') == itemId).length;
+      quantity = CartItemsHosary.where((item) => item.get('docId') == itemId).length;
     } else {
       // If the item is in the Mohandseen branch cart, get its quantity
-      quantity = cartItemsMohandseen.where((item) => item.get('docId') == itemId).length;
+      quantity = CartItemsMohandseen.where((item) => item.get('docId') == itemId).length;
     }
     return quantity;
   }
 
-  void removeItemAtIndex55(int index,dynamic obj) {
-    data55.removeAt(index);
+  void removeItemAtIndexHosary(int index,dynamic obj) {
+    CartItemsHosary.removeAt(index);
     update();
     totalHosary-=(double.parse(obj[0]['price'])*obj[1]);
 
     update();
     print('mas7 : ${totalHosary}');
-    print('remove : ${data55}');
+    print('remove : ${CartItemsHosary}');
+  }
+  void removeItemAtIndexMohandseen(int index,dynamic obj) {
+    CartItemsMohandseen.removeAt(index);
+    update();
+    totalMohandseen-=(double.parse(obj[0]['price'])*obj[1]);
+
+    update();
+    print('mas7 : ${totalMohandseen}');
+    print('remove : ${CartItemsMohandseen}');
   }
 
-  void removeItemAtIndexMohandseen(int index) {}
+
 
 
 
