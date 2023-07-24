@@ -15,8 +15,8 @@ class ProductController extends GetxController {
   // Cart Items Lists
   List<QueryDocumentSnapshot> cartItemsHosary = [];
   List<QueryDocumentSnapshot> cartItemsMohandseen = [];
-  Map<String,dynamic> data={};
-  List<dynamic> data55=[];
+  Map<String, dynamic> data = {};
+  List<dynamic> data55 = [];
 
   // Function to send data to Firestore for Hosary branch
   Future<void> sendDatatoFireHosary(idb) async {
@@ -39,16 +39,15 @@ class ProductController extends GetxController {
   }
 
   // Hosary branch Function to add a product to the cart
-  void addItemToCartHos(product,Quant) {
-    bool productExists = cartItemsHosary.any((item) => item.id == product.id);
+  void addItemToCartHos(product, Quant) {
+    bool productExists =
+    cartItemsHosary.any((item) => item.id == product.id);
 
     if (!productExists) {
-      data55.add([
-        product,Quant
-      ]);
+      data55.add([product, Quant]);
       data.addAll({
-        'product':product,
-        'Quant' :Quant
+        'product': product,
+        'Quant': Quant,
       });
       cartItemsHosary.add(product);
       update();
@@ -66,18 +65,16 @@ class ProductController extends GetxController {
   }
 
   // Mohandseen branch Function to add a product to the cart
-  void addItemToCartMohandseen(product,{Quant}) {
+  void addItemToCartMohandseen(product, {Quant}) {
     bool productExists =
     cartItemsMohandseen.any((item) => item.id == product.id);
 
     if (!productExists) {
       data.addAll({
-        "product" :product,
-        "Quant" : Quant
+        "product": product,
+        "Quant": Quant,
       });
-      data55.add([
-        product,Quant
-      ]);
+      data55.add([product, Quant]);
       cartItemsMohandseen.add(product);
       update();
     } else {
@@ -106,7 +103,7 @@ class ProductController extends GetxController {
   }
 
   // Function to add a product to the cart based on branch ID
-  void validatorBranch(productObject, idbranch,Quant) {
+  void validatorBranch(productObject, idbranch, Quant) {
     if (branchIdHosary == idbranch) {
       print('here Hosary');
       print('Here contrp${Quant}');
@@ -117,7 +114,7 @@ class ProductController extends GetxController {
       print('here Mohandseen');
       print('Here contrp${Quant}');
 
-      addItemToCartMohandseen(productObject,Quant: Quant);
+      addItemToCartMohandseen(productObject, Quant: Quant);
       print('HosaryList${cartItemsHosary}');
       print('MohandList${cartItemsMohandseen}');
     }
@@ -165,8 +162,7 @@ class ProductController extends GetxController {
   String calculateTotalHosaryBranch() {
     double totalPrice = 0;
     for (int i = 0; i < data55.length; i++) {
-      totalPrice += (double.parse(data55[i][0]['price'])*data55[i][1]);
-
+      totalPrice += (double.parse(data55[i][0]['price']) * data55[i][1]);
     }
     return totalPrice.toStringAsFixed(2);
   }
@@ -183,13 +179,8 @@ class ProductController extends GetxController {
   // Function to loop through the cart items and get product names for Hosary branch
   List<dynamic> loopOnCartHosary() {
     List<dynamic> datalist = [];
-    for (int i = 0; i < data55.length; i++) {
-      datalist.add({
-        'ProductName':data55[i][0]['productname'],
-         'Quantity' :data55[i][1]
-
-      });
-      print("to fire${datalist}");
+    for (int i = 0; i < cartItemsHosary.length; i++) {
+      datalist.add(cartItemsHosary[i]['productname']);
     }
     return datalist;
   }
@@ -207,14 +198,15 @@ class ProductController extends GetxController {
     int quantity = 0;
     if (branchIdHosary == branchId) {
       // If the item is in the Hosary branch cart, get its quantity
-      quantity =
-          cartItemsHosary.where((item) => item.get('docId') == itemId).length;
+      quantity = cartItemsHosary.where((item) => item.get('docId') == itemId).length;
     } else {
       // If the item is in the Mohandseen branch cart, get its quantity
-      quantity = cartItemsMohandseen
-          .where((item) => item.get('docId') == itemId)
-          .length;
+      quantity = cartItemsMohandseen.where((item) => item.get('docId') == itemId).length;
     }
     return quantity;
   }
+
+  void removeItemAtIndex55(int index) {}
+
+  void removeItemAtIndexMohandseen(int index) {}
 }
