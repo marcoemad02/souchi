@@ -22,10 +22,29 @@ class Body extends StatelessWidget {
             builder: (controller) => ListView.builder(
               itemCount: controller.data55.length,
               itemBuilder: (context, index) {
-                return CartItemWidget(
-                  Quantity: controller.data55[index][1],
-                   cartObj: controller.data55[index][0],
-                  branchID: branchID,
+                return Dismissible(
+                  key: Key(controller.data55[index][0].id),
+                  onDismissed: (direction) {
+                    controller.removeItemAtIndex55(index);
+                  },
+                  background: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFE6E6),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      children: [
+                        Spacer(),
+                        Icon(Icons.delete),
+                      ],
+                    ),
+                  ),
+                  child: CartItemWidget(
+                    Quantity: controller.data55[index][1],
+                    cartObj: controller.data55[index][0],
+                    branchID: branchID,
+                  ),
                 );
               },
             ),
@@ -40,9 +59,28 @@ class Body extends StatelessWidget {
             builder: (controller) => ListView.builder(
               itemCount: controller.cartItemsMohandseen.length,
               itemBuilder: (context, index) {
-                return CartItemWidget(
-                  cartObj: controller.cartItemsMohandseen[index],
-                  branchID: branchID,
+                return Dismissible(
+                  key: Key(controller.cartItemsMohandseen[index].id),
+                  onDismissed: (direction) {
+                    controller.removeItemAtIndexMohandseen(index);
+                  },
+                  background: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFE6E6),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      children: [
+                        Spacer(),
+                        Icon(Icons.delete),
+                      ],
+                    ),
+                  ),
+                  child: CartItemWidget(
+                    cartObj: controller.cartItemsMohandseen[index],
+                    branchID: branchID,
+                  ),
                 );
               },
             ),
@@ -57,7 +95,8 @@ class CartItemWidget extends StatelessWidget {
   CartItemWidget({
     Key? key,
     required this.cartObj,
-    required this.branchID, this.Quantity,
+    required this.branchID,
+    this.Quantity,
   }) : super(key: key);
 
   final QueryDocumentSnapshot cartObj;
@@ -72,17 +111,6 @@ class CartItemWidget extends StatelessWidget {
       height: 180,
       child: Row(
         children: [
-          // Container(
-          //   height: 120,
-          //   width: 80,
-          //   child: ClipRRect(
-          //     borderRadius: BorderRadius.circular(20),
-          //     child: Image.asset(
-          //       images[index],
-          //       fit: BoxFit.fill,
-          //     ),
-          //   ),
-          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             child: Column(
@@ -97,14 +125,6 @@ class CartItemWidget extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    // const Text(
-                    //   ' PRICE : ',
-                    //   style: TextStyle(
-                    //     color: Colors.black45,
-                    //     fontFamily: 'Poppins',
-                    //     fontSize: 18,
-                    //   ),
-                    // ),
                     const SizedBox(width: 5,),
                     Text(
                       ' PRICE :${cartObj.get('price')}',
@@ -116,46 +136,9 @@ class CartItemWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: 80,),
                     Text('Quantity : ${Quantity ?? '45'}',style: TextStyle(fontSize: 24),)
-
                   ],
                 ),
                 const SizedBox(height: 10,),
-                // Container(
-                //   decoration: BoxDecoration(
-                //     color: Colors.white,
-                //     borderRadius: BorderRadius.circular(20),
-                //   ),
-                //   child: Row(
-                //     children: [
-                //       IconButton(
-                //         icon: const Icon(Icons.remove),
-                //         onPressed: () {
-                //           if (branchID == 1) {
-                //             controller.removeItemFromCartHos(cartObj.get('docId'));
-                //           } else {
-                //             controller.removeItemFromCartMohandseen(cartObj.get('docId'));
-                //           }
-                //         },
-                //       ),
-                //       Text(
-                //         '${controller.getItemQuantity(cartObj.get('docId'), branchID)}',
-                //         style: TextStyle(fontSize: 18),
-                //       ),
-                //       IconButton(
-                //         icon: const Icon(Icons.add_outlined),
-                //         onPressed: () {
-                //           if (branchID == 1) {
-                //             controller.addItemToCartHos(cartObj,Quantity);
-                //           } else {
-                //             controller.addItemToCartMohandseen(cartObj);
-                //           }
-                //         },
-                //       ),
-                //     ],
-                //   ),
-                // ),
-               const SizedBox(width: 20,),
-
               ],
             ),
           ),
