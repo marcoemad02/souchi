@@ -166,6 +166,7 @@ class ProductController extends GetxController {
     double totalPrice = 0;
     for (int i = 0; i < data55.length; i++) {
       totalPrice += (double.parse(data55[i][0]['price'])*data55[i][1]);
+
     }
     return totalPrice.toStringAsFixed(2);
   }
@@ -182,8 +183,13 @@ class ProductController extends GetxController {
   // Function to loop through the cart items and get product names for Hosary branch
   List<dynamic> loopOnCartHosary() {
     List<dynamic> datalist = [];
-    for (int i = 0; i < cartItemsHosary.length; i++) {
-      datalist.add(cartItemsHosary[i]['productname']);
+    for (int i = 0; i < data55.length; i++) {
+      datalist.add({
+        'ProductName':data55[i][0]['productname'],
+         'Quantity' :data55[i][1]
+
+      });
+      print("to fire${datalist}");
     }
     return datalist;
   }

@@ -27,7 +27,7 @@ class CustomCheckoutButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+           const  Text(
               'Total Price :',
               style: TextStyle(
                 fontSize: 16,
@@ -36,18 +36,21 @@ class CustomCheckoutButton extends StatelessWidget {
 
               ),
             ),
-            SizedBox(width: 8),
-            Text(
-              '\$${controller.calculationTotalValidator(branchId)}',
-              style: TextStyle(
-                fontSize: 16,
-                fontFamily: 'Poppins',
-                color: Colors.grey,
-                //fontWeight: FontWeight.bold,
+            const SizedBox(width: 8),
+            GetBuilder(
+              init: ProductController(),
+              builder: (controller) => Text(
+                '\$${controller.calculationTotalValidator(branchId)}',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  color: Colors.grey,
+                  //fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            SizedBox(width: 22),
-            Text(
+            const SizedBox(width: 22),
+           const  Text(
               'CHECKOUT',
               style: TextStyle(
                 fontSize:21,
