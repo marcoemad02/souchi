@@ -29,6 +29,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
               padding: const EdgeInsets.only(right: 10.0),
               child:  CircleAvatar(
                 backgroundColor: Colors.white,
+                
                 child: IconButton(
                   onPressed: () {
                     Get.back();

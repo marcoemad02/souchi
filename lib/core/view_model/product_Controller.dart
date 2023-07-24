@@ -5,6 +5,8 @@ class ProductController extends GetxController {
   // Branch IDs
   int branchIdHosary = 1;
   int branchIdMohandseen = 2;
+  double totalHosary=0;
+  double totalMohandseen=0;
 
   // Firestore Collections
   CollectionReference datacolHosary =
@@ -22,7 +24,7 @@ class ProductController extends GetxController {
   Future<void> sendDatatoFireHosary(idb) async {
     datacolHosary.add({
       'order': {
-        'totalprice': calculationTotalValidator(idb),
+         'totalprice': totalHosary.toString(),
         'orderlist': loopOnCartHosary(),
       }
     });
@@ -32,7 +34,7 @@ class ProductController extends GetxController {
   Future<void> sendDatatoFireMohandseen(idb) async {
     datacolMohandseen.add({
       'order': {
-        'totalprice': calculationTotalValidator(idb),
+        'totalprice': totalMohandseen.toString(),
         'orderlist': loopOnCartMohandseen(),
       }
     });
@@ -45,10 +47,10 @@ class ProductController extends GetxController {
 
     if (!productExists) {
       data55.add([product, Quant]);
-      data.addAll({
-        'product': product,
-        'Quant': Quant,
-      });
+      // data.addAll({
+      //   'product': product,
+      //   'Quant': Quant,
+      // });
       cartItemsHosary.add(product);
       update();
     } else {
@@ -70,10 +72,7 @@ class ProductController extends GetxController {
     cartItemsMohandseen.any((item) => item.id == product.id);
 
     if (!productExists) {
-      data.addAll({
-        "product": product,
-        "Quant": Quant,
-      });
+
       data55.add([product, Quant]);
       cartItemsMohandseen.add(product);
       update();
@@ -133,6 +132,7 @@ class ProductController extends GetxController {
   void validatorClear(idbranch) {
     if (branchIdHosary == idbranch) {
       cartItemsHosary.clear();
+      data55.clear();
       update();
       print('cartItemshosaryCleared');
       print('HosaryList${cartItemsHosary}');
@@ -148,23 +148,23 @@ class ProductController extends GetxController {
   }
 
   // Function to calculate total price based on branch ID
-  String calculationTotalValidator(idb) {
+  void calculationTotalValidator(idb) {
     String totalprice;
     if (branchIdHosary == idb) {
-      totalprice = calculateTotalHosaryBranch();
+      totalHosary = calculateTotalHosaryBranch();
     } else {
       totalprice = calculateTotalMohandseenBranch();
     }
-    return totalprice;
+    // return totalprice;
   }
 
   // Function to calculate total price for Hosary branch
-  String calculateTotalHosaryBranch() {
+ double calculateTotalHosaryBranch() {
     double totalPrice = 0;
     for (int i = 0; i < data55.length; i++) {
       totalPrice += (double.parse(data55[i][0]['price']) * data55[i][1]);
     }
-    return totalPrice.toStringAsFixed(2);
+    return totalPrice;
   }
 
   // Function to calculate total price for Mohandseen branch
@@ -179,8 +179,11 @@ class ProductController extends GetxController {
   // Function to loop through the cart items and get product names for Hosary branch
   List<dynamic> loopOnCartHosary() {
     List<dynamic> datalist = [];
-    for (int i = 0; i < cartItemsHosary.length; i++) {
-      datalist.add(cartItemsHosary[i]['productname']);
+    for (int i = 0; i < data55.length; i++) {
+      datalist.add({
+        'ProductName':data55[i][0]['productname'],
+        'Quantity':data55[i][1],
+      });
     }
     return datalist;
   }
@@ -206,7 +209,28 @@ class ProductController extends GetxController {
     return quantity;
   }
 
-  void removeItemAtIndex55(int index) {}
+  void removeItemAtIndex55(int index,dynamic obj) {
+    data55.removeAt(index);
+    update();
+    totalHosary-=(double.parse(obj[0]['price'])*obj[1]);
+
+    update();
+    print('mas7 : ${totalHosary}');
+    print('remove : ${data55}');
+  }
 
   void removeItemAtIndexMohandseen(int index) {}
+
+
+
+  // void TestCalc(){
+  //   for (int i = 0; i < data55.length; i++) {
+  //     totalHosary += (double.parse(data55[i][0]['price']) * data55[i][1]);
+  //     update();
+  //     print(" Total Hosary ${totalHosary}");
+  //   }
+  //   update();
+  //
+  //
+  // }
 }

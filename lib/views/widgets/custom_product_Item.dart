@@ -118,6 +118,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                             print('Index ${widget.index}');
 
                             print('Array :${pcontroller.data55}');
+                            pcontroller.calculationTotalValidator(widget.idb);
                     },
                     child: const Text(
                       'ADD TO CART',

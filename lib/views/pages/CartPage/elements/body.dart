@@ -25,7 +25,7 @@ class Body extends StatelessWidget {
                 return Dismissible(
                   key: Key(controller.data55[index][0].id),
                   onDismissed: (direction) {
-                    controller.removeItemAtIndex55(index);
+                    controller.removeItemAtIndex55(index,controller.data55[index]);
                   },
                   background: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),

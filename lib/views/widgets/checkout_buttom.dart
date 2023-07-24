@@ -40,7 +40,7 @@ class CustomCheckoutButton extends StatelessWidget {
             GetBuilder(
               init: ProductController(),
               builder: (controller) => Text(
-                '\$${controller.calculationTotalValidator(branchId)}',
+                '\$${controller.totalHosary}',
                 style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'Poppins',

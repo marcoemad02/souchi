@@ -7,17 +7,20 @@ import 'package:souchi/const.dart';
 import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 
 
+import '../../core/view_model/product_Controller.dart';
 import '../pages/ProfilePage/profile_screen.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+   CustomAppBar({super.key, required this.streamBranch, required this.branchName, required this.branchId});
 
   @override
   Size get preferredSize => const Size.fromHeight(kAppBarHight);
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
+   var controller=Get.put(ProductController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +36,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 backgroundColor: Colors.white,
                 child: IconButton(
                   onPressed: () {
+
+                    controller.validatorClear(branchId);
                     Get.to(const BranchScreen());
+
                   },
                   icon: SvgPicture.asset("assets/icons/Location point.svg",color: Colors.orange,),
                   ),
