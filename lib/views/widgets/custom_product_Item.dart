@@ -116,7 +116,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     onPressed: () {
                             pcontroller.validatorBranch(widget.productObj, widget.idb, widget.index);
                             print('Index ${widget.index}');
-                            print('Map : ${pcontroller.data}');
+
                             print('Array :${pcontroller.data55}');
                     },
                     child: const Text(
