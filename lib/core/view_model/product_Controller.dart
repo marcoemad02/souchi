@@ -46,7 +46,7 @@ class ProductController extends GetxController {
     for (var cartItem in CartItemsHosary) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
-        cartItem[1] += quantity;
+        cartItem[1] = quantity;
         productExists = true;
         break;
       }
@@ -66,24 +66,41 @@ class ProductController extends GetxController {
   }
 
   // Mohandseen branch Function to add a product to the cart
-  void addItemToCartMohandseen(product, {Quant}) {
-    // bool productExists =
-    // CartItemsMohandseen.any((item) => item.id == product.id);
-    CartItemsMohandseen.add([product, Quant]);
-    update();
-    // if (!productExists) {
-    //
-    //   CartItemsMohandseen.add([product, Quant]);
-    //  // CartItemsMohandseen.add(product);
-    //   update();
-    // } else {
-    // Product already exists in the cart. You can update the quantity or show a message.
-    // For example:
-    // showErrorMessage('Product already in cart.');
-    // }
-  }
+  // void addItemToCartMohandseen(product, {Quant}) {
+  //   // bool productExists =
+  //   // CartItemsMohandseen.any((item) => item.id == product.id);
+  //   CartItemsMohandseen.add([product, Quant]);
+  //   update();
+  //   // if (!productExists) {
+  //   //
+  //   //   CartItemsMohandseen.add([product, Quant]);
+  //   //  // CartItemsMohandseen.add(product);
+  //   //   update();
+  //   // } else {
+  //   // Product already exists in the cart. You can update the quantity or show a message.
+  //   // For example:
+  //   // showErrorMessage('Product already in cart.');
+  //   // }
+  // }
 
   // Mohandseen branch Function to remove a product from the cart
+  void addItemToCartMohandseen(QueryDocumentSnapshot product, int quantity) {
+    bool productExists = false;
+    for (var cartItem in CartItemsMohandseen) {
+      if (cartItem[0].get('docId') == product.get('docId')) {
+        // Product already exists in the cart, update the quantity
+        cartItem[1] = quantity;
+        productExists = true;
+        break;
+      }
+    }
+
+    if (!productExists) {
+      CartItemsMohandseen.add([product, quantity]);
+    }
+
+    update();
+  }
   void removeItemFromCartMohandseen(index) {
     CartItemsMohandseen
         .removeWhere((element) => element.get('docId') == index);
@@ -113,7 +130,7 @@ class ProductController extends GetxController {
       print('here Mohandseen');
       print('Here contrp${Quant}');
 
-      addItemToCartMohandseen(productObject, Quant: Quant);
+      addItemToCartMohandseen(productObject,  Quant);
       print('HosaryList${CartItemsHosary}');
       print('MohandList${CartItemsMohandseen}');
     }
