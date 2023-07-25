@@ -23,7 +23,8 @@ class Body extends StatelessWidget {
               itemCount: controller.CartItemsHosary.length,
               itemBuilder: (context, index) {
                 return Dismissible(
-                  key: Key(controller.CartItemsHosary[index][0].id),
+                  key:UniqueKey() ,
+                  //Key(controller.CartItemsHosary[index][0].id),
                   onDismissed: (direction) {
                     controller.removeItemAtIndexHosary(index,controller.CartItemsHosary[index]);
                   },
@@ -110,6 +111,7 @@ class CartItemWidget extends StatelessWidget {
 
     return Container(
       height: 180,
+      width: double.infinity,
       child: Row(
         children: [
           Padding(

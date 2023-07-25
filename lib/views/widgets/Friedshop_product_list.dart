@@ -30,7 +30,7 @@ class FriedShopProductList extends StatelessWidget {
             final data =snapshot.requireData;
             print(data);
             return GridView.builder(
-              itemCount: data.size,
+              itemCount: data.docs.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, mainAxisSpacing: 5, mainAxisExtent: 350),
               itemBuilder: (context, index) {

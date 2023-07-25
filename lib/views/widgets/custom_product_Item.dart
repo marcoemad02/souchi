@@ -116,7 +116,6 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     onPressed: () {
                             pcontroller.validatorBranch(widget.productObj, widget.idb, widget.index);
                             print('Index ${widget.index}');
-
                             print('Array :${pcontroller.CartItemsHosary}');
                             pcontroller.calculationTotalValidator(widget.idb);
                     },
@@ -139,8 +138,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                                 print(widget.index);
                               });
                               //pcontroller.validatorBranch(widget.productObj, widget.idb);
-                              GetSnackBar(title: 'ITEM ${widget.productObj.get('productname')} Added',
-                              backgroundColor: Colors.green,);
+
 
                         }, icon: Icon(Icons.add)),
                         Text('${widget.index}'),
@@ -160,9 +158,8 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
 
 
                           });
-                          pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
-                          GetSnackBar(title: 'ITEM ${widget.productObj.get('productname')} Removed',
-                            backgroundColor: Colors.red,);
+                         // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
+
 
 
                         }, icon: Icon(Icons.remove)),

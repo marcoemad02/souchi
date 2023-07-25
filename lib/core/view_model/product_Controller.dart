@@ -43,22 +43,23 @@ class ProductController extends GetxController {
 
   // Hosary branch Function to add a product to the cart
   void addItemToCartHos(product, Quant) {
-    bool productExists =
-    CartItemsHosary.any((item) => item.id == product.id);
-
-    if (!productExists) {
-      CartItemsHosary.add([product, Quant]);
-      // data.addAll({
-      //   'product': product,
-      //   'Quant': Quant,
-      // });
-      //cartItemsHosary.add(product);
-      update();
-    } else {
+     // bool productExists =
+     // CartItemsHosary.any((item) => item.id == product.id);
+    CartItemsHosary.add([product, Quant]);
+    update();
+    // if (!productExists) {
+    //   CartItemsHosary.add([product, Quant]);
+    //   // data.addAll({
+    //   //   'product': product,
+    //   //   'Quant': Quant,
+    //   // });
+    //   //cartItemsHosary.add(product);
+    //   update();
+    // } else {
       // Product already exists in the cart. You can update the quantity or show a message.
       // For example:
       // showErrorMessage('Product already in cart.');
-    }
+   // }
   }
 
   // Hosary branch Function to remove a product from the cart
@@ -69,19 +70,20 @@ class ProductController extends GetxController {
 
   // Mohandseen branch Function to add a product to the cart
   void addItemToCartMohandseen(product, {Quant}) {
-    bool productExists =
-    CartItemsMohandseen.any((item) => item.id == product.id);
-
-    if (!productExists) {
-
-      CartItemsMohandseen.add([product, Quant]);
-     // CartItemsMohandseen.add(product);
-      update();
-    } else {
+    // bool productExists =
+    // CartItemsMohandseen.any((item) => item.id == product.id);
+    CartItemsMohandseen.add([product, Quant]);
+    update();
+    // if (!productExists) {
+    //
+    //   CartItemsMohandseen.add([product, Quant]);
+    //  // CartItemsMohandseen.add(product);
+    //   update();
+    // } else {
       // Product already exists in the cart. You can update the quantity or show a message.
       // For example:
       // showErrorMessage('Product already in cart.');
-    }
+   // }
   }
 
   // Mohandseen branch Function to remove a product from the cart
