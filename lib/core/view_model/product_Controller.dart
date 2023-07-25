@@ -40,26 +40,23 @@ class ProductController extends GetxController {
       }
     });
   }
+// Hosary branch Function to add a product to the cart
+  void addItemToCartHos(QueryDocumentSnapshot product, int quantity) {
+    bool productExists = false;
+    for (var cartItem in CartItemsHosary) {
+      if (cartItem[0].get('docId') == product.get('docId')) {
+        // Product already exists in the cart, update the quantity
+        cartItem[1] += quantity;
+        productExists = true;
+        break;
+      }
+    }
 
-  // Hosary branch Function to add a product to the cart
-  void addItemToCartHos(product, Quant) {
-     // bool productExists =
-     // CartItemsHosary.any((item) => item.id == product.id);
-    CartItemsHosary.add([product, Quant]);
+    if (!productExists) {
+      CartItemsHosary.add([product, quantity]);
+    }
+
     update();
-    // if (!productExists) {
-    //   CartItemsHosary.add([product, Quant]);
-    //   // data.addAll({
-    //   //   'product': product,
-    //   //   'Quant': Quant,
-    //   // });
-    //   //cartItemsHosary.add(product);
-    //   update();
-    // } else {
-      // Product already exists in the cart. You can update the quantity or show a message.
-      // For example:
-      // showErrorMessage('Product already in cart.');
-   // }
   }
 
   // Hosary branch Function to remove a product from the cart
@@ -80,10 +77,10 @@ class ProductController extends GetxController {
     //  // CartItemsMohandseen.add(product);
     //   update();
     // } else {
-      // Product already exists in the cart. You can update the quantity or show a message.
-      // For example:
-      // showErrorMessage('Product already in cart.');
-   // }
+    // Product already exists in the cart. You can update the quantity or show a message.
+    // For example:
+    // showErrorMessage('Product already in cart.');
+    // }
   }
 
   // Mohandseen branch Function to remove a product from the cart
