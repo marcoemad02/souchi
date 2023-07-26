@@ -3,15 +3,19 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
 
+import '../pages/CartPage/cart_view.dart';
+
 
 
 class CustomCheckoutButton extends StatelessWidget {
   var controller=Get.put(ProductController());
   final int branchId;
 
+
    CustomCheckoutButton({super.key, required this.branchId});
   @override
   Widget build(BuildContext context) {
+   String Tex='';
     return Container(
       width: 350,
       decoration: BoxDecoration(
@@ -20,8 +24,38 @@ class CustomCheckoutButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: ( ) async{
-          await controller.validatorCart(branchId);
+          await showModalBottomSheet(context: context, builder: (context) {
+            return Container(
+              //: 160,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: TextField(
+                      onSubmitted: (value) {
+                        Tex=value;
+                      },
+                      decoration: InputDecoration(border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12)
+                      )),
+                      controller: TextEditingController(
+                        text: Tex
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(onPressed: () async {
+                    await controller.validatorCart(branchId,Tex);
+                  // await  controller.TakeAddrees(branchId, Tex);
+                    print("3enwan ${Tex}");
+                    print("3enwan2 ${controller.AddressHosary}");
+
+                  }, child: Text('Order'))
+                ],
+              ),);
+          },);
+       //  await controller.validatorCart(branchId);
           print('added');
+          print(Tex);
           // Implement your checkout logic here
         },
         child: Row(

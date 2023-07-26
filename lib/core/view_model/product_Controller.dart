@@ -7,6 +7,8 @@ class ProductController extends GetxController {
   int branchIdMohandseen = 2;
   double totalHosary=0;
   double totalMohandseen=0;
+ String AddressHosary='';
+ String AddressMohandseen='';
 
   // Firestore Collections
   CollectionReference datacolHosary =
@@ -27,8 +29,14 @@ class ProductController extends GetxController {
       'order': {
          'totalprice': totalHosary.toString(),
         'orderlist': loopOnCartHosary(),
+        'Address':AddressHosary.toString()
       }
     });
+  }
+
+   String takeAddrress(address){
+    return address.toString();
+
   }
 
   // Function to send data to Firestore for Mohandseen branch
@@ -37,6 +45,9 @@ class ProductController extends GetxController {
       'order': {
         'totalprice': totalMohandseen.toString(),
         'orderlist': loopOnCartMohandseen(),
+        'Address':AddressMohandseen.toString()
+
+
       }
     });
   }
@@ -137,11 +148,14 @@ class ProductController extends GetxController {
   }
 
   // Function to send cart data to Firestore based on branch ID
-  Future<void> validatorCart(int id) async {
+  Future<void> validatorCart(int id,address) async {
     if (branchIdHosary == id) {
+      await TakeAddrees(id, address);
       await sendDatatoFireHosary(id);
     } else {
+      await TakeAddrees(id, address);
       await sendDatatoFireMohandseen(id);
+
     }
   }
 
@@ -173,6 +187,20 @@ class ProductController extends GetxController {
       totalMohandseen = calculateTotalMohandseenBranch();
     }
     // return totalprice;
+  }
+
+
+  Future<void> TakeAddrees(int id,address)async{
+    if(branchIdHosary==id){
+
+      AddressHosary=takeAddrress(address);
+      update();
+    }
+    if(branchIdMohandseen==id){
+      AddressMohandseen=takeAddrress(address);
+      update();
+    }
+
   }
 
   // Function to calculate total price for Hosary branch
