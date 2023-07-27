@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
 
 import '../pages/CartPage/cart_view.dart';
+import 'Buttom_sheet.dart';
 
 
 
@@ -13,6 +14,11 @@ class CustomCheckoutButton extends StatelessWidget {
 
 
    CustomCheckoutButton({super.key, required this.branchId});
+
+  get onClosing => null;
+  get builder => null;
+
+
   @override
   Widget build(BuildContext context) {
    String Tex='';
@@ -99,13 +105,29 @@ class CustomCheckoutButton extends StatelessWidget {
               },
             ),
             const SizedBox(width: 22),
-           const  Text(
-              'CHECKOUT',
-              style: TextStyle(
-                fontSize:21,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
+            GestureDetector(
+              onTap: (){
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return BottomSheetContent();
+                  },
+                );
+
+
+
+
+
+              },
+
+              child: const  Text(
+                'CHECKOUT',
+                style: TextStyle(
+                  fontSize:21,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orange,
+                ),
               ),
             ),
           ],
