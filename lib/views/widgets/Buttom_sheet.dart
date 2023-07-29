@@ -130,6 +130,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 isAddressValid = _textField3Controller.text.trim().isNotEmpty;
               });
             },
+
             child: const Text(
               "CHECKOUT",
               style: TextStyle(
