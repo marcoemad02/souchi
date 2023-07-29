@@ -149,6 +149,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               });
              await controller.validatorCart(id: widget.branchId,name: name,address: address,phone: phone);
             },
+
             child: const Text(
               "CHECKOUT",
               style: TextStyle(
