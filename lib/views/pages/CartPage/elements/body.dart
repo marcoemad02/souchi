@@ -13,83 +13,93 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: branchID == 1
-          ? Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Container(
-          child: GetBuilder<ProductController>(
-            init: ProductController(),
-            builder: (controller) => ListView.builder(
-              itemCount: controller.CartItemsHosary.length,
-              itemBuilder: (context, index) {
-                return Dismissible(
-                  key:UniqueKey() ,
-                  //Key(controller.CartItemsHosary[index][0].id),
-                  onDismissed: (direction) {
-                    controller.removeItemAtIndexHosary(index,controller.CartItemsHosary[index]);
-                  },
-                  background: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFE6E6),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      children: [
-                        Spacer(),
-                        Icon(Icons.delete),
-                      ],
-                    ),
+      body: buildPadding(branchID)
+    );
+  }
+
+  Widget buildPadding(branchId) {
+    if(branchId==1){
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Container(
+        child: GetBuilder<ProductController>(
+          init: ProductController(),
+          builder: (controller) => ListView.builder(
+            itemCount: controller.CartItemsHosary.length,
+            itemBuilder: (context, index) {
+              return Dismissible(
+                key:UniqueKey() ,
+                //Key(controller.CartItemsHosary[index][0].id),
+                onDismissed: (direction) {
+                  controller.removeItemAtIndexHosary(index,controller.CartItemsHosary[index]);
+                },
+                background: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFE6E6),
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  child: CartItemWidget(
-                    Quantity: controller.CartItemsHosary[index][1],
-                    cartObj: controller.CartItemsHosary[index][0],
-                    branchID: branchID,
+                  child: Row(
+                    children: [
+                      Spacer(),
+                      Icon(Icons.delete),
+                    ],
                   ),
-                );
-              },
-            ),
-          ),
-        ),
-      )
-          : Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Container(
-          child: GetBuilder<ProductController>(
-            init: ProductController(),
-            builder: (controller) => ListView.builder(
-              itemCount: controller.CartItemsMohandseen.length,
-              itemBuilder: (context, index) {
-                return Dismissible(
-                  key: Key(controller.CartItemsMohandseen[index][0].id),
-                  onDismissed: (direction) {
-                    controller.removeItemAtIndexMohandseen(index,controller.CartItemsMohandseen[index]);
-                  },
-                  background: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFE6E6),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      children: [
-                        Spacer(),
-                        Icon(Icons.delete),
-                      ],
-                    ),
-                  ),
-                  child: CartItemWidget(
-                    Quantity: controller.CartItemsMohandseen[index][1],
-                    cartObj: controller.CartItemsMohandseen[index][0],
-                    branchID: branchID,
-                  ),
-                );
-              },
-            ),
+                ),
+                child: CartItemWidget(
+                  Quantity: controller.CartItemsHosary[index][1],
+                  cartObj: controller.CartItemsHosary[index][0],
+                  branchID: branchID,
+                ),
+              );
+            },
           ),
         ),
       ),
-    );
+    );}
+     if(branchId==2){
+       return Padding(
+         padding: const EdgeInsets.symmetric(horizontal: 20),
+         child: Container(
+           child: GetBuilder<ProductController>(
+             init: ProductController(),
+             builder: (controller) => ListView.builder(
+               itemCount: controller.CartItemsMohandseen.length,
+               itemBuilder: (context, index) {
+                 return Dismissible(
+                   key: Key(controller.CartItemsMohandseen[index][0].id),
+                   onDismissed: (direction) {
+                     controller.removeItemAtIndexMohandseen(index,controller.CartItemsMohandseen[index]);
+                   },
+                   background: Container(
+                     padding: EdgeInsets.symmetric(horizontal: 20),
+                     decoration: BoxDecoration(
+                       color: Color(0xFFFFE6E6),
+                       borderRadius: BorderRadius.circular(15),
+                     ),
+                     child: Row(
+                       children: [
+                         Spacer(),
+                         Icon(Icons.delete),
+                       ],
+                     ),
+                   ),
+                   child: CartItemWidget(
+                     Quantity: controller.CartItemsMohandseen[index][1],
+                     cartObj: controller.CartItemsMohandseen[index][0],
+                     branchID: branchID,
+                   ),
+                 );
+               },
+             ),
+           ),
+         ),
+       );
+     }
+
+
+     /// we want to modify It
+     return const Center(child: Text('Erorr'));
   }
 }
 
