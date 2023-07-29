@@ -3,12 +3,18 @@ import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   // Branch IDs
-  int branchIdHosary = 1;
-  int branchIdMohandseen = 2;
-  double totalHosary=0;
-  double totalMohandseen=0;
- String AddressHosary='';
- String AddressMohandseen='';
+    int    branchIdHosary = 1;
+   int    branchIdMohandseen = 2;
+   double totalHosary=0;
+   double totalMohandseen=0;
+   String AddressHosary='';
+   String NameHosary='';
+   String PhoneHosary='';
+   String AddressMohandseen='';
+   String NameMohandseen='';
+   String PhoneMohandseen='';
+
+
 
   // Firestore Collections
   CollectionReference datacolHosary =
@@ -28,14 +34,24 @@ class ProductController extends GetxController {
     datacolHosary.add({
       'order': {
          'totalprice': totalHosary.toString(),
-        'orderlist': loopOnCartHosary(),
-        'Address':AddressHosary.toString()
+         'orderlist': loopOnCartHosary(),
+         'Address':AddressHosary.toString(),
+         'Phone':PhoneHosary.toString(),
+         'Name' : NameHosary.toString(),
       }
     });
   }
 
    String takeAddrress(address){
     return address.toString();
+
+  }
+   String takeName(name){
+    return name.toString();
+
+  }
+   String takePhone(phone){
+    return phone.toString();
 
   }
 
@@ -45,8 +61,9 @@ class ProductController extends GetxController {
       'order': {
         'totalprice': totalMohandseen.toString(),
         'orderlist': loopOnCartMohandseen(),
-        'Address':AddressMohandseen.toString()
-
+        'Address':AddressMohandseen.toString(),
+        'Phone':PhoneMohandseen.toString(),
+        'Name':NameMohandseen.toString(),
 
       }
     });
@@ -148,12 +165,12 @@ class ProductController extends GetxController {
   }
 
   // Function to send cart data to Firestore based on branch ID
-  Future<void> validatorCart(int id,address) async {
+  Future<void> validatorCart({required int id, name, phone, address}) async {
     if (branchIdHosary == id) {
-      await TakeAddrees(id, address);
+      await TakeAddrees(id: id,address:  address,name: name,phone: phone);
       await sendDatatoFireHosary(id);
     } else {
-      await TakeAddrees(id, address);
+      await TakeAddrees(id:  id,address:  address,name: name,phone: phone);
       await sendDatatoFireMohandseen(id);
 
     }
@@ -190,14 +207,18 @@ class ProductController extends GetxController {
   }
 
 
-  Future<void> TakeAddrees(int id,address)async{
+  Future<void> TakeAddrees({required int id, name, phone, address})async{
     if(branchIdHosary==id){
 
       AddressHosary=takeAddrress(address);
+      NameHosary=takeName(name);
+      PhoneHosary=takePhone(phone);
       update();
     }
     if(branchIdMohandseen==id){
       AddressMohandseen=takeAddrress(address);
+      NameMohandseen=takeName(name);
+      PhoneMohandseen=takePhone(phone);
       update();
     }
 
@@ -291,3 +312,6 @@ class ProductController extends GetxController {
   //
   // }
 }
+
+
+

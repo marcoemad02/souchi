@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:souchi/core/view_model/product_Controller.dart';
 import '../../const.dart';
 
 
@@ -10,8 +13,11 @@ import 'package:flutter/material.dart';
 import '../../const.dart';
 
 class BottomSheetContent extends StatefulWidget {
+  const BottomSheetContent({super.key, required this.branchId});
+
   @override
   _BottomSheetContentState createState() => _BottomSheetContentState();
+  final branchId;
 }
 
 class _BottomSheetContentState extends State<BottomSheetContent> {
@@ -22,15 +28,20 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   bool isNameValid = true;
   bool isPhoneValid = true;
   bool isAddressValid = true;
+   var controller =Get.put(ProductController());
+
+  String name='';
+  String phone='';
+  String address='';
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 800,
-      padding: EdgeInsets.all(16.0),
+      padding:const  EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(50.0)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(50.0)),
         border: Border.all(
           color: Colors.grey, // Border color
           width: 1.0, // Border width
@@ -43,92 +54,100 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
             controller: _textField1Controller,
             onChanged: (inputValue) {
               setState(() {
+                 name=inputValue;
                 // Check if the name is not empty
                 isNameValid = inputValue.trim().isNotEmpty;
               });
+              print('Name : ${name}');
             },
             decoration: InputDecoration(
-              focusedBorder: UnderlineInputBorder(
+              focusedBorder:const  UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor), // Orange border color
               ),
-              labelStyle: TextStyle(color: kPrimaryColor), // Orange label text color
+              labelStyle:const  TextStyle(color: kPrimaryColor), // Orange label text color
               errorText: isNameValid ? null : "Please enter your name",
-              errorStyle: TextStyle(color: kPrimaryColor),
-              focusedErrorBorder: UnderlineInputBorder(
+              errorStyle: const TextStyle(color: kPrimaryColor),
+              focusedErrorBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor),
               ),
-              errorBorder: UnderlineInputBorder(
+              errorBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor),
               ),
               labelText: 'NAME',
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           TextField(
             controller: _textField2Controller,
             onChanged: (inputValue) {
               setState(() {
+                 phone=inputValue;
                 // Check if the phone number is valid
                 isPhoneValid = inputValue.length == 11 && int.tryParse(inputValue) != null;
               });
+            print('Phone : ${phone}');
             },
             maxLength: 11,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
-              focusedBorder: UnderlineInputBorder(
+              focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor), // Orange border color
               ),
-              labelStyle: TextStyle(color: kPrimaryColor), // Orange label text color
+              labelStyle: const TextStyle(color: kPrimaryColor), // Orange label text color
               errorText: isPhoneValid ? null : "Please enter your phone number",
-              errorStyle: TextStyle(color: kPrimaryColor),
-              focusedErrorBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: kPrimaryColor),
+              errorStyle:const  TextStyle(color: kPrimaryColor),
+              focusedErrorBorder: const UnderlineInputBorder(
+                borderSide:  BorderSide(color: kPrimaryColor),
               ),
-              errorBorder: UnderlineInputBorder(
+              errorBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor),
               ),
               labelText: 'PHONE',
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextField(
             controller: _textField3Controller,
             onChanged: (inputValue) {
               setState(() {
+                address=inputValue;
+
                 // Check if the address is not empty
                 isAddressValid = inputValue.trim().isNotEmpty;
               });
+              print('address : ${address}');
             },
             decoration: InputDecoration(
-              focusedBorder: UnderlineInputBorder(
+              focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor), // Orange border color
               ),
-              labelStyle: TextStyle(color: kPrimaryColor), // Orange label text color
+              labelStyle: const TextStyle(color: kPrimaryColor), // Orange label text color
               errorText: isAddressValid ? null : "Please enter your address",
-              errorStyle: TextStyle(color: kPrimaryColor),
-              focusedErrorBorder: UnderlineInputBorder(
+              errorStyle: const TextStyle(color: kPrimaryColor),
+              focusedErrorBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor),
               ),
-              errorBorder: UnderlineInputBorder(
+              errorBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor),
               ),
               labelText: 'ADDRESS',
             ),
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           OutlinedButton(
             style: OutlinedButton.styleFrom(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.0),
               ),
-              side: BorderSide(color: kPrimaryColor, width: 1.5),
+              side: const BorderSide(color: kPrimaryColor, width: 1.5),
             ),
-            onPressed: () {
+            onPressed: () async {
               setState(() {
                 isNameValid = _textField1Controller.text.trim().isNotEmpty;
                 isPhoneValid = _textField2Controller.text.trim().isNotEmpty;
                 isAddressValid = _textField3Controller.text.trim().isNotEmpty;
               });
+             await controller.validatorCart(id: widget.branchId,name: name,address: address,phone: phone);
             },
             child: const Text(
               "CHECKOUT",

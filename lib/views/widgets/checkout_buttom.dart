@@ -21,7 +21,7 @@ class CustomCheckoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   String Tex='';
+   //String Tex='';
     return Container(
       width: 350,
       decoration: BoxDecoration(
@@ -30,38 +30,39 @@ class CustomCheckoutButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: ( ) async{
-          await showModalBottomSheet(context: context, builder: (context) {
-            return Container(
-              //: 160,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: TextField(
-                      onSubmitted: (value) {
-                        Tex=value;
-                      },
-                      decoration: InputDecoration(border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12)
-                      )),
-                      controller: TextEditingController(
-                        text: Tex
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(onPressed: () async {
-                    await controller.validatorCart(branchId,Tex);
-                  // await  controller.TakeAddrees(branchId, Tex);
-                    print("3enwan ${Tex}");
-                    print("3enwan2 ${controller.AddressHosary}");
-
-                  }, child: Text('Order'))
-                ],
-              ),);
-          },);
+         // BottomSheetContent(branchId: branchId,);
+          // await showModalBottomSheet(context: context, builder: (context) {
+          //   return Container(
+          //     //: 160,
+          //     child: Column(
+          //       children: [
+          //         Padding(
+          //           padding: const EdgeInsets.all(15.0),
+          //           child: TextField(
+          //             onSubmitted: (value) {
+          //               Tex=value;
+          //             },
+          //             decoration: InputDecoration(border: OutlineInputBorder(
+          //               borderRadius: BorderRadius.circular(12)
+          //             )),
+          //             controller: TextEditingController(
+          //               text: Tex
+          //             ),
+          //           ),
+          //         ),
+          //         ElevatedButton(onPressed: () async {
+          //           await controller.validatorCart(branchId,Tex);
+          //         // await  controller.TakeAddrees(branchId, Tex);
+          //           print("3enwan ${Tex}");
+          //           print("3enwan2 ${controller.AddressHosary}");
+          //
+          //         }, child: Text('Order'))
+          //       ],
+          //     ),);
+          // },);
        //  await controller.validatorCart(branchId);
           print('added');
-          print(Tex);
+         // print(Tex);
           // Implement your checkout logic here
         },
         child: Row(
@@ -110,7 +111,7 @@ class CustomCheckoutButton extends StatelessWidget {
                 showModalBottomSheet(
                   context: context,
                   builder: (BuildContext context) {
-                    return BottomSheetContent();
+                    return BottomSheetContent(branchId: branchId,);
                   },
                 );
 
