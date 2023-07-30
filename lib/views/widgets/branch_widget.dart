@@ -8,57 +8,35 @@ import 'package:get/get_core/src/get_main.dart';
 import '../pages/home_page.dart';
 
 class BranchWidget extends StatelessWidget {
-  const BranchWidget({Key? key, required this.streamBranch, required this.branchName, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces,}) : super(key: key);
+  const BranchWidget({Key? key, required this.streamBranch, required this.branchName,required String branchImage, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces, required this.brachImage, }) : super(key: key);
   final Stream<QuerySnapshot> streamBranch;
 
   final Stream<QuerySnapshot> streamBranchRaw;
   final Stream<QuerySnapshot> streamBranchFried;
   final Stream<QuerySnapshot> streamBranchSauces;
   final String branchName;
+  final String brachImage ;
   final int branchId;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-
       onTap: () {
+        // Navigate to the desired page on tap
+        Get.to(() => HomePage(
+          productStream: streamBranch,
+          branchName1: branchName,
 
-        Get.to(()=> HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,streamBranchFried: streamBranchFried,streamBranchRaw: streamBranchRaw,streamBranchSauces: streamBranchSauces,));
+          branchId: branchId,
+          streamBranchFried: streamBranchFried,
+          streamBranchRaw: streamBranchRaw,
+          streamBranchSauces: streamBranchSauces,
+        ));
       },
-      child:Container(
-
-        height: 115,
-        width: 165,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: Colors.orange,
-            width: 2,
-          ),
-        ),
-        child: Align(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                child: SvgPicture.asset(
-                  "assets/icons/Location point.svg",
-                 color: Colors.orange,
-                ),
-              ),
-              const SizedBox(width: 6,),
-              Container(
-                child: Text(
-                  branchName,
-                  style: const TextStyle(fontSize: 22),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-
+      child:Column(
+        children: [
+          Image.asset('assets/image/مهندسين.png',fit: BoxFit.cover,)
+        ],
+      )
     );
   }
 }

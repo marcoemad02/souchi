@@ -26,10 +26,11 @@ class Body extends StatelessWidget {
                             .collection('HosaryShopItems')
                             .snapshots(),
                         branchName: 'Hosary',
+                        branchImage: 'assets/image/حصري.png',
                         branchId: 1,
                     streamBranchRaw: FirebaseFirestore.instance.collection('HosaryShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
                     streamBranchFried: FirebaseFirestore.instance.collection('HosaryShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                    streamBranchSauces: FirebaseFirestore.instance.collection('HosaryShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(),
+                    streamBranchSauces: FirebaseFirestore.instance.collection('HosaryShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: '',
 
 
                     ),
@@ -41,10 +42,11 @@ class Body extends StatelessWidget {
                             .collection('MohandseenShopItems')
                             .snapshots(),
                         branchName: 'Mohandseen',
+                        branchImage: 'assets/image/مهندسين.png',
                         branchId: 2,
                       streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
                       streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                      streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(),
+                      streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(), brachImage: '',
 
                     ),
                     const SizedBox(
