@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:souchi/splash_view/persentation/splash_view.dart';
 import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 import 'package:souchi/views/pages/home_page.dart';
+import 'authentication/Screens/login_screen.dart';
 import 'core/app_routes.dart';
 import 'firebase_options.dart';
 
@@ -28,7 +29,7 @@ class souchi extends StatelessWidget {
 
        //home:SplashView(),
       // getPages: appRoutes,
-      home: const BranchScreen(),
+      home: LoginPage(),
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: const Color(0xffF6F1F1)), //background for all screens
     );

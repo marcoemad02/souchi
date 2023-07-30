@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
+import '../../views/pages/BranchPage/branch_view.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
 import '../widgets/custom_snackbar.dart';
@@ -103,7 +104,7 @@ class RegisterPage extends StatelessWidget {
                   // Navigate to the Home Page when the button is pressed
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const BranchScreen()),
                   );
                 },
                 child: const Text('under development back door button'),
