@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:souchi/authentication/Screens/register_screen.dart';
 
+import '../../views/pages/BranchPage/branch_view.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
 import '../widgets/custom_snackbar.dart';
@@ -25,7 +26,7 @@ class LoginPage extends StatelessWidget {
           .signInWithEmailAndPassword(email: email, password: password);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const BranchScreen()),
       );
       // Show a success SnackBar after successful login
       showCustomSnackBar(context, 'Login successful!', SnackBarType.Success);
@@ -46,7 +47,7 @@ class LoginPage extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            const SizedBox(width: double.infinity, height: 20),
+            // const SizedBox(width: double.infinity, height: 20),
             EmailCustomTextFormField(
                 'enter your email', 'email', _emailController),
             const SizedBox(width: double.infinity, height: 20),
@@ -71,7 +72,7 @@ class LoginPage extends StatelessWidget {
                 // Navigate to the Home Page when the button is pressed
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  MaterialPageRoute(builder: (context) => const BranchScreen()),
                 );
               },
               child: const Text('under development back door button'),
