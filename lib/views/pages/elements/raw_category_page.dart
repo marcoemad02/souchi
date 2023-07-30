@@ -5,13 +5,18 @@ import 'package:souchi/styles.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/second_appBar.dart';
 
-import '../../widgets/shop_product_list.dart';
+import '../../../enums.dart';
+import '../../widgets/NavBar.dart';
+import '../../widgets/Rawshop_product_list.dart';
 
 class RawCategoryPage extends StatelessWidget {
- const  RawCategoryPage({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+ const  RawCategoryPage({super.key, required this.streamBranch, required this.branchName, required this.branchId, required this.streamBranchRaw});
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
+ final Stream<QuerySnapshot> streamBranchRaw;
+ //final Stream<QuerySnapshot> streamBranchFried;
+ //final Stream<QuerySnapshot> streamBranchSauces;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,12 +35,12 @@ class RawCategoryPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-             Expanded(child: ShopProductList(branchName: branchName,streamBranch: streamBranch,branchId: branchId,)),
+             Expanded(child: RawShopProductList(branchName: branchName,streamBranch: streamBranchRaw,branchId: branchId,)),
 
           ],
 
         ),
-
+        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.cart, streamBranch: streamBranch, branchName:branchName, branchId:branchId,),
       ),
     );
   }

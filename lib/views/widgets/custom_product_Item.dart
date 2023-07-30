@@ -6,16 +6,25 @@ import 'package:souchi/core/view_model/product_Controller.dart';
 
 import '../../const.dart';
 
-class CustomProdctItem extends StatelessWidget {
-   CustomProdctItem({Key? key, this.isActive=true, required this.productObj, required this.idb, this.id}) : super(key: key);
+class CustomProdctItem extends StatefulWidget {
+   CustomProdctItem({Key? key, this.isActive=true, required this.productObj, required this.idb, this.id, this.idInt}) : super(key: key);
    final bool isActive;
    final QueryDocumentSnapshot productObj;
    final id;
-   var pcontroller= Get.put(ProductController());
+   final idInt;
    final int idb;
+     int index=1;
+
+  @override
+  State<CustomProdctItem> createState() => _CustomProdctItemState();
+}
+
+class _CustomProdctItemState extends State<CustomProdctItem> {
+   var pcontroller= Get.put(ProductController());
+
   @override
   Widget build(BuildContext context) {
-    return isActive
+    return widget.isActive
         ? Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -32,6 +41,9 @@ class CustomProdctItem extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
+
+
+
                       'assets/image/downloadItem.jpg',
                     ),
                   ),
@@ -40,7 +52,7 @@ class CustomProdctItem extends StatelessWidget {
                   ),
                   //Product Name
                   Text(
-                    productObj.get('productname'),
+                    widget.productObj.get('productname'),
                     style: const TextStyle(fontSize: 18, fontFamily: kfontPop),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -49,7 +61,7 @@ class CustomProdctItem extends StatelessWidget {
                     height: 8,
                   ),
                   // PRICE Egp
-                  Text(productObj.get('price')+'L.E',
+                  Text(widget.productObj.get('price')+'L.E',
                       style:
                           const TextStyle(fontFamily: kfontPop, fontSize: 16)),
                   const SizedBox(
@@ -87,6 +99,7 @@ class CustomProdctItem extends StatelessWidget {
 
 
                   OutlinedButton(
+
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(const Color(0xffF2F2F2)),
                       shape: MaterialStateProperty.all(
@@ -102,7 +115,10 @@ class CustomProdctItem extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                            pcontroller.validatorBranch(productObj, idb);
+                            pcontroller.validatorBranch(widget.productObj, widget.idb, widget.index);
+                            print('Index ${widget.index}');
+                            print('Array :${pcontroller.CartItemsHosary}');
+                            pcontroller.calculationTotalValidator(widget.idb);
                     },
                     child: const Text(
                       'ADD TO CART',
@@ -111,7 +127,46 @@ class CustomProdctItem extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                  )
+                  ),
+                  Container(
+                    width: 60,
+                    height: 40,
+                    child: Row(
+                      children: [
+                        IconButton(onPressed: () {
+                              setState(() {
+                                widget.index++;
+                                print(widget.index);
+                              });
+                              //pcontroller.validatorBranch(widget.productObj, widget.idb);
+
+
+                        }, icon: Icon(Icons.add)),
+                        Text('${widget.index}'),
+
+                        // deleteItem
+                        IconButton(onPressed: () {
+                          setState(() {
+                            if(widget.index<0 || widget.index==0)
+                              {  print(widget.index);
+
+                              widget.index=0;
+
+                              }else{
+                              widget.index--;
+                              print(widget.index);
+                            }
+
+
+                          });
+                         // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
+
+
+
+                        }, icon: Icon(Icons.remove)),
+
+                    ],),
+                  ),
 
 
 
@@ -146,7 +201,7 @@ class CustomProdctItem extends StatelessWidget {
                     ),
                     //Product Name
                     Text(
-                      productObj.get('productname'),
+                      widget.productObj.get('productname'),
                       style:
                           const TextStyle(fontSize: 18, fontFamily: kfontPop),
                       overflow: TextOverflow.ellipsis,
@@ -156,7 +211,7 @@ class CustomProdctItem extends StatelessWidget {
                       height: 8,
                     ),
                     // PRICE Egp
-                    Text(productObj.get('price')+'L.E',
+                    Text(widget.productObj.get('price')+'L.E',
                         style: const TextStyle(
                             fontFamily: kfontPop, fontSize: 16)),
                     const SizedBox(
