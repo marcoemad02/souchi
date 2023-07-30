@@ -8,15 +8,26 @@ import 'package:get/get_core/src/get_main.dart';
 import '../pages/home_page.dart';
 
 class BranchWidget extends StatelessWidget {
-  const BranchWidget({Key? key, required this.streamBranch, required this.branchName,required String branchImage, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces, required this.brachImage, }) : super(key: key);
-  final Stream<QuerySnapshot> streamBranch;
+  const BranchWidget({
+    Key? key,
+    required this.streamBranch,
+    required this.branchName,
+    required String branchImage,
+    required this.branchId,
+    required this.streamBranchRaw,
+    required this.streamBranchFried,
+    required this.streamBranchSauces,
+    required this.brachImage,
+  }) : super(key: key);
 
+  final Stream<QuerySnapshot> streamBranch;
   final Stream<QuerySnapshot> streamBranchRaw;
   final Stream<QuerySnapshot> streamBranchFried;
   final Stream<QuerySnapshot> streamBranchSauces;
   final String branchName;
-  final String brachImage ;
+  final String brachImage;
   final int branchId;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,18 +36,20 @@ class BranchWidget extends StatelessWidget {
         Get.to(() => HomePage(
           productStream: streamBranch,
           branchName1: branchName,
-
           branchId: branchId,
           streamBranchFried: streamBranchFried,
           streamBranchRaw: streamBranchRaw,
           streamBranchSauces: streamBranchSauces,
         ));
       },
-      child:Column(
+      child: Column(
         children: [
-          Image.asset('assets/image/مهندسين.png',fit: BoxFit.cover,)
+          Container(
+
+            child: Image.asset(brachImage), // Use Image.asset with the asset path
+          ),
         ],
-      )
+      ),
     );
   }
 }
