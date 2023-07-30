@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
+import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 import '../../const.dart';
 
 
@@ -52,7 +53,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         children: [
           TextField(
             controller: _textField1Controller,
-            onChanged: (inputValue) {
+            onSubmitted: (inputValue) {
               setState(() {
                  name=inputValue;
                 // Check if the name is not empty
@@ -79,7 +80,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
           const SizedBox(height: 15),
           TextField(
             controller: _textField2Controller,
-            onChanged: (inputValue) {
+            onSubmitted: (inputValue) {
               setState(() {
                  phone=inputValue;
                 // Check if the phone number is valid
@@ -108,7 +109,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
           const SizedBox(height: 10),
           TextField(
             controller: _textField3Controller,
-            onChanged: (inputValue) {
+            onSubmitted: (inputValue) {
               setState(() {
                 address=inputValue;
 
@@ -148,6 +149,8 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 isAddressValid = _textField3Controller.text.trim().isNotEmpty;
               });
              await controller.validatorCart(id: widget.branchId,name: name,address: address,phone: phone);
+             Get.snackbar('Item Added', 'Sent to bike',backgroundColor: Colors.green);
+             Get.offAll(()=>const BranchScreen());
             },
 
             child: const Text(

@@ -99,6 +99,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
 
 
                   OutlinedButton(
+
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(const Color(0xffF2F2F2)),
                       shape: MaterialStateProperty.all(
