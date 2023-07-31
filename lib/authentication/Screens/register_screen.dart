@@ -14,7 +14,7 @@ import 'login_screen.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
-
+  String? points;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -26,6 +26,7 @@ class RegisterPage extends StatelessWidget {
     String name = _nameController.text.trim();
     String phone = _phoneController.text.trim();
 
+
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -36,7 +37,10 @@ class RegisterPage extends StatelessWidget {
           .doc(userCredential.user!.uid)
           .set({
         'name': name,
+        'email':email,
+        'password':password,
         'phone': phone,
+        'points':points,
         // Store additional user information here as needed
       });
 

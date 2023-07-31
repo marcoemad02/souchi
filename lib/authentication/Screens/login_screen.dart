@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:souchi/authentication/Screens/register_screen.dart';
 
 import '../../views/pages/BranchPage/branch_view.dart';
@@ -8,26 +9,28 @@ import '../widgets/custom_form_field.dart';
 import '../widgets/custom_snackbar.dart';
 import 'home_page.dart';
 
-
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  String? email;
-  String? password;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _login(BuildContext context) async {
+  Future<void> _login(BuildContext context) async {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
 
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+
+      // User successfully logged in, store the login status
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isLoggedIn', true);
+
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const BranchScreen()),
       );
+
       // Show a success SnackBar after successful login
       showCustomSnackBar(context, 'Login successful!', SnackBarType.Success);
     } on FirebaseAuthException catch (e) {
@@ -47,15 +50,11 @@ class LoginPage extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            // const SizedBox(width: double.infinity, height: 20),
-            EmailCustomTextFormField(
-                'enter your email', 'email', _emailController),
+            EmailCustomTextFormField('enter your email', 'email', _emailController),
             const SizedBox(width: double.infinity, height: 20),
-            PasswordCustomTextFormField(
-                'enter your password', 'password', _passwordController),
+            PasswordCustomTextFormField('enter your password', 'password', _passwordController),
             const SizedBox(width: double.infinity, height: 20),
-            CustomButton(
-                onPressed: () => _login(context), buttonLabel: 'Login'),
+            CustomButton(onPressed: () => _login(context), buttonLabel: 'Login'),
             const SizedBox(width: double.infinity, height: 20),
             MaterialButton(
               onPressed: () {
