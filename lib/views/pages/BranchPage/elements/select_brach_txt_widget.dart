@@ -7,13 +7,13 @@ class SelectBranch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Column(
         children: [
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -38,7 +38,7 @@ class SelectBranch extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(18.0),
+                  padding: EdgeInsets.all(18.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -46,7 +46,7 @@ class SelectBranch extends StatelessWidget {
                         'لو سمحت',
                         style: TextStyle(
                           color: Colors.orange,
-                          fontSize: 32,
+                          fontSize: 28,
                           fontFamily: kfontAlex,
                         ),
                       ),

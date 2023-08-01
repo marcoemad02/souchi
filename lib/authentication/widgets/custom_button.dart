@@ -10,7 +10,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+      padding: const EdgeInsets.fromLTRB(10, 15, 10, 2),
       child: GestureDetector(
         onTap: onPressed,
         child: Container(
@@ -39,6 +39,53 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+
+
+
+class DiveIntoButton extends StatelessWidget {
+  DiveIntoButton({Key? key, required this.onPressed,required this.buttonLabel}) : super(key: key);
+
+  final VoidCallback onPressed;
+  String? buttonLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          height: 60,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.orange.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: const Offset(0, 0), // changes position of shadow
+              ),
+            ],
+            image: const DecorationImage(
+              image: AssetImage('assets/image/login_pic.jpg'),
+              fit: BoxFit.cover, // Adjust this as per your requirement
+            ),
+
+          ),
+          child: Center(
+            child: Text(
+              buttonLabel!,
+              style: CustomTextStyle.button,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 
 // class ActualButton extends StatelessWidget {
 //   const ActualButton({Key? key, required this.onPressed}) : super(key: key);

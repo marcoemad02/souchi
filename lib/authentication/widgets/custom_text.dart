@@ -19,7 +19,7 @@ class CustomTextStyle {
     textStyle: const TextStyle(
       color: Colors.white,
       letterSpacing: 1,
-      fontSize: 25,
+      fontSize: 20,
 
     ),
   );

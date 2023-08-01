@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:souchi/authentication/Screens/register_screen.dart';
 
+import '../../const.dart';
 import '../../views/pages/BranchPage/branch_view.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
 import '../widgets/custom_snackbar.dart';
-import 'home_page.dart';
+import '../widgets/login_ui.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -20,7 +21,8 @@ class LoginPage extends StatelessWidget {
     String password = _passwordController.text.trim();
 
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
 
       // User successfully logged in, store the login status
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -42,39 +44,50 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            EmailCustomTextFormField('enter your email', 'email', _emailController),
-            const SizedBox(width: double.infinity, height: 20),
-            PasswordCustomTextFormField('enter your password', 'password', _passwordController),
-            const SizedBox(width: double.infinity, height: 20),
-            CustomButton(onPressed: () => _login(context), buttonLabel: 'Login'),
-            const SizedBox(width: double.infinity, height: 20),
-            MaterialButton(
-              onPressed: () {
-                // Navigate to the Home Page when the button is pressed
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
-                );
-              },
-              child: const Text('Signup'),
+            const UpperPartLogin(
+              text: 'Login',
             ),
-            MaterialButton(
-              onPressed: () {
-                // Navigate to the Home Page when the button is pressed
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const BranchScreen()),
-                );
-              },
-              child: const Text('under development back door button'),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 30, left: 10, right: 10, bottom: 10),
+              child: Column(
+                children: [
+                  EmailCustomTextFormField(
+                      'enter your email', 'email', _emailController),
+                  const SizedBox(width: double.infinity, height: 20),
+                  PasswordCustomTextFormField(
+                      'enter your password', 'password', _passwordController),
+                  const SizedBox(width: double.infinity, height: 20),
+                  CustomButton(
+                      onPressed: () => _login(context), buttonLabel: 'Login'),
+                  DiveIntoButton(
+                    onPressed: () {
+                      // Navigate to the Home Page when the button is pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BranchScreen()),
+                      );
+                    },
+                    buttonLabel: 'Dive into Sushi Experience',
+                  ),
+                  MaterialButton(
+                    // Navigate to the Home Page when the button is pressed
+                    onPressed: () {
+                      // Navigate to the Home Page when the button is pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RegisterPage()),
+                      );
+                    },
+                    child: const Text('Create new account, SignUp',
+                        style: TextStyle(color: kPrimaryColor, fontSize:20)),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:souchi/authentication/widgets/login_ui.dart';
+import 'package:souchi/const.dart';
 
 
 import '../../views/pages/BranchPage/branch_view.dart';
@@ -65,56 +67,47 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(width: double.infinity, height: 20),
-              NameCustomTextFormField(
-                  hintText: 'enter your name',
-                  labelText: 'name',
-                  controller: _nameController),
-              const SizedBox(width: double.infinity, height: 20),
-              EmailCustomTextFormField(
-                  'enter your email', 'email', _emailController),
-              const SizedBox(width: double.infinity, height: 20),
-              PasswordCustomTextFormField(
-                  'enter your password', 'password', _passwordController),
-              const SizedBox(width: double.infinity, height: 20),
-              PhoneNumberCustomTextField(
-                  hintText: 'enter your phone number',
-                  labelText: 'phone number',
-                  controller: _phoneController),
-              CustomButton(
-                onPressed: () => _register(context),buttonLabel: 'Register',
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const UpperPartLogin(text: 'Sign Up'),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  const SizedBox(width: double.infinity, height: 20),
+                  NameCustomTextFormField(
+                      hintText: 'enter your name',
+                      labelText: 'name',
+                      controller: _nameController),
+                  const SizedBox(width: double.infinity, height: 20),
+                  EmailCustomTextFormField(
+                      'enter your email', 'email', _emailController),
+                  const SizedBox(width: double.infinity, height: 20),
+                  PasswordCustomTextFormField(
+                      'enter your password', 'password', _passwordController),
+                  const SizedBox(width: double.infinity, height: 20),
+                  PhoneNumberCustomTextField(
+                      hintText: 'enter your phone number',
+                      labelText: 'phone number',
+                      controller: _phoneController),
+                  CustomButton(
+                    onPressed: () => _register(context),buttonLabel: 'Register',
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      // Navigate to the Home Page when the button is pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    },
+                    child: const Text('Already have an Account, Login',style: TextStyle(color: kPrimaryColor,fontSize: 20)),
+                  ),
+                ],
               ),
-              MaterialButton(
-                onPressed: () {
-                  // Navigate to the Home Page when the button is pressed
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
-                child: const Text('login page'),
-              ),
-              MaterialButton(
-                onPressed: () {
-                  // Navigate to the Home Page when the button is pressed
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BranchScreen()),
-                  );
-                },
-                child: const Text('under development back door button'),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
