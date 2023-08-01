@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:souchi/views/pages/ProfilePage/components/name_widget.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 
+import '../../../../authentication/Core/functions.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
@@ -47,7 +48,7 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press:  () => logout(context),
           ),
         ],
       ),

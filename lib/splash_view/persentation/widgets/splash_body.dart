@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:go_router/go_router.dart';
+import 'package:souchi/styles.dart';
 
 
 class SplashViewbody extends StatefulWidget {
@@ -31,7 +32,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController.forward();
 
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 2),
       () {
         //Get.to(()=>const homePage(),                           ((((هرجع اعدلها تاني بعدين))))
         //transition: Transition.leftToRight,
@@ -69,10 +70,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
                 child: const Text(
                   'Souchiii ',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 28,
-                    color: Color(0xff1D267D),
-                  ),
+                  style: Styles.textStyle30orange,
                 ),
               );
             })

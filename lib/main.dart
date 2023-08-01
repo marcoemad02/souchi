@@ -32,7 +32,7 @@ class souchi extends StatelessWidget {
         future: _checkLoggedInStatus(),
         builder: (context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const SplashView(); // Show a loading screen while checking login status
+            return SplashView(); // Show a loading screen while checking login status
           } else {
             if (snapshot.data == true) {
               return const BranchScreen(); // Navigate to BranchScreen if user is logged in
@@ -70,7 +70,7 @@ class souchi extends StatelessWidget {
 //       //routerConfig: AppRouter.router,
 //       debugShowCheckedModeBanner: false,
 //
-//        //home:SplashView(),
+//        // home:SplashView(),
 //       // getPages: appRoutes,
 //       home: LoginPage(),
 //       theme: ThemeData.light().copyWith(
