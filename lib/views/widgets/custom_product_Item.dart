@@ -99,6 +99,53 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     height: 5,
                   ),
 
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: kPrimaryColor),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center, // Center the content in the row
+                        children: [
+                          // Add icon button
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                widget.index++;
+                                print(widget.index);
+                              });
+                              //pcontroller.validatorBranch(widget.productObj, widget.idb);
+                            },
+                            icon: Icon(Icons.add),
+                          ),
+                          Text('${widget.index}'),
+
+                          // Remove icon button
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                if (widget.index <= 0) {
+                                  print(widget.index);
+                                  widget.index = 0;
+                                } else {
+                                  widget.index--;
+                                  print(widget.index);
+                                }
+                              });
+                              // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
+                            },
+                            icon: Icon(Icons.remove),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+
+
+
+
                   OutlinedButton(
                     style: ButtonStyle(
                       backgroundColor:
@@ -130,39 +177,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              setState(() {
-                                widget.index++;
-                                print(widget.index);
-                              });
-                              //pcontroller.validatorBranch(widget.productObj, widget.idb);
-                            },
-                            icon: const Icon(Icons.add)),
-                        Text('${widget.index}'),
 
-                        // deleteItem
-                        IconButton(
-                            onPressed: () {
-                              setState(() {
-                                if (widget.index < 0 || widget.index == 0) {
-                                  print(widget.index);
-
-                                  widget.index = 0;
-                                } else {
-                                  widget.index--;
-                                  print(widget.index);
-                                }
-                              });
-                              // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
-                            },
-                            icon: const Icon(Icons.remove)),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
