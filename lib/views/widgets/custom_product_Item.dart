@@ -184,7 +184,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
           )
         : Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Stack(children: [
+            child: Column(children: [
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -272,25 +272,29 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                         'ADD TO CART',
                         style: TextStyle(fontFamily: kfontPop),
                       ),
-                    )
+                    ),
+                    Container(
+                      height: 28,
+                      width: 78,
+                      decoration: const BoxDecoration(
+                        color: Colors.grey, //Color(0xffEEEEEE)
+                        borderRadius:
+                        BorderRadius.only(bottomRight: Radius.circular(8),bottomLeft:Radius.circular(8)),
+                      ),
+                      child: const Text('Sold Out ',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: kfontPop,
+                            fontSize: 18,
+
+                          ),
+                          textAlign: TextAlign.center),
+                    ),
+
                   ],
                 ),
               ),
-              Container(
-                height: 28,
-                width: 78,
-                decoration: const BoxDecoration(
-                  color: kPrimaryColor, //Color(0xffEEEEEE)
-                  borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(8)),
-                ),
-                child: const Text('Sold Out ',
-                    style: TextStyle(
-                      color: Color(0xff27374D),
-                      fontFamily: kfontPop,
-                    ),
-                    textAlign: TextAlign.center),
-              ),
+
             ]),
           );
   }
