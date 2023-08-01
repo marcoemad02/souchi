@@ -1,26 +1,32 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
 
 import '../../const.dart';
 
 class CustomProdctItem extends StatefulWidget {
-   CustomProdctItem({Key? key, this.isActive=true, required this.productObj, required this.idb, this.id, this.idInt}) : super(key: key);
-   final bool isActive;
-   final QueryDocumentSnapshot productObj;
-   final id;
-   final idInt;
-   final int idb;
-     int index=1;
+  CustomProdctItem(
+      {Key? key,
+      this.isActive = true,
+      required this.productObj,
+      required this.idb,
+      this.id,
+      this.idInt})
+      : super(key: key);
+  final bool isActive;
+  final QueryDocumentSnapshot productObj;
+  final id;
+  final idInt;
+  final int idb;
+  int index = 1;
 
   @override
   State<CustomProdctItem> createState() => _CustomProdctItemState();
 }
 
 class _CustomProdctItemState extends State<CustomProdctItem> {
-   var pcontroller= Get.put(ProductController());
+  var pcontroller = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +47,6 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
-
-
-
                       'assets/image/downloadItem.jpg',
                     ),
                   ),
@@ -61,33 +64,33 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     height: 8,
                   ),
                   // PRICE Egp
-                  Text(widget.productObj.get('price')+'L.E',
+                  Text(widget.productObj.get('price') + 'L.E',
                       style:
                           const TextStyle(fontFamily: kfontPop, fontSize: 16)),
                   const SizedBox(
                     height: 5,
                   ),
                   // Price Pts
-                  Text.rich(
+                  const Text.rich(
                     TextSpan(
                         text: '15  ',
-                        style: const TextStyle(fontFamily: kfontPop),
+                        style: TextStyle(fontFamily: kfontPop),
                         children: [
                           TextSpan(
                             text: 'Pts',
-                            style:const  TextStyle(color: kPrimaryColor),
+                            style: TextStyle(color: kPrimaryColor),
                           ),
                         ]),
                   ),
                   // Bouns Pts
-                  Text.rich(
+                  const Text.rich(
                     TextSpan(
                         text: 'Bouns Pts  ',
-                        style: const TextStyle(fontFamily: kfontPop),
+                        style: TextStyle(fontFamily: kfontPop),
                         children: [
                           TextSpan(
                             text: '+1',
-                            style: const TextStyle(color: Colors.green),
+                            style: TextStyle(color: Colors.green),
                           ),
                         ]),
                   ),
@@ -96,12 +99,10 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     height: 5,
                   ),
 
-
-
                   OutlinedButton(
-
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(const Color(0xffF2F2F2)),
+                      backgroundColor:
+                          MaterialStateProperty.all(const Color(0xffF2F2F2)),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -115,10 +116,11 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       ),
                     ),
                     onPressed: () {
-                            pcontroller.validatorBranch(widget.productObj, widget.idb, widget.index);
-                            print('Index ${widget.index}');
-                            print('Array :${pcontroller.CartItemsHosary}');
-                            pcontroller.calculationTotalValidator(widget.idb);
+                      pcontroller.validatorBranch(
+                          widget.productObj, widget.idb, widget.index);
+                      print('Index ${widget.index}');
+                      print('Array :${pcontroller.CartItemsHosary}');
+                      pcontroller.calculationTotalValidator(widget.idb);
                     },
                     child: const Text(
                       'ADD TO CART',
@@ -128,49 +130,39 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       ),
                     ),
                   ),
-                  Container(
-                    width: 60,
-                    height: 40,
+                  Expanded(
                     child: Row(
                       children: [
-                        IconButton(onPressed: () {
+                        IconButton(
+                            onPressed: () {
                               setState(() {
                                 widget.index++;
                                 print(widget.index);
                               });
                               //pcontroller.validatorBranch(widget.productObj, widget.idb);
-
-
-                        }, icon: Icon(Icons.add)),
+                            },
+                            icon: const Icon(Icons.add)),
                         Text('${widget.index}'),
 
                         // deleteItem
-                        IconButton(onPressed: () {
-                          setState(() {
-                            if(widget.index<0 || widget.index==0)
-                              {  print(widget.index);
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                if (widget.index < 0 || widget.index == 0) {
+                                  print(widget.index);
 
-                              widget.index=0;
-
-                              }else{
-                              widget.index--;
-                              print(widget.index);
-                            }
-
-
-                          });
-                         // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
-
-
-
-                        }, icon: Icon(Icons.remove)),
-
-                    ],),
+                                  widget.index = 0;
+                                } else {
+                                  widget.index--;
+                                  print(widget.index);
+                                }
+                              });
+                              // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
+                            },
+                            icon: const Icon(Icons.remove)),
+                      ],
+                    ),
                   ),
-
-
-
-
                 ],
               ),
             ),
@@ -211,33 +203,33 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       height: 8,
                     ),
                     // PRICE Egp
-                    Text(widget.productObj.get('price')+'L.E',
+                    Text(widget.productObj.get('price') + 'L.E',
                         style: const TextStyle(
                             fontFamily: kfontPop, fontSize: 16)),
                     const SizedBox(
                       height: 5,
                     ),
                     // Price Pts
-                    Text.rich(
+                    const Text.rich(
                       TextSpan(
                           text: '15  ',
-                          style: const TextStyle(fontFamily: kfontPop),
+                          style: TextStyle(fontFamily: kfontPop),
                           children: [
                             TextSpan(
                               text: 'Pts',
-                              style: const TextStyle(color: kPrimaryColor),
+                              style: TextStyle(color: kPrimaryColor),
                             ),
                           ]),
                     ),
                     // Bouns Pts
-                    Text.rich(
+                    const Text.rich(
                       TextSpan(
                           text: 'Bouns Pts  ',
-                          style: const TextStyle(fontFamily: kfontPop),
+                          style: TextStyle(fontFamily: kfontPop),
                           children: [
                             TextSpan(
                               text: '+1',
-                              style: const TextStyle(color: Colors.green),
+                              style: TextStyle(color: Colors.green),
                             ),
                           ]),
                     ),
@@ -246,9 +238,10 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     ),
                     // Catr Button
                     OutlinedButton(
-                      onPressed:null,
+                      onPressed: null,
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -269,10 +262,10 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                 ),
               ),
               Container(
-                height:28,
+                height: 28,
                 width: 78,
                 decoration: const BoxDecoration(
-                  color:kPrimaryColor,//Color(0xffEEEEEE)
+                  color: kPrimaryColor, //Color(0xffEEEEEE)
                   borderRadius:
                       BorderRadius.only(bottomRight: Radius.circular(8)),
                 ),
