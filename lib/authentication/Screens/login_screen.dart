@@ -5,7 +5,6 @@ import 'package:souchi/authentication/Screens/register_screen.dart';
 
 import '../../const.dart';
 import '../../views/pages/BranchPage/branch_view.dart';
-import '../../views/widgets/TextField_widget.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
 import '../widgets/custom_snackbar.dart';
@@ -24,16 +23,13 @@ class LoginPage extends StatelessWidget {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-
       // User successfully logged in, store the login status
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setBool('isLoggedIn', true);
-
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const BranchScreen()),
       );
-
       // Show a success SnackBar after successful login
       showCustomSnackBar(context, 'Login successful!', SnackBarType.Success);
     } on FirebaseAuthException catch (e) {
@@ -48,7 +44,7 @@ class LoginPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-              UpperPartLogin(
+            const UpperPartLogin(
               text: 'Login',
             ),
             Padding(
@@ -56,22 +52,11 @@ class LoginPage extends StatelessWidget {
                   top: 30, left: 10, right: 10, bottom: 10),
               child: Column(
                 children: [
-                  CustomTextFormField(
-                    labelText: 'Enter your email',
-                    iconSvgPath: 'assets/icons/Mail.svg',
-                    controller : _emailController,
-                    errorMessage: 'Please enter a valid email address',
-                  ),
-
-
+                  EmailCustomTextFormField(
+                      'Enter your email', 'Email', _emailController),
                   const SizedBox(width: double.infinity, height: 20),
-                  CustomTextFormField(
-                    labelText: 'Enter your password',
-                    iconSvgPath: 'assets/icons/Lock.svg',
-                    controller: _passwordController,
-                    obscureText: true,
-                    errorMessage: 'Please enter a valid password',
-                  ),
+                  PasswordCustomTextFormField(
+                      'Enter your Password', 'Password', _passwordController),
                   const SizedBox(width: double.infinity, height: 20),
                   CustomButton(
                       onPressed: () => _login(context), buttonLabel: 'Login'),
@@ -96,7 +81,7 @@ class LoginPage extends StatelessWidget {
                       );
                     },
                     child: const Text('Create new account, SignUp',
-                        style: TextStyle(color: kPrimaryColor, fontSize:20)),
+                        style: TextStyle(color: kPrimaryColor, fontSize: 20)),
                   ),
                 ],
               ),
@@ -107,7 +92,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
