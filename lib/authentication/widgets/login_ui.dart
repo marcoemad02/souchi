@@ -13,7 +13,7 @@ class UpperPartLogin extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 150,
+          height: 200,
           decoration: const BoxDecoration(
             color: kPrimaryColor,
             borderRadius: BorderRadius.only(
@@ -38,9 +38,10 @@ class UpperPartLogin extends StatelessWidget {
               text,
               textAlign: TextAlign.left,
               style: const TextStyle(
-                fontSize: 40,
-                color: Color(0xffFF7517),
+                fontSize: 44,
+                color: kPrimaryColor,
                 fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),

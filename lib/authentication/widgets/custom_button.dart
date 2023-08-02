@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:souchi/const.dart';
 import 'custom_text.dart';
 
 class CustomButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
           height: 60,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.orange.withOpacity(0.5),
+            color: kPrimaryColor,
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(

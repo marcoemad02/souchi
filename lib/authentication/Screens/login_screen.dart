@@ -5,6 +5,7 @@ import 'package:souchi/authentication/Screens/register_screen.dart';
 
 import '../../const.dart';
 import '../../views/pages/BranchPage/branch_view.dart';
+import '../../views/widgets/TextField_widget.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
 import '../widgets/custom_snackbar.dart';
@@ -47,7 +48,7 @@ class LoginPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const UpperPartLogin(
+              UpperPartLogin(
               text: 'Login',
             ),
             Padding(
@@ -55,11 +56,22 @@ class LoginPage extends StatelessWidget {
                   top: 30, left: 10, right: 10, bottom: 10),
               child: Column(
                 children: [
-                  EmailCustomTextFormField(
-                      'enter your email', 'email', _emailController),
+                  CustomTextFormField(
+                    labelText: 'Enter your email',
+                    iconSvgPath: 'assets/icons/Mail.svg',
+                    controller : _emailController,
+                    errorMessage: 'Please enter a valid email address',
+                  ),
+
+
                   const SizedBox(width: double.infinity, height: 20),
-                  PasswordCustomTextFormField(
-                      'enter your password', 'password', _passwordController),
+                  CustomTextFormField(
+                    labelText: 'Enter your password',
+                    iconSvgPath: 'assets/icons/Lock.svg',
+                    controller: _passwordController,
+                    obscureText: true,
+                    errorMessage: 'Please enter a valid password',
+                  ),
                   const SizedBox(width: double.infinity, height: 20),
                   CustomButton(
                       onPressed: () => _login(context), buttonLabel: 'Login'),
@@ -95,3 +107,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
+
+
+
