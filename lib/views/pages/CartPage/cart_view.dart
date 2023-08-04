@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/views/pages/CartPage/elements/body.dart';
-import 'package:souchi/views/widgets/app_bar.dart';
+
 import 'package:souchi/views/widgets/checkout_buttom.dart';
-import 'package:souchi/views/widgets/location_widget.dart';
+
 import 'package:souchi/views/widgets/second_appBar.dart';
 
 import '../../../enums.dart';
@@ -37,7 +37,7 @@ class CartScreen extends StatelessWidget {
           //   ),
           // ),
           CustomCheckoutButton(branchId: branchId,),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
         ],
       ) ,
 

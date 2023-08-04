@@ -1,12 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:go_router/go_router.dart';
-import 'package:souchi/authentication/Screens/home_page.dart';
+
+
 import 'package:souchi/authentication/Screens/login_screen.dart';
 import 'package:souchi/styles.dart';
-import 'package:souchi/views/pages/home_page.dart';
+
 
 
 class SplashViewbody extends StatefulWidget {

@@ -1,7 +1,7 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -209,7 +209,7 @@ class ProductController extends GetxController {
 
   // Function to calculate total price based on branch ID
   void calculationTotalValidator(idb) {
-    String totalprice;
+    //String totalprice;
     if (branchIdHosary == idb) {
       totalHosary = calculateTotalHosaryBranch();
     } else {

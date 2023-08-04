@@ -8,11 +8,6 @@ import '../../const.dart';
 
 
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-import '../../const.dart';
-
 class BottomSheetContent extends StatefulWidget {
   const BottomSheetContent({super.key, required this.branchId});
 
@@ -162,6 +157,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               ),
             ),
           ),
+
+          Text('Delivery fees depend on your Location , It usually starts from 20 LE ',style: TextStyle(  fontFamily: 'Poppins',
+            color: Colors.black45,),textAlign: TextAlign.center,),
         ],
       ),
     );

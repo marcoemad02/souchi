@@ -72,7 +72,9 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                 ),
 
-                onPressed: () {Get.to(()=>CartScreen(branchName: branchName,branchId: branchId,streamBranch: streamBranch,));},
+                onPressed: (){
+
+                  Get.to(()=>CartScreen(branchName: branchName,branchId: branchId,streamBranch: streamBranch,));},
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Location point.svg",
@@ -100,5 +102,19 @@ class CustomBottomNavBar extends StatelessWidget {
             ],
           )),
     );
+  }
+
+  Card buildCard() {
+    return Card(child: Column(
+                  children: [
+                    Container(
+
+
+                      child: Text('mijnajnj'),
+                      color: Colors.green,
+
+                    ),
+                  ],
+                ),);
   }
 }

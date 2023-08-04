@@ -10,7 +10,7 @@ class LocationWidget extends StatelessWidget {
       children: [
          Row(
           children: [
-            const SizedBox(width: 32,),
+             SizedBox(width: 32,),
             Text('BIKE LOCATION ',style: const TextStyle(fontSize: 14),),
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:souchi/const.dart';
 import 'custom_text.dart';
 
 class CustomButton extends StatelessWidget {
-   CustomButton({Key? key, required this.onPressed,required this.buttonLabel}) : super(key: key);
+    CustomButton({Key? key, required this.onPressed,required this.buttonLabel}) : super(key: key);
 
   final VoidCallback onPressed;
   String? buttonLabel;
