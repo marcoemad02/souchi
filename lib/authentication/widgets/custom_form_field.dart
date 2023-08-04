@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
+import '../../const.dart';
 
 var maskFormatter = MaskTextInputFormatter(
     mask: '+# (###) ###-##-##',
-    filter: { "#": RegExp(r'[0-9]') },
-    type: MaskAutoCompletionType.lazy
-);
-void main() {
+    filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.lazy);
 
+void main() {
   var email = "fredrik@gmail.com";
 
   assert(EmailValidator.validate(email));
 }
-
 
 class EmailCustomTextFormField extends StatelessWidget {
   const EmailCustomTextFormField(this.hintText, this.labelText, this.controller,
@@ -25,6 +24,7 @@ class EmailCustomTextFormField extends StatelessWidget {
   final String? labelText;
   final String? hintText;
   final TextEditingController controller;
+
   // final Function()? onTap;
 
   @override
@@ -41,7 +41,12 @@ class EmailCustomTextFormField extends StatelessWidget {
           // onTap: onTap,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.email),
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            prefixIcon: const Icon(
+              Icons.email,
+              color: kPrimaryColor,
+              // Set your desired color here
+            ),
             hintStyle: const TextStyle(
               color: Colors.black26,
             ),
@@ -68,18 +73,16 @@ class EmailCustomTextFormField extends StatelessWidget {
   }
 }
 
-
-
-
-
 class PasswordCustomTextFormField extends StatelessWidget {
-  const PasswordCustomTextFormField(this.hintText, this.labelText, this.controller,
+  const PasswordCustomTextFormField(
+      this.hintText, this.labelText, this.controller,
       {Key? key})
       : super(key: key);
 
   final String? labelText;
   final String? hintText;
   final TextEditingController controller;
+
   // final Function()? onTap;
 
   @override
@@ -96,7 +99,11 @@ class PasswordCustomTextFormField extends StatelessWidget {
           // onTap: onTap,
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.password),
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            prefixIcon: const Icon(
+              Icons.password,
+              color: kPrimaryColor,
+            ),
             hintStyle: const TextStyle(
               color: Colors.black26,
             ),
@@ -122,7 +129,6 @@ class PasswordCustomTextFormField extends StatelessWidget {
     );
   }
 }
-
 
 class NameCustomTextFormField extends StatelessWidget {
   NameCustomTextFormField({
@@ -149,7 +155,10 @@ class NameCustomTextFormField extends StatelessWidget {
           controller: controller,
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.person), // Use a person icon for name input
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            prefixIcon: const Icon(Icons.person,              color: kPrimaryColor,
+            ),
+            // Use a person icon for name input
             hintStyle: const TextStyle(
               color: Colors.black26,
             ),
@@ -176,10 +185,9 @@ class NameCustomTextFormField extends StatelessWidget {
   }
 }
 
-
-
 class PhoneNumberCustomTextField extends StatelessWidget {
-  const PhoneNumberCustomTextField({super.key,
+  const PhoneNumberCustomTextField({
+    super.key,
     required this.hintText,
     required this.labelText,
     required this.controller,
@@ -203,7 +211,11 @@ class PhoneNumberCustomTextField extends StatelessWidget {
           keyboardType: TextInputType.phone,
           inputFormatters: [maskFormatter], // Add phone number formatter
           decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.phone),
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+
+            prefixIcon: const Icon(Icons.phone,
+              color: kPrimaryColor,
+            ),
             hintStyle: const TextStyle(
               color: Colors.black26,
             ),
@@ -229,4 +241,3 @@ class PhoneNumberCustomTextField extends StatelessWidget {
     );
   }
 }
-

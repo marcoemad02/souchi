@@ -50,7 +50,7 @@ dependencies:
   firebase_auth: ^4.7.2
   shared_preferences: ^2.2.0
   xdg_directories: ^1.0.1
-
+  cached_network_image: ^3.2.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -78,7 +78,6 @@ flutter:
     - assets/image/
     - assets/icons/
     - assets/image/IMG_4048h.png
-    #- assets/image/login_pic.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
