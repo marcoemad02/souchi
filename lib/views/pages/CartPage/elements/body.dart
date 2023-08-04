@@ -120,38 +120,60 @@ class CartItemWidget extends StatelessWidget {
     final ProductController controller = Get.find<ProductController>();
 
     return Container(
-      height: 180,
+      height: 140,
       width: double.infinity,
+   margin: EdgeInsetsDirectional.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+
+
+      ),
       child: Row(
+       // mainAxisAlignment: MainAxisAlignment.start,
         children: [
+
+          ClipRRect(
+              borderRadius: const BorderRadiusDirectional.only(topStart:Radius.circular(8) ,bottomStart:Radius.circular(8) ),
+              child: Image.asset('assets/image/downloadItem.jpg',fit: BoxFit.fitHeight,width: 110,height: double.infinity,)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+
               children: [
                 Text(
-                  '  Name :${cartObj.get('productname')}',
-                  style: const TextStyle(
+                  'Name : ${cartObj.get('productname')}',
+                  style:const TextStyle(
                     color: Color(0xffFF7517),
-                    fontSize: 24,
+                    fontSize: 18,
+                    fontFamily: 'Poppins',
+                    //overflow: TextOverflow.ellipsis,
+
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+
+
+
+                ),
+                const SizedBox(width: 5,),
+                Text(
+                  'PRICE : ${cartObj.get('price')}',
+                  style: const TextStyle(
+                    color: Colors.black45,
+                    fontSize: 18,
                     fontFamily: 'Poppins',
                   ),
                 ),
-                Row(
-                  children: [
-                    const SizedBox(width: 5,),
-                    Text(
-                      ' PRICE :${cartObj.get('price')}',
-                      style: const TextStyle(
-                        color: Colors.black45,
-                        fontSize: 18,
-                        fontFamily: 'Poppins',
-                      ),
-                    ),
-                    const SizedBox(width: 80,),
-                    Text('Quantity : ${Quantity ?? '45'}',style: TextStyle(fontSize: 24),)
-                  ],
-                ),
+
+                Text('Quantity : ${Quantity ?? '45'}',style: const TextStyle(
+                  color: Colors.black45,
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                ),),
                 const SizedBox(height: 10,),
+
               ],
             ),
           ),

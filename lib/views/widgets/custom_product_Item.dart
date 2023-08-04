@@ -58,7 +58,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     widget.productObj.get('productname'),
                     style: const TextStyle(fontSize: 18, fontFamily: kfontPop),
                     overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
+                    maxLines: 1,
                   ),
                   const SizedBox(
                     height: 8,
@@ -125,9 +125,9 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                           IconButton(
                             onPressed: () {
                               setState(() {
-                                if (widget.index <= 0) {
+                                if (widget.index <= 1) {
                                   print(widget.index);
-                                  widget.index = 0;
+                                  widget.index = 1;
                                 } else {
                                   widget.index--;
                                   print(widget.index);
@@ -165,6 +165,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     onPressed: () {
                       pcontroller.validatorBranch(
                           widget.productObj, widget.idb, widget.index);
+                      Get.snackbar('!!!', 'Item Added To Cart',);
                       print('Index ${widget.index}');
                       print('Array :${pcontroller.CartItemsHosary}');
                       pcontroller.calculationTotalValidator(widget.idb);
@@ -184,7 +185,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
           )
         : Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(children: [
+            child: Stack(children: [
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -273,27 +274,49 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                         style: TextStyle(fontFamily: kfontPop),
                       ),
                     ),
-                    Container(
-                      height: 28,
-                      width: 78,
-                      decoration: const BoxDecoration(
-                        color: Colors.grey, //Color(0xffEEEEEE)
-                        borderRadius:
-                        BorderRadius.only(bottomRight: Radius.circular(8),bottomLeft:Radius.circular(8)),
-                      ),
-                      child: const Text('Sold Out ',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: kfontPop,
-                            fontSize: 18,
-
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
+                    // Container(
+                    //   height: 28,
+                    //   width: 78,
+                    //   decoration: const BoxDecoration(
+                    //     color: Colors.grey, //Color(0xffEEEEEE)
+                    //     borderRadius:
+                    //     BorderRadius.only(bottomRight: Radius.circular(8),bottomLeft:Radius.circular(8)),
+                    //   ),
+                    //   child: const Text('Sold Out ',
+                    //       style: TextStyle(
+                    //         color: Colors.white,
+                    //         fontFamily: kfontPop,
+                    //         fontSize: 18,
+                    //
+                    //       ),
+                    //       textAlign: TextAlign.center),
+                    // ),
 
                   ],
                 ),
               ),
+              Container(
+                height: 38,
+                width: 78,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  color: kPrimaryColor, //Color(0xffEEEEEE)
+                  borderRadius:
+                  BorderRadius.only(bottomRight: Radius.circular(8)),
+                ),
+                child: const Text('Sold Out ',
+                    style: TextStyle(
+
+                      color: Color(0xff27374D),
+                      fontFamily: kfontPop,
+
+
+
+                    ),
+                    textAlign: TextAlign.center),
+              ),
+
+
 
             ]),
           );

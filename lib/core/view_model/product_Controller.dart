@@ -1,3 +1,5 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -34,6 +36,7 @@ class ProductController extends GetxController {
   // Function to send data to Firestore for Hosary branch
   Future<void> sendDatatoFireHosary(idb) async {
    final now = new DateTime.now();
+
     datacolHosary.add({
       'order': {
          'totalprice': totalHosary.toString(),
@@ -42,6 +45,7 @@ class ProductController extends GetxController {
          'Phone':PhoneHosary.toString(),
          'Name' : NameHosary.toString(),
         'Time' :DateFormat.jm().format(now).toString(),
+
       }
     });
   }
@@ -70,6 +74,7 @@ class ProductController extends GetxController {
         'Phone':PhoneMohandseen.toString(),
         'Name':NameMohandseen.toString(),
         'Time' :DateFormat.jm().format(now).toString(),
+
 
 
       }

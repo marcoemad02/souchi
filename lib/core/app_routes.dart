@@ -1,12 +1,12 @@
 
-import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:go_router/go_router.dart';
-import 'package:souchi/views/pages/elements/fried_category_page.dart';
-//import 'package:souchi/views/pages/raw_category_page.dart';
-import 'package:souchi/views/pages/elements/sauces_category_page.dart';
-import '../splash_view/persentation/splash_view.dart';
-import '../views/pages/elements/raw_category_page.dart';
-import '../views/pages/home_page.dart';
+// import 'package:get/get_navigation/src/routes/get_route.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:souchi/views/pages/elements/fried_category_page.dart';
+// //import 'package:souchi/views/pages/raw_category_page.dart';
+// import 'package:souchi/views/pages/elements/sauces_category_page.dart';
+// import '../splash_view/persentation/splash_view.dart';
+// import '../views/pages/elements/raw_category_page.dart';
+// import '../views/pages/home_page.dart';
 
 // final List<GetPage> appRoutes=[
 //   GetPage(name: '/', page: () => const SplashView(),),

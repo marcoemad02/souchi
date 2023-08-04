@@ -154,7 +154,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
             },
 
             child: const Text(
-              "CHECKOUT",
+              "Send Order To Bike",
               style: TextStyle(
                 fontFamily: 'Popins',
                 fontSize: 20,

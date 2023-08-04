@@ -26,7 +26,7 @@ class souchi extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: const Color(0xffF6F1F1),
       ), // Background for all screens
-      home: FutureBuilder(
+       home: FutureBuilder(
         future: _checkLoggedInStatus(),
         builder: (context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

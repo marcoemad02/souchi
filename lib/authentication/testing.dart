@@ -27,10 +27,10 @@ class RegisterPage1 extends StatelessWidget {
       });
 
       // Navigate to the home page after successful registration.
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => HomePage()),
+      // );
     } on FirebaseAuthException catch (e) {
       // Handle registration errors
       print('Error: ${e.message}');
@@ -100,10 +100,10 @@ class LoginPage1 extends StatelessWidget {
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
 
       // User logged in successfully, navigate to the home page.
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => HomePage()),
+      // );
     } on FirebaseAuthException catch (e) {
       // Handle login errors
       print('Error: ${e.message}');

@@ -1,3 +1,5 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,7 @@ import '../../enums.dart';
 import '../widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
-   HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces});
+   HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces, required this.ptsRef});
   var controllerr = Get.put(ProductController());
   final Stream<QuerySnapshot> productStream;
   final String branchName1;
@@ -22,6 +24,7 @@ class HomePage extends StatelessWidget {
    final Stream<QuerySnapshot> streamBranchRaw;
    final Stream<QuerySnapshot> streamBranchFried;
    final Stream<QuerySnapshot> streamBranchSauces;
+   final  Stream<QuerySnapshot> ptsRef;
 
 
   @override
@@ -36,6 +39,9 @@ class HomePage extends StatelessWidget {
               children: [
                 const SizedBox(height: 10,),
                 LocationWidget(branchName: branchName1),
+
+
+
                 const SizedBox(height: 10,),
                 Image.asset('assets/image/homeimage.jpg'),
                 const SizedBox(height: 10),

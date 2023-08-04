@@ -19,6 +19,7 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
 
                     streamBranch: FirebaseFirestore.instance
                         .collection('HosaryShopItems')
@@ -36,6 +37,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
                     streamBranch: FirebaseFirestore.instance
                         .collection('MohandseenShopItems')
                         .snapshots(),
@@ -52,6 +54,7 @@ class Body extends StatelessWidget {
                 ),
 
                 BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
                   streamBranch: FirebaseFirestore.instance
                       .collection('MohandseenShopItems')
                       .snapshots(),
@@ -69,6 +72,7 @@ class Body extends StatelessWidget {
 
 
                 BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
                   streamBranch: FirebaseFirestore.instance
                       .collection('MohandseenShopItems')
                       .snapshots(),
@@ -86,6 +90,7 @@ class Body extends StatelessWidget {
 
 
                 BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
                   streamBranch: FirebaseFirestore.instance
                       .collection('MohandseenShopItems')
                       .snapshots(),
@@ -103,6 +108,7 @@ class Body extends StatelessWidget {
 
 
                 BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
                   streamBranch: FirebaseFirestore.instance
                       .collection('MohandseenShopItems')
                       .snapshots(),
@@ -120,6 +126,7 @@ class Body extends StatelessWidget {
 
 
                 BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
                   streamBranch: FirebaseFirestore.instance
                       .collection('MohandseenShopItems')
                       .snapshots(),
@@ -137,6 +144,7 @@ class Body extends StatelessWidget {
 
 
                 BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
                   streamBranch: FirebaseFirestore.instance
                       .collection('MohandseenShopItems')
                       .snapshots(),

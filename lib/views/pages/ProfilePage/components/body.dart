@@ -8,8 +8,6 @@ import 'profile_menu.dart';
 import 'profile_pic.dart';
 
 class Body extends StatelessWidget {
-  @override
-
   final String branchName;
   // final Stream<QuerySnapshot> streamBranch;
   // final int branchId;

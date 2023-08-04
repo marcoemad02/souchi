@@ -2,21 +2,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/authentication/widgets/login_ui.dart';
 import 'package:souchi/const.dart';
 
 
-import '../../views/pages/BranchPage/branch_view.dart';
+
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
 import '../widgets/custom_snackbar.dart';
 
-import 'home_page.dart';
 import 'login_screen.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
-  String? points;
+  int points=0;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -49,10 +50,7 @@ class RegisterPage extends StatelessWidget {
       // Show a success SnackBar after successful registration
       showCustomSnackBar(
           context, 'Registration successful!', SnackBarType.Success);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
-      );
+      Get.to(()=>LoginPage());
       // Navigate to the home page or perform other actions
       // after successful registration.
     } on FirebaseAuthException catch (e) {
@@ -97,10 +95,7 @@ class RegisterPage extends StatelessWidget {
                   MaterialButton(
                     onPressed: () {
                       // Navigate to the Home Page when the button is pressed
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
-                      );
+                    Get.to(()=>LoginPage());
                     },
                     child: const Text('Already have an Account, Login',style: TextStyle(color: kPrimaryColor,fontSize: 20)),
                   ),
