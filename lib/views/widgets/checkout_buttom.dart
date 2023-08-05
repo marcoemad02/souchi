@@ -29,7 +29,13 @@ class CustomCheckoutButton extends StatelessWidget {
         color: Colors.white,
       ),
       child: TextButton(
-        onPressed: ( ) async{
+        onPressed: ( ) {
+          showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context) {
+              return BottomSheetContent(branchId: branchId,);
+            },
+          );
 
          // BottomSheetContent(branchId: branchId,);
           // await showModalBottomSheet(context: context, builder: (context) {
@@ -109,12 +115,7 @@ class CustomCheckoutButton extends StatelessWidget {
             const SizedBox(width: 22),
             GestureDetector(
               onTap: (){
-                showModalBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return BottomSheetContent(branchId: branchId,);
-                  },
-                );
+
 
 
 

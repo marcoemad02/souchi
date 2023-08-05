@@ -122,7 +122,7 @@ class CartItemWidget extends StatelessWidget {
     return Container(
       height: 140,
       width: double.infinity,
-   margin: EdgeInsetsDirectional.only(bottom: 12),
+   margin:const  EdgeInsetsDirectional.only(bottom: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),

@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:souchi/styles.dart';
+import 'package:souchi/views/widgets/Rawshop_product_list.dart';
 import 'package:souchi/views/widgets/second_appBar.dart';
 
 import '../../../enums.dart';
 import '../../widgets/NavBar.dart';
-import '../../widgets/Rawshop_product_list.dart';
+
 
 class FriedCategoryPage extends StatelessWidget {
   const FriedCategoryPage(

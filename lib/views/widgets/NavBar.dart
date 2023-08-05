@@ -104,17 +104,5 @@ class CustomBottomNavBar extends StatelessWidget {
     );
   }
 
-  Card buildCard() {
-    return Card(child: Column(
-                  children: [
-                    Container(
 
-
-                      child: Text('mijnajnj'),
-                      color: Colors.green,
-
-                    ),
-                  ],
-                ),);
-  }
 }

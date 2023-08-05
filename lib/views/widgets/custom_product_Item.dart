@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:souchi/core/view_model/product_Controller.dart';
 
 import '../../const.dart';
+
 
 class CustomProdctItem extends StatefulWidget {
   CustomProdctItem(
@@ -12,7 +15,7 @@ class CustomProdctItem extends StatefulWidget {
       required this.productObj,
       required this.idb,
       this.id,
-      this.idInt})
+      this.idInt, this.image})
       : super(key: key);
   final bool isActive;
   final QueryDocumentSnapshot productObj;
@@ -20,6 +23,7 @@ class CustomProdctItem extends StatefulWidget {
   final idInt;
   final int idb;
   int index = 1;
+  final image;
 
   @override
   State<CustomProdctItem> createState() => _CustomProdctItemState();
@@ -45,11 +49,13 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   ),
                   // Photo
                   ClipRRect(
+
+
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'assets/image/downloadItem.jpg',
-                    ),
+                    child: Image.network(widget.image),
                   ),
+
+                  // buildClipRRect(widget.image),
                   const SizedBox(
                     height: 5,
                   ),
@@ -99,54 +105,54 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     height: 5,
                   ),
 
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: kPrimaryColor),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center, // Center the content in the row
-                        children: [
-                          // Add icon button
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                widget.index++;
-                                print(widget.index);
-                              });
-                              //pcontroller.validatorBranch(widget.productObj, widget.idb);
-                            },
-                            icon: Icon(Icons.add),
-                          ),
-                          Text('${widget.index}'),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: kPrimaryColor),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center, // Center the content in the row
+                      children: [
+                        // Add icon button
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              widget.index++;
+                              print(widget.index);
+                            });
+                            //pcontroller.validatorBranch(widget.productObj, widget.idb);
+                          },
+                          icon: Icon(Icons.add),
+                        ),
+                        Text('${widget.index}'),
 
-                          // Remove icon button
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                if (widget.index <= 1) {
-                                  print(widget.index);
-                                  widget.index = 1;
-                                } else {
-                                  widget.index--;
-                                  print(widget.index);
-                                }
-                              });
-                              // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
-                            },
-                            icon: Icon(Icons.remove),
-                          ),
-                        ],
-                      ),
+                        // Remove icon button
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (widget.index <= 1) {
+                                print(widget.index);
+                                widget.index = 1;
+                              } else {
+                                widget.index--;
+                                print(widget.index);
+                              }
+                            });
+                            // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
+                          },
+                          icon: Icon(Icons.remove),
+                        ),
+                      ],
                     ),
                   ),
+                  const SizedBox(height: 5,),
 
 
 
 
 
                   OutlinedButton(
+
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(const Color(0xffF2F2F2)),
@@ -178,6 +184,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       ),
                     ),
                   ),
+
 
                 ],
               ),
@@ -274,6 +281,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                         style: TextStyle(fontFamily: kfontPop),
                       ),
                     ),
+
                     // Container(
                     //   height: 28,
                     //   width: 78,
@@ -321,4 +329,6 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
             ]),
           );
   }
+
+
 }

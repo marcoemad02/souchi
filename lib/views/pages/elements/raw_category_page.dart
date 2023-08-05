@@ -9,6 +9,7 @@ import '../../../enums.dart';
 import '../../widgets/NavBar.dart';
 import '../../widgets/Rawshop_product_list.dart';
 
+
 class RawCategoryPage extends StatelessWidget {
  const  RawCategoryPage({super.key, required this.streamBranch, required this.branchName, required this.branchId, required this.streamBranchRaw});
   final Stream<QuerySnapshot> streamBranch;
