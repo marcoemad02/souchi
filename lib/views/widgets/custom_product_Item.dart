@@ -50,11 +50,10 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   // Photo
                   ClipRRect(
                     borderRadius:  BorderRadius.circular(10),
-                    
                     child: CachedNetworkImage(
                      imageUrl: widget.image,
                       placeholder: (context, url) => CircularProgressIndicator(color: kPrimaryColor),
-                      errorWidget: (context, url, error) => CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => CircularProgressIndicator(color: kPrimaryColor,),
                     ),
                   ),
 
@@ -209,9 +208,11 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     ),
                     // Photo
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        'assets/image/downloadItem.jpg',
+                      borderRadius:  BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                        imageUrl: widget.image,
+                        placeholder: (context, url) => CircularProgressIndicator(color: kPrimaryColor),
+                        errorWidget: (context, url, error) => CircularProgressIndicator(color: kPrimaryColor,),
                       ),
                     ),
                     const SizedBox(
