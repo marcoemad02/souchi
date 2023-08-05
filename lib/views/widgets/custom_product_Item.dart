@@ -49,10 +49,13 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   ),
                   // Photo
                   ClipRRect(
-
-
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(widget.image),
+                    borderRadius:  BorderRadius.circular(10),
+                    
+                    child: CachedNetworkImage(
+                     imageUrl: widget.image,
+                      placeholder: (context, url) => CircularProgressIndicator(color: kPrimaryColor),
+                      errorWidget: (context, url, error) => CircularProgressIndicator(),
+                    ),
                   ),
 
                   // buildClipRRect(widget.image),
