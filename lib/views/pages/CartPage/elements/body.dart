@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:souchi/const.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/views/widgets/checkout_buttom.dart';
 
@@ -135,7 +137,16 @@ class CartItemWidget extends StatelessWidget {
 
           ClipRRect(
               borderRadius: const BorderRadiusDirectional.only(topStart:Radius.circular(8) ,bottomStart:Radius.circular(8) ),
-              child: Image.asset('assets/image/downloadItem.jpg',fit: BoxFit.fitHeight,width: 110,height: double.infinity,)),
+              child:CachedNetworkImage(
+                  height: double.infinity,
+                  width: 110,
+                  fit: BoxFit.fitHeight,
+                  imageUrl: cartObj.get('image'),
+                placeholder: (context, url) => const CircularProgressIndicator(color: kPrimaryColor,),
+                errorWidget: (context, url, error) => const CircularProgressIndicator(color: kPrimaryColor),
+              ),),
+              
+             // Image.asset('assets/image/downloadItem.jpg',fit: BoxFit.fitHeight,width: 110,height: double.infinity,)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             child: Column(
