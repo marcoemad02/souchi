@@ -26,21 +26,20 @@ class souchi extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: const Color(0xffF6F1F1),
       ), // Background for all screens
-       home: BranchScreen()
-      //  FutureBuilder(
-      //   future: _checkLoggedInStatus(),
-      //   builder: (context, AsyncSnapshot<bool> snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.waiting) {
-      //       return const SplashView(); // Show a loading screen while checking login status
-      //     } else {
-      //       if (snapshot.data == true) {
-      //         return const BranchScreen(); // Navigate to BranchScreen if user is logged in
-      //       } else {
-      //         return LoginPage(); // Navigate to LoginPage if user is not logged in
-      //       }
-      //     }
-      //   },
-      // ),
+       home: FutureBuilder(
+        future: _checkLoggedInStatus(),
+        builder: (context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SplashView(); // Show a loading screen while checking login status
+          } else {
+            if (snapshot.data == true) {
+              return const BranchScreen(); // Navigate to BranchScreen if user is logged in
+            } else {
+              return LoginPage(); // Navigate to LoginPage if user is not logged in
+            }
+          }
+        },
+      ),
     );
   }
 
