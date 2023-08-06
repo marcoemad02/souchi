@@ -219,6 +219,7 @@ class ProductController extends GetxController {
     if (branchIdHosary == id) {
       await TakeAddrees(id: id,address:  address,name: name,phone: phone);
       await sendDatatoFireHosary(id);
+      await updatePointsCash();
     } else {
       await TakeAddrees(id:  id,address:  address,name: name,phone: phone);
       await sendDatatoFireMohandseen(id);
@@ -234,6 +235,15 @@ class ProductController extends GetxController {
     print('newpoints${newCurrentPoinst}');
     FirebaseFirestore.instance.collection('users').doc(docId).update({
       'points':newCurrentPoinst
+    });
+  }
+  Future<void> updatePointsCash()async{
+  SharedPreferences prefs=await SharedPreferences.getInstance();
+    String? docId=prefs.get('uid') as String?;
+    print('in contro${docId}');
+
+    FirebaseFirestore.instance.collection('users').doc(docId).update({
+      'points':currentPoints
     });
   }
   Future<void> validatorCartPoints({required int id, name, phone, address,points}) async {
