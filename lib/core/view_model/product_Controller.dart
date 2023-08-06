@@ -1,9 +1,16 @@
 
 
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:souchi/const.dart';
+
+import '../../views/pages/BranchPage/branch_view.dart';
 
 class ProductController extends GetxController {
   // Branch IDs
@@ -17,6 +24,8 @@ class ProductController extends GetxController {
    String AddressMohandseen='';
    String NameMohandseen='';
    String PhoneMohandseen='';
+   int currentPoints=0;
+   int totalpointsprice=0;
 
 
 
@@ -25,6 +34,34 @@ class ProductController extends GetxController {
   FirebaseFirestore.instance.collection('HosaryOrders');
   CollectionReference datacolMohandseen =
   FirebaseFirestore.instance.collection('MohandseenOrders');
+
+
+  IncrementPoints()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? getpoints=prefs.getInt('points');
+
+    currentPoints=getpoints! + 1;
+    totalpointsprice+=15;
+    prefs.setInt('points', currentPoints);
+
+    update();
+    print('Current Points ${currentPoints}');
+    print('Current price Points ${totalpointsprice}');
+
+  }
+  DecrementPoinst()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? getpoints=prefs.getInt('points');
+
+    currentPoints=getpoints! - 1;
+    prefs.setInt('points', currentPoints);
+
+    update();
+    print('Current Points ${currentPoints}');
+  }
+
+
+
 
   // Cart Items Lists
   // List<QueryDocumentSnapshot> cartItemsHosary = [];
@@ -44,7 +81,8 @@ class ProductController extends GetxController {
          'Address':AddressHosary.toString(),
          'Phone':PhoneHosary.toString(),
          'Name' : NameHosary.toString(),
-        'Time' :DateFormat.jm().format(now).toString(),
+         'Time' :DateFormat.jm().format(now).toString(),
+         //'points':currentPoints
 
       }
     });
@@ -182,6 +220,41 @@ class ProductController extends GetxController {
       await TakeAddrees(id: id,address:  address,name: name,phone: phone);
       await sendDatatoFireHosary(id);
     } else {
+      await TakeAddrees(id:  id,address:  address,name: name,phone: phone);
+      await sendDatatoFireMohandseen(id);
+
+    }
+  }
+
+  Future<void> updateUserPoints()async{
+  SharedPreferences prefs=await SharedPreferences.getInstance();
+    String? docId=prefs.get('uid') as String?;
+    print('in contro${docId}');
+    int newCurrentPoinst=currentPoints-totalpointsprice;
+    print('newpoints${newCurrentPoinst}');
+    FirebaseFirestore.instance.collection('users').doc(docId).update({
+      'points':newCurrentPoinst
+    });
+  }
+  Future<void> validatorCartPoints({required int id, name, phone, address,points}) async {
+    if (branchIdHosary == id) {
+      await TakeAddrees(id: id,address:  address,name: name,phone: phone);
+      if(currentPoints<totalpointsprice){
+        Get.snackbar('Attention', 'You Not have points ',backgroundColor:Colors.yellow);
+      }
+      else{
+        await sendDatatoFireHosary(id);
+        await updateUserPoints();
+        Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
+        Get.offAll(()=>BranchScreen());
+
+
+
+      }
+
+    }
+    if(branchIdMohandseen==id)
+     {
       await TakeAddrees(id:  id,address:  address,name: name,phone: phone);
       await sendDatatoFireMohandseen(id);
 

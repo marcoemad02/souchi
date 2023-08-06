@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:souchi/const.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/styles.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
@@ -29,6 +31,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.grey[60],
       appBar: CustomAppBar(branchId: branchId,branchName: branchName1,streamBranch: productStream),
@@ -37,6 +40,21 @@ class HomePage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: [
+                FutureBuilder(
+                    future: getDoubleValuesSF(),
+                    builder: (context, snapshot) {
+                      if(!snapshot.hasData){
+                        return Text('Waitiing');
+                      }
+                      if(snapshot.connectionState== ConnectionState.none){
+                        return Text('waiting 555');
+                      }
+                      if(snapshot.hasError){
+                        return Text('waiting');
+                      }
+
+                      return Text('${snapshot.requireData}');
+                    }, ),
                 const SizedBox(height: 10,),
                 LocationWidget(branchName: branchName1),
 
@@ -70,4 +88,13 @@ class HomePage extends StatelessWidget {
         selectedMenu: MenuState.home,branchId: branchId,branchName: branchName1,streamBranch:  FirebaseFirestore.instance.collection('activee').snapshots(),),
     );
   }
+
+  Future<int?> getDoubleValuesSF() async {
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+     //Return double
+     int? doubleValue = prefs.getInt('points');
+     print('double value${doubleValue}');
+      return doubleValue;
+
+   }
 }

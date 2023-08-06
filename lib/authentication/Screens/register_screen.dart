@@ -44,6 +44,7 @@ class RegisterPage extends StatelessWidget {
         'password':password,
         'phone': phone,
         'points':points,
+         'id':userCredential.user!.uid
         // Store additional user information here as needed
       });
 

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,7 +23,22 @@ class LoginPage extends StatelessWidget {
 
     try {
       await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+          .signInWithEmailAndPassword(email: email, password: password).then((value) async{
+
+            await getCurrentUser(value.user!.uid).then((value)async {
+
+             print(' new user ${value.get('points').runtimeType}');
+             int points=value.get('points');
+             String uid=value.get('id');
+             SharedPreferences prefs = await SharedPreferences.getInstance();
+             prefs.setInt('points', points);
+             prefs.setString('uid',uid );
+             print('${prefs.get('uid')}');
+
+
+
+            });
+      });
       // User successfully logged in, store the login status
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setBool('isLoggedIn', true);
@@ -37,6 +53,8 @@ class LoginPage extends StatelessWidget {
       showCustomSnackBar(context, 'Error: ${e.message}', SnackBarType.Error);
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,4 +109,9 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
+Future<DocumentSnapshot> getCurrentUser(String uid) async{
+  return await FirebaseFirestore.instance.collection('users').doc(uid).get();
+
+
 }

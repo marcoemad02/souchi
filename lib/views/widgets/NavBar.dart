@@ -87,7 +87,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     : inActiveIconColor,
                 onPressed: ()
                 { controller.validatorClear(branchId);
-                   Get.to(()=>const BranchScreen());
+                   Get.to(()=>BranchScreen());
                 },
               ),
               IconButton(

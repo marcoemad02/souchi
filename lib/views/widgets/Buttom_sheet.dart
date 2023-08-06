@@ -33,7 +33,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 800,
+      //height: 1200,
       padding:const  EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -44,7 +44,8 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         ),
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
+
         children: [
           TextField(
             controller: _textField1Controller,
@@ -145,7 +146,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               });
              await controller.validatorCart(id: widget.branchId,name: name,address: address,phone: phone);
              Get.snackbar('Item Added', 'Sent to bike',backgroundColor: Colors.green);
-             Get.offAll(()=>const BranchScreen());
+             Get.offAll(()=>BranchScreen());
             },
 
             child: const Text(
@@ -157,9 +158,37 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               ),
             ),
           ),
+          const SizedBox(height: 20,),
+          // checkpoints by points
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              side: const BorderSide(color: kPrimaryColor, width: 1.5),
+            ),
+            onPressed: () async {
+              setState(() {
+                isNameValid = _textField1Controller.text.trim().isNotEmpty;
+                isPhoneValid = _textField2Controller.text.trim().isNotEmpty;
+                isAddressValid = _textField3Controller.text.trim().isNotEmpty;
+              });
+             await controller.validatorCartPoints(id: widget.branchId,name: name,address: address,phone: phone,);
+            // Get.snackbar('Item Added', 'Sent to bike',backgroundColor: Colors.green);
+            },
 
-          Text('Delivery fees depend on your Location , It usually starts from 20 LE ',style: TextStyle(  fontFamily: 'Poppins',
-            color: Colors.black45,),textAlign: TextAlign.center,),
+            child: const Text(
+              "Send Order To Bike  ByPoints",
+              style: TextStyle(
+                fontFamily: 'Popins',
+                fontSize: 20,
+                color: kPrimaryColor,
+              ),
+            ),
+          ),
+
+          // Text('Delivery fees depend on your Location , It usually starts from 20 LE ',style: TextStyle(  fontFamily: 'Poppins',
+          //   color: Colors.black45,),textAlign: TextAlign.center,),
         ],
       ),
     );

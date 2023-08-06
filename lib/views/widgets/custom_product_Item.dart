@@ -48,12 +48,15 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     height: 5,
                   ),
                   // Photo
-                  ClipRRect(
-                    borderRadius:  BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                     imageUrl: widget.image,
-                      placeholder: (context, url) => CircularProgressIndicator(color: kPrimaryColor),
-                      errorWidget: (context, url, error) => CircularProgressIndicator(color: kPrimaryColor,),
+                  Container(
+                    height: 90,
+                    child: ClipRRect(
+                      borderRadius:  BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                       imageUrl: widget.image,
+                        placeholder: (context, url) => CircularProgressIndicator(color: kPrimaryColor),
+                        errorWidget: (context, url, error) => CircularProgressIndicator(color: kPrimaryColor,),
+                      ),
                     ),
                   ),
 
@@ -177,6 +180,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       print('Index ${widget.index}');
                       print('Array :${pcontroller.CartItemsHosary}');
                       pcontroller.calculationTotalValidator(widget.idb);
+                      pcontroller.IncrementPoints();
                     },
                     child: const Text(
                       'ADD TO CART',

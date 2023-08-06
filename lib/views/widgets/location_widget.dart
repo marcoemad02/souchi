@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:souchi/const.dart';
 
 class LocationWidget extends StatelessWidget {
   LocationWidget({super.key, required this.branchName});
@@ -10,6 +12,7 @@ class LocationWidget extends StatelessWidget {
       children: [
          Row(
           children: [
+
              SizedBox(width: 32,),
             Text('BIKE LOCATION ',style: const TextStyle(fontSize: 14),),
           ],
@@ -26,7 +29,15 @@ class LocationWidget extends StatelessWidget {
                     Icons.location_on_outlined
                 )
             ),
-            Text(branchName,style: const TextStyle(fontSize: 22),)
+            Text(branchName,style: const TextStyle(fontSize: 22),),
+            SizedBox(width: 140,),
+            SelectableText(
+              onTap: () async{
+               // Clipboard.setData(const ClipboardData(text: '01207774925'));
+               await Clipboard.getData('01207774925');
+              },
+
+                '01207774925',style: TextStyle(color: kPrimaryColor)),
           ],
         ),
       ],

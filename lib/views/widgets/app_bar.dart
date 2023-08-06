@@ -30,6 +30,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         elevation:0,
         title: Row(
           children: [
+
+
+
             Padding(
               padding: const EdgeInsets.only(right: 10.0),
               child:  CircleAvatar(
@@ -38,7 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   onPressed: () {
 
                     controller.validatorClear(branchId);
-                    Get.to(const BranchScreen());
+                    Get.to(BranchScreen());
 
                   },
                   icon: SvgPicture.asset("assets/icons/Location point.svg",color: Colors.orange,),

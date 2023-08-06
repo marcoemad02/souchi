@@ -34,6 +34,7 @@ class Body extends StatelessWidget {
                 //Key(controller.CartItemsHosary[index][0].id),
                 onDismissed: (direction) {
                   controller.removeItemAtIndexHosary(index,controller.CartItemsHosary[index]);
+                  controller.DecrementPoinst();
                 },
                 background: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
