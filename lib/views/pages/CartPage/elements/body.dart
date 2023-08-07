@@ -74,6 +74,7 @@ class Body extends StatelessWidget {
                    onDismissed: (direction) {
                      controller.removeItemAtIndexMohandseen(index,controller.CartItemsMohandseen[index]);
                      controller.DecrementPoinst();
+
                    },
                    background: Container(
                      padding: EdgeInsets.symmetric(horizontal: 20),

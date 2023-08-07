@@ -9,7 +9,7 @@ import 'Buttom_sheet.dart';
 
 
 class CustomCheckoutButton extends StatelessWidget {
-  var controller=Get.put(ProductController());
+  final  controller=Get.put(ProductController());
   final int branchId;
 
 
@@ -31,11 +31,13 @@ class CustomCheckoutButton extends StatelessWidget {
       child: TextButton(
         onPressed: ( ) {
           showModalBottomSheet(
+            isScrollControlled: true,
             context: context,
             builder: (BuildContext context) {
               return BottomSheetContent(branchId: branchId,);
             },
           );
+
 
          // BottomSheetContent(branchId: branchId,);
           // await showModalBottomSheet(context: context, builder: (context) {

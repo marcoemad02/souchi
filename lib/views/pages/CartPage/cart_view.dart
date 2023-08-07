@@ -1,9 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/views/pages/CartPage/elements/body.dart';
 
 import 'package:souchi/views/widgets/checkout_buttom.dart';
@@ -14,11 +11,11 @@ import '../../../enums.dart';
 import '../../widgets/NavBar.dart';
 
 class CartScreen extends StatelessWidget {
-  CartScreen({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+ const CartScreen({super.key, required this.streamBranch, required this.branchName, required this.branchId});
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
-  final controller=Get.put(ProductController());
+ // final controller=Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

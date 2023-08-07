@@ -33,7 +33,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: 1200,
+      height: 700,
       padding:const  EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -186,9 +186,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               ),
             ),
           ),
-
-          // Text('Delivery fees depend on your Location , It usually starts from 20 LE ',style: TextStyle(  fontFamily: 'Poppins',
-          //   color: Colors.black45,),textAlign: TextAlign.center,),
+const SizedBox(height: 20,),
+          const Text('Delivery fees depend on your Location , It usually starts from 20 LE ',style: TextStyle(  fontFamily: 'Poppins',
+            color: Colors.black45,fontSize: 18),textAlign: TextAlign.center,),
         ],
       ),
     );

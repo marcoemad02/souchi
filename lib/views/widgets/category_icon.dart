@@ -10,8 +10,8 @@ import 'package:souchi/views/pages/elements/raw_category_page.dart';
 import 'package:souchi/views/pages/elements/sauces_category_page.dart';
 
 class Category extends StatelessWidget {
-   Category({super.key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces});
-  var controllerr = Get.put(ProductController(),);
+    Category({super.key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces});
+
   final Stream<QuerySnapshot> productStream;
   final String branchName1;
   final int branchId;
@@ -21,6 +21,7 @@ class Category extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

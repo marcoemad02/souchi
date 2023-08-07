@@ -18,8 +18,8 @@ import '../../enums.dart';
 import '../widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
-   HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces, required this.ptsRef});
-  var controllerr = Get.put(ProductController());
+   const HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces, required this.ptsRef});
+  //var controllerr = Get.put(ProductController());
   final Stream<QuerySnapshot> productStream;
   final String branchName1;
   final int branchId;
@@ -44,13 +44,13 @@ class HomePage extends StatelessWidget {
                     future: getDoubleValuesSF(),
                     builder: (context, snapshot) {
                       if(!snapshot.hasData){
-                        return Text('Waitiing');
+                        return const Text('Waiting');
                       }
                       if(snapshot.connectionState== ConnectionState.none){
-                        return Text('waiting 555');
+                        return const Text('waiting Connection');
                       }
                       if(snapshot.hasError){
-                        return Text('waiting');
+                        return const Text('waiting');
                       }
 
                       return Text('${snapshot.requireData}');
@@ -63,8 +63,8 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 10,),
                 Image.asset('assets/image/homeimage.jpg'),
                 const SizedBox(height: 10),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
