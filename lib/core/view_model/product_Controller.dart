@@ -25,7 +25,7 @@ class ProductController extends GetxController {
    String NameMohandseen='';
    String PhoneMohandseen='';
    int currentPoints=0;
-   int totalpointsprice=0;
+   int Pts=0;
 
 
 
@@ -41,12 +41,12 @@ class ProductController extends GetxController {
     int? getpoints=prefs.getInt('points');
 
     currentPoints=getpoints! + 1;
-    totalpointsprice+=15;
+    Pts+=15;
     prefs.setInt('points', currentPoints);
 
     update();
     print('Current Points ${currentPoints}');
-    print('Current price Points ${totalpointsprice}');
+    print('Current price Points ${Pts}');
 
   }
   DecrementPoinst()async{
@@ -54,11 +54,26 @@ class ProductController extends GetxController {
     int? getpoints=prefs.getInt('points');
 
     currentPoints=getpoints! - 1;
+    Pts-=15;
     prefs.setInt('points', currentPoints);
+
 
     update();
     print('Current Points ${currentPoints}');
+    print('Current price Points ${Pts}');
+
   }
+
+
+  // Future<int> Funcy()async{
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   int? getpoints=prefs.getInt('points');
+  //   var mypoints=getpoints! + 1;
+  //   print('my points${mypoints}');
+  //
+  //   return mypoints;
+  //
+  // }
 
 
 
@@ -71,7 +86,7 @@ class ProductController extends GetxController {
   List<dynamic> CartItemsMohandseen = [];
 
   // Function to send data to Firestore for Hosary branch
-  Future<void> sendDatatoFireHosary(idb) async {
+  Future<void> sendDatatoFireHosary(idb,String paymentStatue) async {
    final now = new DateTime.now();
 
     datacolHosary.add({
@@ -82,7 +97,9 @@ class ProductController extends GetxController {
          'Phone':PhoneHosary.toString(),
          'Name' : NameHosary.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
+        'Payment' :paymentStatue
          //'points':currentPoints
+
 
       }
     });
@@ -102,7 +119,7 @@ class ProductController extends GetxController {
   }
 
   // Function to send data to Firestore for Mohandseen branch
-  Future<void> sendDatatoFireMohandseen(idb) async {
+  Future<void> sendDatatoFireMohandseen(idb,String paymentStatue) async {
     final now = new DateTime.now();
     datacolMohandseen.add({
       'order': {
@@ -112,6 +129,8 @@ class ProductController extends GetxController {
         'Phone':PhoneMohandseen.toString(),
         'Name':NameMohandseen.toString(),
         'Time' :DateFormat.jm().format(now).toString(),
+        'Payment' :paymentStatue
+
 
 
 
@@ -215,14 +234,16 @@ class ProductController extends GetxController {
   }
 
   // Function to send cart data to Firestore based on branch ID
-  Future<void> validatorCart({required int id, name, phone, address}) async {
+  Future<void> validatorCart({required int id, name, phone, address,paymentStatue}) async {
     if (branchIdHosary == id) {
       await TakeAddrees(id: id,address:  address,name: name,phone: phone);
-      await sendDatatoFireHosary(id);
+      await sendDatatoFireHosary(id,paymentStatue);
       await updatePointsCash();
-    } else {
+    }
+    if(branchIdMohandseen==id) {
       await TakeAddrees(id:  id,address:  address,name: name,phone: phone);
-      await sendDatatoFireMohandseen(id);
+      await sendDatatoFireMohandseen(id,paymentStatue);
+      await updatePointsCash();
 
     }
   }
@@ -231,7 +252,7 @@ class ProductController extends GetxController {
   SharedPreferences prefs=await SharedPreferences.getInstance();
     String? docId=prefs.get('uid') as String?;
     print('in contro${docId}');
-    int newCurrentPoinst=currentPoints-totalpointsprice;
+    int newCurrentPoinst=currentPoints-Pts;
     print('newpoints${newCurrentPoinst}');
     FirebaseFirestore.instance.collection('users').doc(docId).update({
       'points':newCurrentPoinst
@@ -246,14 +267,14 @@ class ProductController extends GetxController {
       'points':currentPoints
     });
   }
-  Future<void> validatorCartPoints({required int id, name, phone, address,points}) async {
+  Future<void> validatorCartPoints({required int id, name, phone, address,points,paymentStatue}) async {
     if (branchIdHosary == id) {
       await TakeAddrees(id: id,address:  address,name: name,phone: phone);
-      if(currentPoints<totalpointsprice){
+      if(currentPoints<Pts){
         Get.snackbar('Attention', 'You Not have points ',backgroundColor:Colors.yellow);
       }
       else{
-        await sendDatatoFireHosary(id);
+        await sendDatatoFireHosary(id,paymentStatue);
         await updateUserPoints();
         Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
         Get.offAll(()=>BranchScreen());
@@ -266,7 +287,20 @@ class ProductController extends GetxController {
     if(branchIdMohandseen==id)
      {
       await TakeAddrees(id:  id,address:  address,name: name,phone: phone);
-      await sendDatatoFireMohandseen(id);
+      if(currentPoints<Pts){
+        Get.snackbar('Attention', 'You Not have points ',backgroundColor:Colors.yellow);
+      }
+      else{
+        await sendDatatoFireMohandseen(id,paymentStatue);
+        await updateUserPoints();
+        Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
+        Get.offAll(()=>BranchScreen());
+
+
+
+      }
+
+
 
     }
   }

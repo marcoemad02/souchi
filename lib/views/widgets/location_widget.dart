@@ -31,13 +31,13 @@ class LocationWidget extends StatelessWidget {
             ),
             Text(branchName,style: const TextStyle(fontSize: 22),),
             SizedBox(width: 140,),
-            SelectableText(
-              onTap: () async{
-               // Clipboard.setData(const ClipboardData(text: '01207774925'));
-               await Clipboard.getData('01207774925');
-              },
-
-                '01207774925',style: TextStyle(color: kPrimaryColor)),
+            // SelectableText(
+            //   onTap: () async{
+            //    // Clipboard.setData(const ClipboardData(text: '01207774925'));
+            //    await Clipboard.getData('01207774925');
+            //   },
+            //
+            //     '01207774925',style: TextStyle(color: kPrimaryColor)),
           ],
         ),
       ],
