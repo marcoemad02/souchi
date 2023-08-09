@@ -173,7 +173,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 isPhoneValid = _textField2Controller.text.trim().isNotEmpty;
                 isAddressValid = _textField3Controller.text.trim().isNotEmpty;
               });
-             await controller.validatorCartPoints(id: widget.branchId,name: name,address: address,phone: phone,paymentStatue: 'points');
+             await controller.validatorCartPoints(id: widget.branchId,name: name,address: address,phone: phone,paymentStatue: 'Points');
             // Get.snackbar('Item Added', 'Sent to bike',backgroundColor: Colors.green);
             },
 

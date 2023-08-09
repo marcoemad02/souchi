@@ -1,9 +1,5 @@
 
 
-
-
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -27,8 +23,9 @@ class ProductController extends GetxController {
    String NameMohandseen='';
    String PhoneMohandseen='';
    int currentPoints=0;
-   int Pts=0;
+   int PtsTotalPrice=0;
    int rewardPoints=0;
+   int newCurrentPoints=0;
 
 
 
@@ -43,14 +40,14 @@ class ProductController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? getpoints=prefs.getInt('points');
 
-    currentPoints=getpoints! +( 1* Quantity);
+    //currentPoints=getpoints! +( 1* Quantity);
     rewardPoints+=(1*Quantity);
-    Pts+=(15 *Quantity);
-    prefs.setInt('points', currentPoints);
+    PtsTotalPrice+=(15 *Quantity);
+    // prefs.setInt('points', currentPoints);
 
     update();
     print('Current Points ${currentPoints}');
-    print('Current price Points ${Pts}');
+    print('Current price Points ${PtsTotalPrice}');
     print('RewardPoints : ${rewardPoints}');
 
   }
@@ -74,16 +71,16 @@ class ProductController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? getpoints=prefs.getInt('points');
 
-    currentPoints=getpoints! -( 1 * obj) ;
+   //currentPoints=getpoints! -( 1 * obj) ;
     rewardPoints-=(1*obj);
-    Pts-=(15*obj);
-    prefs.setInt('points', currentPoints);
+    PtsTotalPrice-=(15*obj);
+    // prefs.setInt('points', currentPoints);
 
 
     update();
 
     print('Current Points ${currentPoints}');
-    print('Current price Points ${Pts}');
+    print('Current price Points ${PtsTotalPrice}');
     print('RewardPoints : ${rewardPoints}');
 
   }
@@ -125,7 +122,10 @@ class ProductController extends GetxController {
          'Payment' :paymentStatue,
          'OrderId': datacolHosary.id,
          'UserID' :prefs.get('uid'),
-        'RewardPoints':rewardPoints,
+         'RewardPoints':rewardPoints,
+         'UserPoints' : prefs.get('points'),
+         // 'TotalAfterReward':currentPoints,
+          'newCurrentPoints':newCurrentPoints
          //'points':currentPoints
 
 
@@ -162,6 +162,9 @@ class ProductController extends GetxController {
         'OrderId':datacolMohandseen.id,
         'UserID' :prefs.get('uid'),
         'RewardPoints':rewardPoints,
+        'UserPoints' : prefs.get('points'),
+        //'TotalAfterReward':currentPoints,
+        'newCurrentPoints':newCurrentPoints
 
 
 
@@ -285,31 +288,36 @@ class ProductController extends GetxController {
   Future<void> updateUserPoints()async{
   SharedPreferences prefs=await SharedPreferences.getInstance();
     String? docId=prefs.get('uid') as String?;
+    int? userpoints=prefs.getInt('points') ;
     print('in contro${docId}');
-    int newCurrentPoinst=currentPoints-Pts;
-    print('newpoints${newCurrentPoinst}');
-    FirebaseFirestore.instance.collection('users').doc(docId).update({
-      'points':newCurrentPoinst
-    });
+     newCurrentPoints=(userpoints!-PtsTotalPrice);
+     update();
+     print('newpoints${newCurrentPoints}');
+    // FirebaseFirestore.instance.collection('users').doc(docId).update({
+    //   'points':newCurrentPoinst
+    // });
   }
   Future<void> updatePointsCash()async{
   SharedPreferences prefs=await SharedPreferences.getInstance();
     String? docId=prefs.get('uid') as String?;
     print('in contro${docId}');
 
-    FirebaseFirestore.instance.collection('users').doc(docId).update({
-      'points':currentPoints
-    });
+    // FirebaseFirestore.instance.collection('users').doc(docId).update({
+    //   'points':currentPoints
+    // });
   }
   Future<void> validatorCartPoints({required int id, name, phone, address,points,paymentStatue}) async {
+    SharedPreferences prefs=await SharedPreferences.getInstance();
+    int? userpoints=prefs.getInt('points') ;
     if (branchIdHosary == id) {
       await TakeAddrees(id: id,address:  address,name: name,phone: phone);
-      if(currentPoints<Pts){
+      if(userpoints!<PtsTotalPrice){
         Get.snackbar('Attention', 'You Not have points ',backgroundColor:Colors.yellow);
       }
       else{
-        await sendDatatoFireHosary(id,paymentStatue);
         await updateUserPoints();
+        await sendDatatoFireHosary(id,paymentStatue);
+
         Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
         Get.offAll(()=>BranchScreen());
 
@@ -321,12 +329,13 @@ class ProductController extends GetxController {
     if(branchIdMohandseen==id)
      {
       await TakeAddrees(id:  id,address:  address,name: name,phone: phone);
-      if(currentPoints<Pts){
-        Get.snackbar('Attention', 'You Not have points ',backgroundColor:Colors.yellow);
+      if(userpoints!<PtsTotalPrice){
+        Get.snackbar('Attention', 'You Not have Much points ',backgroundColor:Colors.yellow);
       }
       else{
-        await sendDatatoFireMohandseen(id,paymentStatue);
         await updateUserPoints();
+        await sendDatatoFireMohandseen(id,paymentStatue);
+
         Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
         Get.offAll(()=>BranchScreen());
 

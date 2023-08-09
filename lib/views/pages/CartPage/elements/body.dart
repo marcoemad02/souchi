@@ -139,8 +139,9 @@ class CartItemWidget extends StatelessWidget {
         children: [
 
           ClipRRect(
+
               borderRadius: const BorderRadiusDirectional.only(topStart:Radius.circular(8) ,bottomStart:Radius.circular(8) ),
-              child:Image.asset('assets/image/downloadItem.jpg')
+              child:Image.asset('assets/image/downloadItem.jpg',width: 80,height: double.infinity,fit: BoxFit.fitHeight,)
           ),
               
              // Image.asset('assets/image/downloadItem.jpg',fit: BoxFit.fitHeight,width: 110,height: double.infinity,)),
