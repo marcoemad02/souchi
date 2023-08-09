@@ -48,6 +48,8 @@ class RegisterPage extends StatelessWidget {
         // Store additional user information here as needed
       });
 
+
+
       // Show a success SnackBar after successful registration
       showCustomSnackBar(
           context, 'Registration successful!', SnackBarType.Success);

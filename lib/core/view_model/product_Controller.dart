@@ -2,6 +2,8 @@
 
 
 
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -26,41 +28,63 @@ class ProductController extends GetxController {
    String PhoneMohandseen='';
    int currentPoints=0;
    int Pts=0;
+   int rewardPoints=0;
 
 
 
   // Firestore Collections
-  CollectionReference datacolHosary =
-  FirebaseFirestore.instance.collection('HosaryOrders');
-  CollectionReference datacolMohandseen =
-  FirebaseFirestore.instance.collection('MohandseenOrders');
+  DocumentReference datacolHosary =
+  FirebaseFirestore.instance.collection('HosaryOrders').doc();
+  DocumentReference datacolMohandseen =
+  FirebaseFirestore.instance.collection('MohandseenOrders').doc();
 
 
-  IncrementPoints()async{
+  IncrementPoints(int Quantity)async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? getpoints=prefs.getInt('points');
 
-    currentPoints=getpoints! + 1;
-    Pts+=15;
+    currentPoints=getpoints! +( 1* Quantity);
+    rewardPoints+=(1*Quantity);
+    Pts+=(15 *Quantity);
     prefs.setInt('points', currentPoints);
 
     update();
     print('Current Points ${currentPoints}');
     print('Current price Points ${Pts}');
+    print('RewardPoints : ${rewardPoints}');
 
   }
-  DecrementPoinst()async{
+  // DecrementPoinst( )async{
+  //   //CartItemsHosary.removeAt(index);
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   int? getpoints=prefs.getInt('points');
+  //
+  //   currentPoints=getpoints! - 1  ;
+  //   Pts-=15;
+  //   prefs.setInt('points', currentPoints);
+  //
+  //
+  //   update();
+  //   print('Current Points ${currentPoints}');
+  //   print('Current price Points ${Pts}');
+  //
+  // }
+  DecrementPoinst( int obj)async{
+   // CartItemsHosary.removeAt(index);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? getpoints=prefs.getInt('points');
 
-    currentPoints=getpoints! - 1;
-    Pts-=15;
+    currentPoints=getpoints! -( 1 * obj) ;
+    rewardPoints-=(1*obj);
+    Pts-=(15*obj);
     prefs.setInt('points', currentPoints);
 
 
     update();
+
     print('Current Points ${currentPoints}');
     print('Current price Points ${Pts}');
+    print('RewardPoints : ${rewardPoints}');
 
   }
 
@@ -88,16 +112,20 @@ class ProductController extends GetxController {
   // Function to send data to Firestore for Hosary branch
   Future<void> sendDatatoFireHosary(idb,String paymentStatue) async {
    final now = new DateTime.now();
+   SharedPreferences prefs=await SharedPreferences.getInstance();
 
-    datacolHosary.add({
+    datacolHosary.set({
       'order': {
-         'totalprice': totalHosary.toString(),
+         'Totalprice': totalHosary.toString(),
          'orderlist': loopOnCartHosary(),
          'Address':AddressHosary.toString(),
          'Phone':PhoneHosary.toString(),
          'Name' : NameHosary.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
-        'Payment' :paymentStatue
+         'Payment' :paymentStatue,
+         'OrderId': datacolHosary.id,
+         'UserID' :prefs.get('uid'),
+        'RewardPoints':rewardPoints,
          //'points':currentPoints
 
 
@@ -120,16 +148,20 @@ class ProductController extends GetxController {
 
   // Function to send data to Firestore for Mohandseen branch
   Future<void> sendDatatoFireMohandseen(idb,String paymentStatue) async {
-    final now = new DateTime.now();
-    datacolMohandseen.add({
+    final now =  DateTime.now();
+    SharedPreferences prefs=await SharedPreferences.getInstance();
+    datacolMohandseen.set({
       'order': {
-        'totalprice': totalMohandseen.toString(),
+        'Totalprice': totalMohandseen.toString(),
         'orderlist': loopOnCartMohandseen(),
         'Address':AddressMohandseen.toString(),
         'Phone':PhoneMohandseen.toString(),
         'Name':NameMohandseen.toString(),
         'Time' :DateFormat.jm().format(now).toString(),
-        'Payment' :paymentStatue
+        'Payment' :paymentStatue,
+        'OrderId':datacolMohandseen.id,
+        'UserID' :prefs.get('uid'),
+        'RewardPoints':rewardPoints,
 
 
 
@@ -151,6 +183,7 @@ class ProductController extends GetxController {
 
     if (!productExists) {
       CartItemsHosary.add([product, quantity]);
+      IncrementPoints(quantity);
     }
 
     update();
@@ -194,6 +227,7 @@ class ProductController extends GetxController {
 
     if (!productExists) {
       CartItemsMohandseen.add([product, quantity]);
+      IncrementPoints(quantity);
     }
 
     update();
@@ -411,19 +445,21 @@ class ProductController extends GetxController {
     CartItemsHosary.removeAt(index);
     update();
     totalHosary-=(double.parse(obj[0]['price'])*obj[1]);
+    DecrementPoinst(obj[1]);
 
     update();
-    print('mas7 : ${totalHosary}');
-    print('remove : ${CartItemsHosary}');
+    print('TotalSalary : ${totalHosary}');
+    print('CartListHosary : ${CartItemsHosary}');
   }
   void removeItemAtIndexMohandseen(int index,dynamic obj) {
     CartItemsMohandseen.removeAt(index);
     update();
     totalMohandseen-=(double.parse(obj[0]['price'])*obj[1]);
+    DecrementPoinst(obj[1]);
 
     update();
-    print('mas7 : ${totalMohandseen}');
-    print('remove : ${CartItemsMohandseen}');
+    print('TotalSalary : ${totalMohandseen}');
+    print('CartListMohandseen : ${CartItemsMohandseen}');
   }
 
 

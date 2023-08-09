@@ -33,6 +33,7 @@ class BranchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+
         // Navigate to the desired page on tap
         Get.to(() => HomePage(
           productStream: streamBranch,
@@ -42,7 +43,11 @@ class BranchWidget extends StatelessWidget {
           streamBranchRaw: streamBranchRaw,
           streamBranchSauces: streamBranchSauces,
           ptsRef: ptsRef,
-        ));
+        )
+
+
+
+        );
       },
       child: Column(
         children: [

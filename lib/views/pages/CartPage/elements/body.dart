@@ -34,7 +34,7 @@ class Body extends StatelessWidget {
                 //Key(controller.CartItemsHosary[index][0].id),
                 onDismissed: (direction) {
                   controller.removeItemAtIndexHosary(index,controller.CartItemsHosary[index]);
-                  controller.DecrementPoinst();
+
                 },
                 background: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
@@ -73,7 +73,7 @@ class Body extends StatelessWidget {
                    key: Key(controller.CartItemsMohandseen[index][0].id),
                    onDismissed: (direction) {
                      controller.removeItemAtIndexMohandseen(index,controller.CartItemsMohandseen[index]);
-                     controller.DecrementPoinst();
+
 
                    },
                    background: Container(
@@ -82,10 +82,10 @@ class Body extends StatelessWidget {
                        color: Color(0xFFFFE6E6),
                        borderRadius: BorderRadius.circular(15),
                      ),
-                     child: Row(
-                       children: [
+                     child:const  Row(
+                       children:  [
                          Spacer(),
-                         Icon(Icons.delete),
+                           Icon(Icons.delete),
                        ],
                      ),
                    ),
@@ -140,14 +140,8 @@ class CartItemWidget extends StatelessWidget {
 
           ClipRRect(
               borderRadius: const BorderRadiusDirectional.only(topStart:Radius.circular(8) ,bottomStart:Radius.circular(8) ),
-              child:CachedNetworkImage(
-                  height: double.infinity,
-                  width: 110,
-                  fit: BoxFit.fitHeight,
-                  imageUrl: cartObj.get('image'),
-                placeholder: (context, url) => const CircularProgressIndicator(color: kPrimaryColor,),
-                errorWidget: (context, url, error) => const CircularProgressIndicator(color: kPrimaryColor),
-              ),),
+              child:Image.asset('assets/image/downloadItem.jpg')
+          ),
               
              // Image.asset('assets/image/downloadItem.jpg',fit: BoxFit.fitHeight,width: 110,height: double.infinity,)),
           Padding(

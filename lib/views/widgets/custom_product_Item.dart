@@ -48,16 +48,9 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     height: 5,
                   ),
                   // Photo
-                  Container(
-                    height: 90,
-                    child: ClipRRect(
-                      borderRadius:  BorderRadius.circular(10),
-                      child: CachedNetworkImage(
-                       imageUrl: widget.image,
-                        placeholder: (context, url) => CircularProgressIndicator(color: kPrimaryColor),
-                        errorWidget: (context, url, error) => CircularProgressIndicator(color: kPrimaryColor,),
-                      ),
-                    ),
+                  ClipRRect(
+                    borderRadius:  BorderRadius.circular(10),
+                    child: Image.asset('assets/image/downloadItem.jpg'),
                   ),
 
                   // buildClipRRect(widget.image),
@@ -180,7 +173,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       print('Index ${widget.index}');
                       print('Array :${pcontroller.CartItemsHosary}');
                       pcontroller.calculationTotalValidator(widget.idb);
-                      pcontroller.IncrementPoints();
+                     // pcontroller.IncrementPoints(widget.index);
                     },
                     child: const Text(
                       'ADD TO CART',
@@ -213,11 +206,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     // Photo
                     ClipRRect(
                       borderRadius:  BorderRadius.circular(10),
-                      child: CachedNetworkImage(
-                        imageUrl: widget.image,
-                        placeholder: (context, url) => CircularProgressIndicator(color: kPrimaryColor),
-                        errorWidget: (context, url, error) => CircularProgressIndicator(color: kPrimaryColor,),
-                      ),
+                      child: Image.asset('assets/image/downloadItem.jpg'),
                     ),
                     const SizedBox(
                       height: 5,

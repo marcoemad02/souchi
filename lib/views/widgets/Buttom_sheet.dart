@@ -49,7 +49,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         children: [
           TextField(
             controller: _textField1Controller,
-            onSubmitted: (inputValue) {
+            onChanged: (inputValue) {
               setState(() {
                  name=inputValue;
                 // Check if the name is not empty
@@ -76,7 +76,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
           const SizedBox(height: 15),
           TextField(
             controller: _textField2Controller,
-            onSubmitted: (inputValue) {
+            onChanged: (inputValue) {
               setState(() {
                  phone=inputValue;
                 // Check if the phone number is valid
@@ -105,7 +105,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
           const SizedBox(height: 10),
           TextField(
             controller: _textField3Controller,
-            onSubmitted: (inputValue) {
+            onChanged: (inputValue) {
               setState(() {
                 address=inputValue;
 
@@ -146,7 +146,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               });
              await controller.validatorCart(id: widget.branchId,name: name,address: address,phone: phone,paymentStatue: 'Cash');
              Get.snackbar('Item Added', 'Sent to bike',backgroundColor: Colors.green);
-             Get.offAll(()=>BranchScreen());
+             Get.offAll(()=>const BranchScreen());
             },
 
             child: const Text(
