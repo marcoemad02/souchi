@@ -23,9 +23,12 @@ class ProductController extends GetxController {
    String NameMohandseen='';
    String PhoneMohandseen='';
    int currentPoints=0;
-   int PtsTotalPrice=0;
+   //int PtsTotalPrice=0;
    int rewardPoints=0;
-   int newCurrentPoints=0;
+   int TotalRewardPoints=0;
+   int newNotExistPoints=0;
+   int newExistPoints=0;
+   int PtsTotalPrice=0;
 
 
 
@@ -36,21 +39,22 @@ class ProductController extends GetxController {
   FirebaseFirestore.instance.collection('MohandseenOrders').doc();
 
 
-  IncrementPoints(int Quantity)async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int? getpoints=prefs.getInt('points');
-
-    //currentPoints=getpoints! +( 1* Quantity);
-    rewardPoints+=(1*Quantity);
-    PtsTotalPrice+=(15 *Quantity);
-    // prefs.setInt('points', currentPoints);
-
-    update();
-    print('Current Points ${currentPoints}');
-    print('Current price Points ${PtsTotalPrice}');
-    print('RewardPoints : ${rewardPoints}');
-
-  }
+  // IncrementPoints(int Quantity)async{
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   int? getpoints=prefs.getInt('points');
+  //
+  //   currentPoints=getpoints! +( 1* Quantity);
+  //   rewardPoints=(1*Quantity);
+  //   //TotalRewardPoints+=rewardPoints;
+  //   PtsTotalPrice=(15 *Quantity);
+  //   // prefs.setInt('points', currentPoints);
+  //
+  //   update();
+  //   print('Current Points ${currentPoints}');
+  //   print('Current price Points ${PtsTotalPrice}');
+  //   print('RewardPoints : ${rewardPoints}');
+  //
+  // }
   // DecrementPoinst( )async{
   //   //CartItemsHosary.removeAt(index);
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -66,24 +70,42 @@ class ProductController extends GetxController {
   //   print('Current price Points ${Pts}');
   //
   // }
-  DecrementPoinst( int obj)async{
-   // CartItemsHosary.removeAt(index);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int? getpoints=prefs.getInt('points');
-
-   //currentPoints=getpoints! -( 1 * obj) ;
-    rewardPoints-=(1*obj);
-    PtsTotalPrice-=(15*obj);
-    // prefs.setInt('points', currentPoints);
-
-
-    update();
-
-    print('Current Points ${currentPoints}');
-    print('Current price Points ${PtsTotalPrice}');
-    print('RewardPoints : ${rewardPoints}');
-
-  }
+  // DecrementPoinst( int obj)async{
+  //  // CartItemsHosary.removeAt(index);
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   int? getpoints=prefs.getInt('points');
+  //
+  //  //currentPoints=getpoints! -( 1 * obj) ;
+  //   rewardPoints=(1*obj);
+  //   PtsTotalPrice=(15*obj);
+  //   // prefs.setInt('points', currentPoints);
+  //
+  //
+  //   update();
+  //
+  //   print('Current Points ${currentPoints}');
+  //   print('Current price Points ${PtsTotalPrice}');
+  //   print('RewardPoints : ${rewardPoints}');
+  //
+  // }
+  // DecrementPoinstFromCart( int pointQuantity)async{
+  //  // CartItemsHosary.removeAt(index);
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   int? getpoints=prefs.getInt('points');
+  //
+  //  //currentPoints=getpoints! -( 1 * obj) ;
+  //   rewardPoints=(1*pointQuantity);
+  //   PtsTotalPrice=(15*pointQuantity);
+  //   // prefs.setInt('points', currentPoints);
+  //
+  //
+  //   update();
+  //
+  //   print('Current Points ${currentPoints}');
+  //   print('Current price Points ${PtsTotalPrice}');
+  //   print('RewardPoints : ${rewardPoints}');
+  //
+  // }
 
 
   // Future<int> Funcy()async{
@@ -122,10 +144,10 @@ class ProductController extends GetxController {
          'Payment' :paymentStatue,
          'OrderId': datacolHosary.id,
          'UserID' :prefs.get('uid'),
-         'RewardPoints':rewardPoints,
+         'RewardPoints':TotalRewardPoints,
          'UserPoints' : prefs.get('points'),
          // 'TotalAfterReward':currentPoints,
-          'newCurrentPoints':newCurrentPoints
+          'PtsTotalPrice':PtsTotalPrice
          //'points':currentPoints
 
 
@@ -161,10 +183,10 @@ class ProductController extends GetxController {
         'Payment' :paymentStatue,
         'OrderId':datacolMohandseen.id,
         'UserID' :prefs.get('uid'),
-        'RewardPoints':rewardPoints,
+        'RewardPoints':TotalRewardPoints,
         'UserPoints' : prefs.get('points'),
         //'TotalAfterReward':currentPoints,
-        'newCurrentPoints':newCurrentPoints
+       'PtsTotalPrice':PtsTotalPrice
 
 
 
@@ -173,23 +195,32 @@ class ProductController extends GetxController {
     });
   }
 // Hosary branch Function to add a product to the cart
-  void addItemToCartHos(QueryDocumentSnapshot product, int quantity) {
+  void addItemToCartHos(QueryDocumentSnapshot product, int quantity,int points) {
     bool productExists = false;
     for (var cartItem in CartItemsHosary) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
         cartItem[1] = quantity;
+        cartItem[2]=points;
         productExists = true;
+        //newExistPoints=rewardPoints;
+        update();
+        //print('newExistPoints : ${newExistPoints}');
         break;
       }
     }
 
     if (!productExists) {
-      CartItemsHosary.add([product, quantity]);
-      IncrementPoints(quantity);
-    }
+      CartItemsHosary.add([product, quantity,points]);
+      //newNotExistPoints+=rewardPoints;
+      update();
 
-    update();
+     // print('newNotExistPoints : ${newNotExistPoints}');
+      // IncrementPoints(quantity);
+    }
+    // TotalRewardPoints=newExistPoints+newNotExistPoints;
+    // update();
+    // print('TotaaaaaaaaaaaaaaalPoints : ${TotalRewardPoints}');
   }
 
   // Hosary branch Function to remove a product from the cart
@@ -217,20 +248,21 @@ class ProductController extends GetxController {
   // }
 
   // Mohandseen branch Function to remove a product from the cart
-  void addItemToCartMohandseen(QueryDocumentSnapshot product, int quantity) {
+  void addItemToCartMohandseen(QueryDocumentSnapshot product, int quantity,points) {
     bool productExists = false;
     for (var cartItem in CartItemsMohandseen) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
         cartItem[1] = quantity;
+        cartItem[2]=points;
         productExists = true;
         break;
       }
     }
 
     if (!productExists) {
-      CartItemsMohandseen.add([product, quantity]);
-      IncrementPoints(quantity);
+      CartItemsMohandseen.add([product, quantity,points]);
+      // IncrementPoints(quantity);
     }
 
     update();
@@ -253,18 +285,18 @@ class ProductController extends GetxController {
   }
 
   // Function to add a product to the cart based on branch ID
-  void validatorBranch(productObject, idbranch, Quant) {
+  void validatorBranch(productObject, idbranch, int Quant,int points) {
     if (branchIdHosary == idbranch) {
       print('here Hosary');
       print('Here contrp${Quant}');
-      addItemToCartHos(productObject, Quant);
+      addItemToCartHos(productObject, Quant,points);
       print('HosaryList${CartItemsHosary}');
       print('MohandList${CartItemsMohandseen}');
     } else {
       print('here Mohandseen');
       print('Here contrp${Quant}');
 
-      addItemToCartMohandseen(productObject,  Quant);
+      addItemToCartMohandseen(productObject,  Quant,points);
       print('HosaryList${CartItemsHosary}');
       print('MohandList${CartItemsMohandseen}');
     }
@@ -275,37 +307,37 @@ class ProductController extends GetxController {
     if (branchIdHosary == id) {
       await TakeAddrees(id: id,address:  address,name: name,phone: phone);
       await sendDatatoFireHosary(id,paymentStatue);
-      await updatePointsCash();
+      // await updatePointsCash();
     }
     if(branchIdMohandseen==id) {
       await TakeAddrees(id:  id,address:  address,name: name,phone: phone);
       await sendDatatoFireMohandseen(id,paymentStatue);
-      await updatePointsCash();
+      // await updatePointsCash();
 
     }
   }
 
-  Future<void> updateUserPoints()async{
-  SharedPreferences prefs=await SharedPreferences.getInstance();
-    String? docId=prefs.get('uid') as String?;
-    int? userpoints=prefs.getInt('points') ;
-    print('in contro${docId}');
-     newCurrentPoints=(userpoints!-PtsTotalPrice);
-     update();
-     print('newpoints${newCurrentPoints}');
-    // FirebaseFirestore.instance.collection('users').doc(docId).update({
-    //   'points':newCurrentPoinst
-    // });
-  }
-  Future<void> updatePointsCash()async{
-  SharedPreferences prefs=await SharedPreferences.getInstance();
-    String? docId=prefs.get('uid') as String?;
-    print('in contro${docId}');
-
-    // FirebaseFirestore.instance.collection('users').doc(docId).update({
-    //   'points':currentPoints
-    // });
-  }
+  // Future<void> updateUserPoints()async{
+  // SharedPreferences prefs=await SharedPreferences.getInstance();
+  //   String? docId=prefs.get('uid') as String?;
+  //   int? userpoints=prefs.getInt('points') ;
+  //   print('in contro${docId}');
+  //    //newCurrentPoints=(userpoints!-PtsTotalPrice);
+  //    update();
+  //    print('newpoints${newCurrentPoints}');
+  //   // FirebaseFirestore.instance.collection('users').doc(docId).update({
+  //   //   'points':newCurrentPoinst
+  //   // });
+  // }
+  // Future<void> updatePointsCash()async{
+  // SharedPreferences prefs=await SharedPreferences.getInstance();
+  //   String? docId=prefs.get('uid') as String?;
+  //   print('in contro${docId}');
+  //
+  //   // FirebaseFirestore.instance.collection('users').doc(docId).update({
+  //   //   'points':currentPoints
+  //   // });
+  // }
   Future<void> validatorCartPoints({required int id, name, phone, address,points,paymentStatue}) async {
     SharedPreferences prefs=await SharedPreferences.getInstance();
     int? userpoints=prefs.getInt('points') ;
@@ -315,11 +347,11 @@ class ProductController extends GetxController {
         Get.snackbar('Attention', 'You Not have points ',backgroundColor:Colors.yellow);
       }
       else{
-        await updateUserPoints();
+       // await updateUserPoints();
         await sendDatatoFireHosary(id,paymentStatue);
 
         Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
-        Get.offAll(()=>BranchScreen());
+        Get.offAll(()=>const BranchScreen());
 
 
 
@@ -333,11 +365,11 @@ class ProductController extends GetxController {
         Get.snackbar('Attention', 'You Not have Much points ',backgroundColor:Colors.yellow);
       }
       else{
-        await updateUserPoints();
+        //await updateUserPoints();
         await sendDatatoFireMohandseen(id,paymentStatue);
 
         Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
-        Get.offAll(()=>BranchScreen());
+        Get.offAll(()=>const BranchScreen());
 
 
 
@@ -369,13 +401,23 @@ class ProductController extends GetxController {
 
   // Function to calculate total price based on branch ID
   void calculationTotalValidator(idb) {
-    //String totalprice;
+
     if (branchIdHosary == idb) {
       totalHosary = calculateTotalHosaryBranch();
-    } else {
+      TotalRewardPoints=calculateTotalPointsHosaryBranch();
+      PtsTotalPrice=calculateTotalPointsPriceHosaryBranch() ;
+      print('Total LE :${totalHosary}');
+      print('Total reward: ${TotalRewardPoints}');
+      print('Total Pts :${PtsTotalPrice}');
+    } if(branchIdMohandseen==idb) {
       totalMohandseen = calculateTotalMohandseenBranch();
+      TotalRewardPoints=calculateTotalPointsMohandseenBranch();
+      PtsTotalPrice=calculateTotalPointsPriceMohandseenBranch() ;
+      print('Total LE :${totalMohandseen}');
+      print('Total reward: ${TotalRewardPoints}');
+      print('Total Pts :${PtsTotalPrice}');
     }
-    // return totalprice;
+
   }
 
 
@@ -397,12 +439,53 @@ class ProductController extends GetxController {
   }
 
   // Function to calculate total price for Hosary branch
+
+
  double calculateTotalHosaryBranch() {
     double totalPrice = 0;
+
     for (int i = 0; i < CartItemsHosary.length; i++) {
       totalPrice += (double.parse(CartItemsHosary[i][0]['price']) * CartItemsHosary[i][1]);
+
     }
     return totalPrice;
+  }
+ int calculateTotalPointsHosaryBranch() {
+
+    int totalPoints = 0;
+    for (int i = 0; i < CartItemsHosary.length; i++) {
+      totalPoints += CartItemsHosary[i][2] as int ;
+
+    }
+    return totalPoints;
+  }
+ int calculateTotalPointsPriceHosaryBranch() {
+
+    int totalPts = 0;
+    for (int i = 0; i < CartItemsHosary.length; i++) {
+      totalPts += ((CartItemsHosary[i][0]['pts']as int) * (CartItemsHosary[i][1] as int));
+
+    }
+    return totalPts;
+  }
+  int calculateTotalPointsMohandseenBranch() {
+
+
+    int totalPoints = 0;
+    for (int i = 0; i <   CartItemsMohandseen.length; i++) {
+      totalPoints += CartItemsMohandseen[i][2] as int ;
+
+    }
+    return totalPoints;
+  }
+  int calculateTotalPointsPriceMohandseenBranch() {
+
+    int totalPts = 0;
+    for (int i = 0; i < CartItemsMohandseen.length; i++) {
+      totalPts += ((CartItemsMohandseen[i][0]['pts'] as int) * (CartItemsMohandseen[i][1] as int));
+
+    }
+    return totalPts;
   }
 
   // Function to calculate total price for Mohandseen branch
@@ -454,20 +537,30 @@ class ProductController extends GetxController {
     CartItemsHosary.removeAt(index);
     update();
     totalHosary-=(double.parse(obj[0]['price'])*obj[1]);
-    DecrementPoinst(obj[1]);
+    TotalRewardPoints-=( obj[2]as int );
+    PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
+
+
 
     update();
-    print('TotalSalary : ${totalHosary}');
+    print('Total LE :${totalHosary}');
+    print('Total reward: ${TotalRewardPoints}');
+    print('Total Pts :${PtsTotalPrice}');
     print('CartListHosary : ${CartItemsHosary}');
   }
   void removeItemAtIndexMohandseen(int index,dynamic obj) {
     CartItemsMohandseen.removeAt(index);
     update();
     totalMohandseen-=(double.parse(obj[0]['price'])*obj[1]);
-    DecrementPoinst(obj[1]);
+    TotalRewardPoints-=( obj[2]as int );
+    PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
+
+
 
     update();
-    print('TotalSalary : ${totalMohandseen}');
+    print('Total LE :${totalHosary}');
+    print('Total reward: ${TotalRewardPoints}');
+    print('Total Pts :${PtsTotalPrice}');
     print('CartListMohandseen : ${CartItemsMohandseen}');
   }
 
@@ -475,16 +568,7 @@ class ProductController extends GetxController {
 
 
 
-  // void TestCalc(){
-  //   for (int i = 0; i < data55.length; i++) {
-  //     totalHosary += (double.parse(data55[i][0]['price']) * data55[i][1]);
-  //     update();
-  //     print(" Total Hosary ${totalHosary}");
-  //   }
-  //   update();
-  //
-  //
-  // }
+
 }
 
 

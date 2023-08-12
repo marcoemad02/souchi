@@ -30,9 +30,12 @@ class LoginPage extends StatelessWidget {
              print(' new user ${value.get('points').runtimeType}');
              int points=value.get('points');
              String uid=value.get('id');
+             String name=value.get('name');
+
              SharedPreferences prefs = await SharedPreferences.getInstance();
              prefs.setInt('points', points);
              prefs.setString('uid',uid );
+             prefs.setString('name', name);
              print('${prefs.get('uid')}');
 
 

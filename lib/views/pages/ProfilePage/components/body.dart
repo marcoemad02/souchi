@@ -18,7 +18,7 @@ class Body extends StatelessWidget {
       padding:const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          const NameWidget(),
+           NameWidget(),
           const SizedBox(height: 15,),
           const ProfilePic(),
           const SizedBox(height:15),

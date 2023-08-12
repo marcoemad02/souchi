@@ -75,9 +75,9 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     height: 5,
                   ),
                   // Price Pts
-                  const Text.rich(
+                   Text.rich(
                     TextSpan(
-                        text: '15  ',
+                        text: '${widget.productObj.get('pts')}' ,
                         style: TextStyle(fontFamily: kfontPop),
                         children: [
                           TextSpan(
@@ -117,10 +117,11 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                             setState(() {
                               widget.index++;
                               print(widget.index);
+                              //pcontroller.IncrementPoints(widget.index);
                             });
                             //pcontroller.validatorBranch(widget.productObj, widget.idb);
                           },
-                          icon: Icon(Icons.add),
+                          icon:const  Icon(Icons.add),
                         ),
                         Text('${widget.index}'),
 
@@ -131,9 +132,12 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                               if (widget.index <= 1) {
                                 print(widget.index);
                                 widget.index = 1;
+
                               } else {
                                 widget.index--;
                                 print(widget.index);
+                               // pcontroller.DecrementPoinst(widget.index);
+
                               }
                             });
                             // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
@@ -168,12 +172,12 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     ),
                     onPressed: () {
                       pcontroller.validatorBranch(
-                          widget.productObj, widget.idb, widget.index);
+                          widget.productObj, widget.idb, widget.index,widget.index);
                       Get.snackbar('!!!', 'Item Added To Cart',);
                       print('Index ${widget.index}');
                       print('Array :${pcontroller.CartItemsHosary}');
                       pcontroller.calculationTotalValidator(widget.idb);
-                     // pcontroller.IncrementPoints(widget.index);
+                     //pcontroller.IncrementPoints(widget.index);
                     },
                     child: const Text(
                       'ADD TO CART',
