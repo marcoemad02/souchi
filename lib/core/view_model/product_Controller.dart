@@ -151,7 +151,8 @@ class ProductController extends GetxController {
          //'points':currentPoints
 
 
-      }
+      },
+      'color':'White'
     });
   }
 
@@ -186,12 +187,13 @@ class ProductController extends GetxController {
         'RewardPoints':TotalRewardPoints,
         'UserPoints' : prefs.get('points'),
         //'TotalAfterReward':currentPoints,
-       'PtsTotalPrice':PtsTotalPrice
+       'PtsTotalPrice':PtsTotalPrice,
 
 
 
 
-      }
+      },
+      'color':'White'
     });
   }
 // Hosary branch Function to add a product to the cart
