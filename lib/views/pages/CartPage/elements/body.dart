@@ -27,17 +27,17 @@ class Body extends StatelessWidget {
         child: GetBuilder<ProductController>(
           init: ProductController(),
           builder: (controller) => ListView.builder(
-            itemCount: controller.CartItemsHosary.length,
+            itemCount: controller.CartItemsFaisal.length,
             itemBuilder: (context, index) {
               return Dismissible(
                 key:UniqueKey() ,
                 //Key(controller.CartItemsHosary[index][0].id),
                 onDismissed: (direction) {
-                  controller.removeItemAtIndexHosary(index,controller.CartItemsHosary[index]);
+                  controller.removeItemAtIndex_Faisal(index,controller.CartItemsFaisal[index]);
 
                 },
                 background: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding:const  EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     color: Color(0xFFFFE6E6),
                     borderRadius: BorderRadius.circular(15),
@@ -50,8 +50,8 @@ class Body extends StatelessWidget {
                   ),
                 ),
                 child: CartItemWidget(
-                  Quantity: controller.CartItemsHosary[index][1],
-                  cartObj: controller.CartItemsHosary[index][0],
+                  Quantity: controller.CartItemsFaisal[index][1],
+                  cartObj: controller.CartItemsFaisal[index][0],
                   branchID: branchID,
                 ),
               );
@@ -67,19 +67,19 @@ class Body extends StatelessWidget {
            child: GetBuilder<ProductController>(
              init: ProductController(),
              builder: (controller) => ListView.builder(
-               itemCount: controller.CartItemsMohandseen.length,
+               itemCount: controller.CartItemsHaram.length,
                itemBuilder: (context, index) {
                  return Dismissible(
-                   key: Key(controller.CartItemsMohandseen[index][0].id),
+                   key: Key(controller.CartItemsHaram[index][0].id),
                    onDismissed: (direction) {
-                     controller.removeItemAtIndexMohandseen(index,controller.CartItemsMohandseen[index]);
+                     controller.removeItemAtIndex_Haram(index,controller.CartItemsHaram[index]);
 
 
                    },
                    background: Container(
-                     padding: EdgeInsets.symmetric(horizontal: 20),
+                     padding: const EdgeInsets.symmetric(horizontal: 20),
                      decoration: BoxDecoration(
-                       color: Color(0xFFFFE6E6),
+                       color: const Color(0xFFFFE6E6),
                        borderRadius: BorderRadius.circular(15),
                      ),
                      child:const  Row(
@@ -90,8 +90,172 @@ class Body extends StatelessWidget {
                      ),
                    ),
                    child: CartItemWidget(
-                     Quantity: controller.CartItemsMohandseen[index][1],
-                     cartObj: controller.CartItemsMohandseen[index][0],
+                     Quantity: controller.CartItemsHaram[index][1],
+                     cartObj: controller.CartItemsHaram[index][0],
+                     branchID: branchID,
+                   ),
+                 );
+               },
+             ),
+           ),
+         ),
+       );
+     }
+     if(branchId==3){
+       return Padding(
+         padding: const EdgeInsets.symmetric(horizontal: 20),
+         child: Container(
+           child: GetBuilder<ProductController>(
+             init: ProductController(),
+             builder: (controller) => ListView.builder(
+               itemCount: controller.CartItemsOctober.length,
+               itemBuilder: (context, index) {
+                 return Dismissible(
+                   key: Key(controller.CartItemsOctober[index][0].id),
+                   onDismissed: (direction) {
+                     controller.removeItemAtIndex_October(index,controller.CartItemsOctober[index]);
+
+
+                   },
+                   background: Container(
+                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                     decoration: BoxDecoration(
+                       color: const Color(0xFFFFE6E6),
+                       borderRadius: BorderRadius.circular(15),
+                     ),
+                     child:const  Row(
+                       children:  [
+                         Spacer(),
+                           Icon(Icons.delete),
+                       ],
+                     ),
+                   ),
+                   child: CartItemWidget(
+                     Quantity: controller.CartItemsOctober[index][1],
+                     cartObj: controller.CartItemsOctober[index][0],
+                     branchID: branchID,
+                   ),
+                 );
+               },
+             ),
+           ),
+         ),
+       );
+     }
+     if(branchId==4){
+       return Padding(
+         padding: const EdgeInsets.symmetric(horizontal: 20),
+         child: Container(
+           child: GetBuilder<ProductController>(
+             init: ProductController(),
+             builder: (controller) => ListView.builder(
+               itemCount: controller.CartItemsNasrCity.length,
+               itemBuilder: (context, index) {
+                 return Dismissible(
+                   key: Key(controller.CartItemsNasrCity[index][0].id),
+                   onDismissed: (direction) {
+                     controller.removeItemAtIndex_NasrCity(index,controller.CartItemsNasrCity[index]);
+
+
+                   },
+                   background: Container(
+                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                     decoration: BoxDecoration(
+                       color: const Color(0xFFFFE6E6),
+                       borderRadius: BorderRadius.circular(15),
+                     ),
+                     child:const  Row(
+                       children:  [
+                         Spacer(),
+                           Icon(Icons.delete),
+                       ],
+                     ),
+                   ),
+                   child: CartItemWidget(
+                     Quantity: controller.CartItemsNasrCity[index][1],
+                     cartObj: controller.CartItemsNasrCity[index][0],
+                     branchID: branchID,
+                   ),
+                 );
+               },
+             ),
+           ),
+         ),
+       );
+     }
+     if(branchId==5){
+       return Padding(
+         padding: const EdgeInsets.symmetric(horizontal: 20),
+         child: Container(
+           child: GetBuilder<ProductController>(
+             init: ProductController(),
+             builder: (controller) => ListView.builder(
+               itemCount: controller.CartItemsZayedCity.length,
+               itemBuilder: (context, index) {
+                 return Dismissible(
+                   key: Key(controller.CartItemsZayedCity[index][0].id),
+                   onDismissed: (direction) {
+                     controller.removeItemAtIndex_ZayedCity(index,controller.CartItemsZayedCity[index]);
+
+
+                   },
+                   background: Container(
+                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                     decoration: BoxDecoration(
+                       color: const Color(0xFFFFE6E6),
+                       borderRadius: BorderRadius.circular(15),
+                     ),
+                     child:const  Row(
+                       children:  [
+                         Spacer(),
+                           Icon(Icons.delete),
+                       ],
+                     ),
+                   ),
+                   child: CartItemWidget(
+                     Quantity: controller.CartItemsZayedCity[index][1],
+                     cartObj: controller.CartItemsZayedCity[index][0],
+                     branchID: branchID,
+                   ),
+                 );
+               },
+             ),
+           ),
+         ),
+       );
+     }
+     if(branchId==6){
+       return Padding(
+         padding: const EdgeInsets.symmetric(horizontal: 20),
+         child: Container(
+           child: GetBuilder<ProductController>(
+             init: ProductController(),
+             builder: (controller) => ListView.builder(
+               itemCount: controller.CartItemsGiza.length,
+               itemBuilder: (context, index) {
+                 return Dismissible(
+                   key: Key(controller.CartItemsGiza[index][0].id),
+                   onDismissed: (direction) {
+                     controller.removeItemAtIndex_Giza(index,controller.CartItemsGiza[index]);
+
+
+                   },
+                   background: Container(
+                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                     decoration: BoxDecoration(
+                       color: const Color(0xFFFFE6E6),
+                       borderRadius: BorderRadius.circular(15),
+                     ),
+                     child:const  Row(
+                       children:  [
+                         Spacer(),
+                           Icon(Icons.delete),
+                       ],
+                     ),
+                   ),
+                   child: CartItemWidget(
+                     Quantity: controller.CartItemsGiza[index][1],
+                     cartObj: controller.CartItemsGiza[index][0],
                      branchID: branchID,
                    ),
                  );

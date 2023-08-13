@@ -41,7 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   onPressed: () {
 
                     controller.validatorClear(branchId);
-                    Get.to(BranchScreen());
+                    Get.to(()=>const BranchScreen());
 
                   },
                   icon: SvgPicture.asset("assets/icons/Location point.svg",color: Colors.orange,),

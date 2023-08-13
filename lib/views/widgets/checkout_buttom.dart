@@ -90,27 +90,15 @@ class CustomCheckoutButton extends StatelessWidget {
             GetBuilder(
               init: ProductController(),
               builder: (controller) {
-                if(branchId==1){
-                 return Text(
-                    '\$${controller.totalHosary}',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                      color: Colors.grey,
-                      //fontWeight: FontWeight.bold,
-                    ),
-                  );
-                }else{
-                  return Text(
-                    '\$${controller.totalMohandseen}',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                      color: Colors.grey,
-                      //fontWeight: FontWeight.bold,
-                    ),
-                  );
-                }
+                return Text(
+                  '\$${controller.TotalPriceLE}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    color: Colors.grey,
+                    //fontWeight: FontWeight.bold,
+                  ),
+                );
 
               },
             ),

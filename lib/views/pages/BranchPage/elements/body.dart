@@ -17,18 +17,21 @@ class Body extends StatelessWidget {
             padding: const EdgeInsets.all(0.0),
             child: Column(
               children: [
+
+
+                // Faisal Branches   // ID = 1
                 BranchWidget(
                   ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
 
-                    streamBranch: FirebaseFirestore.instance
-                        .collection('HosaryShopItems')
-                        .snapshots(),
-                    branchName: 'Hosary',
-                    branchImage: 'assets/image/حصري.png',
-                    branchId: 1,
-                streamBranchRaw: FirebaseFirestore.instance.collection('HosaryShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                streamBranchFried: FirebaseFirestore.instance.collection('HosaryShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                streamBranchSauces: FirebaseFirestore.instance.collection('HosaryShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('FaisalShopItems')
+                      .snapshots(),
+                  branchName: 'شارع العريش',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 1,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
 
 
                 ),
@@ -37,127 +40,294 @@ class Body extends StatelessWidget {
                 ),
                 BranchWidget(
                   ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
-                    streamBranch: FirebaseFirestore.instance
-                        .collection('MohandseenShopItems')
-                        .snapshots(),
-                    branchName: 'Mohandseen',
-                    branchImage: 'assets/image/مهندسين.png',
-                    branchId: 2,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/مهندسين.png',
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('FaisalShopItems')
+                      .snapshots(),
+                  branchName: 'شارع ضياء',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 1,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
 
                 ),
                 const SizedBox(
-                  height:5,
+                  height: 5,
                 ),
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('FaisalShopItems')
+                      .snapshots(),
+                  branchName: 'شارع نصر الثورة',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 1,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+
+
+                // Haram Branches     //  ID =2
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('HaramShopItems')
+                      .snapshots(),
+                  branchName: 'شارع النخيل',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 2,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('HaramShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('HaramShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('HaramShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('HaramShopItems')
+                      .snapshots(),
+                  branchName: 'فاطمه رشدي',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 2,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('HaramShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('HaramShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('HaramShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+
+
+
+                //October Branches  ID = 3
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('OctoberShopItems')
+                      .snapshots(),
+                  branchName: 'Wadi Degla 1',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 3,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('OctoberShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('OctoberShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('OctoberShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('OctoberShopItems')
+                      .snapshots(),
+                  branchName: 'Wadi Degla 2',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 3,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('OctoberShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('OctoberShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('OctoberShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('OctoberShopItems')
+                      .snapshots(),
+                  branchName: 'امام العبد ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 3,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('OctoberShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('OctoberShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('OctoberShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('OctoberShopItems')
+                      .snapshots(),
+                  branchName: 'الحي الاول شارع الشهداء ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 3,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('OctoberShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('OctoberShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('OctoberShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('OctoberShopItems')
+                      .snapshots(),
+                  branchName: 'الحي السابع ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 3,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('OctoberShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('OctoberShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('OctoberShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+
+                // Nasr City Branches
 
                 BranchWidget(
                   ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
                   streamBranch: FirebaseFirestore.instance
-                      .collection('MohandseenShopItems')
+                      .collection('NasrCityShopItems')
                       .snapshots(),
-                  branchName: 'Mohandseen',
-                  branchImage: 'assets/image/التجمع.png',
-                  branchId: 2,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/التجمع.png',
+                  branchName: 'اول عباس ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 4,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
 
                 ),
                 const SizedBox(
-                  height:5,
+                  height: 5,
+                ),
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('NasrCityShopItems')
+                      .snapshots(),
+                  branchName: 'اول مكرم ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 4,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                BranchWidget(
+                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('NasrCityShopItems')
+                      .snapshots(),
+                  branchName: 'مساكن شيراتون ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 4,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('NasrCityShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
 
+
+                // Zayed City
 
                 BranchWidget(
                   ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
                   streamBranch: FirebaseFirestore.instance
-                      .collection('MohandseenShopItems')
+                      .collection('ZayedCityShopItems')
                       .snapshots(),
-                  branchName: 'Mohandseen',
-                  branchImage: 'assets/image/زايد.png',
-                  branchId: 2,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/زايد.png',
+                  branchName: 'DownTown ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 5,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('ZayedCityShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('ZayedCityShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('ZayedCityShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
 
                 ),
                 const SizedBox(
-                  height:5,
+                  height: 5,
                 ),
 
-
+                // Giza
                 BranchWidget(
                   ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
                   streamBranch: FirebaseFirestore.instance
-                      .collection('MohandseenShopItems')
+                      .collection('GizaShopItems')
                       .snapshots(),
-                  branchName: 'Mohandseen',
-                  branchImage: 'assets/image/حلوان.png',
-                  branchId: 2,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حلوان.png',
+                  branchName: 'Cairo Universty ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 6,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('GizaShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('GizaShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('GizaShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
 
                 ),
                 const SizedBox(
-                  height:5,
+                  height: 5,
                 ),
-
-
                 BranchWidget(
                   ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
                   streamBranch: FirebaseFirestore.instance
-                      .collection('MohandseenShopItems')
+                      .collection('GizaShopItems')
                       .snapshots(),
-                  branchName: 'Mohandseen',
-                  branchImage: 'assets/image/الساحل.png',
-                  branchId: 2,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/الساحل.png',
+                  branchName: 'Dokki Mesahaa ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 6,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('GizaShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('GizaShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('GizaShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
 
                 ),
                 const SizedBox(
-                  height:5,
+                  height: 5,
                 ),
 
 
-                BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
-                  streamBranch: FirebaseFirestore.instance
-                      .collection('MohandseenShopItems')
-                      .snapshots(),
-                  branchName: 'Mohandseen',
-                  branchImage: 'assets/image/مهندسين.png',
-                  branchId: 2,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/مهندسين.png',
-
-                ),
-                const SizedBox(
-                  height:5,
-                ),
 
 
-                BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
-                  streamBranch: FirebaseFirestore.instance
-                      .collection('MohandseenShopItems')
-                      .snapshots(),
-                  branchName: 'Mohandseen',
-                  branchImage: 'assets/image/مهندسين.png',
-                  branchId: 2,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('MohandseenShopItems').doc('SaucesItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/مهندسين.png',
-
-                ),
-                const SizedBox(
-                  height:5,
-                ),
 
 
               ],

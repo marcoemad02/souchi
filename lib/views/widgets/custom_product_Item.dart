@@ -15,7 +15,7 @@ class CustomProdctItem extends StatefulWidget {
       required this.productObj,
       required this.idb,
       this.id,
-      this.idInt, this.image})
+      this.idInt, })
       : super(key: key);
   final bool isActive;
   final QueryDocumentSnapshot productObj;
@@ -23,7 +23,7 @@ class CustomProdctItem extends StatefulWidget {
   final idInt;
   final int idb;
   int index = 1;
-  final image;
+  //final image;
 
   @override
   State<CustomProdctItem> createState() => _CustomProdctItemState();
@@ -175,7 +175,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                           widget.productObj, widget.idb, widget.index,widget.index);
                       Get.snackbar('!!!', 'Item Added To Cart',);
                       print('Index ${widget.index}');
-                      print('Array :${pcontroller.CartItemsHosary}');
+                      //print('Array :${pcontroller.CartItemsHosary}');
                       pcontroller.calculationTotalValidator(widget.idb);
                      //pcontroller.IncrementPoints(widget.index);
                     },
