@@ -17,7 +17,7 @@ class BranchWidget extends StatelessWidget {
     required this.streamBranchRaw,
     required this.streamBranchFried,
     required this.streamBranchSauces,
-    required this.brachImage, required this.ptsRef,
+    required this.brachImage,
   }) : super(key: key);
 
   final Stream<QuerySnapshot> streamBranch;
@@ -27,7 +27,7 @@ class BranchWidget extends StatelessWidget {
   final String branchName;
   final String brachImage;
   final int branchId;
-  final Stream<QuerySnapshot> ptsRef;
+  // final Stream<QuerySnapshot> ptsRef;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class BranchWidget extends StatelessWidget {
           streamBranchFried: streamBranchFried,
           streamBranchRaw: streamBranchRaw,
           streamBranchSauces: streamBranchSauces,
-          ptsRef: ptsRef,
+          // ptsRef: ptsRef,
         )
 
 

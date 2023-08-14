@@ -448,7 +448,7 @@ class ProductController extends GetxController {
 
   // Validator Function to clear cart data based on branch ID
   void validatorClear(idbranch) {
-    if (branchIdFaisal == idbranch) {
+    if (branchIdFaisal == idbranch)  {
       CartItemsFaisal.clear();
        TotalPriceLE=0;
        TotalRewardPoints=0;

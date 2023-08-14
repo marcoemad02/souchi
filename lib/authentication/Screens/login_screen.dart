@@ -35,6 +35,7 @@ class LoginPage extends StatelessWidget {
              SharedPreferences prefs = await SharedPreferences.getInstance();
              prefs.setInt('points', points);
              prefs.setString('uid',uid );
+             uidT=prefs.getString('uid');
              prefs.setString('name', name);
              print('${prefs.get('uid')}');
 

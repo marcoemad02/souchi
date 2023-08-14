@@ -21,7 +21,6 @@ class Body extends StatelessWidget {
 
                 // Faisal Branches   // ID = 1
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('FaisalShopItems')
@@ -39,7 +38,6 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('FaisalShopItems')
@@ -57,7 +55,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('FaisalShopItems')
@@ -78,7 +76,6 @@ class Body extends StatelessWidget {
 
                 // Haram Branches     //  ID =2
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('HaramShopItems')
@@ -96,7 +93,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('HaramShopItems')
@@ -118,7 +115,7 @@ class Body extends StatelessWidget {
 
                 //October Branches  ID = 3
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('OctoberShopItems')
@@ -136,7 +133,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('OctoberShopItems')
@@ -154,7 +151,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('OctoberShopItems')
@@ -172,7 +169,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('OctoberShopItems')
@@ -190,7 +187,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('OctoberShopItems')
@@ -211,7 +208,7 @@ class Body extends StatelessWidget {
                 // Nasr City Branches
 
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('NasrCityShopItems')
@@ -229,7 +226,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('NasrCityShopItems')
@@ -247,7 +244,7 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('NasrCityShopItems')
@@ -269,7 +266,7 @@ class Body extends StatelessWidget {
                 // Zayed City
 
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('ZayedCityShopItems')
@@ -289,7 +286,7 @@ class Body extends StatelessWidget {
 
                 // Giza
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
+
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('GizaShopItems')
@@ -307,7 +304,6 @@ class Body extends StatelessWidget {
                   height: 5,
                 ),
                 BranchWidget(
-                  ptsRef: FirebaseFirestore.instance.collection('users').snapshots(),
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('GizaShopItems')

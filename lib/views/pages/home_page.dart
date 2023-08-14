@@ -18,7 +18,7 @@ import '../../enums.dart';
 import '../widgets/NavBar.dart';
 
 class HomePage extends StatelessWidget {
-   const HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces, required this.ptsRef});
+   const HomePage({Key? key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces, });
   //var controllerr = Get.put(ProductController());
   final Stream<QuerySnapshot> productStream;
   final String branchName1;
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
    final Stream<QuerySnapshot> streamBranchRaw;
    final Stream<QuerySnapshot> streamBranchFried;
    final Stream<QuerySnapshot> streamBranchSauces;
-   final  Stream<QuerySnapshot> ptsRef;
+   // final  Stream<QuerySnapshot> ptsRef;
 
 
   @override
@@ -40,9 +40,13 @@ class HomePage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                FutureBuilder(
-                    future: getDoubleValuesSF(),
+
+                StreamBuilder<dynamic>(
+
+                   stream: FirebaseFirestore.instance.collection('users').doc(uidT).snapshots(),
                     builder: (context, snapshot) {
+
+
                       if(!snapshot.hasData){
                         return const Text('Waiting');
                       }
@@ -52,9 +56,26 @@ class HomePage extends StatelessWidget {
                       if(snapshot.hasError){
                         return const Text('waiting');
                       }
-
-                      return Text('${snapshot.requireData}');
-                    }, ),
+                    dynamic points =snapshot.requireData;
+                    setpoints(points['points']);
+                    return Text('${points['points']}');
+                    },),
+                // FutureBuilder(
+                //
+                //     future: getDoubleValuesSF(),
+                //     builder: (context, snapshot) {
+                //       if(!snapshot.hasData){
+                //         return const Text('Waiting');
+                //       }
+                //       if(snapshot.connectionState== ConnectionState.none){
+                //         return const Text('waiting Connection');
+                //       }
+                //       if(snapshot.hasError){
+                //         return const Text('waiting');
+                //       }
+                //
+                //       return Text('${snapshot.requireData}');
+                //     }, ),
                 const SizedBox(height: 10,),
                 LocationWidget(branchName: branchName1),
 
@@ -96,5 +117,21 @@ class HomePage extends StatelessWidget {
      print('double value${doubleValue}');
       return doubleValue;
 
+   }
+   // Stream<DocumentSnapshot> getStream()  {
+   //   SharedPreferences prefs = await SharedPreferences.getInstance();
+   //   // int? doubleValue = prefs.getInt('points');
+   //   // print('double value${doubleValue}');
+   //  String? uid = prefs.getString('uid');
+   //
+   //  return FirebaseFirestore.instance.collection('users').doc(uid).snapshots();
+   //
+   // }
+
+
+
+   setpoints(points)async{
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+     prefs.setInt('points', points);
    }
 }
