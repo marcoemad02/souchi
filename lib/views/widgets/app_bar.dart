@@ -12,17 +12,18 @@ import '../pages/ProfilePage/profile_screen.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-   CustomAppBar({super.key, required this.streamBranch, required this.branchName, required this.branchId});
+   const CustomAppBar({super.key, required this.streamBranch, required this.branchName, required this.branchId});
 
   @override
   Size get preferredSize => const Size.fromHeight(kAppBarHight);
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
-   var controller=Get.put(ProductController());
+
 
   @override
   Widget build(BuildContext context) {
+    var controller=Get.put(ProductController());
     return SafeArea(
       child: AppBar(
         backgroundColor: const Color(0xffF2F2F2),
@@ -70,7 +71,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 
                       onPressed: () {
-                        Get.to(()=>ProfileScreen(streamBranch: streamBranch,branchId: branchId,branchName: branchName,));
+                        Get.to(()=> ProfileScreen(streamBranch: streamBranch,branchId: branchId,branchName: branchName,));
                       },
                     ),
                   ),

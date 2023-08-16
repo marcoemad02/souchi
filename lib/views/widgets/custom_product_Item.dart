@@ -15,13 +15,14 @@ class CustomProdctItem extends StatefulWidget {
       required this.productObj,
       required this.idb,
       this.id,
-      this.idInt, })
+      this.idInt, required this.image, })
       : super(key: key);
   final bool isActive;
   final QueryDocumentSnapshot productObj;
   final id;
   final idInt;
   final int idb;
+  final String image;
   int index = 1;
   //final image;
 
@@ -49,8 +50,22 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   ),
                   // Photo
                   ClipRRect(
-                    borderRadius:  BorderRadius.circular(10),
-                    child: Image.asset('assets/image/downloadItem.jpg'),
+                    borderRadius: BorderRadius.circular(10),
+                    child: CachedNetworkImage(
+
+                      
+                        placeholder: (context, url) {
+                          return const SizedBox(
+                              height: 100,
+                              width: 100,
+
+                              child:Center(child: CircularProgressIndicator(color: kPrimaryColor,)));
+                        },
+                        errorWidget: (context, url, error) {
+
+                          return const CircularProgressIndicator(color: Colors.red,);
+                        },
+                        imageUrl: widget.image),
                   ),
 
                   // buildClipRRect(widget.image),

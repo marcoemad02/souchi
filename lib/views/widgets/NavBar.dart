@@ -7,25 +7,22 @@ import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 import 'package:souchi/views/pages/CartPage/cart_view.dart';
 import 'package:souchi/views/pages/ProfilePage/profile_screen.dart';
-import 'package:souchi/views/pages/home_page.dart';
 import '../../const.dart';
 import '../../enums.dart';
 
 
 class CustomBottomNavBar extends StatelessWidget {
-   CustomBottomNavBar({
-    Key? key,
-    required this.selectedMenu, required this.streamBranch, required this.branchName, required this.branchId,
-  }) : super(key: key);
+ const   CustomBottomNavBar({Key? key, required this.selectedMenu, required this.streamBranch, required this.branchName, required this.branchId,}) : super(key: key);
 
-  final MenuState selectedMenu;
-  final Stream<QuerySnapshot> streamBranch;
-  final String branchName;
-  final int branchId;
-  var controller=Get.put(ProductController());
+  final  MenuState selectedMenu;
+  final  Stream<QuerySnapshot> streamBranch;
+  final  String branchName;
+  final  int branchId;
+
 
   @override
   Widget build(BuildContext context) {
+    var controller=Get.put(ProductController());
     const Color inActiveIconColor =Color(0xFFB6B6B6);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14),

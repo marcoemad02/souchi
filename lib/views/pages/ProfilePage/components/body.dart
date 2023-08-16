@@ -1,11 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:souchi/views/pages/ProfilePage/Helpcenter_Screen.dart';
 import 'package:souchi/views/pages/ProfilePage/components/name_widget.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 
 import '../../../../authentication/Core/functions.dart';
 import 'profile_menu.dart';
-import 'profile_pic.dart';
+
+
 
 class Body extends StatelessWidget {
   final String branchName;
@@ -20,7 +24,7 @@ class Body extends StatelessWidget {
         children: [
            NameWidget(),
           const SizedBox(height: 15,),
-          const ProfilePic(),
+          // const ProfilePic(),
           const SizedBox(height:15),
           LocationWidget(branchName:branchName ),
           ProfileMenu(
@@ -41,7 +45,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Help Center",
             icon: "assets/icons/Question mark.svg",
-            press: () {},
+            press: () {
+              Get.to(()=>const HelpCenter());
+            },
           ),
           ProfileMenu(
             text: "Log Out",

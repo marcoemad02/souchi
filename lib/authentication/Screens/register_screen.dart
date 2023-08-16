@@ -17,7 +17,7 @@ import 'login_screen.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
-  int points=0;
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -43,7 +43,7 @@ class RegisterPage extends StatelessWidget {
         'email':email,
         'password':password,
         'phone': phone,
-        'points':points,
+        'points':0,
          'id':userCredential.user!.uid
         // Store additional user information here as needed
       });

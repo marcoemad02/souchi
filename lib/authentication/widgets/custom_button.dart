@@ -3,10 +3,10 @@ import 'package:souchi/const.dart';
 import 'custom_text.dart';
 
 class CustomButton extends StatelessWidget {
-    CustomButton({Key? key, required this.onPressed,required this.buttonLabel}) : super(key: key);
+    const CustomButton({Key? key, required this.onPressed,required this.buttonLabel}) : super(key: key);
 
   final VoidCallback onPressed;
-  String? buttonLabel;
+  final String? buttonLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +44,10 @@ class CustomButton extends StatelessWidget {
 
 
 class DiveIntoButton extends StatelessWidget {
-  DiveIntoButton({Key? key, required this.onPressed,required this.buttonLabel}) : super(key: key);
+  const DiveIntoButton({Key? key, required this.onPressed,required this.buttonLabel}) : super(key: key);
 
   final VoidCallback onPressed;
-  String? buttonLabel;
+  final String? buttonLabel;
 
   @override
   Widget build(BuildContext context) {

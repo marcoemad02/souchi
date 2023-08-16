@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:souchi/const.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/styles.dart';
+import 'package:souchi/views/pages/ProfilePage/Helpcenter_Screen.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/category_icon.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
@@ -33,6 +34,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+           backgroundColor: kPrimaryColor,
+        child: const Icon(Icons.phone,),
+
+        onPressed: () {
+             Get.to(()=>const HelpCenter());
+
+      },),
       backgroundColor: Colors.grey[60],
       appBar: CustomAppBar(branchId: branchId,branchName: branchName1,streamBranch: productStream),
       body: CustomScrollView(
@@ -78,9 +87,6 @@ class HomePage extends StatelessWidget {
                 //     }, ),
                 const SizedBox(height: 10,),
                 LocationWidget(branchName: branchName1),
-
-
-
                 const SizedBox(height: 10,),
                 Image.asset('assets/image/homeimage.jpg'),
                 const SizedBox(height: 10),
@@ -97,9 +103,9 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                 Category(productStream:  productStream,branchId: branchId,branchName1: branchName1,streamBranchRaw: streamBranchRaw,streamBranchSauces: streamBranchSauces,streamBranchFried: streamBranchFried,),
+                Category(productStream:  productStream,branchId: branchId,branchName1: branchName1,streamBranchRaw: streamBranchRaw,streamBranchSauces: streamBranchSauces,streamBranchFried: streamBranchFried,),
                 const SizedBox(height: 20),
-                 const BesteSellerList(),
+                const BesteSellerList(),
               ],
             ),
           ),

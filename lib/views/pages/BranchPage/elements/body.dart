@@ -20,37 +20,11 @@ class Body extends StatelessWidget {
 
 
                 // Faisal Branches   // ID = 1
-                BranchWidget(
-
-                  streamBranch: FirebaseFirestore.instance
-                      .collection('FaisalShopItems')
-                      .snapshots(),
-                  branchName: 'شارع العريش',
-                  branchImage: 'assets/image/حصري.png',
-                  branchId: 1,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
-
-
-                ),
+                const NewWidget(),
                 const SizedBox(
                   height: 5,
                 ),
-                BranchWidget(
-
-                  streamBranch: FirebaseFirestore.instance
-                      .collection('FaisalShopItems')
-                      .snapshots(),
-                  branchName: 'شارع ضياء',
-                  branchImage: 'assets/image/حصري.png',
-                  branchId: 1,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
-
-
-                ),
+                const NewWidget2(),
                 const SizedBox(
                   height: 5,
                 ),
@@ -331,6 +305,54 @@ class Body extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class NewWidget2 extends StatelessWidget {
+  const NewWidget2({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BranchWidget(
+
+      streamBranch: FirebaseFirestore.instance
+          .collection('FaisalShopItems')
+          .snapshots(),
+      branchName: 'شارع ضياء',
+      branchImage: 'assets/image/حصري.png',
+      branchId: 1,
+      streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+      streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+      streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
+    );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BranchWidget(
+
+      streamBranch: FirebaseFirestore.instance
+          .collection('FaisalShopItems')
+          .snapshots(),
+      branchName: 'شارع العريش',
+      branchImage: 'assets/image/حصري.png',
+      branchId: 1,
+      streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+      streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+      streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
+
+
     );
   }
 }

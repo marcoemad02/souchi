@@ -286,7 +286,7 @@ class CartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProductController controller = Get.find<ProductController>();
+
 
     return Container(
       height: 140,
@@ -305,7 +305,28 @@ class CartItemWidget extends StatelessWidget {
           ClipRRect(
 
               borderRadius: const BorderRadiusDirectional.only(topStart:Radius.circular(8) ,bottomStart:Radius.circular(8) ),
-              child:Image.asset('assets/image/downloadItem.jpg',width: 80,height: double.infinity,fit: BoxFit.fitHeight,)
+
+
+              child:CachedNetworkImage(
+
+                  width: 110,
+                  height: double.infinity,
+                  fit: BoxFit.fitHeight,
+                  placeholder: (context, url) {
+                    return const SizedBox(
+                        height: 50,
+                        width: 50,
+
+                        child:Center(child: CircularProgressIndicator(color: kPrimaryColor,)));
+                  },
+                  errorWidget: (context, url, error) {
+
+                    return const CircularProgressIndicator(color: Colors.red,);
+                  },
+                  imageUrl: cartObj.get('image')),
+
+
+             // Image.asset('assets/image/downloadItem.jpg',width: 80,height: double.infinity,fit: BoxFit.fitHeight,)
           ),
               
              // Image.asset('assets/image/downloadItem.jpg',fit: BoxFit.fitHeight,width: 110,height: double.infinity,)),
