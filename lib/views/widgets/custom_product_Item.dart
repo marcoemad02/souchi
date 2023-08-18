@@ -79,6 +79,12 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
+
+                  Text(
+                    widget.productObj.get('ingredients'),
+                    style: const TextStyle(fontSize: 8, fontFamily: kfontPop),
+
+                  ),
                   const SizedBox(
                     height: 8,
                   ),
@@ -102,14 +108,14 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                         ]),
                   ),
                   // Bouns Pts
-                  const Text.rich(
+                   Text.rich(
                     TextSpan(
                         text: 'Bouns Pts  ',
-                        style: TextStyle(fontFamily: kfontPop),
+                        style: const TextStyle(fontFamily: kfontPop),
                         children: [
                           TextSpan(
-                            text: '+1',
-                            style: TextStyle(color: Colors.green),
+                            text: '+${widget.productObj.get('bouns')}',
+                            style: const TextStyle(color: Colors.green),
                           ),
                         ]),
                   ),
@@ -187,7 +193,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     ),
                     onPressed: () {
                       pcontroller.validatorBranch(
-                          widget.productObj, widget.idb, widget.index,widget.index);
+                          widget.productObj, widget.idb, widget.index,widget.index,widget.productObj.get('bouns'));
                       Get.snackbar('!!!', 'Item Added To Cart',);
                       print('Index ${widget.index}');
                       //print('Array :${pcontroller.CartItemsHosary}');

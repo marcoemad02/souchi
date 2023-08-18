@@ -32,7 +32,11 @@ class FriedShopProductList extends StatelessWidget {
             return GridView.builder(
               itemCount: data.docs.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, mainAxisSpacing: 5, mainAxisExtent: 350),
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 5,
+                  mainAxisExtent: 350
+
+              ),
               itemBuilder: (context, index) {
                 return CustomProdctItem(productObj: data.docs[index],id: data.docs[index]['docId'],isActive: data.docs[index]['active'],idb: branchId ,idInt: data.docs[index]['id'],image: data.docs[index]['image'],); // not real idb number
 

@@ -222,11 +222,11 @@ class ProductController extends GetxController {
 
 
 
-  void validatorBranch(productObject, idbranch, int Quant,int points) {
+  void validatorBranch(productObject, idbranch, int Quant,int points, bouns) {
     if (branchIdFaisal == idbranch) {
       print('here');
       print('Here contrp${Quant}');
-      addItemToCart_Faisal(productObject, Quant,points);
+      addItemToCart_Faisal(productObject, Quant,points,bouns);
       print('HosaryList${CartItemsFaisal}');
       print('MohandList${CartItemsHaram}');
       print('MohandList${CartItemsOctober}');
@@ -237,7 +237,7 @@ class ProductController extends GetxController {
     if (branchIdHaram== idbranch) {
       print('here');
       print('Here contrp${Quant}');
-      addItemToCart_Haram(productObject, Quant,points);
+      addItemToCart_Haram(productObject, Quant,points,bouns);
       print('HosaryList${CartItemsFaisal}');
       print('MohandList${CartItemsHaram}');
       print('MohandList${CartItemsOctober}');
@@ -248,7 +248,7 @@ class ProductController extends GetxController {
     if (branchIdOctober == idbranch) {
       print('here');
       print('Here contrp${Quant}');
-      addItemToCart_October(productObject, Quant,points);
+      addItemToCart_October(productObject, Quant,points,bouns);
       print('HosaryList${CartItemsFaisal}');
       print('MohandList${CartItemsHaram}');
       print('MohandList${CartItemsOctober}');
@@ -259,7 +259,7 @@ class ProductController extends GetxController {
     if (branchIdNasrCity == idbranch) {
       print('here');
       print('Here contrp${Quant}');
-      addItemToCart_NasrCity(productObject, Quant,points);
+      addItemToCart_NasrCity(productObject, Quant,points,bouns);
       print('HosaryList${CartItemsFaisal}');
       print('MohandList${CartItemsHaram}');
       print('MohandList${CartItemsOctober}');
@@ -270,7 +270,7 @@ class ProductController extends GetxController {
     if (branchIdZayedCity == idbranch) {
       print('here');
       print('Here contrp${Quant}');
-      addItemToCart_ZayedCity(productObject, Quant,points);
+      addItemToCart_ZayedCity(productObject, Quant,points,bouns);
       print('HosaryList${CartItemsFaisal}');
       print('MohandList${CartItemsHaram}');
       print('MohandList${CartItemsOctober}');
@@ -281,7 +281,7 @@ class ProductController extends GetxController {
     if (branchIdGiza == idbranch) {
       print('here');
       print('Here contrp${Quant}');
-      addItemToCart_Giza(productObject, Quant,points);
+      addItemToCart_Giza(productObject, Quant,points,bouns);
       print('HosaryList${CartItemsFaisal}');
       print('MohandList${CartItemsHaram}');
       print('MohandList${CartItemsOctober}');
@@ -684,7 +684,7 @@ class ProductController extends GetxController {
 
     int totalPoints = 0;
     for (int i = 0; i < CartItemsFaisal.length; i++) {
-      totalPoints += CartItemsFaisal[i][2] as int ;
+      totalPoints += ((CartItemsFaisal[i][3] as int )* (CartItemsFaisal[i][1] as int ))   ;
 
     }
     return totalPoints;
@@ -913,13 +913,14 @@ class ProductController extends GetxController {
 
 
   // Functions To Add Item From Cart Depend on Branch
-  void addItemToCart_Faisal(QueryDocumentSnapshot product, int quantity,int points) {
+  void addItemToCart_Faisal(QueryDocumentSnapshot product, int quantity,int points,bouns) {
     bool productExists = false;
     for (var cartItem in CartItemsFaisal) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
         cartItem[1] = quantity;
         cartItem[2]=points;
+        cartItem[3]=bouns;
         productExists = true;
         //newExistPoints=rewardPoints;
         update();
@@ -929,7 +930,7 @@ class ProductController extends GetxController {
     }
 
     if (!productExists) {
-      CartItemsFaisal.add([product, quantity,points]);
+      CartItemsFaisal.add([product, quantity,points,bouns]);
       //newNotExistPoints+=rewardPoints;
       update();
 
@@ -940,13 +941,14 @@ class ProductController extends GetxController {
     // update();
     // print('TotaaaaaaaaaaaaaaalPoints : ${TotalRewardPoints}');
   }
-  void addItemToCart_Haram(QueryDocumentSnapshot product, int quantity,int points) {
+  void addItemToCart_Haram(QueryDocumentSnapshot product, int quantity,int points,bouns) {
     bool productExists = false;
     for (var cartItem in CartItemsHaram) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
         cartItem[1] = quantity;
         cartItem[2]=points;
+        cartItem[3]=bouns;
         productExists = true;
         //newExistPoints=rewardPoints;
         update();
@@ -956,7 +958,7 @@ class ProductController extends GetxController {
     }
 
     if (!productExists) {
-      CartItemsHaram.add([product, quantity,points]);
+      CartItemsHaram.add([product, quantity,points,bouns]);
       //newNotExistPoints+=rewardPoints;
       update();
 
@@ -967,13 +969,14 @@ class ProductController extends GetxController {
     // update();
     // print('TotaaaaaaaaaaaaaaalPoints : ${TotalRewardPoints}');
   }
-  void addItemToCart_October(QueryDocumentSnapshot product, int quantity,int points) {
+  void addItemToCart_October(QueryDocumentSnapshot product, int quantity,int points,bouns) {
     bool productExists = false;
     for (var cartItem in CartItemsOctober) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
         cartItem[1] = quantity;
         cartItem[2]=points;
+        cartItem[3]=bouns;
         productExists = true;
         //newExistPoints=rewardPoints;
         update();
@@ -983,7 +986,7 @@ class ProductController extends GetxController {
     }
 
     if (!productExists) {
-      CartItemsOctober.add([product, quantity,points]);
+      CartItemsOctober.add([product, quantity,points,bouns]);
       //newNotExistPoints+=rewardPoints;
       update();
 
@@ -994,13 +997,14 @@ class ProductController extends GetxController {
     // update();
     // print('TotaaaaaaaaaaaaaaalPoints : ${TotalRewardPoints}');
   }
-  void addItemToCart_NasrCity(QueryDocumentSnapshot product, int quantity,int points) {
+  void addItemToCart_NasrCity(QueryDocumentSnapshot product, int quantity,int points,bouns) {
     bool productExists = false;
     for (var cartItem in CartItemsNasrCity) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
         cartItem[1] = quantity;
         cartItem[2]=points;
+        cartItem[3]=bouns;
         productExists = true;
         //newExistPoints=rewardPoints;
         update();
@@ -1010,7 +1014,7 @@ class ProductController extends GetxController {
     }
 
     if (!productExists) {
-      CartItemsNasrCity.add([product, quantity,points]);
+      CartItemsNasrCity.add([product, quantity,points,bouns]);
       //newNotExistPoints+=rewardPoints;
       update();
 
@@ -1021,13 +1025,14 @@ class ProductController extends GetxController {
     // update();
     // print('TotaaaaaaaaaaaaaaalPoints : ${TotalRewardPoints}');
   }
-  void addItemToCart_ZayedCity(QueryDocumentSnapshot product, int quantity,int points) {
+  void addItemToCart_ZayedCity(QueryDocumentSnapshot product, int quantity,int points,bouns) {
     bool productExists = false;
     for (var cartItem in CartItemsZayedCity) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
         cartItem[1] = quantity;
         cartItem[2]=points;
+        cartItem[3]=bouns;
         productExists = true;
         //newExistPoints=rewardPoints;
         update();
@@ -1037,7 +1042,7 @@ class ProductController extends GetxController {
     }
 
     if (!productExists) {
-      CartItemsZayedCity.add([product, quantity,points]);
+      CartItemsZayedCity.add([product, quantity,points,bouns]);
       //newNotExistPoints+=rewardPoints;
       update();
 
@@ -1048,13 +1053,14 @@ class ProductController extends GetxController {
     // update();
     // print('TotaaaaaaaaaaaaaaalPoints : ${TotalRewardPoints}');
   }
-  void addItemToCart_Giza(QueryDocumentSnapshot product, int quantity,int points) {
+  void addItemToCart_Giza(QueryDocumentSnapshot product, int quantity,int points,bouns) {
     bool productExists = false;
     for (var cartItem in CartItemsGiza) {
       if (cartItem[0].get('docId') == product.get('docId')) {
         // Product already exists in the cart, update the quantity
         cartItem[1] = quantity;
         cartItem[2]=points;
+        cartItem[3]=bouns;
         productExists = true;
         //newExistPoints=rewardPoints;
         update();
@@ -1064,7 +1070,7 @@ class ProductController extends GetxController {
     }
 
     if (!productExists) {
-      CartItemsGiza.add([product, quantity,points]);
+      CartItemsGiza.add([product, quantity,points,bouns]);
       //newNotExistPoints+=rewardPoints;
       update();
 
@@ -1083,7 +1089,7 @@ class ProductController extends GetxController {
     CartItemsFaisal.removeAt(index);
     update();
     TotalPriceLE-=(double.parse(obj[0]['price'])*obj[1]);
-    TotalRewardPoints-=( obj[2]as int );
+    TotalRewardPoints-=((obj[3] as int )* (obj [1] as int ));
     PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
 
 
@@ -1098,7 +1104,7 @@ class ProductController extends GetxController {
     CartItemsHaram.removeAt(index);
     update();
     TotalPriceLE-=(double.parse(obj[0]['price'])*obj[1]);
-    TotalRewardPoints-=( obj[2]as int );
+    TotalRewardPoints-=((obj[3] as int )* (obj [1] as int ));
     PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
 
 
@@ -1113,7 +1119,7 @@ class ProductController extends GetxController {
     CartItemsOctober.removeAt(index);
     update();
     TotalPriceLE-=(double.parse(obj[0]['price'])*obj[1]);
-    TotalRewardPoints-=( obj[2]as int );
+    TotalRewardPoints-=((obj[3] as int )* (obj [1] as int ));
     PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
 
 
@@ -1128,7 +1134,7 @@ class ProductController extends GetxController {
     CartItemsNasrCity.removeAt(index);
     update();
     TotalPriceLE-=(double.parse(obj[0]['price'])*obj[1]);
-    TotalRewardPoints-=( obj[2]as int );
+    TotalRewardPoints-=((obj[3] as int )* (obj [1] as int ));
     PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
 
 
@@ -1143,7 +1149,7 @@ class ProductController extends GetxController {
     CartItemsZayedCity.removeAt(index);
     update();
     TotalPriceLE-=(double.parse(obj[0]['price'])*obj[1]);
-    TotalRewardPoints-=( obj[2]as int );
+    TotalRewardPoints-=((obj[3] as int )* (obj [1] as int ));
     PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
 
 
@@ -1158,7 +1164,7 @@ class ProductController extends GetxController {
     CartItemsGiza.removeAt(index);
     update();
     TotalPriceLE-=(double.parse(obj[0]['price'])*obj[1]);
-    TotalRewardPoints-=( obj[2]as int );
+    TotalRewardPoints-=((obj[3] as int )* (obj [1] as int ));
     PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
 
 

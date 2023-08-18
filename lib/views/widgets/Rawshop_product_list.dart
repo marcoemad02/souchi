@@ -43,7 +43,7 @@ class RawShopProductList extends StatelessWidget {
             return GridView.builder(
               itemCount: data.docs.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, mainAxisSpacing: 5, mainAxisExtent: 375),
+                  crossAxisCount: 2, mainAxisSpacing: 5, mainAxisExtent: 390),
               itemBuilder: (context, index) {
                 return CustomProdctItem(
                   image: data.docs[index]['image'],

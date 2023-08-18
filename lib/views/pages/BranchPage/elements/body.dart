@@ -345,7 +345,7 @@ class NewWidget extends StatelessWidget {
       streamBranch: FirebaseFirestore.instance
           .collection('FaisalShopItems')
           .snapshots(),
-      branchName: 'شارع العريش',
+      branchName: 'EL-Arish',
       branchImage: 'assets/image/حصري.png',
       branchId: 1,
       streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
