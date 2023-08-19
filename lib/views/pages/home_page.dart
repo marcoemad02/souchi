@@ -45,15 +45,15 @@ class HomePage extends StatelessWidget {
         final uidT = uidSnapshot.data!; // Use uidT here
 
         return Scaffold(
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: kPrimaryColor,
-            child: const Icon(
-              Icons.phone,
-            ),
-            onPressed: () {
-              Get.to(() => const HelpCenter());
-            },
-          ),
+          //floatingActionButton: FloatingActionButton(
+            //backgroundColor: kPrimaryColor,
+            //child: const Icon(
+              //Icons.phone,
+            //),
+            //onPressed: () {
+              //Get.to(() => const HelpCenter());
+            //},
+          //),
           backgroundColor: Colors.grey[60],
           appBar: CustomAppBar(
             branchId: branchId,
@@ -82,10 +82,21 @@ class HomePage extends StatelessWidget {
                         }
                         dynamic points = snapshot.requireData;
                         setpoints(points['points']);
-                        return Text('${points['points']}');
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Your Point Is ',style: TextStyle(fontFamily: 'poppins',color:Color(0xffFF7517),fontSize:18),),
+                            Text('${points['points']}',style: const TextStyle(
+                              color: Color(0xffFF7517),
+                              fontFamily: 'poppins',
+                              fontSize: 18,
+                            )
+                              ,),
+                          ],
+                        );
                       },
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 15),
                     LocationWidget(branchName: branchName1),
                     const SizedBox(height: 10),
                     Image.asset('assets/image/homeimage.jpg'),
@@ -116,7 +127,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
           bottomNavigationBar: CustomBottomNavBar(
-            selectedMenu: MenuState.home,
+            selectedMenu: MenuState.location,
             branchId: branchId,
             branchName: branchName1,
             streamBranch:

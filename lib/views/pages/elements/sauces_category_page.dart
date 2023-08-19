@@ -24,10 +24,10 @@ class SaucesCategoryPage extends StatelessWidget {
         appBar: SecondAppBar(streamBranch: streamBranch,branchName: branchName,branchId: branchId),
         body: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
-                children: const [
+                children: [
                   Text('SAUCES SOUSHI',
                     style: Styles.textStyle30orange,
                   ),
@@ -40,7 +40,7 @@ class SaucesCategoryPage extends StatelessWidget {
           ],
 
         ),
-        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.cart, streamBranch: streamBranch, branchName:branchName, branchId:branchId,),
+        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.location, streamBranch: streamBranch, branchName:branchName, branchId:branchId,),
       ),
     );
   }
