@@ -2,21 +2,20 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:souchi/core/view_model/product_Controller.dart';
 
 import '../../const.dart';
 
-
 class CustomProdctItem extends StatefulWidget {
-  CustomProdctItem(
-      {Key? key,
-      this.isActive = true,
-      required this.productObj,
-      required this.idb,
-      this.id,
-      this.idInt, required this.image, })
-      : super(key: key);
+  CustomProdctItem({
+    Key? key,
+    this.isActive = true,
+    required this.productObj,
+    required this.idb,
+    this.id,
+    this.idInt,
+    required this.image,
+  }) : super(key: key);
   final bool isActive;
   final QueryDocumentSnapshot productObj;
   final id;
@@ -24,6 +23,7 @@ class CustomProdctItem extends StatefulWidget {
   final int idb;
   final String image;
   int index = 1;
+
   //final image;
 
   @override
@@ -52,18 +52,19 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: CachedNetworkImage(
-
-                      
                         placeholder: (context, url) {
                           return const SizedBox(
                               height: 100,
                               width: 100,
-
-                              child:Center(child: CircularProgressIndicator(color: kPrimaryColor,)));
+                              child: Center(
+                                  child: CircularProgressIndicator(
+                                color: kPrimaryColor,
+                              )));
                         },
                         errorWidget: (context, url, error) {
-
-                          return const CircularProgressIndicator(color: Colors.red,);
+                          return const CircularProgressIndicator(
+                            color: Colors.red,
+                          );
                         },
                         imageUrl: widget.image),
                   ),
@@ -83,7 +84,6 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   Text(
                     widget.productObj.get('ingredients'),
                     style: const TextStyle(fontSize: 8, fontFamily: kfontPop),
-
                   ),
                   const SizedBox(
                     height: 8,
@@ -96,9 +96,9 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     height: 5,
                   ),
                   // Price Pts
-                   Text.rich(
+                  Text.rich(
                     TextSpan(
-                        text: '${widget.productObj.get('pts')}' ,
+                        text: '${widget.productObj.get('pts')}',
                         style: TextStyle(fontFamily: kfontPop),
                         children: [
                           TextSpan(
@@ -108,7 +108,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                         ]),
                   ),
                   // Bouns Pts
-                   Text.rich(
+                  Text.rich(
                     TextSpan(
                         text: 'Bouns Pts  ',
                         style: const TextStyle(fontFamily: kfontPop),
@@ -130,7 +130,8 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center, // Center the content in the row
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // Center the content in the row
                       children: [
                         // Add icon button
                         IconButton(
@@ -142,7 +143,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                             });
                             //pcontroller.validatorBranch(widget.productObj, widget.idb);
                           },
-                          icon:const  Icon(Icons.add),
+                          icon: const Icon(Icons.add),
                         ),
                         Text('${widget.index}'),
 
@@ -153,12 +154,10 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                               if (widget.index <= 1) {
                                 print(widget.index);
                                 widget.index = 1;
-
                               } else {
                                 widget.index--;
                                 print(widget.index);
-                               // pcontroller.DecrementPoinst(widget.index);
-
+                                // pcontroller.DecrementPoinst(widget.index);
                               }
                             });
                             // pcontroller.validatorDeleteItem(widget.productObj.get('docId'), widget.idb);
@@ -168,14 +167,11 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 5,),
-
-
-
-
+                  const SizedBox(
+                    height: 5,
+                  ),
 
                   OutlinedButton(
-
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(const Color(0xffF2F2F2)),
@@ -193,12 +189,19 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     ),
                     onPressed: () {
                       pcontroller.validatorBranch(
-                          widget.productObj, widget.idb, widget.index,widget.index,widget.productObj.get('bouns'));
-                      Get.snackbar('!!!', 'Item Added To Cart',);
+                          widget.productObj,
+                          widget.idb,
+                          widget.index,
+                          widget.index,
+                          widget.productObj.get('bouns'));
+                      Get.snackbar(
+                        '!!!',
+                        'Item Added To Cart',
+                      );
                       print('Index ${widget.index}');
                       //print('Array :${pcontroller.CartItemsHosary}');
                       pcontroller.calculationTotalValidator(widget.idb);
-                     //pcontroller.IncrementPoints(widget.index);
+                      //pcontroller.IncrementPoints(widget.index);
                     },
                     child: const Text(
                       'ADD TO CART',
@@ -208,8 +211,6 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       ),
                     ),
                   ),
-
-
                 ],
               ),
             ),
@@ -230,7 +231,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     ),
                     // Photo
                     ClipRRect(
-                      borderRadius:  BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10),
                       child: Image.asset('assets/image/downloadItem.jpg'),
                     ),
                     const SizedBox(
@@ -321,7 +322,6 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     //       ),
                     //       textAlign: TextAlign.center),
                     // ),
-
                   ],
                 ),
               ),
@@ -332,25 +332,16 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                 decoration: const BoxDecoration(
                   color: kPrimaryColor, //Color(0xffEEEEEE)
                   borderRadius:
-                  BorderRadius.only(bottomRight: Radius.circular(8)),
+                      BorderRadius.only(bottomRight: Radius.circular(8)),
                 ),
                 child: const Text('Sold Out ',
                     style: TextStyle(
-
                       color: Color(0xff27374D),
                       fontFamily: kfontPop,
-
-
-
                     ),
                     textAlign: TextAlign.center),
               ),
-
-
-
             ]),
           );
   }
-
-
 }

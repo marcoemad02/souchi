@@ -7,7 +7,6 @@ import 'package:souchi/views/widgets/second_appBar.dart';
 import '../../../enums.dart';
 import '../../widgets/NavBar.dart';
 
-
 class FriedCategoryPage extends StatelessWidget {
   const FriedCategoryPage(
       {super.key,

@@ -47,7 +47,6 @@ class RawShopProductList extends StatelessWidget {
               itemBuilder: (context, index) {
                 return CustomProdctItem(
                   image: data.docs[index]['image'],
-
                   productObj: data.docs[index],
                   id: data.docs[index].get('docId'),
                   isActive: data.docs[index].get('active'),
