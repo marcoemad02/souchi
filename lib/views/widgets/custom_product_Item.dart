@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
-
 import '../../const.dart';
 
 class CustomProdctItem extends StatefulWidget {

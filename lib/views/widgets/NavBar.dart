@@ -9,6 +9,7 @@ import 'package:souchi/views/pages/CartPage/cart_view.dart';
 import 'package:souchi/views/pages/ProfilePage/profile_screen.dart';
 import '../../const.dart';
 import '../../enums.dart';
+import '../pages/ProfilePage/Helpcenter_Screen.dart';
 
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -45,23 +46,6 @@ class CustomBottomNavBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              // IconButton(
-              //   icon: SvgPicture.asset(
-              //     "assets/icons/Shop Icon.svg",
-              //     color:  MenuState.home == selectedMenu
-              //         ? kPrimaryColor
-              //         : inActiveIconColor,
-              //   ),
-              //   onPressed: () {
-              //
-              //
-              //     Get.off(()=>HomePage(productStream: streamBranch,   branchName1:branchName, branchId: branchId ,));
-              //
-              //
-              //
-              //   }
-              //
-              // ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Cart Icon.svg",
                   color: MenuState.cart == selectedMenu
@@ -84,11 +68,22 @@ class CustomBottomNavBar extends StatelessWidget {
                     : inActiveIconColor,
                 onPressed: ()
                 { controller.validatorClear(branchId);
-                   Get.to(()=>const BranchScreen()
-
-                   );
+                    Get.to(()=>const BranchScreen());
                 },
               ),
+
+              IconButton(
+                  icon: SvgPicture.asset(
+                    "assets/icons/Call.svg",
+                    color:  MenuState.home == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () {
+                    Get.to(() => const HelpCenter());
+                  }
+              ),
+
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/User Icon.svg",
@@ -98,6 +93,9 @@ class CustomBottomNavBar extends StatelessWidget {
                 ),
                 onPressed: (){Get.to(()=>ProfileScreen(streamBranch: streamBranch,branchName: branchName,branchId: branchId,));}
               ),
+
+
+
             ],
           )),
     );
