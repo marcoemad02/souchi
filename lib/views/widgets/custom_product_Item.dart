@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
+
 import '../../const.dart';
 
 class CustomProdctItem extends StatefulWidget {
@@ -82,7 +83,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
 
                   Text(
                     widget.productObj.get('ingredients'),
-                    style: const TextStyle(fontSize: 8, fontFamily: kfontPop),
+                    style: const TextStyle(fontSize: 10, fontFamily: kfontPop,),
                   ),
                   const SizedBox(
                     height: 8,
