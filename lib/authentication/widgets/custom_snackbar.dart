@@ -7,7 +7,7 @@ enum SnackBarType {
 }
 
 void showCustomSnackBar(BuildContext context, String message, SnackBarType type,
-    {Duration duration = const Duration(seconds: 2)}) {
+    {Duration duration = const Duration(seconds: 3)}) {
   Color backgroundColor;
   Icon icon;
 
@@ -21,7 +21,7 @@ void showCustomSnackBar(BuildContext context, String message, SnackBarType type,
       icon = const Icon(Icons.error, color: Colors.white);
       break;
     case SnackBarType.Info:
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.grey;
       icon = const Icon(Icons.info, color: Colors.white);
       break;
   }
@@ -34,7 +34,7 @@ void showCustomSnackBar(BuildContext context, String message, SnackBarType type,
         Expanded(
           child: Text(
             message,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white,fontSize: 18),
             overflow: TextOverflow.ellipsis,
             maxLines: 2, // Adjust this value as needed
           ),

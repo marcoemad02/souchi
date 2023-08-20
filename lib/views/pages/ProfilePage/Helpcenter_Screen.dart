@@ -1,89 +1,77 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:souchi/const.dart';
-import '../../../enums.dart';
-import '../../widgets/NavBar.dart';
+
+import '../../../authentication/widgets/custom_button.dart';
+import '../../../authentication/widgets/custom_snackbar.dart';
+
 class HelpCenter extends StatelessWidget {
-  const HelpCenter({
-    Key? key
-  }) : super(key: key);
+  const HelpCenter({Key? key}) ;
+
+  // Phone numbers
+  final String number1 = '01000175017';
+  final String number2 = '01150535430';
+  final String number3 = '01024129909';
+
+  // Function to call a number using flutter_phone_direct_caller
+  _callNumber(String number) async {
+    bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+    if (res == true) {
+      // print('Calling $number...');
+    } else {
+      // print('Failed to call $number');
+    }
+  }
+
+  _copyToClipboard(BuildContext context, String number) {
+    Clipboard.setData(ClipboardData(text: number));
+    showCustomSnackBar(
+        context, 'Number copied to clipboard', SnackBarType.Info);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('HELP CENTER         ',
-            style: TextStyle(fontFamily: 'poppins'),
-            ),
-          ],
-        ),
+        title: const Text('Help Center'),
         backgroundColor: kPrimaryColor,
       ),
-      body:Center(
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 32,),
-            const Text('ارقمنا',style: TextStyle(fontFamily: 'alexandria',fontSize: 28),),
-            const SizedBox(height: 26), // Optional spacing from the top
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start, // Aligns the inner column at the top
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '01024129909',
-                      style: TextStyle(fontFamily: 'poppins', fontSize: 28),
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        await Clipboard.setData(const ClipboardData(text: "01024129909"));
-                      },
-                      icon: const Icon(Icons.copy),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '01150535430',
-                      style: TextStyle(fontFamily: 'poppins', fontSize: 28),
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        await Clipboard.setData(const ClipboardData(text: "01150535430"));
-                      },
-                      icon: const Icon(Icons.copy),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      '01000175017 ',
-                      style: TextStyle(fontFamily: 'poppins', fontSize: 28),
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        await Clipboard.setData(const ClipboardData(text: "01000175017"));
-                      },
-                      icon: const Icon(Icons.copy),
-                    ),
-                  ],
-                ),
-              ],
+            const SizedBox(height: 30),
+            CustomButton(
+              buttonLabel: '📞 Call '+ number3,
+              onPressed: () {
+                _callNumber(number3);
+                _copyToClipboard(context, number3);
+              },
             ),
+            CustomButton(
+              buttonLabel: '📞 Call '+ number2,
+              onPressed: () {
+                _callNumber(number2);
+                _copyToClipboard(context, number2);
+              },
+            ),
+
+            CustomButton(
+              buttonLabel: '📞 Call '+ number1,
+              onPressed: () {
+                _callNumber(number1);
+                _copyToClipboard(context, number1);
+              },
+            )
+
+
           ],
         ),
-      )
-
+      ),
     );
   }
 }

@@ -88,7 +88,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         : inActiveIconColor,
                   ),
                   onPressed: () {
-                    Get.to(() => const HelpCenter());
+                    Get.to(() =>  HelpCenter());
                   }),
               IconButton(
                   icon: SvgPicture.asset(

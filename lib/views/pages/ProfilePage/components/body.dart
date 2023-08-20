@@ -56,7 +56,7 @@ class Body extends StatelessWidget {
             text: "Help Center",
             icon: "assets/icons/Question mark.svg",
             press: () {
-              Get.to(() => const HelpCenter());
+              Get.to(() =>  HelpCenter());
             },
           ),
           ProfileMenu(
