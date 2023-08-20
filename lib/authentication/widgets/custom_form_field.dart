@@ -156,7 +156,9 @@ class NameCustomTextFormField extends StatelessWidget {
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.never,
-            prefixIcon: const Icon(Icons.person,              color: kPrimaryColor,
+            prefixIcon: const Icon(
+              Icons.person,
+              color: kPrimaryColor,
             ),
             // Use a person icon for name input
             hintStyle: const TextStyle(
@@ -209,11 +211,11 @@ class PhoneNumberCustomTextField extends StatelessWidget {
         child: TextField(
           controller: controller, // Set the controller for the TextField
           keyboardType: TextInputType.phone,
-          inputFormatters: [maskFormatter], // Add phone number formatter
+          // inputFormatters: [maskFormatter], // Add phone number formatter
           decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.never,
-
-            prefixIcon: const Icon(Icons.phone,
+            prefixIcon: const Icon(
+              Icons.phone,
               color: kPrimaryColor,
             ),
             hintStyle: const TextStyle(

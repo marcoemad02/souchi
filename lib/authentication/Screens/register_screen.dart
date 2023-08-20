@@ -1,18 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/authentication/widgets/login_ui.dart';
 import 'package:souchi/const.dart';
 
-
-
+import '../Core/firebase_auth.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
-import '../widgets/custom_snackbar.dart';
-
 import 'login_screen.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -23,46 +16,19 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
 
-  void _register(BuildContext context) async {
+  Future<void> register(BuildContext context) async {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
     String name = _nameController.text.trim();
-    String phone = _phoneController.text.trim();
+    String phone = _nameController.text.trim();
 
-
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
-
-      // User registered successfully, store additional user information in Firebase database
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .set({
-        'name': name,
-        'email':email,
-        'password':password,
-        'phone': phone,
-        'points':0,
-         'id':userCredential.user!.uid
-        // Store additional user information here as needed
-      });
-
-
-
-      // Show a success SnackBar after successful registration
-      showCustomSnackBar(
-          context, 'Registration successful!', SnackBarType.Success);
-      Get.to(()=>LoginPage());
-      // Navigate to the home page or perform other actions
-      // after successful registration.
-    } on FirebaseAuthException catch (e) {
-      // Handle registration errors
-      print('Error: ${e.message}');
-
-      // Show an error SnackBar if there is an authentication error
-      showCustomSnackBar(context, 'Error: ${e.message}', SnackBarType.Error);
-    }
+    await registerUser(
+      context,
+      name,
+      phone,
+      email,
+      password,
+    );
   }
 
   @override
@@ -93,14 +59,16 @@ class RegisterPage extends StatelessWidget {
                       labelText: 'phone number',
                       controller: _phoneController),
                   CustomButton(
-                    onPressed: () => _register(context),buttonLabel: 'Register',
+                    onPressed: () => register(context),
+                    buttonLabel: 'Register',
                   ),
                   MaterialButton(
                     onPressed: () {
                       // Navigate to the Home Page when the button is pressed
-                    Get.to(()=>LoginPage());
+                      Get.to(() => LoginPage());
                     },
-                    child: const Text('Already have an Account, Login',style: TextStyle(color: kPrimaryColor,fontSize: 20)),
+                    child: const Text('Already have an account, Login',
+                        style: TextStyle(color: kPrimaryColor, fontSize: 20)),
                   ),
                 ],
               ),

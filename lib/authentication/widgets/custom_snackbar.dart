@@ -31,9 +31,13 @@ void showCustomSnackBar(BuildContext context, String message, SnackBarType type,
       children: [
         icon,
         const SizedBox(width: 10),
-        Text(
-          message,
-          style: const TextStyle(color: Colors.white),
+        Expanded(
+          child: Text(
+            message,
+            style: const TextStyle(color: Colors.white),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2, // Adjust this value as needed
+          ),
         ),
       ],
     ),
@@ -43,38 +47,3 @@ void showCustomSnackBar(BuildContext context, String message, SnackBarType type,
 
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
-
-// example how to use :
-///TODO import showCustomSnackBar(context, 'Success!', SnackBarType.Success);
-//
-// void main() {
-//   runApp(MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: CustomSnackBarDemo(),
-//     );
-//   }
-// }
-//
-// class CustomSnackBarDemo extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Custom Snack Bar Demo'),
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () {
-//             showCustomSnackBar(context, 'Success!', SnackBarType.Success);
-//           },
-//           child: Text('Show Success Snack Bar'),
-//         ),
-//       ),
-//     );
-//   }
-// }

@@ -1,27 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:souchi/const.dart';
-import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/views/pages/elements/fried_category_page.dart';
 import 'package:souchi/views/pages/elements/raw_category_page.dart';
 import 'package:souchi/views/pages/elements/sauces_category_page.dart';
 
 class Category extends StatelessWidget {
-    Category({super.key, required this.productStream, required this.branchName1, required this.branchId, required this.streamBranchRaw, required this.streamBranchFried, required this.streamBranchSauces});
+  Category(
+      {super.key,
+      required this.productStream,
+      required this.branchName1,
+      required this.branchId,
+      required this.streamBranchRaw,
+      required this.streamBranchFried,
+      required this.streamBranchSauces});
 
   final Stream<QuerySnapshot> productStream;
   final String branchName1;
   final int branchId;
-   final Stream<QuerySnapshot> streamBranchRaw;
-   final Stream<QuerySnapshot> streamBranchFried;
-   final Stream<QuerySnapshot> streamBranchSauces;
+  final Stream<QuerySnapshot> streamBranchRaw;
+  final Stream<QuerySnapshot> streamBranchFried;
+  final Stream<QuerySnapshot> streamBranchSauces;
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -29,10 +31,16 @@ class Category extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-               Get.to(()=> RawCategoryPage(streamBranch: productStream,branchId: branchId, branchName: branchName1,streamBranchRaw: streamBranchRaw,));
+                Get.to(() => RawCategoryPage(
+                      streamBranch: productStream,
+                      branchId: branchId,
+                      branchName: branchName1,
+                      streamBranchRaw: streamBranchRaw,
+                    ));
               },
               child: const CircleAvatar(
                 radius: 50,
+
                 backgroundImage: AssetImage('assets/image/raw.jpg'),
               ),
             ),
@@ -49,12 +57,17 @@ class Category extends StatelessWidget {
           ],
         ),
         Column(
-          children:  [
+          children: [
             GestureDetector(
               onTap: () {
-                Get.to( ()=>FriedCategoryPage(branchName: branchName1,branchId: branchId,streamBranch: productStream,streamBranchFried: streamBranchFried,));
+                Get.to(() => FriedCategoryPage(
+                      branchName: branchName1,
+                      branchId: branchId,
+                      streamBranch: productStream,
+                      streamBranchFried: streamBranchFried,
+                    ));
               },
-              child:const  CircleAvatar(
+              child: const CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('assets/image/fried.jpg'),
               ),
@@ -72,12 +85,17 @@ class Category extends StatelessWidget {
           ],
         ),
         Column(
-          children:  [
+          children: [
             GestureDetector(
               onTap: () {
-               Get.to( ()=>SaucesCategoryPage(branchName: branchName1,streamBranch: productStream,branchId: branchId,streamBranchSauces: streamBranchSauces,));
+                Get.to(() => SaucesCategoryPage(
+                      branchName: branchName1,
+                      streamBranch: productStream,
+                      branchId: branchId,
+                      streamBranchSauces: streamBranchSauces,
+                    ));
               },
-              child:const  CircleAvatar(
+              child: const CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('assets/image/sauces.jpg'),
               ),
