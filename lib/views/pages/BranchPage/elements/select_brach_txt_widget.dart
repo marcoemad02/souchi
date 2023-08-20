@@ -8,62 +8,35 @@ class SelectBranch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
-      child: Column(
+        child: Column(children: [
+      Row(
         children: [
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Please',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 40,
-                        color: Colors.orange,
-                      ),
-                    ),
-                    Text(
-                      'Select Your Branch ',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(18.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        'لو سمحت',
-                        style: TextStyle(
-                          color: Colors.orange,
-                          fontSize: 28,
-                          fontFamily: kfontAlex,
-                        ),
-                      ),
-                      SizedBox(height: 10,),
-                      Text(
-                        'اختار  الفرع',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 20,
-                          fontFamily: kfontAlex,
-                        ),
-                      )
-                    ],
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Please',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 40,
+                    color: Colors.orange,
                   ),
                 ),
-              ),
-            ],
+                Text(
+                  'Select Your Branch ',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
           ),
           Divider(
             color: Colors.grey,
@@ -71,7 +44,6 @@ class SelectBranch extends StatelessWidget {
           ),
         ],
       ),
-    );
-
+    ]));
   }
 }

@@ -12,6 +12,7 @@ import 'package:souchi/views/widgets/popular_list.dart';
 
 import '../../enums.dart';
 import '../widgets/NavBar.dart';
+import 'ProfilePage/components/name_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -85,8 +86,10 @@ class HomePage extends StatelessWidget {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text('Your Point Is ',style: TextStyle(fontFamily: 'poppins',color:Color(0xffFF7517),fontSize:18),),
-                            Text('${points['points']}',style: const TextStyle(
+                              NameWidget(),
+                              SizedBox(width: 4,),
+                              const Text('Your Points ',style: TextStyle(fontFamily: 'poppins',color:Color(0xffFF7517),fontSize:18),),
+                              Text('${points['points']}',style: const TextStyle(
                               color: Color(0xffFF7517),
                               fontFamily: 'poppins',
                               fontSize: 18,
@@ -96,7 +99,7 @@ class HomePage extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 30),
                     LocationWidget(branchName: branchName1),
                     const SizedBox(height: 10),
                     Image.asset('assets/image/homeimage.jpg'),

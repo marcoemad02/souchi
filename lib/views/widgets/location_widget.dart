@@ -29,8 +29,8 @@ class LocationWidget extends StatelessWidget {
                     Icons.location_on_outlined
                 )
             ),
-            Text(branchName,style: const TextStyle(fontSize: 22),),
-            SizedBox(width: 140,),
+            Text(branchName,style: const TextStyle(fontSize: 20,fontFamily: 'poppins'),),
+            SizedBox(width: 10,),
             // SelectableText(
             //   onTap: () async{
             //    // Clipboard.setData(const ClipboardData(text: '01207774925'));
