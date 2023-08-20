@@ -1,15 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
 import 'package:souchi/authentication/Screens/login_screen.dart';
 import 'package:souchi/styles.dart';
+import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 
-
+import '../../../authentication/Core/if_logged_in.dart'; // Import the LoginCheck widget
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({Key? key}) : super(key: key);
+
   @override
   State<SplashViewbody> createState() => _SplashViewbodyState();
 }
@@ -36,21 +35,15 @@ class _SplashViewbodyState extends State<SplashViewbody>
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        //Get.to(()=>const homePage(),                           ((((هرجع اعدلها تاني بعدين))))
-        //transition: Transition.leftToRight,
-        //duration: kTranstionDuration);
-       // GoRouter.of(context).push('/homePage');
-        // there is an error in navigation here ,,, Get.to() Not Get.toNamed
-        // Get.toNamed('/Home');
-        Get.to(()=>LoginPage());
-
+        Get.to(() => LoginCheck(
+            loggedInWidget: const BranchScreen(),
+            loggedOutWidget: LoginPage()));
       },
     );
   }
 
   @override
   void dispose() {
-
     animationController.dispose();
     super.dispose();
   }
@@ -61,24 +54,25 @@ class _SplashViewbodyState extends State<SplashViewbody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-            height:170,
-            child: Image.asset('assets/image/SplashLogo.png')),
+        SizedBox(
+            height: 170, child: Image.asset('assets/image/SplashLogo.png')),
         const SizedBox(
-          height:32,
+          height: 32,
         ),
         AnimatedBuilder(
-            animation: slidingAnimation,
-            builder: (context, _) {
-              return SlideTransition(
-                position: slidingAnimation,
-                child: const Text(
-                  'Souchiii ',
-                  textAlign: TextAlign.center,
-                  style: Styles.textStyle30orange,
-                ),
-              );
-            })
+          animation: slidingAnimation,
+          builder: (context, _) {
+            return SlideTransition(
+              position: slidingAnimation,
+              child: const Text(
+                'Souchiii ',
+                textAlign: TextAlign.center,
+                style: Styles.textStyle30orange,
+              ),
+            );
+          },
+        ),
+        // Use the LoginCheck widget here
       ],
     );
   }
