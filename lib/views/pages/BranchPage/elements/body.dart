@@ -294,6 +294,42 @@ class Body extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
+                BranchWidget(
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('ShoubraShopItems')
+                      .snapshots(),
+                  branchName: 'روض الفرج ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 7,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(),
+                  brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                BranchWidget(
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('ShoubraShopItems')
+                      .snapshots(),
+                  branchName: ' الخلفاوي ',
+                  branchImage: 'assets/image/حصري.png',
+                  branchId: 7,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(),
+                  brachImage: 'assets/image/حصري.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
 
 
 

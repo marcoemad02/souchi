@@ -18,6 +18,7 @@ class ProductController extends GetxController {
     int    branchIdNasrCity  = 4;
     int    branchIdZayedCity = 5;
     int    branchIdGiza      = 6;
+    int    branchIdShoubra   = 7;
 
 
     //
@@ -49,6 +50,7 @@ class ProductController extends GetxController {
   DocumentReference datacolNasrCity = FirebaseFirestore.instance.collection('NasrCityOrders').doc();
   DocumentReference datacolZayedCity = FirebaseFirestore.instance.collection('ZayedCityOrders').doc();
   DocumentReference datacolGiza = FirebaseFirestore.instance.collection('GizaOrders').doc();
+  DocumentReference datacolShoubra = FirebaseFirestore.instance.collection('ShoubraOrders').doc();
 
 
 
@@ -58,6 +60,7 @@ class ProductController extends GetxController {
   List<dynamic> CartItemsNasrCity = [];
   List<dynamic> CartItemsZayedCity = [];
   List<dynamic> CartItemsGiza = [];
+  List<dynamic> CartItemsShoubra = [];
 
   // Functions to send data to Firestore for Each branch
 
@@ -79,9 +82,8 @@ class ProductController extends GetxController {
          'UserID' :prefs.get('uid'),
          'RewardPoints':TotalRewardPoints,
          'UserPoints' : prefs.get('points'),
-         // 'TotalAfterReward':currentPoints,
+
           'PtsTotalPrice':PtsTotalPrice
-         //'points':currentPoints
 
 
       },
@@ -218,6 +220,32 @@ class ProductController extends GetxController {
       'color':'White'
     });
   }
+  Future<void> sendDatatoFire_Shoubra(idb,String paymentStatue) async {
+   final now = new DateTime.now();
+   SharedPreferences prefs=await SharedPreferences.getInstance();
+
+    datacolShoubra.set({
+      'order': {
+         'Totalprice': TotalPriceLE.toString(),
+         'orderlist': loopOnCart_Shoubra(),
+         'Address':UserAddress.toString(),
+         'Phone':UserPhone.toString(),
+         'Name' : UserName.toString(),
+         'Time' :DateFormat.jm().format(now).toString(),
+         'Payment' :paymentStatue,
+         'OrderId': datacolShoubra.id,
+         'UserID' :prefs.get('uid'),
+         'RewardPoints':TotalRewardPoints,
+         'UserPoints' : prefs.get('points'),
+         // 'TotalAfterReward':currentPoints,
+          'PtsTotalPrice':PtsTotalPrice
+         //'points':currentPoints
+
+
+      },
+      'color':'White'
+    });
+  }
 
 
 
@@ -289,6 +317,18 @@ class ProductController extends GetxController {
       print('MohandList${CartItemsZayedCity}');
       print('MohandList${CartItemsGiza}');
     }
+    if (branchIdShoubra == idbranch) {
+      print('here');
+      print('Here contrp${Quant}');
+      addItemToCart_Shoubra(productObject, Quant,points,bouns);
+      print('HosaryList${CartItemsFaisal}');
+      print('MohandList${CartItemsHaram}');
+      print('MohandList${CartItemsOctober}');
+      print('MohandList${CartItemsNasrCity}');
+      print('MohandList${CartItemsZayedCity}');
+      print('MohandList${CartItemsGiza}');
+      print('MohandList${CartItemsShoubra}');
+    }
   }
 
   // Function to send cart data to Firestore based on branch ID
@@ -328,6 +368,12 @@ class ProductController extends GetxController {
 
 
     }
+    if(branchIdShoubra==id) {
+      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await sendDatatoFire_Shoubra(id,paymentStatue);
+
+
+    }
   }
   Future<void> validatorCart_Points({required int id, name, phone, address,points,paymentStatue}) async {
     SharedPreferences prefs=await SharedPreferences.getInstance();
@@ -335,7 +381,7 @@ class ProductController extends GetxController {
     if (branchIdFaisal == id) {
       await TakeUserOrderData(id: id,address:  address,name: name,phone: phone);
       if(userpoints!<PtsTotalPrice){
-        Get.snackbar('Attention', 'You Not have points ',backgroundColor:Colors.yellow);
+        Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
       else{
        // await updateUserPoints();
@@ -352,7 +398,7 @@ class ProductController extends GetxController {
     if(branchIdHaram==id) {
       await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
       if(userpoints!<PtsTotalPrice){
-        Get.snackbar('Attention', 'You Not have Much points ',backgroundColor:Colors.yellow);
+        Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
       else{
         //await updateUserPoints();
@@ -371,7 +417,7 @@ class ProductController extends GetxController {
     if(branchIdOctober==id) {
       await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
       if(userpoints!<PtsTotalPrice){
-        Get.snackbar('Attention', 'You Not have Much points ',backgroundColor:Colors.yellow);
+        Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
       else{
         //await updateUserPoints();
@@ -390,7 +436,7 @@ class ProductController extends GetxController {
     if(branchIdNasrCity==id) {
       await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
       if(userpoints!<PtsTotalPrice){
-        Get.snackbar('Attention', 'You Not have Much points ',backgroundColor:Colors.yellow);
+        Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
       else{
         //await updateUserPoints();
@@ -409,7 +455,7 @@ class ProductController extends GetxController {
     if(branchIdZayedCity==id) {
       await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
       if(userpoints!<PtsTotalPrice){
-        Get.snackbar('Attention', 'You Not have Much points ',backgroundColor:Colors.yellow);
+        Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
       else{
         //await updateUserPoints();
@@ -428,11 +474,30 @@ class ProductController extends GetxController {
     if(branchIdGiza==id) {
       await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
       if(userpoints!<PtsTotalPrice){
-        Get.snackbar('Attention', 'You Not have Much points ',backgroundColor:Colors.yellow);
+        Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
       else{
         //await updateUserPoints();
         await sendDatatoFire_Giza(id,paymentStatue);
+
+        Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
+        Get.offAll(()=>const BranchScreen());
+
+
+
+      }
+
+
+
+    }
+    if(branchIdShoubra==id) {
+      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      if(userpoints!<PtsTotalPrice){
+        Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
+      }
+      else{
+        //await updateUserPoints();
+        await sendDatatoFire_Shoubra(id,paymentStatue);
 
         Get.snackbar('Attention ', 'Order sent To Bike',backgroundColor: Colors.green);
         Get.offAll(()=>const BranchScreen());
@@ -553,6 +618,25 @@ class ProductController extends GetxController {
       print('Total Pts :${PtsTotalPrice}');
 
     }
+    if (branchIdShoubra == idbranch) {
+      CartItemsShoubra.clear();
+      TotalPriceLE=0;
+      TotalRewardPoints=0;
+      PtsTotalPrice=0;
+      update();
+      print('cartItemCleared');
+      print('HosaryList${CartItemsFaisal}');
+      print('MohandList${CartItemsHaram}');
+      print('MohandList${CartItemsOctober}');
+      print('MohandList${CartItemsNasrCity}');
+      print('MohandList${CartItemsZayedCity}');
+      print('MohandList${CartItemsGiza}');
+      print('MohandList${CartItemsShoubra}');
+      print('Total LE :${TotalPriceLE}');
+      print('Total reward: ${TotalRewardPoints}');
+      print('Total Pts :${PtsTotalPrice}');
+
+    }
   }
 
   //  Validator Function to calculate total price based on branch ID
@@ -602,6 +686,14 @@ class ProductController extends GetxController {
       TotalPriceLE = calculateTotal_GizaBranch();
       TotalRewardPoints=calculateTotalRewardPoints_GizaBranch();
       PtsTotalPrice=calculateTotalPointsPrice_GizaBranch() ;
+      print('Total LE :${TotalPriceLE}');
+      print('Total reward: ${TotalRewardPoints}');
+      print('Total Pts :${PtsTotalPrice}');
+    }
+    if (branchIdShoubra == idb) {
+      TotalPriceLE =    calculateTotal_ShoubraBranch();
+      TotalRewardPoints=calculateTotalRewardPoints_ShoubraBranch();
+      PtsTotalPrice=    calculateTotalPointsPrice_ShoubraBranch() ;
       print('Total LE :${TotalPriceLE}');
       print('Total reward: ${TotalRewardPoints}');
       print('Total Pts :${PtsTotalPrice}');
@@ -662,6 +754,13 @@ class ProductController extends GetxController {
       UserPhone=takePhone(phone);
       update();
     }
+    if(branchIdShoubra==id){
+
+      UserAddress=takeAddrress(address);
+      UserName=takeName(name);
+      UserPhone=takePhone(phone);
+      update();
+    }
 
 
   }
@@ -693,7 +792,8 @@ class ProductController extends GetxController {
 
     int totalPoints = 0;
     for (int i = 0; i < CartItemsHaram.length; i++) {
-      totalPoints += CartItemsHaram[i][2] as int ;
+      totalPoints += ((CartItemsHaram[i][3] as int )* (CartItemsHaram[i][1] as int ))   ;
+
 
     }
     return totalPoints;
@@ -702,7 +802,8 @@ class ProductController extends GetxController {
 
     int totalPoints = 0;
     for (int i = 0; i < CartItemsOctober.length; i++) {
-      totalPoints += CartItemsOctober[i][2] as int ;
+      totalPoints += ((CartItemsOctober[i][3] as int )* (CartItemsOctober[i][1] as int ))   ;
+
 
     }
     return totalPoints;
@@ -711,7 +812,8 @@ class ProductController extends GetxController {
 
     int totalPoints = 0;
     for (int i = 0; i < CartItemsNasrCity.length; i++) {
-      totalPoints += CartItemsNasrCity[i][2] as int ;
+      totalPoints += ((CartItemsNasrCity[i][3] as int )* (CartItemsNasrCity[i][1] as int ))   ;
+
 
     }
     return totalPoints;
@@ -720,7 +822,8 @@ class ProductController extends GetxController {
 
     int totalPoints = 0;
     for (int i = 0; i < CartItemsZayedCity.length; i++) {
-      totalPoints += CartItemsZayedCity[i][2] as int ;
+      totalPoints += ((CartItemsZayedCity[i][3] as int )* (CartItemsZayedCity[i][1] as int ))   ;
+
 
     }
     return totalPoints;
@@ -729,7 +832,17 @@ class ProductController extends GetxController {
 
     int totalPoints = 0;
     for (int i = 0; i < CartItemsGiza.length; i++) {
-      totalPoints += CartItemsGiza[i][2] as int ;
+      totalPoints += ((CartItemsGiza[i][3] as int )* (CartItemsGiza[i][1] as int ))   ;
+
+    }
+    return totalPoints;
+  }
+ int calculateTotalRewardPoints_ShoubraBranch() {
+
+    int totalPoints = 0;
+    for (int i = 0; i < CartItemsShoubra.length; i++) {
+      totalPoints += ((CartItemsShoubra[i][3] as int )* (CartItemsShoubra[i][1] as int ))   ;
+
 
     }
     return totalPoints;
@@ -798,10 +911,19 @@ class ProductController extends GetxController {
     }
     return totalPts;
   }
+  int calculateTotalPointsPrice_ShoubraBranch() {
+
+    int totalPts = 0;
+    for (int i = 0; i < CartItemsShoubra.length; i++) {
+      totalPts += ((CartItemsShoubra[i][0]['pts'] as int) * (CartItemsShoubra[i][1] as int));
+
+    }
+    return totalPts;
+  }
 
 
   // Functions to calculate total price for each Branch
-  double calculateTotal_FaisalBranch() {
+  double calculateTotal_FaisalBranch()  {
     double totalPrice = 0;
 
     for (int i = 0; i < CartItemsFaisal.length; i++) {
@@ -810,14 +932,14 @@ class ProductController extends GetxController {
     }
     return totalPrice;
   }
-  double calculateTotal_HaramBranch() {
+  double calculateTotal_HaramBranch()   {
     double totalPrice = 0;
     for (int i = 0; i < CartItemsHaram.length; i++) {
       totalPrice += (double.parse(CartItemsHaram[i][0]['price']) * CartItemsHaram[i][1]);
     }
     return totalPrice;
   }
-  double calculateTotal_OctoberBranch() {
+  double calculateTotal_OctoberBranch()  {
     double totalPrice = 0;
     for (int i = 0; i < CartItemsOctober.length; i++) {
       totalPrice += (double.parse(CartItemsOctober[i][0]['price']) * CartItemsOctober[i][1]);
@@ -842,6 +964,13 @@ class ProductController extends GetxController {
     double totalPrice = 0;
     for (int i = 0; i < CartItemsGiza.length; i++) {
       totalPrice += (double.parse(CartItemsGiza[i][0]['price']) * CartItemsGiza[i][1]);
+    }
+    return totalPrice;
+  }
+  double calculateTotal_ShoubraBranch() {
+    double totalPrice = 0;
+    for (int i = 0; i < CartItemsShoubra.length; i++) {
+      totalPrice += (double.parse(CartItemsShoubra[i][0]['price']) * CartItemsShoubra[i][1]);
     }
     return totalPrice;
   }
@@ -903,6 +1032,16 @@ class ProductController extends GetxController {
       datalist.add({
         'ProductName':CartItemsGiza[i][0]['productname'],
         'Quantity':CartItemsGiza[i][1],
+      });
+    }
+    return datalist;
+  }
+  List<dynamic> loopOnCart_Shoubra() {
+    List<dynamic> datalist = [];
+    for (int i = 0; i < CartItemsShoubra.length; i++) {
+      datalist.add({
+        'ProductName':CartItemsShoubra[i][0]['productname'],
+        'Quantity':CartItemsShoubra[i][1],
       });
     }
     return datalist;
@@ -1081,6 +1220,34 @@ class ProductController extends GetxController {
     // update();
     // print('TotaaaaaaaaaaaaaaalPoints : ${TotalRewardPoints}');
   }
+  void addItemToCart_Shoubra(QueryDocumentSnapshot product, int quantity,int points,bouns) {
+    bool productExists = false;
+    for (var cartItem in CartItemsShoubra) {
+      if (cartItem[0].get('docId') == product.get('docId')) {
+        // Product already exists in the cart, update the quantity
+        cartItem[1] = quantity;
+        cartItem[2]=points;
+        cartItem[3]=bouns;
+        productExists = true;
+        //newExistPoints=rewardPoints;
+        update();
+        //print('newExistPoints : ${newExistPoints}');
+        break;
+      }
+    }
+
+    if (!productExists) {
+      CartItemsShoubra.add([product, quantity,points,bouns]);
+      //newNotExistPoints+=rewardPoints;
+      update();
+
+      // print('newNotExistPoints : ${newNotExistPoints}');
+      // IncrementPoints(quantity);
+    }
+    // TotalRewardPoints=newExistPoints+newNotExistPoints;
+    // update();
+    // print('TotaaaaaaaaaaaaaaalPoints : ${TotalRewardPoints}');
+  }
 
 
 
@@ -1174,6 +1341,21 @@ class ProductController extends GetxController {
     print('Total reward: ${TotalRewardPoints}');
     print('Total Pts :${PtsTotalPrice}');
     print('CartItemsGiza : ${CartItemsGiza}');
+  }
+  void removeItemAtIndex_Shoubra(int index,dynamic obj) {
+    CartItemsShoubra.removeAt(index);
+    update();
+    TotalPriceLE-=(double.parse(obj[0]['price'])*obj[1]);
+    TotalRewardPoints-=((obj[3] as int )* (obj [1] as int ));
+    PtsTotalPrice-=((obj[0]['pts']as int) * (obj[1]as int));
+
+
+
+    update();
+    print('Total LE         :${TotalPriceLE}');
+    print('Total reward     : ${TotalRewardPoints}');
+    print('Total Pts        :${PtsTotalPrice}');
+    print('CartItemsShoubra : ${CartItemsShoubra}');
   }
 
 

@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<String?>(
+    return FutureBuilder<String?> (
       // Fetch uidT from SharedPreferences
       future: SharedPreferences.getInstance()
           .then((prefs) => prefs.getString('uid')),

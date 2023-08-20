@@ -259,6 +259,48 @@ class Body extends StatelessWidget {
         ),
       );
     }
+    if (branchId == 7) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          child: GetBuilder<ProductController>(
+            init: ProductController(),
+            builder: (controller) => ListView.builder(
+              itemCount: controller.CartItemsShoubra.length,
+              itemBuilder: (context, index) {
+                return Dismissible(
+                  key: Key(controller.CartItemsShoubra[index][0].id),
+                  onDismissed: (direction) {
+                    controller.removeItemAtIndex_Shoubra(
+                        index, controller.CartItemsShoubra[index]
+
+                    );
+                  },
+                  background: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFE6E6),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: const Row(
+                      children: [
+                        Spacer(),
+                        Icon(Icons.delete),
+                      ],
+                    ),
+                  ),
+                  child: CartItemWidget(
+                    Quantity: controller.CartItemsShoubra[index][1],
+                    cartObj: controller.CartItemsShoubra[index][0],
+                    branchID: branchID,
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      );
+    }
 
     /// we want to modify It
     return const Center(child: Text('Erorr'));
