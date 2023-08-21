@@ -259,7 +259,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       style:
                           const TextStyle(fontSize: 18, fontFamily: kfontPop),
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
+                      maxLines:1 ,
                     ),
                     Text(
                       widget.productObj.get('ingredients'),
