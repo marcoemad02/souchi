@@ -24,21 +24,35 @@ class ProductController extends GetxController {
     //
 
     double TotalPriceLE =0;
-  // double totalHosary=0;
-  // double totalMohandseen=0;
-   //String AddressHosary='';
-   //String NameHosary='';
-  // String PhoneHosary='';
+
    String UserAddress='';
    String UserName='';
    String UserPhone='';
-  // int currentPoints=0;
-   //int PtsTotalPrice=0;
+
    int rewardPoints=0;
    int TotalRewardPoints=0;
-   //int newNotExistPoints=0;
- //  int newExistPoints=0;
+
    int PtsTotalPrice=0;
+
+
+
+
+
+   dynamic func()async{
+     SharedPreferences prefs=await SharedPreferences.getInstance();
+     String? id=prefs.getString('id');
+      datacolFaisal.get().then((value) {
+       if(value.get('order')['UserID']==id){
+         return value.get('color');
+       }
+       else{
+         return 'error';
+       }
+
+     });
+
+
+   }
 
 
 

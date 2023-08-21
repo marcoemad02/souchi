@@ -28,7 +28,7 @@ class souchi extends StatelessWidget {
 
        //home:SplashView(),
       // getPages: appRoutes,
-      home: const BranchScreen(),
+      home: const SplashView(),
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: const Color(0xffF6F1F1)), //background for all screens
     );
