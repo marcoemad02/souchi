@@ -82,6 +82,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   ),
 
                   Text(
+
                     widget.productObj.get('ingredients'),
                     style: const TextStyle(fontSize: 10, fontFamily: kfontPop,),
                   ),
@@ -231,9 +232,24 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     ),
                     // Photo
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset('assets/image/downloadItem.jpg'),
-                    ),
+                  borderRadius: BorderRadius.circular(10),
+                  child: CachedNetworkImage(
+                      placeholder: (context, url) {
+                        return const SizedBox(
+                            height: 100,
+                            width: 100,
+                            child: Center(
+                                child: CircularProgressIndicator(
+                                  color: kPrimaryColor,
+                                )));
+                      },
+                      errorWidget: (context, url, error) {
+                        return const CircularProgressIndicator(
+                          color: Colors.red,
+                        );
+                      },
+                      imageUrl: widget.image),
+                ),
                     const SizedBox(
                       height: 5,
                     ),
@@ -244,6 +260,10 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                           const TextStyle(fontSize: 18, fontFamily: kfontPop),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
+                    ),
+                    Text(
+                      widget.productObj.get('ingredients'),
+                      style: const TextStyle(fontSize: 10, fontFamily: kfontPop,),
                     ),
                     const SizedBox(
                       height: 8,
@@ -256,9 +276,9 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       height: 5,
                     ),
                     // Price Pts
-                    const Text.rich(
+                    Text.rich(
                       TextSpan(
-                          text: '15  ',
+                          text: '${widget.productObj.get('pts')}',
                           style: TextStyle(fontFamily: kfontPop),
                           children: [
                             TextSpan(
@@ -268,19 +288,19 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                           ]),
                     ),
                     // Bouns Pts
-                    const Text.rich(
+                    Text.rich(
                       TextSpan(
                           text: 'Bouns Pts  ',
-                          style: TextStyle(fontFamily: kfontPop),
+                          style: const TextStyle(fontFamily: kfontPop),
                           children: [
                             TextSpan(
-                              text: '+1',
-                              style: TextStyle(color: Colors.green),
+                              text: '+${widget.productObj.get('bouns')}',
+                              style: const TextStyle(color: Colors.green),
                             ),
                           ]),
                     ),
                     const SizedBox(
-                      height: 5,
+                      height: 60,
                     ),
                     // Catr Button
                     OutlinedButton(
@@ -305,23 +325,7 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       ),
                     ),
 
-                    // Container(
-                    //   height: 28,
-                    //   width: 78,
-                    //   decoration: const BoxDecoration(
-                    //     color: Colors.grey, //Color(0xffEEEEEE)
-                    //     borderRadius:
-                    //     BorderRadius.only(bottomRight: Radius.circular(8),bottomLeft:Radius.circular(8)),
-                    //   ),
-                    //   child: const Text('Sold Out ',
-                    //       style: TextStyle(
-                    //         color: Colors.white,
-                    //         fontFamily: kfontPop,
-                    //         fontSize: 18,
-                    //
-                    //       ),
-                    //       textAlign: TextAlign.center),
-                    // ),
+
                   ],
                 ),
               ),

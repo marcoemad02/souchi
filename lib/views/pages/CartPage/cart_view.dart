@@ -24,15 +24,6 @@ class CartScreen extends StatelessWidget {
         children: [
           Expanded(child: Body(branchID: branchId, )),
           const SizedBox(height: 20,),
-          // Container(
-          //   child: ElevatedButton(
-          //     child:Text('Calculate') ,
-          //     onPressed:() {
-          //       print('YAd :${controller.data55}');
-          //       controller.TestCalc();
-          //     },
-          //   ),
-          // ),
           CustomCheckoutButton(branchId: branchId,),
           const SizedBox(height: 20,),
         ],
