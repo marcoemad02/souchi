@@ -1,84 +1,81 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:souchi/authentication/Screens/register_screen.dart';
 
+import '../../const.dart';
+import '../../views/pages/BranchPage/branch_view.dart';
+import '../Core/firebase_auth.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
-import '../widgets/custom_snackbar.dart';
-import 'home_page.dart';
-
+import '../widgets/login_ui.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  String? email;
-  String? password;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _login(BuildContext context) async {
+  Future<void> _login(BuildContext context) async {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
-
-    try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
-      // Show a success SnackBar after successful login
-      showCustomSnackBar(context, 'Login successful!', SnackBarType.Success);
-    } on FirebaseAuthException catch (e) {
-      // Show an error SnackBar if there is an authentication error
-      showCustomSnackBar(context, 'Error: ${e.message}', SnackBarType.Error);
-    }
+    await loginUser(context, email, password);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(width: double.infinity, height: 20),
-            EmailCustomTextFormField(
-                'enter your email', 'email', _emailController),
-            const SizedBox(width: double.infinity, height: 20),
-            PasswordCustomTextFormField(
-                'enter your password', 'password', _passwordController),
-            const SizedBox(width: double.infinity, height: 20),
-            CustomButton(
-                onPressed: () => _login(context), buttonLabel: 'Login'),
-            const SizedBox(width: double.infinity, height: 20),
-            MaterialButton(
-              onPressed: () {
-                // Navigate to the Home Page when the button is pressed
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
-                );
-              },
-              child: const Text('Signup'),
+            const UpperPartLogin(
+              text: 'Login',
             ),
-            MaterialButton(
-              onPressed: () {
-                // Navigate to the Home Page when the button is pressed
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
-              },
-              child: const Text('under development back door button'),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 30, left: 10, right: 10, bottom: 10),
+              child: Column(
+                children: [
+                  EmailCustomTextFormField(
+                      'Enter your email', 'Email', _emailController),
+                  const SizedBox(width: double.infinity, height: 20),
+                  PasswordCustomTextFormField(
+                      'Enter your Password', 'Password', _passwordController),
+                  const SizedBox(width: double.infinity, height: 20),
+                  CustomButton(
+                      onPressed: () => _login(context), buttonLabel: 'Login'),
+                  DiveIntoButton(
+                    onPressed: () {
+                      // Navigate to the Home Page when the button is pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BranchScreen()),
+                      );
+                    },
+                    buttonLabel: 'Dive into Sushi Experience',
+                  ),
+                  MaterialButton(
+                    // Navigate to the Home Page when the button is pressed
+                    onPressed: () {
+                      // Navigate to the Home Page when the button is pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RegisterPage()),
+                      );
+                    },
+                    child: const Text('Create new account, SignUp',
+                        style: TextStyle(color: kPrimaryColor, fontSize: 20)),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
     );
   }
+}
+
+Future<DocumentSnapshot> getCurrentUser(String uid) async {
+  return await FirebaseFirestore.instance.collection('users').doc(uid).get();
 }
