@@ -1,18 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
 import 'package:souchi/views/pages/BranchPage/branch_view.dart';
 import '../../const.dart';
 
-
-
 class BottomSheetContent extends StatefulWidget {
-  const BottomSheetContent({super.key, required this.branchId});
+  const BottomSheetContent({Key? key, required this.branchId}) : super(key: key);
 
   @override
   _BottomSheetContentState createState() => _BottomSheetContentState();
+
   final branchId;
 }
 
@@ -24,17 +22,21 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   bool isNameValid = true;
   bool isPhoneValid = true;
   bool isAddressValid = true;
-   var controller =Get.put(ProductController());
+  var controller = Get.put(ProductController());
 
-  String name='';
-  String phone='';
-  String address='';
+  String name = '';
+  String phone = '';
+  String address = '';
+
+  bool areAllFieldsFilled() {
+    return name.isNotEmpty && phone.isNotEmpty && address.isNotEmpty;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 700,
-      padding:const  EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(50.0)),
@@ -45,23 +47,21 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
-
         children: [
           TextField(
             controller: _textField1Controller,
             onChanged: (inputValue) {
               setState(() {
-                 name=inputValue;
-                // Check if the name is not empty
+                name = inputValue;
                 isNameValid = inputValue.trim().isNotEmpty;
               });
-              print('Name : ${name}');
+              print('Name: $name');
             },
             decoration: InputDecoration(
-              focusedBorder:const  UnderlineInputBorder(
+              focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor), // Orange border color
               ),
-              labelStyle:const  TextStyle(color: kPrimaryColor), // Orange label text color
+              labelStyle: const TextStyle(color: kPrimaryColor), // Orange label text color
               errorText: isNameValid ? null : "Please enter your name",
               errorStyle: const TextStyle(color: kPrimaryColor),
               focusedErrorBorder: const UnderlineInputBorder(
@@ -78,11 +78,10 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
             controller: _textField2Controller,
             onChanged: (inputValue) {
               setState(() {
-                 phone=inputValue;
-                // Check if the phone number is valid
+                phone = inputValue;
                 isPhoneValid = inputValue.length == 11 && int.tryParse(inputValue) != null;
               });
-            print('Phone : ${phone}');
+              print('Phone: $phone');
             },
             maxLength: 11,
             keyboardType: TextInputType.number,
@@ -92,9 +91,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               ),
               labelStyle: const TextStyle(color: kPrimaryColor), // Orange label text color
               errorText: isPhoneValid ? null : "Please enter your phone number",
-              errorStyle:const  TextStyle(color: kPrimaryColor),
+              errorStyle: const TextStyle(color: kPrimaryColor),
               focusedErrorBorder: const UnderlineInputBorder(
-                borderSide:  BorderSide(color: kPrimaryColor),
+                borderSide: BorderSide(color: kPrimaryColor),
               ),
               errorBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: kPrimaryColor),
@@ -107,12 +106,10 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
             controller: _textField3Controller,
             onChanged: (inputValue) {
               setState(() {
-                address=inputValue;
-
-                // Check if the address is not empty
+                address = inputValue;
                 isAddressValid = inputValue.trim().isNotEmpty;
               });
-              print('address : ${address}');
+              print('Address: $address');
             },
             decoration: InputDecoration(
               focusedBorder: const UnderlineInputBorder(
@@ -144,11 +141,21 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 isPhoneValid = _textField2Controller.text.trim().isNotEmpty;
                 isAddressValid = _textField3Controller.text.trim().isNotEmpty;
               });
-             await controller.validatorCart_Cash(id: widget.branchId,name: name,address: address,phone: phone,paymentStatue: 'Cash');
-             Get.snackbar('Item Added', 'Sent to bike',backgroundColor: Colors.green);
-             Get.offAll(()=>const BranchScreen());
-            },
 
+              if (areAllFieldsFilled()) {
+                await controller.validatorCart_Cash(
+                  id: widget.branchId,
+                  name: name,
+                  address: address,
+                  phone: phone,
+                  paymentStatue: 'Cash',
+                );
+                Get.snackbar('Item Added', 'Sent to bike', backgroundColor: Colors.green);
+                Get.offAll(() => const BranchScreen());
+              } else {
+                Get.snackbar('Error', 'Add your Name, Phone and Address');
+              }
+            },
             child: const Text(
               "Send Order To Bike",
               style: TextStyle(
@@ -158,7 +165,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               ),
             ),
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(height: 20),
           // checkpoints by points
           OutlinedButton(
             style: OutlinedButton.styleFrom(
@@ -173,10 +180,21 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 isPhoneValid = _textField2Controller.text.trim().isNotEmpty;
                 isAddressValid = _textField3Controller.text.trim().isNotEmpty;
               });
-             await controller.validatorCart_Points(id: widget.branchId,name: name,address: address,phone: phone,paymentStatue: 'Points');
-            // Get.snackbar('Item Added', 'Sent to bike',backgroundColor: Colors.green);
-            },
 
+              if (areAllFieldsFilled()) {
+                await controller.validatorCart_Cash(
+                  id: widget.branchId,
+                  name: name,
+                  address: address,
+                  phone: phone,
+                  paymentStatue: 'Points',
+                );
+                Get.snackbar('Item Added', 'Sent to bike', backgroundColor: Colors.green);
+                Get.offAll(() => const BranchScreen());
+              } else {
+                Get.snackbar('Error', 'Add your Name, Phone and Address');
+              }
+            },
             child: const Text(
               "Send Order To Bike  ByPoints",
               style: TextStyle(
@@ -186,9 +204,16 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               ),
             ),
           ),
-const SizedBox(height: 20,),
-          const Text('Delivery fees depend on your Location , It usually starts from 20 LE ',style: TextStyle(  fontFamily: 'Poppins',
-            color: Colors.black45,fontSize: 18),textAlign: TextAlign.center,),
+          const SizedBox(height: 20),
+          const Text(
+            'Delivery fees depend on your Location, It usually starts from 20 LE',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              color: Colors.black45,
+              fontSize: 18,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );

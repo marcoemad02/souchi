@@ -54,7 +54,7 @@ class FriedCategoryPage extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: CustomBottomNavBar(
-          selectedMenu: MenuState.cart,
+          selectedMenu: MenuState.location,
           streamBranch: streamBranch,
           branchName: branchName,
           branchId: branchId,

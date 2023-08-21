@@ -41,7 +41,7 @@ class RawCategoryPage extends StatelessWidget {
           ],
 
         ),
-        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.cart, streamBranch: streamBranch, branchName:branchName, branchId:branchId,),
+        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.location, streamBranch: streamBranch, branchName:branchName, branchId:branchId,),
       ),
     );
   }
