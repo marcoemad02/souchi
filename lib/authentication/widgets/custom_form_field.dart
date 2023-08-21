@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
@@ -39,9 +40,12 @@ class EmailCustomTextFormField extends StatelessWidget {
         child: TextFormField(
           controller: controller, // Set the controller for the TextFormField
           // onTap: onTap,
+          maxLength: 30,
+          maxLengthEnforcement: MaxLengthEnforcement.enforced,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.never,
+            counterText: '',
             prefixIcon: const Icon(
               Icons.email,
               color: kPrimaryColor,
@@ -73,7 +77,8 @@ class EmailCustomTextFormField extends StatelessWidget {
   }
 }
 
-class PasswordCustomTextFormField extends StatelessWidget {
+
+class PasswordCustomTextFormField extends StatefulWidget {
   const PasswordCustomTextFormField(
       this.hintText, this.labelText, this.controller,
       {Key? key})
@@ -83,7 +88,14 @@ class PasswordCustomTextFormField extends StatelessWidget {
   final String? hintText;
   final TextEditingController controller;
 
-  // final Function()? onTap;
+  @override
+  State<PasswordCustomTextFormField> createState() =>
+      _PasswordCustomTextFormFieldState();
+}
+
+class _PasswordCustomTextFormFieldState
+    extends State<PasswordCustomTextFormField> {
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -95,14 +107,28 @@ class PasswordCustomTextFormField extends StatelessWidget {
         elevation: 0,
         borderRadius: BorderRadius.circular(22.0),
         child: TextFormField(
-          controller: controller, // Set the controller for the TextFormField
+          controller: widget.controller,
+          maxLength: 20,
+          obscureText: _obscureText,
           // onTap: onTap,
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
+            counterText: '',
             floatingLabelBehavior: FloatingLabelBehavior.never,
             prefixIcon: const Icon(
               Icons.password,
               color: kPrimaryColor,
+            ),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _obscureText = !_obscureText;
+                });
+              },
+              child: Icon(
+                _obscureText ? Icons.visibility : Icons.visibility_off,
+                color: kPrimaryColor,
+              ),
             ),
             hintStyle: const TextStyle(
               color: Colors.black26,
@@ -110,8 +136,8 @@ class PasswordCustomTextFormField extends StatelessWidget {
             labelStyle: const TextStyle(
               color: Colors.orange,
             ),
-            labelText: labelText,
-            hintText: hintText,
+            labelText: widget.labelText,
+            hintText: widget.hintText,
             hoverColor: Colors.orange,
             floatingLabelAlignment: FloatingLabelAlignment.start,
             contentPadding: const EdgeInsets.all(16.0),
@@ -153,8 +179,10 @@ class NameCustomTextFormField extends StatelessWidget {
         borderRadius: BorderRadius.circular(22.0),
         child: TextFormField(
           controller: controller,
+          maxLength: 15,
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
+            counterText: '',
             floatingLabelBehavior: FloatingLabelBehavior.never,
             prefixIcon: const Icon(
               Icons.person,
@@ -209,10 +237,12 @@ class PhoneNumberCustomTextField extends StatelessWidget {
         elevation: 0,
         borderRadius: BorderRadius.circular(22.0),
         child: TextField(
-          controller: controller, // Set the controller for the TextField
+          controller: controller,
+          maxLength: 15,
           keyboardType: TextInputType.phone,
           // inputFormatters: [maskFormatter], // Add phone number formatter
           decoration: InputDecoration(
+            counterText: '',
             floatingLabelBehavior: FloatingLabelBehavior.never,
             prefixIcon: const Icon(
               Icons.phone,
