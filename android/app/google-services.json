@@ -7,42 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:627476252828:android:0c8170a5724fc5850b4559",
-        "android_client_info": {
-          "package_name": "com.example.gro1"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "627476252828-j8ub8n8kbhdbhg1ov85596k1cj2tgk2i.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBk5YCludoGgxzodGFJshR726QGWJM0TPQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "627476252828-j8ub8n8kbhdbhg1ov85596k1cj2tgk2i.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "627476252828-25f82p24mqvvbm593bugmu75l72goctg.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.souchi"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:627476252828:android:0ea4949f369396d90b4559",
         "android_client_info": {
           "package_name": "com.example.souchi"
@@ -50,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "627476252828-j8ub8n8kbhdbhg1ov85596k1cj2tgk2i.apps.googleusercontent.com",
+          "client_id": "627476252828-kpelk25c7e3tb3vl89l8jtqb3f53oaqt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -63,15 +27,8 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "627476252828-j8ub8n8kbhdbhg1ov85596k1cj2tgk2i.apps.googleusercontent.com",
+              "client_id": "627476252828-kpelk25c7e3tb3vl89l8jtqb3f53oaqt.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "627476252828-25f82p24mqvvbm593bugmu75l72goctg.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.souchi"
-              }
             }
           ]
         }
