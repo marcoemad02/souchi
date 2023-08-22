@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/const.dart';
 import 'package:souchi/views/pages/CartPage/cart_view.dart';
 
+import '../../enums.dart';
 import '../pages/ProfilePage/profile_screen.dart';
 
 
@@ -16,6 +18,9 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
+
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -61,9 +66,10 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                         onPressed: () {
                          Get.to(()=>CartScreen(streamBranch: streamBranch, branchName: branchName, branchId: branchId));
                         },
-                        icon:const  Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.black,
+                        icon: SvgPicture.asset(
+                          "assets/icons/Cart Icon.svg",
+                          color: Colors.orange,
+
                         ),
                       ),
                     ),
@@ -71,8 +77,8 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     child: IconButton(
-                      icon:const  Icon(
-                        Icons.person,
+                      icon: SvgPicture.asset(
+                        "assets/icons/User Icon.svg",
                         color: Colors.black,
                       ),
                       onPressed: () {
