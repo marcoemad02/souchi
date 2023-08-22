@@ -137,6 +137,29 @@ class Body extends StatelessWidget {
 
                 //October Branches  ID = 3
                 const TextWithDividerWidget(text: '   OCTOBER BRANCHES'),
+
+                BranchWidget(
+
+
+                  streamBranch: FirebaseFirestore.instance
+                      .collection('OctoberShopItems')
+                      .snapshots(),
+                  branchName: 'Nady El-Nady',
+                  branchImage: 'assets/image/branches/october , nady el nady.png',
+                  branchId: 3,
+                  streamBranchRaw: FirebaseFirestore.instance.collection('OctoberShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                  streamBranchFried: FirebaseFirestore.instance.collection('OctoberShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                  streamBranchSauces: FirebaseFirestore.instance.collection('OctoberShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(),
+                  brachImage: 'assets/image/branches/october , nady el nady.png',
+
+
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+
+
+
                 BranchWidget(
 
 
