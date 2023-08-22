@@ -13,6 +13,7 @@ class BranchScreen extends StatelessWidget {
         children: [
 
           SelectBranch(),
+          Divider(thickness: 2,height: 0,),
           Expanded(child: Body()),
         ],
       ),

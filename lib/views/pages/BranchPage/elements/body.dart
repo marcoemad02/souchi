@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import '../../../widgets/branch_widget.dart';
 
 class Body extends StatelessWidget {
@@ -28,6 +27,7 @@ class Body extends StatelessWidget {
                 //const SizedBox(
                   //height: 5,
                 //),
+                const TextWithDividerWidget(text: '   FAISAL BRANCHES'),
                 BranchWidget(
 
 
@@ -94,6 +94,7 @@ class Body extends StatelessWidget {
 
 
                 // Haram Branches     //  ID =2
+                const TextWithDividerWidget(text: '   HARAM BRANCHES'),
                 BranchWidget(
 
                   streamBranch: FirebaseFirestore.instance
@@ -135,6 +136,7 @@ class Body extends StatelessWidget {
 
 
                 //October Branches  ID = 3
+                const TextWithDividerWidget(text: '   OCTOBER BRANCHES'),
                 BranchWidget(
 
 
@@ -232,7 +234,7 @@ class Body extends StatelessWidget {
                 ),
 
                 // Nasr City Branches
-
+                const TextWithDividerWidget(text: '   NASR CITY BRANCHES'),
                 BranchWidget(
 
 
@@ -290,7 +292,7 @@ class Body extends StatelessWidget {
 
 
                 // Zayed City
-
+                const TextWithDividerWidget(text: '   ZAYED CITY BRANCHES'),
                 BranchWidget(
 
 
@@ -311,6 +313,7 @@ class Body extends StatelessWidget {
                 ),
 
                 // Giza
+                const TextWithDividerWidget(text: '   GIZA BRANCHES'),
                 BranchWidget(
 
 
@@ -348,18 +351,21 @@ class Body extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
+
+
+                const TextWithDividerWidget(text: '   SHOUBRA BRANCHES'),
                 BranchWidget(
 
                   streamBranch: FirebaseFirestore.instance
                       .collection('ShoubraShopItems')
                       .snapshots(),
-                  branchName: 'روض الفرج ',
-                  branchImage: 'assets/image/حصري.png',
+                  branchName: 'Khalfawi',
+                  branchImage: 'assets/image/branches/Khalfawi.png',
                   branchId: 7,
                   streamBranchRaw: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
                   streamBranchFried: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
                   streamBranchSauces: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(),
-                  brachImage: 'assets/image/حصري.png',
+                  brachImage: 'assets/image/branches/Khalfawi.png',
 
 
                 ),
@@ -371,13 +377,13 @@ class Body extends StatelessWidget {
                   streamBranch: FirebaseFirestore.instance
                       .collection('ShoubraShopItems')
                       .snapshots(),
-                  branchName: ' الخلفاوي ',
-                  branchImage: 'assets/image/حصري.png',
+                  branchName: 'Rawd El-Farag',
+                  branchImage: 'assets/image/branches/Rawd Al-Farag.png',
                   branchId: 7,
                   streamBranchRaw: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
                   streamBranchFried: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
                   streamBranchSauces: FirebaseFirestore.instance.collection('ShoubraShopItems').doc('SauceItems').collection('SauceItemsList').snapshots(),
-                  brachImage: 'assets/image/حصري.png',
+                  brachImage: 'assets/image/branches/Rawd Al-Farag.png',
 
 
                 ),
@@ -443,6 +449,35 @@ class NewWidget extends StatelessWidget {
       streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(), brachImage: 'assets/image/حصري.png',
 
 
+    );
+  }
+}
+
+
+
+class TextWithDividerWidget extends StatelessWidget {
+  final String text;
+
+  const TextWithDividerWidget({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+
+      children: [
+        const SizedBox(height: 12,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              text,
+              style: const TextStyle(fontFamily: 'poppins',color: Color(0xffFF7517),fontSize: 24),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8,),
+        const Divider(height:1,thickness: 3,),
+      ],
     );
   }
 }
