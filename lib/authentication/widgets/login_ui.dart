@@ -21,7 +21,7 @@ class UpperPartLogin extends StatelessWidget {
               bottomRight: Radius.circular(0.0),
             ),
             image: DecorationImage(
-              image: AssetImage('assets/image/login_pic.jpg'),
+              image: AssetImage('assets/image/upper_part.jpg'),
               fit: BoxFit.cover, // Adjust this as per your requirement
             ),
           ),

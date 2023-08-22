@@ -1,9 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:souchi/authentication/Screens/preview_page.dart';
 import 'package:souchi/authentication/Screens/register_screen.dart';
 
 import '../../const.dart';
-import '../../views/pages/BranchPage/branch_view.dart';
 import '../Core/firebase_auth.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_form_field.dart';
@@ -46,11 +47,7 @@ class LoginPage extends StatelessWidget {
                   DiveIntoButton(
                     onPressed: () {
                       // Navigate to the Home Page when the button is pressed
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const BranchScreen()),
-                      );
+                      Get.to( PreviewPage());
                     },
                     buttonLabel: 'Dive into Sushi Experience',
                   ),
@@ -76,6 +73,4 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-Future<DocumentSnapshot> getCurrentUser(String uid) async {
-  return await FirebaseFirestore.instance.collection('users').doc(uid).get();
-}
+

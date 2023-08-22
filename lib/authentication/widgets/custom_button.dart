@@ -70,7 +70,7 @@ class DiveIntoButton extends StatelessWidget {
               ),
             ],
             image: const DecorationImage(
-              image: AssetImage('assets/image/login_pic.jpg'),
+              image: AssetImage('assets/image/dive_button2.jpg'),
               fit: BoxFit.cover, // Adjust this as per your requirement
             ),
 
