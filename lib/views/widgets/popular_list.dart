@@ -3,62 +3,85 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../styles.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({Key? key}) : super(key: key);
+  final String title;
+  final String description;
+  final String imagePath;
+  final VoidCallback onTap;
+
+  const BestSellerListViewItem({
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.imagePath,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
-      child:
-    Column(
-      children: [
-        Image.asset('assets/image/homeimage.jpg'),
-        const SizedBox(height: 10,),
-        const Text('Smoked Salmon',style: TextStyle(fontSize:28,fontFamily: kfontPop,color: Colors.black),),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal:50),
-          child: Text('This sushi recipe from All recipes is the simplest  to make ',style: TextStyle(fontSize:18,fontFamily: kfontPop,color: Colors.black),),
-        ),
-        const SizedBox(height: 20,),
-        ElevatedButton(
-          onPressed: () {},
-
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40), // Adjust the radius as needed
-            ),
-            backgroundColor: const Color(0xffFF7517),
-
-
+      onTap: onTap,
+      child: Column(
+        children: [
+          Image.asset(imagePath),
+          const SizedBox(height: 10,),
+          Text(
+            title,
+            style:Styles.textStyle30orange,
           ),
-          child:
-          const Text(' SHOP NOW ',style: TextStyle(fontFamily: kfontPop,fontSize: 18),),
-        )
-
-      ],
-    )
+            Padding(
+            padding: EdgeInsets.symmetric(horizontal: 50),
+              child: Text(
+              description ,
+              style: TextStyle(fontSize: 18, fontFamily: kfontPop, color: Colors.black),
+            ),
+          ),
+          const SizedBox(height: 20,),
+          ElevatedButton(
+            onPressed: onTap,
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40),
+              ),
+              backgroundColor: const Color(0xffFF7517),
+            ),
+            child: const Text(
+              ' SHOP NOW ',
+              style: TextStyle(fontFamily: 'poppins', fontSize: 18),
+            ),
+          ),
+          const SizedBox(height: 14,)
+        ],
+      ),
     );
   }
 }
-
-class BesteSellerList extends StatelessWidget {
-  const BesteSellerList({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.zero,
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: BestSellerListViewItem(),
-        );
-      },
-    );
-  }
-}
+//
+// class BestSellerList extends StatelessWidget {
+//   const BestSellerList({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView.builder(
+//       shrinkWrap: true,
+//       physics: const NeverScrollableScrollPhysics(),
+//       padding: EdgeInsets.zero,
+//       itemCount: 3,
+//       itemBuilder: (context, index) {
+//         return Padding(
+//           padding: const EdgeInsets.symmetric(vertical: 10),
+//           child: BestSellerListViewItem(
+//             title: 'Smoked Salmon',
+//             description: 'This sushi recipe from All recipes is the simplest to make.',
+//             imagePath: 'assets/image/homeimage.jpg',
+//             onTap: () {
+//               // Handle onTap action here
+//             },
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }

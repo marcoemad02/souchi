@@ -13,6 +13,9 @@ import 'package:souchi/views/widgets/popular_list.dart';
 import '../../enums.dart';
 import '../widgets/NavBar.dart';
 import 'ProfilePage/components/name_widget.dart';
+import 'elements/fried_category_page.dart';
+import 'elements/raw_category_page.dart';
+import 'elements/sauces_category_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -122,8 +125,38 @@ class HomePage extends StatelessWidget {
                       streamBranchSauces: streamBranchSauces,
                       streamBranchFried: streamBranchFried,
                     ),
-                    const SizedBox(height: 20),
-                    const BesteSellerList(),
+                    const SizedBox(height: 30),
+                    BestSellerListViewItem(title: 'RAW SUSHI', description: 'A Japanese dish consisting of thinly sliced raw fish, traditionally served with soy sauce and wasabi.',
+                      imagePath: 'assets/image/RAW1.png',
+                      onTap: () { Get.to(() => RawCategoryPage(
+                        streamBranch: productStream,
+                        branchId: branchId,
+                        branchName: branchName1,
+                        streamBranchRaw: streamBranchRaw,
+                      )); },),
+
+
+                    BestSellerListViewItem(title: 'FRIED SUSHI', description: 'Age sushi is a deep-fried seaweed roll that you can fill with fish, meat, vegetables or eggs.',
+                      imagePath: 'assets/image/fried1.png',
+                      onTap: () { Get.to(() => FriedCategoryPage(
+                        branchName: branchName1,
+                        branchId: branchId,
+                        streamBranch: productStream,
+                        streamBranchFried: streamBranchFried,
+                      )); },),
+
+
+
+                    BestSellerListViewItem(title: 'SUSHI SAUCES', description: 'Sushi sauce is a dip served with various Japanese dishes, such as sushi and sashimi. ',
+                      imagePath: 'assets/image/sauces1.png',
+                      onTap: () {  Get.to(() => SaucesCategoryPage(
+                        branchName: branchName1,
+                        streamBranch: productStream,
+                        branchId: branchId,
+                        streamBranchSauces: streamBranchSauces,
+                      )); },),
+
+
                   ],
                 ),
               ),
