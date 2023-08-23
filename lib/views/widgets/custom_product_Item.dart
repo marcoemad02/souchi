@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souchi/core/view_model/product_Controller.dart';
+import 'package:souchi/styles.dart';
 
 import '../../const.dart';
 
@@ -76,15 +77,17 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                   //Product Name
                   Text(
                     widget.productObj.get('productname'),
-                    style: const TextStyle(fontSize: 18, fontFamily: kfontPop),
+                    style: Styles.textStyle20orange,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
 
                   Text(
-
                     widget.productObj.get('ingredients'),
-                    style: const TextStyle(fontSize: 10, fontFamily: kfontPop,),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontFamily: kfontPop,
+                    ),
                   ),
                   const SizedBox(
                     height: 8,
@@ -121,9 +124,10 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                         ]),
                   ),
                   // Catr Button
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const Expanded(
+                      child: SizedBox(
+                    height: double.infinity,
+                  )),
 
                   Container(
                     decoration: BoxDecoration(
@@ -232,24 +236,24 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                     ),
                     // Photo
                     ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: CachedNetworkImage(
-                      placeholder: (context, url) {
-                        return const SizedBox(
-                            height: 100,
-                            width: 100,
-                            child: Center(
-                                child: CircularProgressIndicator(
+                      borderRadius: BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                          placeholder: (context, url) {
+                            return const SizedBox(
+                                height: 100,
+                                width: 100,
+                                child: Center(
+                                    child: CircularProgressIndicator(
                                   color: kPrimaryColor,
                                 )));
-                      },
-                      errorWidget: (context, url, error) {
-                        return const CircularProgressIndicator(
-                          color: Colors.red,
-                        );
-                      },
-                      imageUrl: widget.image),
-                ),
+                          },
+                          errorWidget: (context, url, error) {
+                            return const CircularProgressIndicator(
+                              color: Colors.red,
+                            );
+                          },
+                          imageUrl: widget.image),
+                    ),
                     const SizedBox(
                       height: 5,
                     ),
@@ -259,11 +263,14 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                       style:
                           const TextStyle(fontSize: 18, fontFamily: kfontPop),
                       overflow: TextOverflow.ellipsis,
-                      maxLines:1 ,
+                      maxLines: 1,
                     ),
                     Text(
                       widget.productObj.get('ingredients'),
-                      style: const TextStyle(fontSize: 10, fontFamily: kfontPop,),
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontFamily: kfontPop,
+                      ),
                     ),
                     const SizedBox(
                       height: 8,
@@ -324,8 +331,6 @@ class _CustomProdctItemState extends State<CustomProdctItem> {
                         style: TextStyle(fontFamily: kfontPop),
                       ),
                     ),
-
-
                   ],
                 ),
               ),

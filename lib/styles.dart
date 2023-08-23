@@ -18,6 +18,11 @@ abstract class Styles {
       color: Color(0xffFF7517),
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold);
+  static const textStyle20orange = TextStyle(
+      fontSize: 20,
+      color: Color(0xffFF7517),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold);
   static const textStyle20 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.normal,
