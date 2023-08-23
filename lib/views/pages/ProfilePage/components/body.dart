@@ -45,7 +45,7 @@ class Body extends StatelessWidget {
               text: "Change my password ",
               icon: 'assets/icons/Lock.svg',
               press: () => Get.to(
-                    () => ChangePasswordScreen(),
+                    () =>  ChangePasswordScreen(),
                   )),
           ProfileMenu(
             text: "Settings",
@@ -56,7 +56,7 @@ class Body extends StatelessWidget {
             text: "Help Center",
             icon: "assets/icons/Question mark.svg",
             press: () {
-              Get.to(() =>  HelpCenter());
+              Get.to(() =>  const HelpCenter());
             },
           ),
           ProfileMenu(
@@ -69,7 +69,7 @@ class Body extends StatelessWidget {
                 cancelTextColor: kPrimaryColor,
                  titleStyle: Styles.textStyle30orange,
                  middleTextStyle: Styles.textStyle20,
-                contentPadding: EdgeInsets.all(10),
+                contentPadding:const  EdgeInsets.all(10),
                 barrierDismissible: true,
                 title: "Log Out",
                 middleText: "Are you sure you want to log out?",
@@ -77,7 +77,7 @@ class Body extends StatelessWidget {
                 onConfirm: () {
                   // Log out the user
                   SharedPreferencesManager.logOut();
-                  Get.offAll(LoginPage());
+                  Get.offAll(()=>LoginPage());
                 },
                 textConfirm: "Log Out",
                 textCancel: "Cancel",

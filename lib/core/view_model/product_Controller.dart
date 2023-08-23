@@ -38,21 +38,7 @@ class ProductController extends GetxController {
 
 
 
-   dynamic func()async{
-     SharedPreferences prefs=await SharedPreferences.getInstance();
-     String? id=prefs.getString('id');
-      datacolFaisal.get().then((value) {
-       if(value.get('order')['UserID']==id){
-         return value.get('color');
-       }
-       else{
-         return 'error';
-       }
 
-     });
-
-
-   }
 
 
 
