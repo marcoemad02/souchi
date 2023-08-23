@@ -8,6 +8,7 @@ import 'package:souchi/views/widgets/category_icon.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 import 'package:souchi/views/widgets/popular_list.dart';
 
+import '../../CarouselSlider/carousel.dart';
 import '../../enums.dart';
 import '../widgets/NavBar.dart';
 import 'ProfilePage/components/name_widget.dart';
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<String?> (
+    return FutureBuilder<String?>(
       // Fetch uidT from SharedPreferences
       future: SharedPreferences.getInstance()
           .then((prefs) => prefs.getString('uid')),
@@ -49,13 +50,13 @@ class HomePage extends StatelessWidget {
         return Scaffold(
           extendBody: true,
           //floatingActionButton: FloatingActionButton(
-            //backgroundColor: kPrimaryColor,
-            //child: const Icon(
-              //Icons.phone,
-            //),
-            //onPressed: () {
-              //Get.to(() => const HelpCenter());
-            //},
+          //backgroundColor: kPrimaryColor,
+          //child: const Icon(
+          //Icons.phone,
+          //),
+          //onPressed: () {
+          //Get.to(() => const HelpCenter());
+          //},
           //),
           backgroundColor: Colors.grey[60],
           appBar: CustomAppBar(
@@ -88,15 +89,25 @@ class HomePage extends StatelessWidget {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                              NameWidget(),
-                              SizedBox(width: 4,),
-                              const Text('Your Points ',style: TextStyle(fontFamily: 'poppins',color:Color(0xffFF7517),fontSize:18),),
-                              Text('${points['points']}',style: const TextStyle(
-                              color: Color(0xffFF7517),
-                              fontFamily: 'poppins',
-                              fontSize: 18,
-                            )
-                              ,),
+                            NameWidget(),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            const Text(
+                              'Your Points ',
+                              style: TextStyle(
+                                  fontFamily: 'poppins',
+                                  color: Color(0xffFF7517),
+                                  fontSize: 18),
+                            ),
+                            Text(
+                              '${points['points']}',
+                              style: const TextStyle(
+                                color: Color(0xffFF7517),
+                                fontFamily: 'poppins',
+                                fontSize: 18,
+                              ),
+                            ),
                           ],
                         );
                       },
@@ -104,7 +115,8 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 30),
                     LocationWidget(branchName: branchName1),
                     const SizedBox(height: 10),
-                    Image.asset('assets/image/homeimage.jpg'),
+                    ImageSliderWidget(),
+                    // Image.asset('assets/image/homeimage.jpg'),
                     const SizedBox(height: 10),
                     const Row(
                       children: [
@@ -125,37 +137,50 @@ class HomePage extends StatelessWidget {
                       streamBranchFried: streamBranchFried,
                     ),
                     const SizedBox(height: 30),
-                    BestSellerListViewItem(title: 'RAW SUSHI', description: 'A Japanese dish consisting of thinly sliced raw fish, traditionally served with soy sauce and wasabi.',
+                    BestSellerListViewItem(
+                      title: 'RAW SUSHI',
+                      description:
+                          'A Japanese dish consisting of thinly sliced raw fish, traditionally served with soy sauce and wasabi.',
                       imagePath: 'assets/image/RAW1.png',
-                      onTap: () { Get.to(() => RawCategoryPage(
-                        streamBranch: productStream,
-                        branchId: branchId,
-                        branchName: branchName1,
-                        streamBranchRaw: streamBranchRaw,
-                      )); },),
+                      onTap: () {
+                        Get.to(() => RawCategoryPage(
+                              streamBranch: productStream,
+                              branchId: branchId,
+                              branchName: branchName1,
+                              streamBranchRaw: streamBranchRaw,
+                            ));
+                      },
+                    ),
 
-
-                    BestSellerListViewItem(title: 'FRIED SUSHI', description: 'Age sushi is a deep-fried seaweed roll that you can fill with fish, meat, vegetables or eggs.',
+                    BestSellerListViewItem(
+                      title: 'FRIED SUSHI',
+                      description:
+                          'Age sushi is a deep-fried seaweed roll that you can fill with fish, meat, vegetables or eggs.',
                       imagePath: 'assets/image/fried1.png',
-                      onTap: () { Get.to(() => FriedCategoryPage(
-                        branchName: branchName1,
-                        branchId: branchId,
-                        streamBranch: productStream,
-                        streamBranchFried: streamBranchFried,
-                      )); },),
+                      onTap: () {
+                        Get.to(() => FriedCategoryPage(
+                              branchName: branchName1,
+                              branchId: branchId,
+                              streamBranch: productStream,
+                              streamBranchFried: streamBranchFried,
+                            ));
+                      },
+                    ),
 
-
-
-                    BestSellerListViewItem(title: 'SUSHI SAUCES', description: 'Sushi sauce is a dip served with various Japanese dishes, such as sushi and sashimi. ',
+                    BestSellerListViewItem(
+                      title: 'SUSHI SAUCES',
+                      description:
+                          'Sushi sauce is a dip served with various Japanese dishes, such as sushi and sashimi. ',
                       imagePath: 'assets/image/sauces1.png',
-                      onTap: () {  Get.to(() => SaucesCategoryPage(
-                        branchName: branchName1,
-                        streamBranch: productStream,
-                        branchId: branchId,
-                        streamBranchSauces: streamBranchSauces,
-                      )); },),
-
-
+                      onTap: () {
+                        Get.to(() => SaucesCategoryPage(
+                              branchName: branchName1,
+                              streamBranch: productStream,
+                              branchId: branchId,
+                              streamBranchSauces: streamBranchSauces,
+                            ));
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -180,10 +205,6 @@ class HomePage extends StatelessWidget {
     prefs.setInt('points', points);
   }
 }
-
-
-
-
 
 // class HomePage extends StatelessWidget {
 //   const HomePage({

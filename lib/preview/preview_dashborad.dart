@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class DashboardScreen extends StatefulWidget {
+class PreviewDashboardScreen extends StatefulWidget {
   @override
-  _DashboardScreenState createState() => _DashboardScreenState();
+  _PreviewDashboardScreenState createState() => _PreviewDashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _PreviewDashboardScreenState extends State<PreviewDashboardScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController ingredientsController = TextEditingController();
   final TextEditingController otherDataController = TextEditingController();

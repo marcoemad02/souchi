@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:souchi/preview/preview_dashborad.dart';
 import 'package:souchi/styles.dart';
 
 import '../const.dart';
@@ -31,14 +29,6 @@ class PreviewPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 50,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.dashboard),
-            onPressed: () {
-              Get.to(DashboardScreen());
-            },
-          ),
-        ],
         backgroundColor: kPrimaryColor,
         title: const Padding(
           padding: EdgeInsets.only(top: 10),
