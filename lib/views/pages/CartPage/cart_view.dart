@@ -34,19 +34,14 @@ class CartScreen extends StatelessWidget {
             return Center(child: const CircularProgressIndicator(color: kPrimaryColor,)); // Loading indicator while waiting for data
           }
 
-          bool isCartEmpty = snapshot.data?.docs.isEmpty ?? true;
-
           return Column(
             children: [
               Expanded(
                 child: Body(branchID: branchId),
               ),
               const SizedBox(height: 20),
-              if (!isCartEmpty)
                 CustomCheckoutButton(branchId: branchId),
-              if (isCartEmpty)
-                const IfCartEmptyWidget(), // Show if cart is empty
-              const SizedBox(height: 20),
+              SizedBox(height: 20,)
             ],
           );
         },
@@ -57,24 +52,6 @@ class CartScreen extends StatelessWidget {
         branchId: branchId,
         branchName: branchName,
       ),
-    );
-  }
-}
-
-class IfCartEmptyWidget extends StatelessWidget {
-  const IfCartEmptyWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        Text('The  Cart  Is  Empty', style:
-        TextStyle(
-            fontSize: 22,
-            fontFamily: 'poppins',
-          color: Color(0xffFF7517)
-        )),
-      ],
     );
   }
 }
