@@ -36,22 +36,11 @@ class Body extends StatelessWidget {
           //
           const SizedBox(height: 15),
           LocationWidget(branchName: branchName),
-          const ProfileMenu(
-            text: "My Account",
-            icon: "assets/icons/User Icon.svg",
-            // press: () => Get.to(() => const ChangeUserData()),
-          ),
-          ProfileMenu(
-              text: "Change my password ",
-              icon: 'assets/icons/Lock.svg',
-              press: () => Get.to(
-                    () =>  ChangePasswordScreen(),
-                  )),
-          ProfileMenu(
-            text: "Settings",
-            icon: "assets/icons/Settings.svg",
-            press: () {},
-          ),
+          // const ProfileMenu(
+          //   text: "My Account",
+          //   icon: "assets/icons/User Icon.svg",
+          //   // press: () => Get.to(() => const ChangeUserData()),
+          // ),
           ProfileMenu(
             text: "Help Center",
             icon: "assets/icons/Question mark.svg",
@@ -59,6 +48,18 @@ class Body extends StatelessWidget {
               Get.to(() =>  const HelpCenter());
             },
           ),
+          ProfileMenu(
+              text: "Change my password ",
+              icon: 'assets/icons/Lock.svg',
+              press: () => Get.to(
+                    () =>  ChangePasswordScreen(),
+                  )),
+          // ProfileMenu(
+          //   text: "Settings",
+          //   icon: "assets/icons/Settings.svg",
+          //   press: () {},
+          // ),
+
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",

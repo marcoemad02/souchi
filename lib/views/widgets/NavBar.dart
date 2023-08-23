@@ -12,7 +12,7 @@ import '../../enums.dart';
 import '../pages/ProfilePage/Helpcenter_Screen.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({
+   CustomBottomNavBar({
     Key? key,
     required this.selectedMenu,
     required this.streamBranch,
@@ -24,6 +24,8 @@ class CustomBottomNavBar extends StatelessWidget {
   final Stream<QuerySnapshot> streamBranch;
   final String branchName;
   final int branchId;
+  double br=45;
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +35,21 @@ class CustomBottomNavBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius:  BorderRadius.only(
+          topLeft: Radius.circular(br),
+          topRight: Radius.circular(br),
+        //   bottomLeft: Radius.circular(br),
+        //   bottomRight: Radius.circular(br),
+        ),
         boxShadow: [
           BoxShadow(
-            offset: const Offset(0, -15),
+            offset: const Offset(1, 1),
             blurRadius: 20,
-            color: const Color(0xFFDADADA).withOpacity(0.15),
+            spreadRadius: 10,
+            color: const Color(0xFFDADADA).withOpacity(0.5),
           ),
         ],
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(40),
-          topRight: Radius.circular(40),
-        ),
+
       ),
       child: SafeArea(
           top: false,
@@ -88,7 +94,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         : inActiveIconColor,
                   ),
                   onPressed: () {
-                    Get.to(() =>  HelpCenter());
+                    Get.to(() => HelpCenter());
                   }),
               IconButton(
                   icon: SvgPicture.asset(

@@ -21,6 +21,7 @@ class SaucesCategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        extendBody: true,
         appBar: SecondAppBar(streamBranch: streamBranch,branchName: branchName,branchId: branchId),
         body: Column(
           children: [

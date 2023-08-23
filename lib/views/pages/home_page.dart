@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:souchi/const.dart';
 import 'package:souchi/styles.dart';
-import 'package:souchi/views/pages/ProfilePage/Helpcenter_Screen.dart';
 import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/category_icon.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
@@ -49,6 +47,7 @@ class HomePage extends StatelessWidget {
         final uidT = uidSnapshot.data!; // Use uidT here
 
         return Scaffold(
+          extendBody: true,
           //floatingActionButton: FloatingActionButton(
             //backgroundColor: kPrimaryColor,
             //child: const Icon(

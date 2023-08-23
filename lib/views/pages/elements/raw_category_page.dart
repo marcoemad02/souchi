@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:souchi/styles.dart';
-import 'package:souchi/views/widgets/app_bar.dart';
 import 'package:souchi/views/widgets/second_appBar.dart';
 
 import '../../../enums.dart';
@@ -22,6 +21,7 @@ class RawCategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        extendBody: true,
         appBar: SecondAppBar(branchId: branchId,branchName: branchName,streamBranch:streamBranch ),
         body: Column(
           children: [

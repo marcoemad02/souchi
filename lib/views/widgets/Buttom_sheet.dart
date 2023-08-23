@@ -39,11 +39,11 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(50.0)),
-        border: Border.all(
-          color: Colors.grey, // Border color
-          width: 1.0, // Border width
-        ),
+        // borderRadius: const BorderRadius.vertical(top: Radius.circular(50.0)),
+        // border: Border.all(
+        //   color: Colors.grey, // Border color
+        //   width: 1.0, // Border width
+        // ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.max,

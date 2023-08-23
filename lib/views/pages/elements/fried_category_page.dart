@@ -27,6 +27,7 @@ class FriedCategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        extendBody: true,
         appBar: SecondAppBar(
             branchName: branchName,
             branchId: branchId,
