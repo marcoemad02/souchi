@@ -20,8 +20,7 @@ class Body extends StatelessWidget {
 
                 // Faisal Branches   // ID = 1
 
-                const TextWithDividerWidget(text: '   FAISAL BRANCHES'),
-                BranchWidget(
+                ExpansionTile(title:TextWithDividerWidget(text: '   FAISAL BRANCHES'),children: [BranchWidget(
 
 
                   streamBranch: FirebaseFirestore.instance
@@ -37,52 +36,53 @@ class Body extends StatelessWidget {
 
 
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                  const SizedBox(
+                    height: 5,
+                  ),
 
 
-                BranchWidget(
+                  BranchWidget(
 
 
-                  streamBranch: FirebaseFirestore.instance
-                      .collection('FaisalShopItems')
-                      .snapshots(),
-                  branchName: 'Al-Arish Street', //2
-                  branchImage: 'assets/image/branches/faisal,alarish.jpg',
-                  branchId: 1,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(),
-                  brachImage: 'assets/image/branches/faisal,alarish.jpg',
+                    streamBranch: FirebaseFirestore.instance
+                        .collection('FaisalShopItems')
+                        .snapshots(),
+                    branchName: 'Al-Arish Street', //2
+                    branchImage: 'assets/image/branches/faisal,alarish.jpg',
+                    branchId: 1,
+                    streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                    streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                    streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(),
+                    brachImage: 'assets/image/branches/faisal,alarish.jpg',
 
 
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
 
 
 
-                BranchWidget(
+                  BranchWidget(
 
 
-                  streamBranch: FirebaseFirestore.instance
-                      .collection('FaisalShopItems')
-                      .snapshots(),
-                  branchName: 'Deyaa Street',  //3
-                  branchImage: 'assets/image/branches/faisal,deyaa.jpg',
-                  branchId: 1,
-                  streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
-                  streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
-                  streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(),
-                  brachImage: 'assets/image/branches/faisal,deyaa.jpg',
+                    streamBranch: FirebaseFirestore.instance
+                        .collection('FaisalShopItems')
+                        .snapshots(),
+                    branchName: 'Deyaa Street',  //3
+                    branchImage: 'assets/image/branches/faisal,deyaa.jpg',
+                    branchId: 1,
+                    streamBranchRaw: FirebaseFirestore.instance.collection('FaisalShopItems').doc('RawItems').collection('RawItemsList').snapshots(),
+                    streamBranchFried: FirebaseFirestore.instance.collection('FaisalShopItems').doc('FriedItems').collection('FriedItemsList').snapshots(),
+                    streamBranchSauces: FirebaseFirestore.instance.collection('FaisalShopItems').doc('SaucesItems').collection('SaucesItemsList').snapshots(),
+                    brachImage: 'assets/image/branches/faisal,deyaa.jpg',
 
 
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),], ),
+
 
 
 

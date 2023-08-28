@@ -25,13 +25,16 @@ class ProductController extends GetxController {
 
     double TotalPriceLE =0;
 
-   String UserAddress='';
+   String UserFullAddress='';
    String UserName='';
-   String UserPhone='';
-
+   String UserPhone1='';
+   String UserPhone2='';
+   String UserBuildingNumber='';
+   String UserFloorNumber='';
+   String UserApartmentNumber='';
+   String UserSpecialSign='';
    int rewardPoints=0;
    int TotalRewardPoints=0;
-
    int PtsTotalPrice=0;
 
 
@@ -73,9 +76,14 @@ class ProductController extends GetxController {
       'order': {
          'Totalprice': TotalPriceLE.toString(),
          'orderlist': loopOnCart_Faisal(),
-         'Address':UserAddress.toString(),
-         'Phone':UserPhone.toString(),
+         'FullAddress':UserFullAddress.toString(),
+         'Phone1':UserPhone1.toString(),
+         'Phone2':UserPhone2.toString(),
          'Name' : UserName.toString(),
+         'UserBuildingNumber' :UserBuildingNumber.toString(),
+         'UserFloorNumber' :UserFloorNumber.toString(),
+         'UserApartmentNumber' :UserApartmentNumber.toString(),
+         'UserSpecialSign' :UserSpecialSign.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
          'Payment' :paymentStatue,
          'OrderId': datacolFaisal.id,
@@ -83,7 +91,7 @@ class ProductController extends GetxController {
          'RewardPoints':TotalRewardPoints,
          'UserPoints' : prefs.get('points'),
 
-          'PtsTotalPrice':PtsTotalPrice
+        'PtsTotalPrice':PtsTotalPrice
 
 
       },
@@ -98,9 +106,14 @@ class ProductController extends GetxController {
       'order': {
          'Totalprice': TotalPriceLE.toString(),
          'orderlist': loopOnCart_Haram(),
-         'Address':UserAddress.toString(),
-         'Phone':UserPhone.toString(),
-         'Name' : UserName.toString(),
+        'FullAddress':UserFullAddress.toString(),
+        'Phone1':UserPhone1.toString(),
+        'Phone2':UserPhone2.toString(),
+        'Name' : UserName.toString(),
+        'UserBuildingNumber' :UserBuildingNumber.toString(),
+        'UserFloorNumber' :UserFloorNumber.toString(),
+        'UserApartmentNumber' :UserApartmentNumber.toString(),
+        'UserSpecialSign' :UserSpecialSign.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
          'Payment' :paymentStatue,
          'OrderId': datacolHaram.id,
@@ -124,9 +137,14 @@ class ProductController extends GetxController {
       'order': {
          'Totalprice': TotalPriceLE.toString(),
          'orderlist': loopOnCart_October(),
-         'Address':UserAddress.toString(),
-         'Phone':UserPhone.toString(),
-         'Name' : UserName.toString(),
+        'FullAddress':UserFullAddress.toString(),
+        'Phone1':UserPhone1.toString(),
+        'Phone2':UserPhone2.toString(),
+        'Name' : UserName.toString(),
+        'UserBuildingNumber' :UserBuildingNumber.toString(),
+        'UserFloorNumber' :UserFloorNumber.toString(),
+        'UserApartmentNumber' :UserApartmentNumber.toString(),
+        'UserSpecialSign' :UserSpecialSign.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
          'Payment' :paymentStatue,
          'OrderId': datacolOctober.id,
@@ -150,9 +168,14 @@ class ProductController extends GetxController {
       'order': {
          'Totalprice': TotalPriceLE.toString(),
          'orderlist': loopOnCart_NasrCity(),
-         'Address':UserAddress.toString(),
-         'Phone':UserPhone.toString(),
-         'Name' : UserName.toString(),
+        'FullAddress':UserFullAddress.toString(),
+        'Phone1':UserPhone1.toString(),
+        'Phone2':UserPhone2.toString(),
+        'Name' : UserName.toString(),
+        'UserBuildingNumber' :UserBuildingNumber.toString(),
+        'UserFloorNumber' :UserFloorNumber.toString(),
+        'UserApartmentNumber' :UserApartmentNumber.toString(),
+        'UserSpecialSign' :UserSpecialSign.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
          'Payment' :paymentStatue,
          'OrderId': datacolNasrCity.id,
@@ -176,9 +199,14 @@ class ProductController extends GetxController {
       'order': {
          'Totalprice': TotalPriceLE.toString(),
          'orderlist': loopOnCart_ZayedCity(),
-         'Address':UserAddress.toString(),
-         'Phone':UserPhone.toString(),
-         'Name' : UserName.toString(),
+        'FullAddress':UserFullAddress.toString(),
+        'Phone1':UserPhone1.toString(),
+        'Phone2':UserPhone2.toString(),
+        'Name' : UserName.toString(),
+        'UserBuildingNumber' :UserBuildingNumber.toString(),
+        'UserFloorNumber' :UserFloorNumber.toString(),
+        'UserApartmentNumber' :UserApartmentNumber.toString(),
+        'UserSpecialSign' :UserSpecialSign.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
          'Payment' :paymentStatue,
          'OrderId': datacolZayedCity.id,
@@ -202,9 +230,14 @@ class ProductController extends GetxController {
       'order': {
          'Totalprice': TotalPriceLE.toString(),
          'orderlist': loopOnCart_Giza(),
-         'Address':UserAddress.toString(),
-         'Phone':UserPhone.toString(),
-         'Name' : UserName.toString(),
+        'FullAddress':UserFullAddress.toString(),
+        'Phone1':UserPhone1.toString(),
+        'Phone2':UserPhone2.toString(),
+        'Name' : UserName.toString(),
+        'UserBuildingNumber' :UserBuildingNumber.toString(),
+        'UserFloorNumber' :UserFloorNumber.toString(),
+        'UserApartmentNumber' :UserApartmentNumber.toString(),
+        'UserSpecialSign' :UserSpecialSign.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
          'Payment' :paymentStatue,
          'OrderId': datacolGiza.id,
@@ -228,9 +261,14 @@ class ProductController extends GetxController {
       'order': {
          'Totalprice': TotalPriceLE.toString(),
          'orderlist': loopOnCart_Shoubra(),
-         'Address':UserAddress.toString(),
-         'Phone':UserPhone.toString(),
-         'Name' : UserName.toString(),
+        'FullAddress':UserFullAddress.toString(),
+        'Phone1':UserPhone1.toString(),
+        'Phone2':UserPhone2.toString(),
+        'Name' : UserName.toString(),
+        'UserBuildingNumber' :UserBuildingNumber.toString(),
+        'UserFloorNumber' :UserFloorNumber.toString(),
+        'UserApartmentNumber' :UserApartmentNumber.toString(),
+        'UserSpecialSign' :UserSpecialSign.toString(),
          'Time' :DateFormat.jm().format(now).toString(),
          'Payment' :paymentStatue,
          'OrderId': datacolShoubra.id,
@@ -332,54 +370,54 @@ class ProductController extends GetxController {
   }
 
   // Function to send cart data to Firestore based on branch ID
-  Future<void> validatorCart_Cash({required int id, name, phone, address,paymentStatue}) async {
+  Future<void> validatorCart_Cash({required int id, name, phone1,phone2, fullAddress,buildingNo,floorNo,apartmentNo,specialSign,paymentStatue}) async {
     if (branchIdFaisal == id) {
-      await TakeUserOrderData(id: id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       await sendDatatoFire_Faisal(id,paymentStatue);
 
     }
     if(branchIdHaram==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       await sendDatatoFire_Haram(id,paymentStatue);
 
 
     }
     if(branchIdOctober==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       await sendDatatoFire_October(id,paymentStatue);
 
 
     }
     if(branchIdNasrCity==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       await sendDatatoFire_NasrCity(id,paymentStatue);
 
 
     }
     if(branchIdZayedCity==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       await sendDatatoFire_ZayedCity(id,paymentStatue);
 
 
     }
     if(branchIdGiza==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       await sendDatatoFire_Giza(id,paymentStatue);
 
 
     }
     if(branchIdShoubra==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       await sendDatatoFire_Shoubra(id,paymentStatue);
 
 
     }
   }
-  Future<void> validatorCart_Points({required int id, name, phone, address,points,paymentStatue}) async {
+  Future<void> validatorCart_Points({required int id, name, phone1,phone2, fullAddress,buildingNo,floorNo,apartmentNo,specialSign,paymentStatue}) async {
     SharedPreferences prefs=await SharedPreferences.getInstance();
     int? userpoints=prefs.getInt('points') ;
     if (branchIdFaisal == id) {
-      await TakeUserOrderData(id: id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       if(userpoints!<PtsTotalPrice){
         Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
@@ -396,7 +434,7 @@ class ProductController extends GetxController {
 
     }
     if(branchIdHaram==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       if(userpoints!<PtsTotalPrice){
         Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
@@ -415,7 +453,7 @@ class ProductController extends GetxController {
 
     }
     if(branchIdOctober==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       if(userpoints!<PtsTotalPrice){
         Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
@@ -434,7 +472,7 @@ class ProductController extends GetxController {
 
     }
     if(branchIdNasrCity==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       if(userpoints!<PtsTotalPrice){
         Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
@@ -453,7 +491,7 @@ class ProductController extends GetxController {
 
     }
     if(branchIdZayedCity==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       if(userpoints!<PtsTotalPrice){
         Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
@@ -472,7 +510,7 @@ class ProductController extends GetxController {
 
     }
     if(branchIdGiza==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       if(userpoints!<PtsTotalPrice){
         Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
@@ -491,7 +529,7 @@ class ProductController extends GetxController {
 
     }
     if(branchIdShoubra==id) {
-      await TakeUserOrderData(id:  id,address:  address,name: name,phone: phone);
+      await TakeUserOrderData(id: id,name: name, phone1: phone1,phone2: phone2, fullAddress: fullAddress,buildingNo: buildingNo,floorNo: floorNo,apartmentNo: apartmentNo,specialSign: specialSign);
       if(userpoints!<PtsTotalPrice){
         Get.snackbar('Attention', 'You don\'t have enough points ',backgroundColor:Colors.yellow);
       }
@@ -711,60 +749,96 @@ class ProductController extends GetxController {
   }
 
  // Function TakeUserOrderData
-  Future<void> TakeUserOrderData({required int id, name, phone, address})async{
+  Future<void> TakeUserOrderData({required int id, name, phone1,phone2, fullAddress,buildingNo,floorNo,apartmentNo,specialSign})async{
     if(branchIdFaisal==id){
 
-      UserAddress=takeAddrress(address);
+      UserFullAddress=takeFullAddrress(fullAddress);
       UserName=takeName(name);
-      UserPhone=takePhone(phone);
+      UserPhone1=takePhone1(phone1);
+      UserPhone2=takePhone2(phone2);
+      UserBuildingNumber=takeBuildingNo(buildingNo);
+      UserFloorNumber=takeFloorNo(floorNo);
+      UserApartmentNumber=takeApartmentNo(apartmentNo);
+      UserSpecialSign=takeSpecialSign(specialSign);
       update();
     }
     if(branchIdHaram==id){
 
-      UserAddress=takeAddrress(address);
+      UserFullAddress=takeFullAddrress(fullAddress);
       UserName=takeName(name);
-      UserPhone=takePhone(phone);
+      UserPhone1=takePhone1(phone1);
+      UserPhone2=takePhone2(phone2);
+      UserBuildingNumber=takeBuildingNo(buildingNo);
+      UserFloorNumber=takeFloorNo(floorNo);
+      UserApartmentNumber=takeApartmentNo(apartmentNo);
+      UserSpecialSign=takeSpecialSign(specialSign);
       update();
     }
     if(branchIdOctober==id){
 
-      UserAddress=takeAddrress(address);
+      UserFullAddress=takeFullAddrress(fullAddress);
       UserName=takeName(name);
-      UserPhone=takePhone(phone);
+      UserPhone1=takePhone1(phone1);
+      UserPhone2=takePhone2(phone2);
+      UserBuildingNumber=takeBuildingNo(buildingNo);
+      UserFloorNumber=takeFloorNo(floorNo);
+      UserApartmentNumber=takeApartmentNo(apartmentNo);
+      UserSpecialSign=takeSpecialSign(specialSign);
       update();
     }
     if(branchIdNasrCity==id){
 
-      UserAddress=takeAddrress(address);
+      UserFullAddress=takeFullAddrress(fullAddress);
       UserName=takeName(name);
-      UserPhone=takePhone(phone);
+      UserPhone1=takePhone1(phone1);
+      UserPhone2=takePhone2(phone2);
+      UserBuildingNumber=takeBuildingNo(buildingNo);
+      UserFloorNumber=takeFloorNo(floorNo);
+      UserApartmentNumber=takeApartmentNo(apartmentNo);
+      UserSpecialSign=takeSpecialSign(specialSign);
       update();
     }
     if(branchIdZayedCity==id){
 
-      UserAddress=takeAddrress(address);
+      UserFullAddress=takeFullAddrress(fullAddress);
       UserName=takeName(name);
-      UserPhone=takePhone(phone);
+      UserPhone1=takePhone1(phone1);
+      UserPhone2=takePhone2(phone2);
+      UserBuildingNumber=takeBuildingNo(buildingNo);
+      UserFloorNumber=takeFloorNo(floorNo);
+      UserApartmentNumber=takeApartmentNo(apartmentNo);
+      UserSpecialSign=takeSpecialSign(specialSign);
       update();
     }
     if(branchIdGiza==id){
 
-      UserAddress=takeAddrress(address);
+      UserFullAddress=takeFullAddrress(fullAddress);
       UserName=takeName(name);
-      UserPhone=takePhone(phone);
+      UserPhone1=takePhone1(phone1);
+      UserPhone2=takePhone2(phone2);
+      UserBuildingNumber=takeBuildingNo(buildingNo);
+      UserFloorNumber=takeFloorNo(floorNo);
+      UserApartmentNumber=takeApartmentNo(apartmentNo);
+      UserSpecialSign=takeSpecialSign(specialSign);
       update();
     }
     if(branchIdShoubra==id){
 
-      UserAddress=takeAddrress(address);
+      UserFullAddress=takeFullAddrress(fullAddress);
       UserName=takeName(name);
-      UserPhone=takePhone(phone);
+      UserPhone1=takePhone1(phone1);
+      UserPhone2=takePhone2(phone2);
+      UserBuildingNumber=takeBuildingNo(buildingNo);
+      UserFloorNumber=takeFloorNo(floorNo);
+      UserApartmentNumber=takeApartmentNo(apartmentNo);
+      UserSpecialSign=takeSpecialSign(specialSign);
       update();
     }
 
 
   }
-  String takeAddrress(address){
+  // ASSISTANT Functions
+  String takeFullAddrress(address){
     return address.toString();
 
   }
@@ -772,8 +846,28 @@ class ProductController extends GetxController {
     return name.toString();
 
   }
-  String takePhone(phone){
-    return phone.toString();
+  String takePhone1(phone1){
+    return phone1.toString();
+
+  }
+  String takePhone2(phone2){
+    return phone2.toString();
+
+  }
+  String takeBuildingNo(BuildNo){
+    return BuildNo.toString();
+
+  }
+  String takeFloorNo(FloorNo){
+    return FloorNo.toString();
+
+  }
+  String takeApartmentNo(ApartNo){
+    return ApartNo.toString();
+
+  }
+  String takeSpecialSign(SSign){
+    return SSign.toString();
 
   }
 

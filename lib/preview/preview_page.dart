@@ -68,6 +68,7 @@ class PreviewPage extends StatelessWidget {
                     childAspectRatio: 0.6,
                     crossAxisSpacing: 0,
                     mainAxisSpacing: 0,
+                    mainAxisExtent: 350
                   ),
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
