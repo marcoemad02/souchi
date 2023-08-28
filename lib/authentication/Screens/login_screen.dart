@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:souchi/preview/preview_page.dart';
 import 'package:souchi/authentication/Screens/register_screen.dart';
 
+
 import '../../const.dart';
 import '../Core/firebase_auth.dart';
 import '../widgets/custom_button.dart';
@@ -63,6 +64,7 @@ class LoginPage extends StatelessWidget {
                     child: const Text('Create new account, SignUp',
                         style: TextStyle(color: kPrimaryColor, fontSize: 20)),
                   ),
+
                 ],
               ),
             ),
