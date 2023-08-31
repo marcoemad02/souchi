@@ -114,10 +114,10 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     LocationWidget(branchName: branchName1),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 15),
                     ImageSliderWidget(),
                     // Image.asset('assets/image/homeimage.jpg'),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     const Row(
                       children: [
                         Padding(
