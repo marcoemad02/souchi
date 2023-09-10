@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:souchi/authentication/widgets/custom_text.dart';
 import 'package:souchi/const.dart';
 
 import '../../../authentication/widgets/custom_button.dart';
@@ -39,29 +41,44 @@ class HelpCenter extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Help Center'),
         backgroundColor: kPrimaryColor,
+        elevation: 0,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height: 30),
-            CustomButton(
-              buttonLabel: '📞 Call '+ number3,
+
+           Padding(
+             padding: EdgeInsetsDirectional.all(10),
+             child: Text('You can call us on the below numbers,'
+                 'we are always happy to be at your service.',style: GoogleFonts.poppins(
+
+               color: Colors.black,
+               fontWeight: FontWeight.w500,
+               fontSize: 24,
+
+
+
+             )),
+           ),
+            CustomHelpCenterCard(
+              number: number3,
               onPressed: () {
                 _callNumber(number3);
                 _copyToClipboard(context, number3);
               },
             ),
-            CustomButton(
-              buttonLabel: '📞 Call '+ number2,
+            CustomHelpCenterCard(
+              number: number2,
               onPressed: () {
                 _callNumber(number2);
                 _copyToClipboard(context, number2);
               },
             ),
 
-            CustomButton(
-              buttonLabel: '📞 Call '+ number1,
+            CustomHelpCenterCard(
+              number: number1,
               onPressed: () {
                 _callNumber(number1);
                 _copyToClipboard(context, number1);
@@ -71,6 +88,68 @@ class HelpCenter extends StatelessWidget {
 
           ],
         ),
+      ),
+    );
+  }
+}
+class CustomHelpCenterCard extends StatelessWidget {
+  const CustomHelpCenterCard({Key? key, required this.onPressed,required this.number}) : super(key: key);
+
+  final VoidCallback onPressed;
+  final String? number;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 15, 10, 2),
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Container(
+
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12)
+            ),
+            width: double.infinity,
+            height: 80,
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text('$number',style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.bold,
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                      letterSpacing: 1,
+                      fontSize: 20,
+
+                    )),),
+
+
+                IconButton(onPressed: onPressed, icon: Icon(Icons.phone,color: Colors.green,))
+              ],)
+        ),
+        // child: Container(
+        //   height: 60,
+        //   width: double.infinity,
+        //   decoration: BoxDecoration(
+        //     color: kPrimaryColor,
+        //     borderRadius: BorderRadius.circular(30),
+        //     boxShadow: [
+        //       BoxShadow(
+        //         color: Colors.grey.withOpacity(0.2),
+        //         spreadRadius: 2,
+        //         blurRadius: 5,
+        //         offset: const Offset(0, 0), // changes position of shadow
+        //       ),
+        //     ],
+        //   ),
+        //   child: Center(
+        //     child: Text(
+        //       buttonLabel!,
+        //       style: CustomTextStyle.button,
+        //     ),
+        //   ),
+        // ),
       ),
     );
   }

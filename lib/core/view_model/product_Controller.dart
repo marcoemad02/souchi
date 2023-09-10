@@ -72,7 +72,8 @@ class ProductController extends GetxController {
    final now = new DateTime.now();
    SharedPreferences prefs=await SharedPreferences.getInstance();
 
-    datacolFaisal.set({
+    datacolFaisal.set(
+        {
       'order': {
          'Totalprice': TotalPriceLE.toString(),
          'orderlist': loopOnCart_Faisal(),
@@ -96,7 +97,8 @@ class ProductController extends GetxController {
 
       },
       'color':'White'
-    });
+    }
+     );
   }
   Future<void> sendDatatoFire_Haram(idb,String paymentStatue) async {
    final now = new DateTime.now();

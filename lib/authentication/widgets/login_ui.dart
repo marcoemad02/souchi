@@ -4,7 +4,6 @@ import '../../const.dart';
 
 class UpperPartLogin extends StatelessWidget {
   final String text;
-
   const UpperPartLogin({required this.text, Key? key}) : super(key: key);
 
   @override

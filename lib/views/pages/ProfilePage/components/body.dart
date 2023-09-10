@@ -66,7 +66,7 @@ class Body extends StatelessWidget {
               text: " Preview Dashboard",
               icon: "assets/icons/Settings.svg",
               press: () {
-                Get.to(PreviewDashboardScreen());
+                Get.to(()=>PreviewDashboardScreen());
               }),
 
           ProfileMenu(
@@ -87,7 +87,7 @@ class Body extends StatelessWidget {
                 onConfirm: () {
                   // Log out the user
                   SharedPreferencesManager.logOut();
-                  Get.offAll(() => LoginPage());
+                  Get.offAll(()=> LoginPage());
                 },
                 textConfirm: "Log Out",
                 textCancel: "Cancel",

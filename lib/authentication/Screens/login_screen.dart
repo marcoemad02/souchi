@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
                   DiveIntoButton(
                     onPressed: () {
                       // Navigate to the Home Page when the button is pressed
-                      Get.to( PreviewPage());
+                      Get.to( ()=>PreviewPage());
                     },
                     buttonLabel: 'Dive into Sushi Experience',
                   ),
