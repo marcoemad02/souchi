@@ -65,6 +65,7 @@ class HomePage extends StatelessWidget {
             streamBranch: productStream,
           ),
           body: CustomScrollView(
+
             slivers: [
               SliverToBoxAdapter(
                 child: Column(

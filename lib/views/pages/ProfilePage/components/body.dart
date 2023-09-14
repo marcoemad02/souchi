@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:souchi/styles.dart';
 import 'package:souchi/views/pages/ProfilePage/Helpcenter_Screen.dart';
 import 'package:souchi/views/pages/ProfilePage/components/name_widget.dart';
+import 'package:souchi/views/pages/ProfilePage/components/privacy%20ana%20policy.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 
 import '../../../../CarouselSlider/carousel_dashboard.dart';
@@ -45,8 +46,9 @@ class Body extends StatelessWidget {
           // ),
           ProfileMenu(
             text: "Help Center",
-            icon: "assets/icons/Question mark.svg",
+            icon: "assets/icons/Call.svg",
             press: () {
+
               Get.to(() => const HelpCenter());
             },
           ),
@@ -68,7 +70,13 @@ class Body extends StatelessWidget {
               press: () {
                 Get.to(()=>PreviewDashboardScreen());
               }),
+          ProfileMenu(
+            text: "Privacy and Policy", icon:"assets/icons/Question mark.svg"
+            ,press: () {
+            Get.to(()=>PrivacyAndPolicy());
+          },
 
+          ),
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
@@ -95,6 +103,7 @@ class Body extends StatelessWidget {
               );
             },
           ),
+
         ],
       ),
     );

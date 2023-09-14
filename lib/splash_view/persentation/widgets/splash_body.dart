@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:souchi/authentication/Screens/login_screen.dart';
 import 'package:souchi/styles.dart';
 import 'package:souchi/views/pages/BranchPage/branch_view.dart';
+import 'package:souchi/views/pages/ProfilePage/Helpcenter_Screen.dart';
 
 import '../../../authentication/Core/if_logged_in.dart'; // Import the LoginCheck widget
 
@@ -19,6 +21,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
 
+
   @override
   void initState() {
     super.initState();
@@ -31,15 +34,15 @@ class _SplashViewbodyState extends State<SplashViewbody>
             .animate(animationController);
 
     animationController.forward();
-
-    Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        Get.to(() => LoginCheck(
-            loggedInWidget: const BranchScreen(),
-            loggedOutWidget: LoginPage()));
-      },
-    );
+    update();
+    // Future.delayed(
+    //   const Duration(seconds: 2),
+    //   () {
+    //     Get.to(() => LoginCheck(
+    //         loggedInWidget: const BranchScreen(),
+    //         loggedOutWidget: LoginPage()));
+    //   },
+    // );
   }
 
   @override
@@ -47,6 +50,19 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController.dispose();
     super.dispose();
   }
+ update(){
+    FirebaseFirestore.instance.collection('Update').doc('XikypnOcBgoGUcP60fb8').get().then((value) {
+      var val=value.get('version');
+      if(val=="1"){
+        Get.to(()=>BranchScreen());
+      }else{
+        Get.to(()=>HelpCenter());
+      }
+    },);
+
+ }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,4 +92,11 @@ class _SplashViewbodyState extends State<SplashViewbody>
       ],
     );
   }
+
+
+
+
+
+
+
 }

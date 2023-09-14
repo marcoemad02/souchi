@@ -46,13 +46,14 @@ class HelpCenter extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 30),
+            const SizedBox(height: 60),
 
            Padding(
-             padding: EdgeInsetsDirectional.all(10),
-             child: Text('You can call us on the below numbers,'
-                 'we are always happy to be at your service.',style: GoogleFonts.poppins(
+             padding: EdgeInsetsDirectional.symmetric(horizontal: 10),
+             child: Text('You can call us ,'
+                ,style: GoogleFonts.poppins(
 
                color: Colors.black,
                fontWeight: FontWeight.w500,
@@ -62,6 +63,33 @@ class HelpCenter extends StatelessWidget {
 
              )),
            ),
+           Padding(
+             padding: EdgeInsetsDirectional.symmetric(horizontal: 10),
+             child: Text(
+                 'on the below numbers ',style: GoogleFonts.poppins(
+
+               color: Colors.black,
+               fontWeight: FontWeight.w500,
+               fontSize: 20,
+
+
+
+             )),
+           ),
+           Padding(
+             padding: EdgeInsetsDirectional.symmetric(horizontal: 10),
+             child: Text(
+                 'we are always happy to be at your service. ',style: GoogleFonts.poppins(
+
+               color: Colors.black,
+               fontWeight: FontWeight.w500,
+               fontSize: 20
+
+
+
+             )),
+           ),
+            SizedBox(height: 50,),
             CustomHelpCenterCard(
               number: number3,
               onPressed: () {
@@ -76,13 +104,29 @@ class HelpCenter extends StatelessWidget {
                 _copyToClipboard(context, number2);
               },
             ),
-
             CustomHelpCenterCard(
               number: number1,
               onPressed: () {
                 _callNumber(number1);
                 _copyToClipboard(context, number1);
               },
+            ),
+            SizedBox(height: 60,),
+            Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Contact us",style: GoogleFonts.poppins(
+
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 22,
+
+
+
+                )),
+                SizedBox(width: 10,),
+                Icon(Icons.headset_mic,color: Colors.grey),
+              ],
             )
 
 
@@ -123,8 +167,6 @@ class CustomHelpCenterCard extends StatelessWidget {
                       fontSize: 20,
 
                     )),),
-
-
                 IconButton(onPressed: onPressed, icon: Icon(Icons.phone,color: Colors.green,))
               ],)
         ),

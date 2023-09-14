@@ -481,7 +481,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                           specialSign: specialSign,
                           paymentStatue: 'Cash',
                         );
-                        Get.snackbar('Item Added', 'Sent to bike',
+                        Get.snackbar('Sent to bike', '',
                             backgroundColor: Colors.green);
                         Get.offAll(() => const BranchScreen());
                       } else {
@@ -527,7 +527,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                       });
 
                       if (areAllFieldsFilled()) {
-                        await controller.validatorCart_Cash(
+                        await controller.validatorCart_Points(
                           id: widget.branchId,
                           name: name,
                           fullAddress: fullAddress,
@@ -539,9 +539,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                           specialSign: specialSign,
                           paymentStatue: 'Points',
                         );
-                        Get.snackbar('Item Added', 'Sent to bike',
-                            backgroundColor: Colors.green);
-                        Get.offAll(() => const BranchScreen());
+                        // Get.snackbar('Sent to bike', '',
+                        //     backgroundColor: Colors.green);
+                       // Get.offAll(() => const BranchScreen());
                       } else {
                         Get.snackbar('Error', 'Add your Name, Phone and Address');
                       }
@@ -565,7 +565,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                SizedBox(height: 40,)
+                  SizedBox(height: 40,)
                 ],
               )
           )
