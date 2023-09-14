@@ -34,7 +34,12 @@ class _SplashViewbodyState extends State<SplashViewbody>
             .animate(animationController);
 
     animationController.forward();
-    update();
+    Future.delayed(
+      const Duration(seconds: 2),
+          () {
+       fetchUpdate();
+      },
+    );
     // Future.delayed(
     //   const Duration(seconds: 2),
     //   () {
@@ -50,13 +55,13 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController.dispose();
     super.dispose();
   }
- update(){
+ fetchUpdate(){
     FirebaseFirestore.instance.collection('Update').doc('XikypnOcBgoGUcP60fb8').get().then((value) {
       var val=value.get('version');
       if(val=="1"){
-        Get.to(()=>BranchScreen());
+        Get.to(()=>LoginCheck(loggedInWidget: const BranchScreen(), loggedOutWidget: LoginPage()));
       }else{
-        Get.to(()=>HelpCenter());
+        Get.to(()=>LoginCheck(loggedInWidget: const HelpCenter(), loggedOutWidget: LoginPage()));
       }
     },);
 
