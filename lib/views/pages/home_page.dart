@@ -156,7 +156,7 @@ class HomePage extends StatelessWidget {
                     BestSellerListViewItem(
                       title: 'FRIED SUSHI',
                       description:
-                          'Age sushi is a deep-fried seaweed roll that you can fill with fish, meat, vegetables or eggs.',
+                          'Age sushi is a deep-fried seaweed roll that you can fill with fish, meat, vegetables .',
                       imagePath: 'assets/image/fried1.png',
                       onTap: () {
                         Get.to(() => FriedCategoryPage(

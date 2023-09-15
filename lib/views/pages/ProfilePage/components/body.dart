@@ -58,20 +58,20 @@ class Body extends StatelessWidget {
               press: () => Get.to(
                     () => ChangePasswordScreen(),
                   )),
+          // ProfileMenu(
+          //     text: "CarouselSlider Dashboard",
+          //     icon: "assets/icons/Settings.svg",
+          //     press: () {
+          //       Get.to(CarouselSliderDashboardScreen());
+          //     }),
+          // ProfileMenu(
+          //     text: " Preview Dashboard",
+          //     icon: "assets/icons/Settings.svg",
+          //     press: () {
+          //       Get.to(()=>PreviewDashboardScreen());
+          //     }),
           ProfileMenu(
-              text: "CarouselSlider Dashboard",
-              icon: "assets/icons/Settings.svg",
-              press: () {
-                Get.to(CarouselSliderDashboardScreen());
-              }),
-          ProfileMenu(
-              text: " Preview Dashboard",
-              icon: "assets/icons/Settings.svg",
-              press: () {
-                Get.to(()=>PreviewDashboardScreen());
-              }),
-          ProfileMenu(
-            text: "Privacy and Policy", icon:"assets/icons/Question mark.svg"
+            text: "Privacy  Policy", icon:"assets/icons/Question mark.svg"
             ,press: () {
             Get.to(()=>PrivacyAndPolicy());
           },

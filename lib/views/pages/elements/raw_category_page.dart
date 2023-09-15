@@ -29,7 +29,7 @@ class RawCategoryPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
                 children: const [
-                  Text('RAW SOUSHI',
+                  Text('RAW SUSHI',
                   style: Styles.textStyle30orange,
                   ),
                 ],

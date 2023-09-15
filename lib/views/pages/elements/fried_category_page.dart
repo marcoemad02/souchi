@@ -39,7 +39,7 @@ class FriedCategoryPage extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'FRIED SOUCHI',
+                    'FRIED SUSHI',
                     style: Styles.textStyle30orange,
                   ),
                 ],

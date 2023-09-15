@@ -29,7 +29,7 @@ class SaucesCategoryPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
                 children: [
-                  Text('SAUCES SOUSHI',
+                  Text('SAUCES SUSHI',
                     style: Styles.textStyle30orange,
                   ),
                 ],

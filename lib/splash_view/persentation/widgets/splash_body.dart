@@ -34,20 +34,20 @@ class _SplashViewbodyState extends State<SplashViewbody>
             .animate(animationController);
 
     animationController.forward();
-    Future.delayed(
-      const Duration(seconds: 2),
-          () {
-       fetchUpdate();
-      },
-    );
     // Future.delayed(
     //   const Duration(seconds: 2),
-    //   () {
-    //     Get.to(() => LoginCheck(
-    //         loggedInWidget: const BranchScreen(),
-    //         loggedOutWidget: LoginPage()));
+    //       () {
+    //    // fetchUpdate();
     //   },
     // );
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        Get.to(() => LoginCheck(
+            loggedInWidget: const BranchScreen(),
+            loggedOutWidget: LoginPage()));
+      },
+    );
   }
 
   @override
@@ -55,17 +55,17 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController.dispose();
     super.dispose();
   }
- fetchUpdate(){
-    FirebaseFirestore.instance.collection('Update').doc('XikypnOcBgoGUcP60fb8').get().then((value) {
-      var val=value.get('version');
-      if(val=="1"){
-        Get.to(()=>LoginCheck(loggedInWidget: const BranchScreen(), loggedOutWidget: LoginPage()));
-      }else{
-        Get.to(()=>LoginCheck(loggedInWidget: const HelpCenter(), loggedOutWidget: LoginPage()));
-      }
-    },);
-
- }
+ // fetchUpdate(){
+ //    FirebaseFirestore.instance.collection('Update').doc('XikypnOcBgoGUcP60fb8').get().then((value) {
+ //      var val=value.get('version');
+ //      if(val=="1"){
+ //        Get.to(()=>LoginCheck(loggedInWidget: const BranchScreen(), loggedOutWidget: LoginPage()));
+ //      }else{
+ //        Get.to(()=>LoginCheck(loggedInWidget: const HelpCenter(), loggedOutWidget: LoginPage()));
+ //      }
+ //    },);
+ //
+ // }
 
 
 
@@ -86,9 +86,13 @@ class _SplashViewbodyState extends State<SplashViewbody>
             return SlideTransition(
               position: slidingAnimation,
               child: const Text(
-                'Souchiii ',
+                'So She Picks ',
                 textAlign: TextAlign.center,
-                style: Styles.textStyle30orange,
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Color(0x4081663),
+                  fontFamily: 'Poppins',
+                ) ,
               ),
             );
           },
