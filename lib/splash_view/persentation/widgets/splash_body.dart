@@ -1,12 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:souchi/authentication/Screens/login_screen.dart';
 import 'package:souchi/styles.dart';
-import 'package:souchi/views/pages/BranchPage/branch_view.dart';
-import 'package:souchi/views/pages/ProfilePage/Helpcenter_Screen.dart';
 
-import '../../../authentication/Core/if_logged_in.dart'; // Import the LoginCheck widget
+import '../../../versionCheck/app_general_state.dart'; // Import the LoginCheck widget
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({Key? key}) : super(key: key);
@@ -21,7 +16,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
 
-
   @override
   void initState() {
     super.initState();
@@ -34,18 +28,16 @@ class _SplashViewbodyState extends State<SplashViewbody>
             .animate(animationController);
 
     animationController.forward();
-    // Future.delayed(
-    //   const Duration(seconds: 2),
-    //       () {
-    //    // fetchUpdate();
-    //   },
-    // );
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        Get.to(() => LoginCheck(
-            loggedInWidget: const BranchScreen(),
-            loggedOutWidget: LoginPage()));
+        // fetchUpdate();
+      },
+    );
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        appGeneralState();
       },
     );
   }
@@ -55,19 +47,19 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController.dispose();
     super.dispose();
   }
- // fetchUpdate(){
- //    FirebaseFirestore.instance.collection('Update').doc('XikypnOcBgoGUcP60fb8').get().then((value) {
- //      var val=value.get('version');
- //      if(val=="1"){
- //        Get.to(()=>LoginCheck(loggedInWidget: const BranchScreen(), loggedOutWidget: LoginPage()));
- //      }else{
- //        Get.to(()=>LoginCheck(loggedInWidget: const HelpCenter(), loggedOutWidget: LoginPage()));
- //      }
- //    },);
- //
- // }
 
-
+  // fetchUpdate(){
+  //    FirebaseFirestore.instance.collection('Update').doc('XikypnOcBgoGUcP60fb8').get().then((value) {
+  //      var val=value.get('version');
+  //      if(val=="1"){
+  //        Get.to(()=>LoginCheck(loggedInWidget: const BranchScreen(), loggedOutWidget: LoginPage()));
+  //      }else{
+  //        Get.to(()=>LoginCheck(loggedInWidget: const HelpCenter(), loggedOutWidget: LoginPage()));
+  //      }
+  //    },);
+  //
+  // }
+  //
 
   @override
   Widget build(BuildContext context) {
@@ -86,13 +78,9 @@ class _SplashViewbodyState extends State<SplashViewbody>
             return SlideTransition(
               position: slidingAnimation,
               child: const Text(
-                'So She Picks ',
+                'Souchiii ',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Color(0x4081663),
-                  fontFamily: 'Poppins',
-                ) ,
+                style: Styles.textStyle30orange,
               ),
             );
           },
@@ -101,11 +89,4 @@ class _SplashViewbodyState extends State<SplashViewbody>
       ],
     );
   }
-
-
-
-
-
-
-
 }

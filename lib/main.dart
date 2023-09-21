@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 import 'package:souchi/splash_view/persentation/splash_view.dart';
 
 import 'firebase_options.dart';
+import 'versionCheck/internet_state.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const souchi());
 }
 
@@ -22,12 +24,17 @@ class souchi extends StatelessWidget {
       //routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
 
-      //home:SplashView(),
-      // getPages: appRoutes,
-      home: const SplashView(),
+      // Use the NetworkStatusWidget here
+      home: Scaffold(
+        body: Column(
+          children: [
+            const SplashView(),
+          ],
+        ),
+      ),
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor:
-              const Color(0xffF6F1F1)), //background for all screens
+          const Color(0xffF6F1F1)), //background for all screens
     );
   }
 }

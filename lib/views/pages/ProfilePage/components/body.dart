@@ -12,6 +12,7 @@ import '../../../../authentication/Screens/change_user_password_page.dart';
 import '../../../../authentication/Screens/login_screen.dart';
 import '../../../../const.dart';
 import '../../../../preview/preview_dashborad.dart';
+import '../../../../versionCheck/version_state_dashboard.dart';
 import 'profile_menu.dart';
 
 class Body extends StatelessWidget {
@@ -58,12 +59,12 @@ class Body extends StatelessWidget {
               press: () => Get.to(
                     () => ChangePasswordScreen(),
                   )),
-          // ProfileMenu(
-          //     text: "CarouselSlider Dashboard",
-          //     icon: "assets/icons/Settings.svg",
-          //     press: () {
-          //       Get.to(CarouselSliderDashboardScreen());
-          //     }),
+          ProfileMenu(
+              text: "CarouselSlider Dashboard",
+              icon: "assets/icons/Settings.svg",
+              press: () {
+                Get.to(versionDashboard());
+              }),
           // ProfileMenu(
           //     text: " Preview Dashboard",
           //     icon: "assets/icons/Settings.svg",
