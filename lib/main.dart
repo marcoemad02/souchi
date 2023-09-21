@@ -25,13 +25,14 @@ class souchi extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // Use the NetworkStatusWidget here
-      home: Scaffold(
-        body: Column(
-          children: [
-            const SplashView(),
-          ],
-        ),
-      ),
+      home: SplashView(),
+      // Scaffold(
+      //   body: Column(
+      //     children: [
+      //       const SplashView(),
+      //     ],
+      //   ),
+      // ),
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor:
           const Color(0xffF6F1F1)), //background for all screens

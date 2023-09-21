@@ -78,7 +78,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
             return SlideTransition(
               position: slidingAnimation,
               child: const Text(
-                'Souchiii ',
+                'So She Picks ',
                 textAlign: TextAlign.center,
                 style: Styles.textStyle30orange,
               ),
