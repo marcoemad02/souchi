@@ -65,18 +65,6 @@ class Body extends StatelessWidget {
               press: () {
                 Get.to(versionDashboard());
               }),
-          ProfileMenu(
-              text: " test update",
-              icon: "assets/icons/Settings.svg",
-              press: () {
-                Get.to(()=>updateScreen());
-              }),
-          ProfileMenu(
-              text: " test offline",
-              icon: "assets/icons/Settings.svg",
-              press: () {
-                Get.to(()=>offlineScreen());
-              }),
 
           ProfileMenu(
             text: "Privacy  Policy", icon:"assets/icons/Question mark.svg"
