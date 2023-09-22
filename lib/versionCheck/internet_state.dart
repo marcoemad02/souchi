@@ -12,7 +12,7 @@ Future checkNetworkConnectivity() async {
     return true;
   } else {
     // User is offline
-    Get.to(offlineScreen());
+    Get.offAll(offlineScreen());
     // return false;
   }
 }

@@ -6,12 +6,12 @@ import 'package:souchi/views/pages/ProfilePage/components/name_widget.dart';
 import 'package:souchi/views/pages/ProfilePage/components/privacy%20ana%20policy.dart';
 import 'package:souchi/views/widgets/location_widget.dart';
 
-import '../../../../CarouselSlider/carousel_dashboard.dart';
 import '../../../../authentication/Core/Shared_pref.dart';
 import '../../../../authentication/Screens/change_user_password_page.dart';
 import '../../../../authentication/Screens/login_screen.dart';
 import '../../../../const.dart';
-import '../../../../preview/preview_dashborad.dart';
+import '../../../../versionCheck/offline_screen.dart';
+import '../../../../versionCheck/update_screen.dart';
 import '../../../../versionCheck/version_state_dashboard.dart';
 import 'profile_menu.dart';
 
@@ -60,17 +60,24 @@ class Body extends StatelessWidget {
                     () => ChangePasswordScreen(),
                   )),
           ProfileMenu(
-              text: "CarouselSlider Dashboard",
+              text: "update Dashboard",
               icon: "assets/icons/Settings.svg",
               press: () {
                 Get.to(versionDashboard());
               }),
-          // ProfileMenu(
-          //     text: " Preview Dashboard",
-          //     icon: "assets/icons/Settings.svg",
-          //     press: () {
-          //       Get.to(()=>PreviewDashboardScreen());
-          //     }),
+          ProfileMenu(
+              text: " test update",
+              icon: "assets/icons/Settings.svg",
+              press: () {
+                Get.to(()=>updateScreen());
+              }),
+          ProfileMenu(
+              text: " test offline",
+              icon: "assets/icons/Settings.svg",
+              press: () {
+                Get.to(()=>offlineScreen());
+              }),
+
           ProfileMenu(
             text: "Privacy  Policy", icon:"assets/icons/Question mark.svg"
             ,press: () {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:souchi/styles.dart';
 
-import '../../../versionCheck/app_general_state.dart'; // Import the LoginCheck widget
+import '../../../versionCheck/app_general_state.dart';
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({Key? key}) : super(key: key);
@@ -12,31 +12,29 @@ class SplashViewbody extends StatefulWidget {
 
 class _SplashViewbodyState extends State<SplashViewbody>
     with SingleTickerProviderStateMixin {
-  // add a mixin (animation)
   late AnimationController animationController;
-  late Animation<Offset> slidingAnimation;
+  late Animation<double> fadeAnimation; // Use double animation for opacity
 
   @override
   void initState() {
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 1), // Faster fade animation (1 second)
     );
-    slidingAnimation =
-        Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero)
-            .animate(animationController);
+    fadeAnimation = Tween<double>(begin: 0.0, end: 1.0)
+        .animate(animationController); // Create opacity animation
 
     animationController.forward();
     Future.delayed(
-      const Duration(seconds: 2),
-      () {
+      const Duration(seconds: 1),
+          () {
         // fetchUpdate();
       },
     );
     Future.delayed(
       const Duration(seconds: 2),
-      () {
+          () {
         appGeneralState();
       },
     );
@@ -47,19 +45,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController.dispose();
     super.dispose();
   }
-
-  // fetchUpdate(){
-  //    FirebaseFirestore.instance.collection('Update').doc('XikypnOcBgoGUcP60fb8').get().then((value) {
-  //      var val=value.get('version');
-  //      if(val=="1"){
-  //        Get.to(()=>LoginCheck(loggedInWidget: const BranchScreen(), loggedOutWidget: LoginPage()));
-  //      }else{
-  //        Get.to(()=>LoginCheck(loggedInWidget: const HelpCenter(), loggedOutWidget: LoginPage()));
-  //      }
-  //    },);
-  //
-  // }
-  //
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +58,10 @@ class _SplashViewbodyState extends State<SplashViewbody>
           height: 32,
         ),
         AnimatedBuilder(
-          animation: slidingAnimation,
+          animation: fadeAnimation,
           builder: (context, _) {
-            return SlideTransition(
-              position: slidingAnimation,
+            return Opacity(
+              opacity: fadeAnimation.value,
               child: const Text(
                 'So She Picks ',
                 textAlign: TextAlign.center,

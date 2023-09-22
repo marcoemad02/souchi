@@ -37,7 +37,7 @@ class AppDataController {
     if (intVariable == 1) {
       return true;
     } else {
-      Get.to(updateScreen());
+      Get.offAll(updateScreen());
       return false;
     }
   }
