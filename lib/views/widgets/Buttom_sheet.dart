@@ -29,7 +29,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   bool isPhone1Valid = true;
   bool isPhone2Valid = false;
   bool isFullAddressValid = true;
-  bool isBuilding_No_Valid = true;
+  bool isBuilding_No_Valid = false;
   bool isFloor_No_Valid = true;
   bool isApartment_No_Valid = true;
   bool isSpecialSign_valid = false;
@@ -50,7 +50,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         //phone2.isNotEmpty &&
         fullAddress.isNotEmpty &&
         apartment_No.isNotEmpty &&
-        building_No.isNotEmpty &&
+        //building_No.isNotEmpty &&
         floor_No.isNotEmpty ;
         //specialSign.isNotEmpty;
   }
@@ -189,7 +189,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                     maxLength: 11,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'Second Phone Number',
+                      labelText: 'Second Phone Number (optional)',
                       labelStyle: TextStyle(color: kPrimaryColor),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kPrimaryColor),
@@ -274,7 +274,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                       print('Building No.: $building_No');
                     },
                     decoration: InputDecoration(
-                      labelText: 'Building Number',
+                      labelText: 'Building Number (optional)',
                       labelStyle: TextStyle(color: kPrimaryColor),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kPrimaryColor),
@@ -284,9 +284,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                         borderSide: BorderSide(color: Colors.grey),
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      errorText: isBuilding_No_Valid
-                          ? null
-                          : "Please enter your Building Number",
+
                       errorStyle: TextStyle(color: Colors.red),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kPrimaryColor),
@@ -404,7 +402,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                       print('Special Sign: $specialSign');
                     },
                     decoration: InputDecoration(
-                      labelText: 'Special Sign',
+                      labelText: 'Special Sign (optional)',
                       labelStyle: TextStyle(color: kPrimaryColor),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kPrimaryColor),
