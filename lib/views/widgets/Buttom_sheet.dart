@@ -27,12 +27,12 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
 
   bool isNameValid = true;
   bool isPhone1Valid = true;
-  bool isPhone2Valid = true;
+  bool isPhone2Valid = false;
   bool isFullAddressValid = true;
   bool isBuilding_No_Valid = true;
   bool isFloor_No_Valid = true;
   bool isApartment_No_Valid = true;
-  bool isSpecialSign_valid = true;
+  bool isSpecialSign_valid = false;
   var controller = Get.put(ProductController());
 
   String name = '';
@@ -47,12 +47,12 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
   bool areAllFieldsFilled() {
     return name.isNotEmpty &&
         phone1.isNotEmpty &&
-        phone2.isNotEmpty &&
+        //phone2.isNotEmpty &&
         fullAddress.isNotEmpty &&
         apartment_No.isNotEmpty &&
         building_No.isNotEmpty &&
-        floor_No.isNotEmpty &&
-        specialSign.isNotEmpty;
+        floor_No.isNotEmpty ;
+        //specialSign.isNotEmpty;
   }
 
   @override
@@ -199,10 +199,10 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                         borderSide: BorderSide(color: Colors.grey),
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      errorText: isPhone2Valid
-                          ? null
-                          : "Please enter a valid 11-digit phone number",
-                      errorStyle: TextStyle(color: Colors.red),
+                      // errorText: isPhone2Valid
+                      //     ? null
+                      //     : "Please enter a valid 11-digit phone number",
+                      // errorStyle: TextStyle(color: Colors.red),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kPrimaryColor),
                         borderRadius: BorderRadius.circular(10),
@@ -414,10 +414,10 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                         borderSide: BorderSide(color: Colors.grey),
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      errorText: isSpecialSign_valid
-                          ? null
-                          : "Please enter your Special Sign",
-                      errorStyle: TextStyle(color: Colors.red),
+                      // errorText: isSpecialSign_valid
+                      //     ? null
+                      //     : "Please enter your Special Sign",
+                      // errorStyle: TextStyle(color: Colors.red),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: kPrimaryColor),
                         borderRadius: BorderRadius.circular(10),
