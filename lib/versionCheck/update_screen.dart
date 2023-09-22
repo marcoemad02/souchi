@@ -69,7 +69,7 @@ class _UpdateScreenState extends State<updateScreen> {
                     if (await canLaunch(infoText)) {
                       await launch(infoText);
                     } else {
-                      // Handle the case where the URL cannot be launched
+                      // Handle the case where the URL cannot be launched/ffffffff
                       showDialog(
                         context: context,
                         builder: (context) {
